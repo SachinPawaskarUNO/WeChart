@@ -4,5 +4,8 @@ gastoentrology branch added
 doc grid branch
 
 gidance preview
+<<<<<<< HEAD
 
 procedures
+=======
+>>>>>>> refs/heads/guidance_preview
