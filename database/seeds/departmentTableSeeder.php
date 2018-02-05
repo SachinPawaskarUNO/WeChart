@@ -15,10 +15,10 @@ class departmentTableSeeder extends Seeder
     {
 
         //clear out staging table
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::statement('ALTER TABLE department DISABLE TRIGGER ALL;');
         DB::table('csv_data')->truncate();
         DB::table('department')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::statement('ALTER TABLE department ENABLE TRIGGER ALL;');
 
 
         //Load tab-delimited file for medications
