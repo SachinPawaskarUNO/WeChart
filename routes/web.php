@@ -95,7 +95,7 @@ Route::post('delete_vital_signs/{ts}', 'DocumentationController@delete_vital_sig
 
 Route::get('/Review_of_System (ROS)/{id}', 'NavigationController@get_ROS')->name('Review of System (ROS)');
 Route::get('/Review_of_System (ROS)/{id}/#constitutional')->name('Constitutional9');
-Route::get('/Review_of_System (ROS)/{id}/#hent')->name('HENT9');
+Route::get('/Review_of_System (ROS)/{id}/#hent')->name('HENT20');
 Route::get('/Review_of_System (ROS)/{id}/#eyes')->name('Eyes9');
 Route::get('/Review_of_System (ROS)/{id}/#respiratory')->name('Respiratory9');
 Route::get('/Review_of_System (ROS)/{id}/#cardiovascular')->name('Cardiovascular9');
