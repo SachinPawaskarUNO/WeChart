@@ -343,6 +343,7 @@ class CreateLookupValueTable extends Migration
                 'created_by' => 1
             )
         );
+<<<<<<< HEAD
         //Inserting records for ROS - Gastrointestinal
         DB::table('lookup_value')->insert(
             array(
@@ -380,6 +381,8 @@ class CreateLookupValueTable extends Migration
                 'created_by' => 1
             )
         );
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
         //Inserting records for PE - Constitutional
         DB::table('lookup_value')->insert(
             array(
@@ -593,6 +596,7 @@ class CreateLookupValueTable extends Migration
                 'created_by' => 1
             )
         );
+<<<<<<< HEAD
         //Inserting records for PE - Gastrointestinal
         DB::table('lookup_value')->insert(
             array(
@@ -624,6 +628,8 @@ class CreateLookupValueTable extends Migration
                 'created_by' => 1
             )
         );
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
         //Inserting records for Disposition
         DB::table('lookup_value')->insert(
             array(

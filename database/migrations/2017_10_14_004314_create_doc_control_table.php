@@ -517,6 +517,7 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 19,           //ROS-Gastrointestinal
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,
@@ -536,6 +537,9 @@ class CreateDocControlTable extends Migration
         DB::table('doc_control')->insert (
             array (
                 'navigation_id' => 21,   		//Constitution
+=======
+                'navigation_id' => 20,   		//Constitution
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -544,7 +548,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 21,   		//Constitution
+=======
+                'navigation_id' => 20,   		//Constitution
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -553,7 +561,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 22,   		//HENT
+=======
+                'navigation_id' => 21,   		//HENT
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -562,7 +574,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 22,   		//HENT
+=======
+                'navigation_id' => 21,   		//HENT
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -571,7 +587,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 23,   		//Eyes
+=======
+                'navigation_id' => 22,   		//Eyes
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -580,7 +600,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 23,   		//Eyes
+=======
+                'navigation_id' => 22,   		//Eyes
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -589,7 +613,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 24,   		//Respiratory
+=======
+                'navigation_id' => 23,   		//Respiratory
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -598,7 +626,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 24,   		//Respiratory
+=======
+                'navigation_id' => 23,   		//Respiratory
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -607,7 +639,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 25,   		//Cardiovascular
+=======
+                'navigation_id' => 24,   		//Cardiovascular
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -616,7 +652,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 25,   		//Cardiovascular
+=======
+                'navigation_id' => 24,   		//Cardiovascular
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -625,7 +665,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 26,   		//Musculoskeletal
+=======
+                'navigation_id' => 25,   		//Musculoskeletal
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -634,7 +678,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 26,   		//Musculoskeletal
+=======
+                'navigation_id' => 25,   		//Musculoskeletal
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -643,7 +691,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 27,   		//Integumentary
+=======
+                'navigation_id' => 26,   		//Integumentary
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -652,7 +704,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 27,   		//Integumentary
+=======
+                'navigation_id' => 26,   		//Integumentary
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -661,7 +717,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 28,   		//Neurological
+=======
+                'navigation_id' => 27,   		//Neurological
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -670,7 +730,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 28,   		//Neurological
+=======
+                'navigation_id' => 27,   		//Neurological
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -679,7 +743,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 29,   		//Psychological
+=======
+                'navigation_id' => 28,   		//Psychological
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,  	//Checkbox
                 'lookup_table_used' => 'lookup_value',
@@ -688,7 +756,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 29,   		//Psychological
+=======
+                'navigation_id' => 28,   		//Psychological
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -697,6 +769,7 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 30,           //PE-Gastrointestinal
                 'label' => 'Symptoms',
                 'doc_control_type_id' => 2,
@@ -716,6 +789,9 @@ class CreateDocControlTable extends Migration
         DB::table('doc_control')->insert (
             array (
                 'navigation_id' => 33,   		//MDM/Plan
+=======
+                'navigation_id' => 31,   		//MDM/Plan
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Plan',
                 'doc_control_type_id' => 3,  	//Checkbox
                 'freetext_value_type_id' => 3,	//character
@@ -724,7 +800,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 33,   		//MDM/Plan
+=======
+                'navigation_id' => 31,   		//MDM/Plan
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -733,7 +813,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 34,   		//Disposition
+=======
+                'navigation_id' => 32,   		//Disposition
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Disposition',
                 'doc_control_type_id' => 1,  	//Radio
                 'lookup_table_used' => 'lookup_value',
@@ -742,7 +826,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 34,   		//Disposition
+=======
+                'navigation_id' => 32,   		//Disposition
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//Freeform text
                 'freetext_value_type_id' => 3,  //character
@@ -772,7 +860,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 32,   		//Results
+=======
+                'navigation_id' => 30,   		//Results
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Order Results',
                 'doc_control_type_id' => 3,  	//freetext
 //			'doc_control_type_id' => 4,  	//Dropdown
@@ -782,7 +874,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 32,   		//Results
+=======
+                'navigation_id' => 30,   		//Results
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//freetext
 //			'doc_control_type_id' => 4,  	//Dropdown
@@ -792,7 +888,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 31,   		//Order
+=======
+                'navigation_id' => 29,   		//Order
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Lab Orders',
                 'doc_control_type_id' => 5,  	//Search bar
 //			'doc_control_type_id' => 4,  	//Dropdown
@@ -803,7 +903,11 @@ class CreateDocControlTable extends Migration
         );
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 31,   		//Order
+=======
+                'navigation_id' => 29,   		//Order
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Imaging Orders',
                 'doc_control_type_id' => 5,  	//Search bar
 //			'doc_control_type_id' => 4,  	//Dropdown
@@ -815,7 +919,11 @@ class CreateDocControlTable extends Migration
         //This is just in case
         DB::table('doc_control')->insert (
             array (
+<<<<<<< HEAD
                 'navigation_id' => 31,   		//Order
+=======
+                'navigation_id' => 29,   		//Order
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'label' => 'Comments',
                 'doc_control_type_id' => 3,  	//freetext
 //			'doc_control_type_id' => 4,  	//Dropdown
@@ -843,6 +951,7 @@ class CreateDocControlTable extends Migration
                 'created_by' => 1				//admin
             )
         );
+<<<<<<< HEAD
         DB::table('doc_control')->insert (
             array (
                 'navigation_id' => 31,   		//Order
@@ -854,6 +963,8 @@ class CreateDocControlTable extends Migration
                 'created_by' => 1				//admin
             )
         );
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     }
     /**
      * Reverse the migrations.
@@ -864,4 +975,8 @@ class CreateDocControlTable extends Migration
     {
         Schema::dropIfExists('doc_control');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79

@@ -6,7 +6,10 @@ use App\diagnosis_lookup_value;
 use App\med_lookup_value;
 use App\imaging_orders_lookup_value;
 use App\lab_orders_lookup_value;
+<<<<<<< HEAD
 use App\procedure_orders_lookup_value;
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Auth;
@@ -91,6 +94,7 @@ class DocumentationController extends Controller
 
         return \Response::json($formatted_lookups);
     }
+<<<<<<< HEAD
     public function find_procedure_orders(Request $request)
     {
         $term = trim($request->q);
@@ -109,6 +113,8 @@ class DocumentationController extends Controller
 
         return \Response::json($formatted_lookups);
     }
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     public function find_instructor(Request $request)
     {
         $term = trim($request->q);
@@ -117,7 +123,11 @@ class DocumentationController extends Controller
         }
         $lookups = User::where('role', 'Instructor')->where('archived',false)->where(function ($q) use ($term)
         {
+<<<<<<< HEAD
             $q->whereRaw('UPPER(firstname) LIKE ?', '%'.strtoupper($term).'%')->orWhereRaw('UPPER(lastname)', 'LIKE', '%'.strtoupper($term).'%');
+=======
+            $q->where('firstname', 'LIKE', '%'.$term.'%')->orWhere('lastname', 'LIKE', '%'.$term.'%');
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
         })->get();
         $formatted_lookups = [];
         foreach ($lookups as $lookup) {
@@ -262,14 +272,23 @@ class DocumentationController extends Controller
             try {
                 $labs = $request['search_labs_orders'];
                 $images = $request['search_labs_imaging'];
+<<<<<<< HEAD
                 $procedures = $request['search_labs_procedure'];
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 //Saving labs
                 foreach ((array)$labs as $key=>$lab) {
                     $lab_value = lab_orders_lookup_value::where('lab_orders_lookup_value_id',$lab)->pluck('lab_orders_lookup_value');
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
+<<<<<<< HEAD
                     $active_record['navigation_id'] = '31';
                     $active_record['doc_control_id'] = '73';
+=======
+                    $active_record['navigation_id'] = '29';
+                    $active_record['doc_control_id'] = '69';
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                     $active_record['value'] = $lab_value[0];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -281,13 +300,19 @@ class DocumentationController extends Controller
                     $image_value = imaging_orders_lookup_value::where('imaging_orders_lookup_value_id',$image)->pluck('imaging_orders_lookup_value');
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
+<<<<<<< HEAD
                     $active_record['navigation_id'] = '31';
                     $active_record['doc_control_id'] = '74';
+=======
+                    $active_record['navigation_id'] = '29';
+                    $active_record['doc_control_id'] = '70';
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                     $active_record['value'] = $image_value[0];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
                     $active_record->save();
                 }
+<<<<<<< HEAD
                 //Saving procedures
                 foreach ((array)$procedures as $key=>$procedure) {
                    // print($request['search_labs_procedure[0]']);
@@ -307,13 +332,25 @@ class DocumentationController extends Controller
                 $comment_order_record = active_record::where('patient_id', $request['patient_id'])
                     ->where('navigation_id','31')
                     ->where('doc_control_id','75')->get();
+=======
+
+                //Saving comment
+                $comment_order_record = active_record::where('patient_id', $request['patient_id'])
+                    ->where('navigation_id','29')
+                    ->where('doc_control_id','71')->get();
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
                 if(!count($comment_order_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
+<<<<<<< HEAD
                     $active_record['navigation_id'] = '31';
                     $active_record['doc_control_id'] = '75';
+=======
+                    $active_record['navigation_id'] = '29';
+                    $active_record['doc_control_id'] = '71';
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                     $active_record['value'] = $request['orders_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -2184,6 +2221,7 @@ else {
         $lab->delete();
         return redirect()->route('Orders',$patient_id);
     }
+<<<<<<< HEAD
     public function delete_procedure_order($id)
     {
         $procedure = active_record::find($id);
@@ -2191,4 +2229,6 @@ else {
         $procedure->delete();
         return redirect()->route('Orders',$patient_id);
     }
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 }

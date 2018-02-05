@@ -67,11 +67,16 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr class="bg-info">
+<<<<<<< HEAD
                                 <th>List of procedures</th>
+=======
+                                <th>List of Procedures</th>
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                 <th colspan="2"></th>
                             </tr>
                             </thead>
                             <tbody>
+<<<<<<< HEAD
                             @foreach ($procedures as $procedure)
                                 <tr>
                                     <td><p>{{$procedure->value}}</p></td>
@@ -81,6 +86,17 @@
                                             <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                                         </a>
                                     </td>
+=======
+                            @foreach ($images as $image)
+                                <tr>
+                                    <td><p>{{$image->value}}</p></td>
+                                    <td style="text-align: right">
+                                        <a href="{{ route( 'delete_image_order', ['active_record_id' => $image->active_record_id]) }}"
+                                           class="btn btn-danger confirmation" id="delete">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                        </a>
+                                     </td>
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                 </tr>
                             @endforeach
                             </tbody>
@@ -111,6 +127,7 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <!-- Search for procedure -->
                     <div class="col-sm-4">
                         <div class="row">
@@ -122,6 +139,8 @@
                             </div>
                         </div>
                     </div>
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 </div>
                 <br>
                 <br>
@@ -200,6 +219,7 @@
         }
     });
 
+<<<<<<< HEAD
     $('#search_labs_procedure').select2({
         placeholder: "Choose procedure...",
         minimumInputLength: 2,
@@ -220,6 +240,8 @@
         }
     });
 
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     $(document).ready(function(){
         var inputsChanged = false;
         $('#orders_form').change(function() {
@@ -243,7 +265,10 @@
             $('#orders_comment').val('');
             $('#search_labs_imaging').empty().trigger('change');
             $('#search_labs_orders').empty().trigger('change');
+<<<<<<< HEAD
             $('#search_labs_procedure').empty().trigger('change');
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             inputsChanged = false;
         } );
     });

@@ -1,15 +1,28 @@
+<<<<<<< HEAD
   <!--
    Developer - Varun Parihar
    Date - 09/23/2017
    Description - View for Edit Profile functionality.
    10/27/2017 - Added code to handle change password fuctionality
   -->
+=======
+<!--
+ Developer - Varun Parihar
+ Date - 09/23/2017
+ Description - View for Edit Profile functionality.
+-->
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 @extends('layouts.app')
 @section('content')
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
   <div class="container">
   <div class="col-md-8 col-md-offset-2">
     @if($user['role'] == 'Admin')
@@ -32,6 +45,7 @@
           </div>
     @endif
     <br>
+<<<<<<< HEAD
         @if (Session::has('success'))
             <div id="success" class="alert alert-success" style="">{!! Session::get('success') !!}</div>
         @endif
@@ -59,6 +73,8 @@
         @if (Session::has('old_blank'))
             <div id="old_blank" class="alert alert-danger" style="">{!! Session::get('old_blank') !!}</div>
         @endif
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
       <div class="panel panel-default">
 
         <div class="panel-heading" style="padding-bottom: 0;padding-top: 0">
@@ -75,12 +91,22 @@
           </div>
         @endif
         <div class="panel-body">
+<<<<<<< HEAD
           <form id='formCheckPassword' class="form-horizontal" method="POST" action="{{ url('EditProfile') }}">
             {{ csrf_field() }}
               <input id="user_id" name="user_id" type="hidden" value="{{ $user->id }}">
             <div class="form-group">
               <label for="email" class="col-md-4 control-label">E-Mail Address</label>
               <div class="col-md-6">
+=======
+
+          <form class="form-horizontal" method="POST" action="{{ url('EditProfile') }}">
+            {{ csrf_field() }}
+            <div class="form-group">
+              <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+              <div class="col-md-6">
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 <input id="email" type="email" class="form-control" name="email" value="<?php echo ($user['email']); ?>" readonly="true">
               </div>
             </div>
@@ -89,20 +115,29 @@
               <label for="departmentName" class="col-md-4 control-label">Department</label>
               <div class="col-md-6">
 
+<<<<<<< HEAD
                 <input id="departmentName" type="text" class="form-control" name="departmentName" value="<?php echo ($departmentname); ?>" >
+=======
+                <input id="departmentName" type="departmentName" class="form-control" name="departmentName" value="<?php echo ($user['departmentName']); ?>" >
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
               </div>
             </div>
             <div class="form-group">
               <label for="firstname" class="col-md-4 control-label">First Name</label>
               <div class="col-md-6">
 
+<<<<<<< HEAD
                 <input id="firstname" type="text" class="form-control" name="firstname" value="<?php echo ($user['firstname']); ?>">
+=======
+                <input id="firstname" type="firstname" class="form-control" name="firstname" value="<?php echo ($user['firstname']); ?>">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
               </div>
             </div>
             <div class="form-group">
               <label for="lastname" class="col-md-4 control-label">Last Name</label>
               <div class="col-md-6">
 
+<<<<<<< HEAD
                 <input id="lastname" type="text" class="form-control" name="lastname" value="<?php echo ($user['lastname']); ?>">
               </div>
             </div>
@@ -117,6 +152,17 @@
                     <strong>{{ $errors->first('contactno') }}</strong>
                   </span>
                 @endif
+=======
+                <input id="lastname" type="lastname" class="form-control" name="lastname" value="<?php echo ($user['lastname']); ?>">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactno" class="col-md-4 control-label">Contact No.</label>
+              <div class="col-md-6">
+
+                <input id="contactno" type="contactno" class="form-control" name="contactno" value="<?php echo ($user['contactno']); ?>">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
               </div>
             </div>
             <div class="form-group">
@@ -124,6 +170,7 @@
                 <p> <strong>Note:</strong> 10-digit US number</p>
               </div>
             </div>
+<<<<<<< HEAD
             <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">
               <label for="password" class="col-md-4 control-label">Old Password</label>
 
@@ -159,6 +206,8 @@
                 @endif
               </div>
             </div>
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
@@ -170,6 +219,18 @@
         </div>
 
       </div>
+<<<<<<< HEAD
+=======
+    <!-- After user submits request -->
+    @if($Profilesubmitted == 'Yes')
+      <div class="row">
+        <div class="alert alert-success alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          Profile updated successfully.
+        </div>
+      </div>
+    @endif
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     </div>
   </div>
   @endsection

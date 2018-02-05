@@ -4,8 +4,12 @@
 
     @if(in_array("10", $navIds))
         {{--ros_constitutional--}}
+<<<<<<< HEAD
         
         <div class="col-md-6" id="constitutional">
+=======
+        <div class="container-fluid" id="constitutional">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Constitutional</h4>
@@ -64,16 +68,25 @@
                             <br>
                             {{--Buttons--}}
                             <div class="row">
+<<<<<<< HEAD
                                 <div class="col-md-5">
+=======
+                                <div class="col-md-6">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                     <button type="reset" id="btn_clear_ros_constitutional" class="btn btn-success" style="float: left">
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Constitutional
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-5" >
                                     <button type="submit" id="btn_save_ros_constitutional" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_constitutional" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Constitutional
                                     </button>
                                 </div>
@@ -83,6 +96,7 @@
                 </div>
 
             </div>
+<<<<<<< HEAD
         
         </div>
         
@@ -91,6 +105,14 @@
         {{--ros_hent--}}
         
         <div class="col-md-6" id="hent">
+=======
+        </div>
+        <hr>
+    @endif
+    @if(in_array("11", $navIds))
+        {{--ros_hent--}}
+        <div class="container-fluid" id="hent">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- HENT</h4>
@@ -154,11 +176,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset HENT
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_hent" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_hent" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save HENT
                                     </button>
                                 </div>
@@ -169,12 +196,20 @@
 
             </div>
         </div>
+<<<<<<< HEAD
         
     @endif
     @if(in_array("12", $navIds))
         {{--ros_eyes--}}
         
         <div class="col-md-6" id="eyes">
+=======
+        <hr>
+    @endif
+    @if(in_array("12", $navIds))
+        {{--ros_eyes--}}
+        <div class="container-fluid" id="eyes">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Eyes</h4>
@@ -238,11 +273,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Eyes
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_eyes" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_eyes" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Eyes
                                     </button>
                                 </div>
@@ -253,6 +293,7 @@
 
             </div>
         </div>
+<<<<<<< HEAD
         
         
     @endif
@@ -260,6 +301,13 @@
         {{--ros_respiratory--}}
         
         <div class="col-md-6" id="respiratory">
+=======
+        <hr>
+    @endif
+    @if(in_array("13", $navIds))
+        {{--ros_respiratory--}}
+        <div class="container-fluid" id="respiratory">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Respiratory</h4>
@@ -323,11 +371,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Respiratory
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_respiratory" class="btn btn-primary" style="float: left">
+                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Respiratory
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_respiratory" class="btn btn-primary" style="float: right">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Respiratory
                                     </button>
                                 </div>
@@ -338,6 +391,88 @@
 
             </div>
         </div>
+        <hr>
+    @endif
+    @if(in_array("14", $navIds))
+        {{--ros_cardiovascular--}}
+        <div class="container-fluid" id="cardiovascular">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <h4 style="margin-top: 0">ROS- Cardiovascular</h4>
+                </div>
+                <div class="panel-body">
+                    <br>
+                    <form class="form-horizontal" method="POST" action="{{ route('ros_cardiovascular') }}" id="ros_cardiovascular_form">
+                        {{ csrf_field() }}
+                        <input id="module_id" name="module_id" type="hidden" value="{{ $patient->module_id }}">
+                        <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
+                        <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <tbody>
+                                        @foreach ($ros_cardiovascular_symptoms as $ros_cardiovascular_symptom)
+                                            <tr>
+                                                <td>
+                                                    @if($ros_cardiovascular_symptom->is_saved)
+                                                        <input
+                                                                type="checkbox"
+                                                                name="$ros_cardiovascular_symptoms[]"
+                                                                value="{{$ros_cardiovascular_symptom->value}}"
+                                                                id="{{$ros_cardiovascular_symptom->value}}" checked>
+                                                    @else
+                                                        <input
+                                                                type="checkbox"
+                                                                name="$ros_cardiovascular_symptoms[]"
+                                                                value="{{$ros_cardiovascular_symptom->value}}"
+                                                                id="{{$ros_cardiovascular_symptom->value}}">
+
+                                                    @endif
+                                                    {{$ros_cardiovascular_symptom->value}}
+                                                    <br>
+                                                    <br>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Comment box -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="Comment"> Comments:</label>
+                                    <br>
+                                    @if(!count($ros_cardiovascular_comment)>0)
+                                        <textarea rows="4" id="ros_cardiovascular_comment" name="ros_cardiovascular_comment" style="width: 100%;display: block"></textarea>
+                                    @else
+                                        <textarea rows="4" id="ros_cardiovascular_comment" name="ros_cardiovascular_comment" style="width: 100%;display: block">{{$ros_cardiovascular_comment[0]}}</textarea>
+                                    @endif
+                                </div>
+                            </div>
+                            <br>
+                            {{--Buttons--}}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="reset" id="btn_clear_ros_cardiovascular" class="btn btn-success" style="float: left">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i> Reset Cardiovascular
+                                    </button>
+                                </div>
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_cardiovascular" class="btn btn-primary" style="float: right">
+                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Cardiovascular
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+<<<<<<< HEAD
         
         
     @endif
@@ -346,6 +481,13 @@
         {{--ros_musculosketal--}}
         
         <div class="col-md-6" id="musculoskeletal">
+=======
+        <hr >
+    @endif
+    @if(in_array("15", $navIds))
+        {{--ros_musculosketal--}}
+        <div class="container-fluid" id="musculoskeletal">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Musculoskeletal</h4>
@@ -409,11 +551,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Musculoskeletal
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_musculoskeletal" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_musculoskeletal" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Musculoskeletal
                                     </button>
                                 </div>
@@ -424,6 +571,7 @@
 
             </div>
         </div>
+<<<<<<< HEAD
         
         
     @endif
@@ -431,6 +579,13 @@
         {{--ros_integumentary--}}
         
         <div class="col-md-6" id="integumentary">
+=======
+        <hr >
+    @endif
+    @if(in_array("16", $navIds))
+        {{--ros_integumentary--}}
+        <div class="container-fluid" id="integumentary">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Integumentary</h4>
@@ -467,17 +622,26 @@
                                                     {{$ros_integumentary_symptom->value}}
                                                     <br>
                                                     <br>
+<<<<<<< HEAD
 
                                                 </td>
 
                                             </tr>
                                         @endforeach
 
+=======
+                                                </td>
+                                            </tr>
+                                        @endforeach
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+<<<<<<< HEAD
                           
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                             <!-- Comment box -->
                             <div class="row">
                                 <div class="col-md-12">
@@ -498,11 +662,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Integumentary
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_integumentary" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_integumentary" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Integumentary
                                     </button>
                                 </div>
@@ -513,6 +682,7 @@
 
             </div>
         </div>
+<<<<<<< HEAD
         
         
     @endif
@@ -520,6 +690,13 @@
         {{--ros_neurological--}}
         
         <div class="col-md-6" id="neurological">
+=======
+        <hr>
+    @endif
+    @if(in_array("17", $navIds))
+        {{--ros_neurological--}}
+        <div class="container-fluid" id="neurological">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Neurological</h4>
@@ -583,11 +760,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Neurological
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_neurological" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_neurological" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Neurological
                                     </button>
                                 </div>
@@ -598,6 +780,7 @@
 
             </div>
         </div>
+<<<<<<< HEAD
         
         
     @endif
@@ -605,6 +788,13 @@
         {{--ros_psychological--}}
         
         <div class="col-md-6" id="psychological">
+=======
+        <hr>
+    @endif
+    @if(in_array("18", $navIds))
+        {{--ros_psychological--}}
+        <div class="container-fluid" id="psychological">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">ROS- Psychological</h4>
@@ -668,11 +858,16 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Psychological
                                     </button>
                                 </div>
+<<<<<<< HEAD
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6" >
                                     <button type="submit" id="btn_save_ros_psychological" class="btn btn-primary" style="float: left">
+=======
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_psychological" class="btn btn-primary" style="float: right">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Psychological
                                     </button>
                                 </div>
@@ -683,6 +878,7 @@
 
             </div>
         </div>
+<<<<<<< HEAD
         
 
     @endif
@@ -778,6 +974,18 @@
             $('#ros_constitutional_form').change(function() {
                 inputsChanged_ros_constitutional_form = true;
             });
+=======
+    @endif
+    <script>
+        $(document).ready(function(){
+
+            var inputsChanged_ros_constitutional_form = false;
+
+            $('#ros_constitutional_form').change(function() {
+                inputsChanged_ros_constitutional_form = true;
+            });
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             var inputsChanged_ros_hent_form = false;
             $('#ros_hent_form').change(function() {
                 inputsChanged_ros_hent_form = true;
@@ -787,10 +995,18 @@
             $('#ros_eyes_form').change(function() {
                 inputsChanged_ros_eyes_form = true;
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             var inputsChanged_ros_respiratory_form = false;
             $('#ros_respiratory_form').change(function() {
                 inputsChanged_ros_respiratory_form = true;
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             var inputsChanged_ros_cardiovascular_form = false;
             $('#ros_cardiovascular_form').change(function() {
                 inputsChanged_ros_cardiovascular_form = true;
@@ -800,14 +1016,26 @@
             $('#ros_musculoskeletal_form').change(function() {
                 inputsChanged_ros_musculoskeletal_form = true;
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             var inputsChanged_ros_integumentary_form = false;
             $('#ros_integumentary_form').change(function() {
                 inputsChanged_ros_integumentary_form = true;
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             var inputsChanged_ros_neurological_form = false;
             $('#ros_neurological_form').change(function() {
                 inputsChanged_ros_neurological_form = true;
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             var inputsChanged_ros_psychological_form = false;
             $('#ros_psychological_form').change(function() {
                 inputsChanged_ros_psychological_form = true;
@@ -815,10 +1043,18 @@
            
              function unloadPage(){
                 if(inputsChanged_ros_constitutional_form || inputsChanged_ros_hent_form || inputsChanged_ros_eyes_form || inputsChanged_ros_respiratory_form 
+<<<<<<< HEAD
                 || inputsChanged_ros_cardiovascular_form || inputsChanged_ros_musculoskeletal_form || inputsChanged_ros_integumentary_form || inputsChanged_ros_neurological_form || inputsChanged_ros_psychological_form){
                     return "Do you want to leave this page?. Changes you made may not be saved.";
                 }
             }
+=======
+				|| inputsChanged_ros_cardiovascular_form || inputsChanged_ros_musculoskeletal_form || inputsChanged_ros_integumentary_form || inputsChanged_ros_neurological_form || inputsChanged_ros_psychological_form){
+                    return "Do you want to leave this page?. Changes you made may not be saved.";
+                }
+            }
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             $("#btn_save_ros_constitutional").click(function(){
                 inputsChanged_ros_constitutional_form = false;
             });
@@ -846,6 +1082,10 @@
             $("#btn_save_ros_psychological").click(function(){
                 inputsChanged_ros_psychological_form = false;
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             // Reset buttons
             $("#btn_clear_ros_constitutional").click(function(){
                 inputsChanged_ros_constitutional_form = false;
@@ -879,4 +1119,8 @@
         });
     </script>
 
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79

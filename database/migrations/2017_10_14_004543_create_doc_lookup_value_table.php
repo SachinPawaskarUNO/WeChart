@@ -480,6 +480,7 @@ class CreateDocLookupValueTable extends Migration
                 'created_by' => 1
             )
         );
+<<<<<<< HEAD
         DB::table('doc_lookup_value')->insert(
             array(
                 'doc_control_id' => 43,         //ROS - Gastrointestinal
@@ -533,14 +534,26 @@ class CreateDocLookupValueTable extends Migration
             array(
                 'doc_control_id' => 45,			//PE - Constitution
                 'lookup_value_id' => 58,		//Well Developed
+=======
+        //Inserting record for PE - Constitution
+        DB::table('doc_lookup_value')->insert(
+            array(
+                'doc_control_id' => 43,			//PE - Constitution
+                'lookup_value_id' => 52,		//Well Developed
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 45,			//PE - Constitution
                 'lookup_value_id' => 59,		//No Distress
+=======
+                'doc_control_id' => 43,			//PE - Constitution
+                'lookup_value_id' => 53,		//No Distress
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
@@ -548,48 +561,78 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - HENT
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 47,			//PE - HENT
                 'lookup_value_id' => 60,		//Normocephalic
+=======
+                'doc_control_id' => 45,			//PE - HENT
+                'lookup_value_id' => 54,		//Normocephalic
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 47,			//PE - HENT
                 'lookup_value_id' => 61,		//Atraumatic
+=======
+                'doc_control_id' => 45,			//PE - HENT
+                'lookup_value_id' => 55,		//Atraumatic
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 47,			//PE - HENT
                 'lookup_value_id' => 62,		//Right ear normal
+=======
+                'doc_control_id' => 45,			//PE - HENT
+                'lookup_value_id' => 56,		//Right ear normal
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 47,			//PE - HENT
                 'lookup_value_id' => 63,		//Left ear normal
+=======
+                'doc_control_id' => 45,			//PE - HENT
+                'lookup_value_id' => 57,		//Left ear normal
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 47,			//PE - HENT
                 'lookup_value_id' => 64,		//Oropharynx clear
+=======
+                'doc_control_id' => 45,			//PE - HENT
+                'lookup_value_id' => 58,		//Oropharynx clear
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 5,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 47,			//PE - HENT
                 'lookup_value_id' => 65,		//Nose normal
+=======
+                'doc_control_id' => 45,			//PE - HENT
+                'lookup_value_id' => 59,		//Nose normal
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 6,
                 'created_by' => 1
             )
@@ -597,15 +640,24 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Eyes
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 49,			//PE - Eyes
                 'lookup_value_id' => 66,		//PERRL
+=======
+                'doc_control_id' => 47,			//PE - Eyes
+                'lookup_value_id' => 60,		//PERRL
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 49,			//PE - Eyes
+=======
+                'doc_control_id' => 47,			//PE - Eyes
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'lookup_value_id' => 23,		//Discharge
                 'sort_order_number' => 2,
                 'created_by' => 1
@@ -613,7 +665,11 @@ class CreateDocLookupValueTable extends Migration
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 49,			//PE - Eyes
+=======
+                'doc_control_id' => 47,			//PE - Eyes
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'lookup_value_id' => 24,		//Redness
                 'sort_order_number' => 3,
                 'created_by' => 1
@@ -621,8 +677,13 @@ class CreateDocLookupValueTable extends Migration
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 49,			//PE - Eyes
                 'lookup_value_id' => 67,		//EOM
+=======
+                'doc_control_id' => 47,			//PE - Eyes
+                'lookup_value_id' => 61,		//EOM
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
@@ -630,23 +691,37 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Respiratory
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 51,			//PE - Respiratory
                 'lookup_value_id' => 68,		//Normal lung sounds
+=======
+                'doc_control_id' => 49,			//PE - Respiratory
+                'lookup_value_id' => 62,		//Normal lung sounds
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 51,			//PE - Respiratory
                 'lookup_value_id' => 69,		//No Respiratory Distress
+=======
+                'doc_control_id' => 49,			//PE - Respiratory
+                'lookup_value_id' => 63,		//No Respiratory Distress
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 51,			//PE - Respiratory
+=======
+                'doc_control_id' => 49,			//PE - Respiratory
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'lookup_value_id' => 30,		//Wheezing
                 'sort_order_number' => 3,
                 'created_by' => 1
@@ -654,16 +729,26 @@ class CreateDocLookupValueTable extends Migration
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 51,			//PE - Respiratory
                 'lookup_value_id' => 70,		//Rales
+=======
+                'doc_control_id' => 49,			//PE - Respiratory
+                'lookup_value_id' => 64,		//Rales
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 51,			//PE - Respiratory
                 'lookup_value_id' => 71,		//Crackles
+=======
+                'doc_control_id' => 49,			//PE - Respiratory
+                'lookup_value_id' => 65,		//Crackles
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 5,
                 'created_by' => 1
             )
@@ -671,32 +756,52 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Cardiovascular
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 53,			//PE - Cardiovascular
                 'lookup_value_id' => 72,		//Heart Rate WNL
+=======
+                'doc_control_id' => 51,			//PE - Cardiovascular
+                'lookup_value_id' => 66,		//Heart Rate WNL
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 53,			//PE - Cardiovascular
                 'lookup_value_id' => 73,		//Heart Sounds WNL
+=======
+                'doc_control_id' => 51,			//PE - Cardiovascular
+                'lookup_value_id' => 67,		//Heart Sounds WNL
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 53,			//PE - Cardiovascular
                 'lookup_value_id' => 74,		//Heart Rhythm Regular
+=======
+                'doc_control_id' => 51,			//PE - Cardiovascular
+                'lookup_value_id' => 68,		//Heart Rhythm Regular
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 53,			//PE - Cardiovascular
                 'lookup_value_id' => 75,		//Distal pulses intact
+=======
+                'doc_control_id' => 51,			//PE - Cardiovascular
+                'lookup_value_id' => 69,		//Distal pulses intact
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
@@ -704,40 +809,65 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Musculoskeletal
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 55,			//PE - Musculoskeletal
                 'lookup_value_id' => 76,		//Intact ROM
+=======
+                'doc_control_id' => 53,			//PE - Musculoskeletal
+                'lookup_value_id' => 70,		//Intact ROM
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 55,			//PE - Musculoskeletal
                 'lookup_value_id' => 77,		//Normal Gait
+=======
+                'doc_control_id' => 53,			//PE - Musculoskeletal
+                'lookup_value_id' => 71,		//Normal Gait
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 55,			//PE - Musculoskeletal
                 'lookup_value_id' => 78,		//Deformity
+=======
+                'doc_control_id' => 53,			//PE - Musculoskeletal
+                'lookup_value_id' => 72,		//Deformity
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 55,			//PE - Musculoskeletal
                 'lookup_value_id' => 79,		//Tenderness
+=======
+                'doc_control_id' => 53,			//PE - Musculoskeletal
+                'lookup_value_id' => 73,		//Tenderness
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 55,			//PE - Musculoskeletal
                 'lookup_value_id' => 80,		//Swelling
+=======
+                'doc_control_id' => 53,			//PE - Musculoskeletal
+                'lookup_value_id' => 74,		//Swelling
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 5,
                 'created_by' => 1
             )
@@ -745,7 +875,11 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Integumentary
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 57,			//PE - Integumentary
+=======
+                'doc_control_id' => 55,			//PE - Integumentary
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'lookup_value_id' => 24,		//Redness
                 'sort_order_number' => 1,
                 'created_by' => 1
@@ -753,7 +887,11 @@ class CreateDocLookupValueTable extends Migration
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 57,			//PE - Integumentary
+=======
+                'doc_control_id' => 55,			//PE - Integumentary
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'lookup_value_id' => 39,		//Wounds
                 'sort_order_number' => 2,
                 'created_by' => 1
@@ -761,16 +899,26 @@ class CreateDocLookupValueTable extends Migration
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 57,			//PE - Integumentary
                 'lookup_value_id' => 81,		//Diaphoretic
+=======
+                'doc_control_id' => 55,			//PE - Integumentary
+                'lookup_value_id' => 75,		//Diaphoretic
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 57,			//PE - Integumentary
                 'lookup_value_id' => 82,		//Pale
+=======
+                'doc_control_id' => 55,			//PE - Integumentary
+                'lookup_value_id' => 76,		//Pale
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
@@ -778,40 +926,65 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Neurological
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 59,			//PE - Neurological
                 'lookup_value_id' => 83,		//Alert and Oriented x3
+=======
+                'doc_control_id' => 57,			//PE - Neurological
+                'lookup_value_id' => 77,		//Alert and Oriented x3
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 59,			//PE - Neurological
                 'lookup_value_id' => 84,		//DTRs WNL
+=======
+                'doc_control_id' => 57,			//PE - Neurological
+                'lookup_value_id' => 78,		//DTRs WNL
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 59,			//PE - Neurological
                 'lookup_value_id' => 85,		//Cranial Nerve deficit
+=======
+                'doc_control_id' => 57,			//PE - Neurological
+                'lookup_value_id' => 79,		//Cranial Nerve deficit
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 59,			//PE - Neurological
                 'lookup_value_id' => 86,		//Weak Tone
+=======
+                'doc_control_id' => 57,			//PE - Neurological
+                'lookup_value_id' => 80,		//Weak Tone
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 59,			//PE - Neurological
                 'lookup_value_id' => 87,		//Abnormal coordination
+=======
+                'doc_control_id' => 57,			//PE - Neurological
+                'lookup_value_id' => 81,		//Abnormal coordination
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 5,
                 'created_by' => 1
             )
@@ -819,36 +992,57 @@ class CreateDocLookupValueTable extends Migration
         //Inserting record for PE - Psycological
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 61,			//PE - Psycological
                 'lookup_value_id' => 88,		//Affect abnormal
+=======
+                'doc_control_id' => 59,			//PE - Psycological
+                'lookup_value_id' => 82,		//Affect abnormal
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 61,			//PE - Psycological
                 'lookup_value_id' => 89,		//Suicidal ideation
+=======
+                'doc_control_id' => 59,			//PE - Psycological
+                'lookup_value_id' => 83,		//Suicidal ideation
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 61,			//PE - Psycological
                 'lookup_value_id' => 90,		//Aggitated
+=======
+                'doc_control_id' => 59,			//PE - Psycological
+                'lookup_value_id' => 84,		//Aggitated
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 61,			//PE - Psycological
                 'lookup_value_id' => 91,		//Anxious
+=======
+                'doc_control_id' => 59,			//PE - Psycological
+                'lookup_value_id' => 85,		//Anxious
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
         );
+<<<<<<< HEAD
         DB::table('doc_lookup_value')->insert(
             array(
                 'doc_control_id' => 63,         //PE - Gastrointestinal
@@ -895,54 +1089,91 @@ class CreateDocLookupValueTable extends Migration
             array(
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 97,		//Discharged
+=======
+        //Inserting record for Disposition
+        DB::table('doc_lookup_value')->insert(
+            array(
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 86,		//Discharged
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 98,		//Admitted
+=======
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 87,		//Admitted
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 2,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 99,		//Transferred
+=======
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 88,		//Transferred
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 3,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 100,		//Expired
+=======
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 89,		//Expired
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 4,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 101,		//AMA
+=======
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 90,		//AMA
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 5,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 102,		//Eloped
+=======
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 91,		//Eloped
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 6,
                 'created_by' => 1
             )
         );
         DB::table('doc_lookup_value')->insert(
             array(
+<<<<<<< HEAD
                 'doc_control_id' => 67,			//Disposition
                 'lookup_value_id' => 103,		//LWBS
+=======
+                'doc_control_id' => 63,			//Disposition
+                'lookup_value_id' => 92,		//LWBS
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 7,
                 'created_by' => 1
             )
@@ -952,7 +1183,11 @@ class CreateDocLookupValueTable extends Migration
         DB::table('doc_lookup_value')->insert(
             array(
                 'doc_control_id' => 33,			//ROS - Cardiovascular
+<<<<<<< HEAD
                 'lookup_value_id' => 104,		//Leg Swelling
+=======
+                'lookup_value_id' => 93,		//Leg Swelling
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )
@@ -962,7 +1197,11 @@ class CreateDocLookupValueTable extends Migration
         DB::table('doc_lookup_value')->insert(
             array(
                 'doc_control_id' => 37,			//ROS - Integumentary
+<<<<<<< HEAD
                 'lookup_value_id' => 105,		//Color Changes
+=======
+                'lookup_value_id' => 94,		//Color Changes
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'sort_order_number' => 1,
                 'created_by' => 1
             )

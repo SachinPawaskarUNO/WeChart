@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+<<<<<<< HEAD
 use App\security_question_users;
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\DB;
 
@@ -38,10 +41,14 @@ class ForgotPasswordController extends Controller
         try {
             $IsEmailSubmitted = 'Yes';
             $email = strtolower($request->email);
+<<<<<<< HEAD
             $user = User::where('email', $email)->first();
             $security_question_user1 = security_question_users::where('user_id', $user->id)->limit(1)->first();
             $security_question_user2 = security_question_users::where('user_id', $user->id)->skip(1)->take(1)->first();
             $security_question_user3 = security_question_users::where('user_id', $user->id)->skip(2)->take(1)->first();
+=======
+            $user = User::where('email', $email)->first();   
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
             //Generarting random number between 1 and 3 for random security questions.
             $randomQuestionNumber = rand(1,3);
@@ -50,11 +57,19 @@ class ForgotPasswordController extends Controller
             {
                 //Now fetch security question
                 if($randomQuestionNumber == '1')
+<<<<<<< HEAD
                     $question = DB::table('security_question')->where('security_question_id',$security_question_user1->security_question_id)->value('security_question');
                 if($randomQuestionNumber == '2')
                     $question = DB::table('security_question')->where('security_question_id',$security_question_user2->security_question_id)->value('security_question');
                 if($randomQuestionNumber == '3')
                     $question = DB::table('security_question')->where('security_question_id',$security_question_user3->security_question_id)->value('security_question');
+=======
+                    $question = DB::table('security')->where('id',$user->security_question1_Id)->value('security_question');
+                if($randomQuestionNumber == '2')
+                    $question = DB::table('security')->where('id',$user->security_question2_Id)->value('security_question'); 
+                if($randomQuestionNumber == '3')
+                    $question = DB::table('security')->where('id',$user->security_question3_Id)->value('security_question');
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             }
 
             return view('auth/passwords/email', compact('user','IsEmailSubmitted','randomQuestionNumber','question'));

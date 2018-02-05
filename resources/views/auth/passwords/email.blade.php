@@ -72,7 +72,11 @@
                             <label class="col-md-4 control-label"> Your email id: </label>
 
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input id="email" type="email" class="form-control" name="email" value="<?php echo ($user['email']); ?>" readonly="true">
+=======
+                                <input id="email" type="security_answer1" class="form-control" name="email" value="<?php echo ($user['email']); ?>" readonly="true">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                             </div>
                         </div>
 

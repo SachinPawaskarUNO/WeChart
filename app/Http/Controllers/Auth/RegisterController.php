@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+<<<<<<< HEAD
 use App\security_question_users;
 use App\security_question;
 use App\department;
+=======
+use App\Security;
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 use App\Rules\EmailExists;
 use Auth;
 use App\Http\Controllers\Controller;
@@ -73,6 +77,7 @@ class RegisterController extends Controller
     {
          $messages = ['different' => 'You have selected same security question twice. Please try again with three distinct security questions.'];
 
+<<<<<<< HEAD
         if($data['departmentName']=='other') {
             return Validator::make($data, [
                 'firstname' => 'required|string|max:255',
@@ -107,6 +112,23 @@ class RegisterController extends Controller
                 'security_answer3' => 'required|max:255',
             ], $messages);
         }
+=======
+         return Validator::make($data, [
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => ['required','string','email','max:255','unique:users',new EmailExists($data['role'])],
+            'password' => 'required|string|min:6|confirmed',
+            'contactno' => 'nullable|max:255',
+            // 'role' => 'required',
+            'departmentName' => 'max:255|required_if:role,Instructor',
+            'security_question1_Id' => 'required|different:security_question2_Id',
+            'security_answer1' => 'required|max:255',
+            'security_question2_Id' => 'required|different:security_question3_Id',
+            'security_answer2' => 'required|max:255',
+            'security_question3_Id' => 'required|different:security_question1_Id',
+            'security_answer3' => 'required|max:255',
+        ],$messages);
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     }
 
     /**
@@ -117,6 +139,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+<<<<<<< HEAD
 
         if ($data['departmentName']=='other')
         {
@@ -161,14 +184,36 @@ class RegisterController extends Controller
         $security_question_users['security_question_answer'] = strtolower($data['security_answer3']);
         $security_question_users->save();
         return $user;
+=======
+            return User::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => strtolower($data['email']),
+                'password' => bcrypt($data['password']),
+                'contactno' => $data['contactno'],
+                'role' => $data['role'],
+                'departmentName' =>$data['departmentName'],
+                'security_question1_Id' => $data['security_question1_Id'],
+                'security_answer1' => strtolower($data['security_answer1']),
+                'security_question2_Id' => $data['security_question2_Id'],
+                'security_answer2' => strtolower($data['security_answer2']),
+                'security_question3_Id' => $data['security_question3_Id'],
+                'security_answer3' => strtolower($data['security_answer3']),
+            ]);
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
         
     }
 
     //Overriding register form method to fetch security questions and load dropdowns
     public function showregistrationform()
     {
+<<<<<<< HEAD
         $securityquestions = DB::table('security_question')->select('security_question_id','security_question')->get();
         $departments = DB::table('department')->get();
         return view('auth.register', ['securityquestions' => $securityquestions],['departments' => $departments]);
+=======
+        $securityquestions = DB::table('security')->select('id','security_question')->get();
+        return view('auth.register', ['securityquestions' => $securityquestions]);
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     }
 }

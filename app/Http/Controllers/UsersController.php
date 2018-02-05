@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use App\User;
+<<<<<<< HEAD
 use App\department;
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 use Illuminate\Support\Facades\Hash;
 use Log;
 class UsersController extends Controller
@@ -19,9 +22,13 @@ class UsersController extends Controller
         try {
             $email=Auth::user()->email;
             $user = User::where('email', $email)->first();
+<<<<<<< HEAD
             $department = department::where('department_id', $user->department_id)->first();
             $departments = department::all();
             return view('user/editprofile',compact('Profilesubmitted','user', 'department', 'departments', 'erroredForm'));
+=======
+            return view('user/editprofile',compact('Profilesubmitted','user', 'erroredForm'));
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
         }
         catch (Exception $e)
         {
@@ -54,6 +61,7 @@ class UsersController extends Controller
                 // To check if old password is equal to the current password.
                 if (Hash::check($request->old, $oldHashedPassword))
                 {
+<<<<<<< HEAD
                     if ($request['departmentName']=='other')
                     {
                         $dept_name=$request['newDepartmentName'];
@@ -73,6 +81,9 @@ class UsersController extends Controller
                         $user['department_id'] = $depid;}else{
                         $user['department_id'] = NULL;
                     }
+=======
+                    $user['departmentName'] = $request['departmentName'];
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                     $user['firstname'] = $request['firstname'];
                     $user['lastname'] = $request['lastname'];
                     $user['contactno'] = $request['contactno'];
@@ -117,6 +128,7 @@ class UsersController extends Controller
             else
             {
                 log:info('Dhakkan'.$request['password']);
+<<<<<<< HEAD
                 if ($request['departmentName']=='other')
                 {
                     $dept_name=$request['newDepartmentName'];
@@ -136,6 +148,9 @@ class UsersController extends Controller
                     $user['department_id'] = $depid;}else{
                     $user['department_id'] = NULL;
                 }
+=======
+                $user['departmentName'] = $request['departmentName'];
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 $user['firstname'] = $request['firstname'];
                 $user['lastname'] = $request['lastname'];
                 $user['contactno'] = $request['contactno'];

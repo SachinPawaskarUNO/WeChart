@@ -7,7 +7,10 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+<<<<<<< HEAD
 use App\security_question_users;
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 use Monolog\Logger;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -57,6 +60,7 @@ class ResetPasswordController extends Controller
             $randomQuestionNumber = $_POST['randomQuestionNumber'];
 
             $user = DB::table('users')->where('email', $email)->first();
+<<<<<<< HEAD
             $security_question_user1 = DB::table('security_question_users')->where('user_id', $user->id)->LIMIT(1)->first();
             $security_question_user2 = DB::table('security_question_users')->where('user_id', $user->id)->skip(1)->take(1)->first();
             $security_question_user3 = DB::table('security_question_users')->where('user_id', $user->id)->skip(2)->take(1)->first();
@@ -65,19 +69,36 @@ class ResetPasswordController extends Controller
             {
                 $security_answer = strtolower($request->security_answer1);
                 $security_answer_fetched = $security_question_user1->security_question_answer;
+=======
+                  
+            if($randomQuestionNumber == '1')
+            {
+                $security_answer = strtolower($request->security_answer1);
+                $security_answer_fetched = $user->security_answer1;           
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             }
             if($randomQuestionNumber == '2')
             {
                 $security_answer = strtolower($request->security_answer2);
+<<<<<<< HEAD
                 $security_answer_fetched = $security_question_user2->security_question_answer;
+=======
+                $security_answer_fetched = $user->security_answer2;
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             }
             if($randomQuestionNumber == '3')
             {
                 $security_answer = strtolower($request->security_answer3);
+<<<<<<< HEAD
                 $security_answer_fetched = $security_question_user3->security_question_answer;
             }
 
 
+=======
+                $security_answer_fetched = $user->security_answer3;
+            }
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             if ($security_answer == $security_answer_fetched)
             {
                 $PasswordChanged='';

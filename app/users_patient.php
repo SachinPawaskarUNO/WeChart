@@ -11,7 +11,11 @@ class users_patient extends Authenticatable
      * @var array
      */
     protected $fillable = [
+<<<<<<< HEAD
         'patient_record_status_id','patient_id','user_id','created_by','updated_by','feedback'
+=======
+        'patient_record_status_id','patient_id','user_id','created_by','updated_by'
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     ];
     public function patient() {
         return $this->belongsTo('App\patient', 'patient_id');

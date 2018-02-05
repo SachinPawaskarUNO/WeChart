@@ -1467,6 +1467,7 @@ class NavigationController extends Controller
             }
             else {
             $labs = active_record::where('patient_id', $id)
+<<<<<<< HEAD
                 ->where('navigation_id','31')->where('doc_control_id','73')->get();
 
             $images = active_record::where('patient_id', $id)
@@ -1478,6 +1479,16 @@ class NavigationController extends Controller
             $comment_order = active_record::where('patient_id', $id)
                 ->where('navigation_id','31')
                 ->where('doc_control_id','75')->get();
+=======
+                ->where('navigation_id','29')->where('doc_control_id','69')->get();
+
+            $images = active_record::where('patient_id', $id)
+                ->where('navigation_id','29') ->where('doc_control_id','70')->get();
+
+            $comment_order = active_record::where('patient_id', $id)
+                ->where('navigation_id','29')
+                ->where('doc_control_id','71')->get();
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
             //Fetching all navs associated with this patient's module
             $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
@@ -1498,7 +1509,11 @@ class NavigationController extends Controller
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
+<<<<<<< HEAD
                     return view('patient/orders', compact ('status_id','vital_signs_header','patient','navs','labs','images','procedures','comment_order','disposition'));
+=======
+                    return view('patient/orders', compact ('status_id','vital_signs_header','patient','navs','labs','images','comment_order','disposition'));
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 }
                 else
                 {
@@ -1534,6 +1549,7 @@ class NavigationController extends Controller
             }
             else {
             $labs = active_record::where('patient_id', $id)
+<<<<<<< HEAD
                 ->where('navigation_id','31')->where('doc_control_id','73')->get();
 
             $images = active_record::where('patient_id', $id)
@@ -1541,6 +1557,12 @@ class NavigationController extends Controller
 
             $procedures = active_record::where('patient_id', $id)
                     ->where('navigation_id','31') ->where('doc_control_id','78')->get();
+=======
+                ->where('navigation_id','29')->where('doc_control_id','69')->get();
+
+            $images = active_record::where('patient_id', $id)
+                ->where('navigation_id','29') ->where('doc_control_id','70')->get();
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
             $results = active_record::where('patient_id', $id)
                 ->where('navigation_id','30')
@@ -1565,7 +1587,11 @@ class NavigationController extends Controller
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
+<<<<<<< HEAD
                 return view('patient/results', compact ('status_id','vital_signs_header','labs','procedures','images','results','patient','navs','disposition'));
+=======
+                return view('patient/results', compact ('status_id','vital_signs_header','labs','images','results','patient','navs','disposition'));
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             }
             else
             {
@@ -2054,6 +2080,7 @@ class NavigationController extends Controller
 
                 //Get orders
                 $labs = active_record::where('patient_id', $id)
+<<<<<<< HEAD
                     ->where('navigation_id', '31')->where('doc_control_id', '73')->get();
 
                 $images = active_record::where('patient_id', $id)
@@ -2064,6 +2091,16 @@ class NavigationController extends Controller
                 $comment_order = active_record::where('patient_id', $id)
                     ->where('navigation_id', '31')
                     ->where('doc_control_id', '75')->get();
+=======
+                    ->where('navigation_id', '29')->where('doc_control_id', '69')->get();
+
+                $images = active_record::where('patient_id', $id)
+                    ->where('navigation_id', '29')->where('doc_control_id', '70')->get();
+
+                $comment_order = active_record::where('patient_id', $id)
+                    ->where('navigation_id', '29')
+                    ->where('doc_control_id', '71')->get();
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
                 //Get results
                 $results = active_record::where('patient_id', $id)
@@ -2137,7 +2174,11 @@ class NavigationController extends Controller
                         'integumentary_comment', 'musculoskeletal_symptoms', 'musculoskeletal_comment',
                         'cardiovascular_symptoms', 'cardiovascular_comment', 'respiratory_symptoms', 'respiratory_comment',
                         'eyes_symptoms', 'eyes_comment', 'hent_symptoms', 'hent_comment', 'constitutional_symptoms',
+<<<<<<< HEAD
                         'constitutional_comment', 'comment_order', 'labs', 'images', 'results','procedures','mdm', 'disposition_value', 'disposition_comment'));
+=======
+                        'constitutional_comment', 'comment_order', 'labs', 'images', 'results', 'mdm', 'disposition_value', 'disposition_comment'));
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
                     return $pdf->download('patient_report.pdf');
                 } catch (\Exception $e) {
@@ -2391,6 +2432,7 @@ class NavigationController extends Controller
 
                     //Get orders
                     $labs = active_record::where('patient_id', $id)
+<<<<<<< HEAD
                         ->where('navigation_id', '31')->where('doc_control_id', '73')->get();
 
                     $images = active_record::where('patient_id', $id)
@@ -2402,6 +2444,16 @@ class NavigationController extends Controller
                     $comment_order = active_record::where('patient_id', $id)
                         ->where('navigation_id', '31')
                         ->where('doc_control_id', '75')->get();
+=======
+                        ->where('navigation_id', '29')->where('doc_control_id', '69')->get();
+
+                    $images = active_record::where('patient_id', $id)
+                        ->where('navigation_id', '29')->where('doc_control_id', '70')->get();
+
+                    $comment_order = active_record::where('patient_id', $id)
+                        ->where('navigation_id', '29')
+                        ->where('doc_control_id', '71')->get();
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
                     //Get results
                     $results = active_record::where('patient_id', $id)
@@ -2475,7 +2527,11 @@ class NavigationController extends Controller
                         'integumentary_comment', 'musculoskeletal_symptoms', 'musculoskeletal_comment',
                         'cardiovascular_symptoms', 'cardiovascular_comment', 'respiratory_symptoms', 'respiratory_comment',
                         'eyes_symptoms', 'eyes_comment', 'hent_symptoms', 'hent_comment', 'constitutional_symptoms',
+<<<<<<< HEAD
                         'constitutional_comment', 'comment_order', 'labs','procedures' ,'images', 'results','mdm','disposition_value','disposition_comment'));
+=======
+                        'constitutional_comment', 'comment_order', 'labs', 'images', 'results','mdm','disposition_value','disposition_comment'));
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 }
             }
             else

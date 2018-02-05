@@ -14,11 +14,17 @@ class CreateUsersPatientTable extends Migration
     public function up()
     {
         Schema::create('users_patient', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->increments('users_patient_id')->unsigned();
             $table->integer('patient_record_status_id')->unsigned();
             $table->integer('patient_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('feedback')->nullable();
+=======
+            $table->integer('patient_record_status_id')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned()->nullable();
 

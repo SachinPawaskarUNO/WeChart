@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
  Developer - Varun Parihar
  Date - 09/23/2017
@@ -28,12 +29,35 @@
             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
             Back to Dashboard</a>
         </div>
+=======
+  <!--
+   Developer - Varun Parihar
+   Date - 09/23/2017
+   Description - View for Edit Profile functionality.
+   10/27/2017 - Added code to handle change password fuctionality
+  -->
+@extends('layouts.app')
+@section('content')
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    @if($user['role'] == 'Admin')
+    <div class="row">
+      <a href="{{url('/home')}}" class="btn btn-success" style="float: left">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+        Back to Dashboard</a>
+    </div>
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
       @elseif($user['role'] == 'Instructor')
         <div class="row">
           <a href="{{url('/InstructorHome')}}" class="btn btn-success" style="float: left">
             <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
             Back to Dashboard</a>
         </div>
+<<<<<<< HEAD
       @else($user['role'] == 'Student')
         <div class="row">
           <a href="{{url('/StudentHome')}}" class="btn btn-success" style="float: left">
@@ -69,6 +93,43 @@
       @if (Session::has('old_blank'))
         <div id="old_blank" class="alert alert-danger" style="">{!! Session::get('old_blank') !!}</div>
       @endif
+=======
+        @else($user['role'] == 'Student')
+          <div class="row">
+            <a href="{{url('/StudentHome')}}" class="btn btn-success" style="float: left">
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              Back to Dashboard</a>
+          </div>
+    @endif
+    <br>
+        @if (Session::has('success'))
+            <div id="success" class="alert alert-success" style="">{!! Session::get('success') !!}</div>
+        @endif
+        @if (Session::has('empty_firstname'))
+            <div id="empty_firstname" class="alert alert-danger" style="">{!! Session::get('empty_firstname') !!}</div>
+        @endif
+        @if (Session::has('empty_lastname'))
+            <div id="empty_lastname" class="alert alert-danger" style="">{!! Session::get('empty_lastname') !!}</div>
+        @endif
+        @if (Session::has('invalid_contact'))
+            <div id="invalid_contact" class="alert alert-danger" style="">{!! Session::get('invalid_contact') !!}</div>
+        @endif
+        @if (Session::has('password_short'))
+            <div id="password_short" class="alert alert-danger" style="">{!! Session::get('password_short') !!}</div>
+        @endif
+        @if (Session::has('new_and_confirm_mismatch'))
+            <div id="new_and_confirm_mismatch" class="alert alert-danger" style="">{!! Session::get('new_and_confirm_mismatch') !!}</div>
+        @endif
+        @if (Session::has('new_password_empty'))
+            <div id="new_password_empty" class="alert alert-danger" style="">{!! Session::get('new_password_empty') !!}</div>
+        @endif
+        @if (Session::has('old_current_mismatch'))
+            <div id="old_current_mismatch" class="alert alert-danger" style="">{!! Session::get('old_current_mismatch') !!}</div>
+        @endif
+        @if (Session::has('old_blank'))
+            <div id="old_blank" class="alert alert-danger" style="">{!! Session::get('old_blank') !!}</div>
+        @endif
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
       <div class="panel panel-default">
 
         <div class="panel-heading" style="padding-bottom: 0;padding-top: 0">
@@ -87,7 +148,11 @@
         <div class="panel-body">
           <form id='formCheckPassword' class="form-horizontal" method="POST" action="{{ url('EditProfile') }}">
             {{ csrf_field() }}
+<<<<<<< HEAD
             <input id="user_id" name="user_id" type="hidden" value="{{ $user->id }}">
+=======
+              <input id="user_id" name="user_id" type="hidden" value="{{ $user->id }}">
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             <div class="form-group">
               <label for="email" class="col-md-4 control-label">E-Mail Address</label>
               <div class="col-md-6">
@@ -99,6 +164,7 @@
               <label for="departmentName" class="col-md-4 control-label">Department</label>
               <div class="col-md-6">
 
+<<<<<<< HEAD
                 <select id="departmentName" class="form-control" name="departmentName" onchange='Checkfunc(this.value);' >
                   <option value="<?php echo ($department['department_name']); ?>" ><?php echo ($department['department_name']); ?></option>
                   @foreach($departments as $department)
@@ -112,6 +178,9 @@
                 </select>
 
                 <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
+=======
+                <input id="departmentName" type="text" class="form-control" name="departmentName" value="<?php echo ($user['departmentName']); ?>" >
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
               </div>
             </div>
             <div class="form-group">
@@ -184,7 +253,11 @@
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
+<<<<<<< HEAD
                   Save Changes
+=======
+                          Save Changes
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 </button>
               </div>
             </div>
@@ -194,4 +267,8 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 @endsection
+=======
+  @endsection
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79

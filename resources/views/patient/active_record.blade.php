@@ -56,10 +56,43 @@
             </div>
 
             {{--Guidance Panel--}}
+<<<<<<< HEAD
             <div class="col-md-3" style="float: right;background-color: lightpink;" id="guidance_panel">
                 Guidance Panel
             </div>
 
+=======
+            
+            <div class="col-md-3" style="float: right;border: thin solid grey; height: auto;" id="guidance_panel">
+
+            <!-- Guidance Panel -->
+
+                <div style="background-color: lightpink; display: flex;">
+                    <h4>Guidance Panel</h4>
+                </div>   
+                <br> 
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#main">Main</a></li>
+                    <li><a data-toggle="pill" href="#ddx">DDx</a></li>
+                    <li><a data-toggle="pill" href="#av">A/V</a></li>
+                </ul>
+  
+                <div class="tab-content">
+                    <div id="main" class="tab-pane fade in active">
+                        @include('patient.guidancepanel_main')
+                    </div>
+                    <div id="ddx" class="tab-pane fade">
+                        @include('patient.guidancepanel_ddx')
+                    </div>
+                    <div id="av" class="tab-pane fade">
+                        @include('patient.guidancepanel_av')
+                    </div>
+                </div>
+
+            <!-- Guidance Panel -->
+
+            </div>
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
         </div>
     </div>
 @endsection

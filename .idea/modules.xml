@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/wechart.iml" filepath="$PROJECT_DIR$/.idea/wechart.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/WeChart-master.iml" filepath="$PROJECT_DIR$/.idea/WeChart-master.iml" />
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
     </modules>
   </component>
 </project>

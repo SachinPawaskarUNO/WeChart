@@ -99,15 +99,19 @@ class CreateNavigationsTable extends Migration
                 'parent_id' =>  9
             ],
             [
+<<<<<<< HEAD
                 'navigation_name' => 'Gastrointestinal',
                 'parent_id' =>  9
             ],
             [
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
                 'navigation_name' => 'Physical Exam',
                 'parent_id' =>  null
             ],
             [
                 'navigation_name' => 'Constitutional',
+<<<<<<< HEAD
                 'parent_id' =>  20
             ],
             [
@@ -145,6 +149,41 @@ class CreateNavigationsTable extends Migration
             [
                 'navigation_name' => 'Gastrointestinal',
                 'parent_id' =>  20
+=======
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'HENT',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Eyes',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Respiratory',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Cardiovascular',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Musculoskeletal',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Integumentary',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Neurological',
+                'parent_id' =>  19
+            ],
+            [
+                'navigation_name' => 'Psychological',
+                'parent_id' =>  19
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
             ],
             [
                 'navigation_name' => 'Orders',

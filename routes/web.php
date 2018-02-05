@@ -103,7 +103,10 @@ Route::get('/Review_of_System (ROS)/{id}/#musculoskeletal')->name('Musculoskelet
 Route::get('/Review_of_System (ROS)/{id}/#integumentary')->name('Integumentary9');
 Route::get('/Review_of_System (ROS)/{id}/#neurological')->name('Neurological9');
 Route::get('/Review_of_System (ROS)/{id}/#psychological')->name('Psychological9');
+<<<<<<< HEAD
 Route::get('/Review_of_System (ROS)/{id}/#gastrointestinal')->name('Gastrointestinal9');
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
 Route::post('ros_constitutional', 'DocumentationController@post_ros_constitutional')->name('ros_constitutional');
 Route::post('ros_hent', 'DocumentationController@post_ros_hent')->name('ros_hent');
@@ -116,8 +119,13 @@ Route::post('ros_neurological', 'DocumentationController@post_ros_neurological')
 Route::post('ros_psychological', 'DocumentationController@post_ros_psychological')->name('ros_psychological');
 
 Route::get('/Physical_Exam/{id}', 'NavigationController@get_physical_exams')->name('Physical Exam');
+<<<<<<< HEAD
 Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional20');
 Route::get('/Physical_Exam/{id}/#hent')->name('HENT20');
+=======
+Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional19');
+Route::get('/Physical_Exam/{id}/#hent')->name('HENT19');
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 Route::get('/Physical_Exam/{id}/#eyes')->name('Eyes19');
 Route::get('/Physical_Exam/{id}/#respiratory')->name('Respiratory19');
 Route::get('/Physical_Exam/{id}/#cardiovascular')->name('Cardiovascular19');
@@ -142,8 +150,11 @@ Route::post('orders_delete/{id}', 'DocumentationController@delete_image_order')-
 Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')->name('delete_lab_order');
 Route::any('orders_image_delete/{id}', 'DocumentationController@delete_image_order')->name('delete_image_order');
 Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')->name('delete_lab_order');
+<<<<<<< HEAD
 Route::any('orders_procedure_delete/{id}', 'DocumentationController@delete_procedure_order')->name('delete_procedure_order');
 
+=======
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 
 Route::get('/Results/{id}', 'NavigationController@get_results')->name('Results');
 Route::post('post_results}', 'DocumentationController@post_results')->name('post_results');
@@ -166,9 +177,21 @@ Route::get('/diagnosis/find', 'DocumentationController@find_diagnosis')->name('d
 Route::get('/medications/find', 'DocumentationController@find_medications')->name('medications_find');
 Route::get('/orders_labs/find', 'DocumentationController@find_lab_orders')->name('orders_labs_find');
 Route::get('/orders_imaging/find', 'DocumentationController@find_imaging_orders')->name('orders_imaging_find');
+<<<<<<< HEAD
 Route::get('/orders_procedure/find', 'DocumentationController@find_procedure_orders')->name('orders_procedure_find');
 Route::get('/instructors/find', 'DocumentationController@find_instructor')->name('instructors_find');
 
+=======
+Route::get('/instructors/find', 'DocumentationController@find_instructor')->name('instructors_find');
+
+
+Route::get('main', function()
+{
+    return View::make('patient.guidance_panel_main');
+});
+
+
+>>>>>>> 85bfc84ff508f6d8adcc7c0a4043b6c7ac1e5f79
 Route::get('/account_deleted', function () {
     return view('errors/account_deleted');
 });
