@@ -95,7 +95,7 @@ Route::post('delete_vital_signs/{ts}', 'DocumentationController@delete_vital_sig
 
 Route::get('/Review_of_System (ROS)/{id}', 'NavigationController@get_ROS')->name('Review of System (ROS)');
 Route::get('/Review_of_System (ROS)/{id}/#constitutional')->name('Constitutional9');
-Route::get('/Review_of_System (ROS)/{id}/#hent')->name('HENT20');
+Route::get('/Review_of_System (ROS)/{id}/#hent')->name('HENT9');
 Route::get('/Review_of_System (ROS)/{id}/#eyes')->name('Eyes9');
 Route::get('/Review_of_System (ROS)/{id}/#respiratory')->name('Respiratory9');
 Route::get('/Review_of_System (ROS)/{id}/#cardiovascular')->name('Cardiovascular9');
@@ -117,7 +117,7 @@ Route::post('ros_psychological', 'DocumentationController@post_ros_psychological
 
 Route::get('/Physical_Exam/{id}', 'NavigationController@get_physical_exams')->name('Physical Exam');
 Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional20');
-Route::get('/Physical_Exam/{id}/#hent')->name('HENT19');
+Route::get('/Physical_Exam/{id}/#hent')->name('HENT20');
 Route::get('/Physical_Exam/{id}/#eyes')->name('Eyes19');
 Route::get('/Physical_Exam/{id}/#respiratory')->name('Respiratory19');
 Route::get('/Physical_Exam/{id}/#cardiovascular')->name('Cardiovascular19');
