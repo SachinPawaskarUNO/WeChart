@@ -4,7 +4,8 @@
 
     @if(in_array("20", $navIds))
         {{--Constitutional--}}
-        <div class="container-fluid" id="constitutional">
+        
+        <div class="col-md-6" id="constitutional">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Constitutional</h4>
@@ -63,13 +64,16 @@
                             <br>
                             {{--Buttons--}}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <button type="reset" id="btn_clear_constitutional" class="btn btn-success" style="float: left">
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Constitutional
                                     </button>
                                 </div>
-                                <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_constitutional" class="btn btn-primary" style="float: right">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-5" >
+                                    <button type="submit" id="btn_save_constitutional" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Constitutional
                                     </button>
                                 </div>
@@ -80,11 +84,12 @@
 
             </div>
         </div>
-       <hr>
+        
+       
     @endif
     @if(in_array("21", $navIds))
         {{--HENT--}}
-        <div class="container-fluid" id="hent">
+        <div class="col-md-6" id="hent">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- HENT</h4>
@@ -143,13 +148,16 @@
                             <br>
                             {{--Buttons--}}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <button type="reset" id="btn_clear_HENT" class="btn btn-success" style="float: left">
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset HENT
                                     </button>
                                 </div>
-                                <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_HENT" class="btn btn-primary" style="float: right">
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-5" >
+                                    <button type="submit" id="btn_save_HENT" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save HENT
                                     </button>
                                 </div>
@@ -160,11 +168,11 @@
 
             </div>
         </div>
-       <hr>
+       
     @endif
     @if(in_array("22", $navIds))
         {{--Eyes--}}
-        <div class="container-fluid" id="eyes">
+        <div class="col-md-6" id="eyes">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Eyes</h4>
@@ -228,8 +236,11 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Eyes
                                     </button>
                                 </div>
+                            </div>
+                                <br>
+                                <div class="row">
                                 <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_eyes" class="btn btn-primary" style="float: right">
+                                    <button type="submit" id="btn_save_eyes" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Eyes
                                     </button>
                                 </div>
@@ -240,11 +251,11 @@
 
             </div>
         </div>
-       <hr>
+       
     @endif
     @if(in_array("23", $navIds))
         {{--Respiratory--}}
-        <div class="container-fluid" id="respiratory">
+        <div class="col-md-6" id="respiratory">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Respiratory</h4>
@@ -308,8 +319,11 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Respiratory
                                     </button>
                                 </div>
+                            </div>
+                                <br>
+                                <div class="row">
                                 <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_respiratory" class="btn btn-primary" style="float: right">
+                                    <button type="submit" id="btn_save_respiratory" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Respiratory
                                     </button>
                                 </div>
@@ -320,11 +334,11 @@
 
             </div>
         </div>
-       <hr>
+       
     @endif
     @if(in_array("24", $navIds))
         {{--Cardiovascular--}}
-        <div class="container-fluid" id="cardiovascular">
+        <div class="col-md-6" id="cardiovascular">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Cardiovascular</h4>
@@ -388,8 +402,12 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Cardiovascular
                                     </button>
                                 </div>
+                                
+                            </div>
+                            <br>
+                                <div class="row">
                                 <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_cardiovascular" class="btn btn-primary" style="float: right">
+                                    <button type="submit" id="btn_save_cardiovascular" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Cardiovascular
                                     </button>
                                 </div>
@@ -400,11 +418,11 @@
 
             </div>
         </div>
-       <hr>
+       
     @endif
     @if(in_array("25", $navIds))
         {{--Musculoskeletal--}}
-        <div class="container-fluid" id="musculoskeletal">
+        <div class="col-md-6" id="musculoskeletal">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Musculoskeletal</h4>
@@ -468,8 +486,11 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Musculoskeletal
                                     </button>
                                 </div>
+                            </div>
+                                <br>
+                                <div class="row">
                                 <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_musculoskeletal" class="btn btn-primary" style="float: right">
+                                    <button type="submit" id="btn_save_musculoskeletal" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Musculoskeletal
                                     </button>
                                 </div>
@@ -480,11 +501,11 @@
 
             </div>
         </div>
-       <hr>
+       
     @endif
     @if(in_array("26", $navIds))
         {{--Integumentary--}}
-        <div class="container-fluid" id="integumentary">
+        <div class="col-md-6" id="integumentary">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Integumentary</h4>
@@ -548,8 +569,11 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Integumentary
                                     </button>
                                 </div>
+                            </div>
+                                <br>
+                                <div class="row">
                                 <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_integumentary" class="btn btn-primary" style="float: right">
+                                    <button type="submit" id="btn_save_integumentary" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Integumentary
                                     </button>
                                 </div>
@@ -564,7 +588,7 @@
     @endif
     @if(in_array("27", $navIds))
         {{--Neurological--}}
-        <div class="container-fluid" id="neurological">
+        <div class="col-md-6" id="neurological">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Neurological</h4>
@@ -628,8 +652,11 @@
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Neurological
                                     </button>
                                 </div>
+                            </div>
+                                <br>
+                                <div class="row">
                                 <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_neurological" class="btn btn-primary" style="float: right">
+                                    <button type="submit" id="btn_save_neurological" class="btn btn-primary" style="float: left">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Neurological
                                     </button>
                                 </div>
@@ -644,7 +671,7 @@
     @endif
     @if(in_array("28", $navIds))
         {{--Psychological--}}
-        <div class="container-fluid" id="psychological">
+        <div class="col-md-6" id="psychological">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Psychological</h4>
@@ -708,8 +735,11 @@
                                             <i class="fa fa-refresh" aria-hidden="true"></i> Reset Psychological
                                         </button>
                                     </div>
+                                </div>
+                                    <br>
+                                    <div class="row">
                                     <div class="col-md-6" >
-                                        <button type="submit" id="btn_save_psychological" class="btn btn-primary" style="float: right">
+                                        <button type="submit" id="btn_save_psychological" class="btn btn-primary" style="float: left">
                                             <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Psychological
                                         </button>
                                     </div>

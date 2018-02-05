@@ -15,8 +15,10 @@ class departmentTableSeeder extends Seeder
     {
 
         //clear out staging table
+        Schema::disableForeignKeyConstraints();
         DB::table('csv_data')->truncate();
         DB::table('department')->truncate();
+        Schema::enableForeignKeyConstraints();
 
 
         //Load tab-delimited file for medications
@@ -24,7 +26,7 @@ class departmentTableSeeder extends Seeder
             while ($data = fgetcsv ($handle, 1000, "\t")) {
 
                 $csv_data = new Csvdata ();
-                $csv_data->medical_list = $data[0];
+                $csv_data->department_list = $data[0];
                 $csv_data->save();
 
             }
@@ -32,13 +34,13 @@ class departmentTableSeeder extends Seeder
         };
 
         //Load lookup_value
-        $select_medlist = DB::table('csv_data')
-            ->get(array('medical_list'));
+        $select_deplist = DB::table('csv_data')
+            ->get(array('department_list'));
 
-        foreach($select_medlist as $data){
+        foreach($select_deplist as $data){
             DB::table('department')->insert(
                 [
-                    'department_name' => $data->medical_list,
+                    'department_name' => $data->department_list,
                     'created_by'=>1
                 ]);
         }
