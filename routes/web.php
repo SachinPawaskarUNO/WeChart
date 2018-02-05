@@ -116,7 +116,7 @@ Route::post('ros_neurological', 'DocumentationController@post_ros_neurological')
 Route::post('ros_psychological', 'DocumentationController@post_ros_psychological')->name('ros_psychological');
 
 Route::get('/Physical_Exam/{id}', 'NavigationController@get_physical_exams')->name('Physical Exam');
-Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional19');
+Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional20');
 Route::get('/Physical_Exam/{id}/#hent')->name('HENT19');
 Route::get('/Physical_Exam/{id}/#eyes')->name('Eyes19');
 Route::get('/Physical_Exam/{id}/#respiratory')->name('Respiratory19');
