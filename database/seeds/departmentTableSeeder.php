@@ -18,7 +18,7 @@ class departmentTableSeeder extends Seeder
 
         DB::table('csv_data')->truncate();
         DB::table('department')->delete();
-        
+
 
 
         //Load tab-delimited file for medications
@@ -26,7 +26,7 @@ class departmentTableSeeder extends Seeder
             while ($data = fgetcsv ($handle, 1000, "\t")) {
 
                 $csv_data = new Csvdata ();
-                $csv_data->department_list = $data[0];
+                $csv_data->medical_list = $data[0];
                 $csv_data->save();
 
             }
@@ -34,13 +34,13 @@ class departmentTableSeeder extends Seeder
         };
 
         //Load lookup_value
-        $select_deplist = DB::table('csv_data')
-            ->get(array('department_list'));
+        $select_medlist = DB::table('csv_data')
+            ->get(array('medical_list'));
 
-        foreach($select_deplist as $data){
+        foreach($select_medlist as $data){
             DB::table('department')->insert(
                 [
-                    'department_name' => $data->department_list,
+                    'department_name' => $data->medical_list,
                     'created_by'=>1
                 ]);
         }
