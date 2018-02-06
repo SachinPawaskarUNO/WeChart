@@ -63,7 +63,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-4">
+                   <!-- <div class="col-sm-4">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr class="bg-info">
@@ -72,7 +72,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($procedures as $procedure)
+                           <?php // @foreach ($procedures as $procedure) ?>
                                 <tr>
                                     <td><p>{{$procedure->value}}</p></td>
                                     <td style="text-align: right">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <hr style="width: ">
-                <div class="row">
+                <div class="row"> -->
                     <!-- Search For labs -->
                     <div class="col-sm-4">
                         <div class="row">
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Search for procedure -->
+                    <!-- Search for procedure
                     <div class="col-sm-4">
                         <div class="row">
                             <div class="col-md-3">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <br>
-                <br>
+                <br>-->
                 <!-- Comment box -->
                 <div class="row">
                     <div class="col-md-12">

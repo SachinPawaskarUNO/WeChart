@@ -5,7 +5,7 @@
     @if(in_array("21", $navIds))
         {{--Constitutional--}}
 
-        <div class="col-md-6" id="constitutional">
+        <div class="container-fluid" id="constitutional">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Constitutional</h4>
@@ -89,7 +89,7 @@
     @endif
     @if(in_array("22", $navIds))
         {{--HENT--}}
-        <div class="col-md-6" id="hent">
+        <div class="container-fluid" id="hent">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- HENT</h4>
@@ -172,7 +172,7 @@
     @endif
     @if(in_array("23", $navIds))
         {{--Eyes--}}
-        <div class="col-md-6" id="eyes">
+        <div class="container-fluid" id="eyes">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Eyes</h4>
@@ -255,7 +255,7 @@
     @endif
     @if(in_array("24", $navIds))
         {{--Respiratory--}}
-        <div class="col-md-6" id="respiratory">
+        <div class="container-fluid" id="respiratory">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Respiratory</h4>
@@ -338,7 +338,7 @@
     @endif
     @if(in_array("25", $navIds))
         {{--Cardiovascular--}}
-        <div class="col-md-6" id="cardiovascular">
+        <div class="container-fluid" id="cardiovascular">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Cardiovascular</h4>
@@ -422,7 +422,7 @@
     @endif
     @if(in_array("26", $navIds))
         {{--Musculoskeletal--}}
-        <div class="col-md-6" id="musculoskeletal">
+        <div class="container-fluid" id="musculoskeletal">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Musculoskeletal</h4>
@@ -505,7 +505,7 @@
     @endif
     @if(in_array("27", $navIds))
         {{--Integumentary--}}
-        <div class="col-md-6" id="integumentary">
+        <div class="container-fluid" id="integumentary">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Integumentary</h4>
@@ -588,7 +588,7 @@
     @endif
     @if(in_array("28", $navIds))
         {{--Neurological--}}
-        <div class="col-md-6" id="neurological">
+        <div class="container-fluid" id="neurological">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Neurological</h4>
@@ -671,7 +671,7 @@
     @endif
     @if(in_array("29", $navIds))
         {{--Psychological--}}
-        <div class="col-md-6" id="psychological">
+        <div class="container-fluid" id="psychological">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Psychological</h4>
@@ -753,7 +753,7 @@
     @endif
     @if(in_array("30", $navIds))
         {{--Gastrointestinal--}}
-        <div class="col-md-6"  id="gastrointestinal">
+        <div class="container-fluid"  id="gastrointestinal">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Physical Exam- Gastrointestinal</h4>
