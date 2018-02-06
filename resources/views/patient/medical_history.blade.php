@@ -4,7 +4,7 @@
 
     @if(in_array("3", $navIds))
         {{--Personal History--}}
-        <div class="col-md-6">
+        <div class="container-fluid">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Personal History</h4>
@@ -89,7 +89,7 @@
 
     @if(in_array("4", $navIds))
         {{--Family History--}}
-        <div class="col-md-6" id="family_history">
+        <div class="container-fluid" id="family_history">
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                 <h4 style="margin-top: 0">Family History</h4>
@@ -212,7 +212,7 @@
 
     @if(in_array("5", $navIds))
         {{--Surgical History--}}
-        <div class="col-md-6" id="surgical_history">
+        <div class="container-fluid" id="surgical_history">
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                     <h4 style="margin-top: 0">Surgical History</h4>
@@ -297,7 +297,7 @@
 
     @if(in_array("6", $navIds))
         {{--Social History--}}
-        <div class="col-md-6" id="social_history">
+        <div class="container-fluid" id="social_history">
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                 <h4 style="margin-top: 0">Social History</h4>
