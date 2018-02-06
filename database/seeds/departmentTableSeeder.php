@@ -18,7 +18,7 @@ class departmentTableSeeder extends Seeder
 
         DB::table('csv_data')->truncate();
         DB::table('department')->delete();
-        DB::statement('ALTER TABLE department AUTO_INCREMENT=0;');
+        
 
 
         //Load tab-delimited file for medications
