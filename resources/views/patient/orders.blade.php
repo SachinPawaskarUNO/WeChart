@@ -17,7 +17,7 @@
 
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr class="bg-info">
@@ -40,7 +40,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr class="bg-info">
@@ -90,7 +90,7 @@
                 <hr style="width: ">
                 <div class="row">
                     <!-- Search For labs -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="orders_labs"> Labs:</label>
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <!-- Search For Imaging -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="orders_imaging"> Imaging:</label>
