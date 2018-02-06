@@ -72,9 +72,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                           <?php // @foreach ($procedures as $procedure) ?>
+                           <?php /* @foreach ($procedures as $procedure)
                                 <tr>
-                                    <td><p>{{$procedure->value}}</p></td>
+                                       <td><p>{{$procedure->value}}</p></td>
                                     <td style="text-align: right">
                                         <a href="{{ route( 'delete_procedure_order', ['active_record_id' => $procedure->active_record_id]) }}"
                                            class="btn btn-danger confirmation" id="delete">
@@ -82,13 +82,13 @@
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
+                         //   @endforeach */?>
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> -->
                 <hr style="width: ">
-                <div class="row"> -->
+                <div class="row">
                     <!-- Search For labs -->
                     <div class="col-sm-4">
                         <div class="row">
