@@ -51,12 +51,12 @@
             </div>
 
             {{--Documentation Panel--}}
-            <div class="col-md-7" style="padding-left: 0;margin-left: 0;padding-right: 0;margin-right: 0">
+            <div class="col-md-6" style="padding-left: 0;margin-left: 0;padding-right: 0;margin-right: 0">
                 @yield('documentation_panel')
             </div>
             {{--Guidance Panel--}}
 
-            <div class="col-md-3" style="float: right;border: thin solid grey; height: auto;" id="guidance_panel">
+            <div class="col-md-4" style="float: right;border: thin solid grey; height: auto;" id="guidance_panel">
             <!-- Guidance Panel -->
 
             <div style="background-color: lightpink; display: flex;">
