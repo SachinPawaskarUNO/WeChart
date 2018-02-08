@@ -17,7 +17,7 @@
 
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr class="bg-info">
@@ -40,7 +40,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr class="bg-info">
@@ -63,28 +63,62 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="col-sm-4">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr class="bg-info">
+                                <th>List of procedures</th>
+                                <th colspan="2"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($procedures as $procedure)
+                                <tr>
+                                    <td><p>{{$procedure->value}}</p></td>
+                                    <td style="text-align: right">
+                                        <a href="{{ route( 'delete_procedure_order', ['active_record_id' => $procedure->active_record_id]) }}"
+                                           class="btn btn-danger confirmation" id="delete">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <hr style="width: ">
                 <div class="row">
                     <!-- Search For labs -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="orders_labs"> Labs:</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <select id="search_labs_orders" class="js-example-basic-multiple js-states form-control" name="search_labs_orders[]" multiple></select>
                             </div>
                         </div>
                     </div>
                     <!-- Search For Imaging -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="orders_imaging"> Imaging:</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <select id="search_labs_imaging" class="js-example-basic-multiple js-states form-control" name="search_labs_imaging[]" multiple></select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search for procedure -->
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="orders_procedure"> Procedure:</label>
+                            </div>
+                            <div class="col-md-12">
+                                <select id="search_labs_procedure" class="js-example-basic-multiple js-states form-control" name="search_labs_procedure[]" multiple></select>
                             </div>
                         </div>
                     </div>
@@ -166,6 +200,26 @@
         }
     });
 
+    $('#search_labs_procedure').select2({
+        placeholder: "Choose procedure...",
+        minimumInputLength: 2,
+        ajax: {
+            url: '{{route('orders_procedure_find')}}',
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    q: $.trim(params.term)
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            },
+            cache: false
+        }
+    });
+
     $(document).ready(function(){
         var inputsChanged = false;
         $('#orders_form').change(function() {
@@ -189,6 +243,7 @@
             $('#orders_comment').val('');
             $('#search_labs_imaging').empty().trigger('change');
             $('#search_labs_orders').empty().trigger('change');
+            $('#search_labs_procedure').empty().trigger('change');
             inputsChanged = false;
         } );
     });
