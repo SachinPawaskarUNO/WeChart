@@ -175,7 +175,8 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="text" name="Pain" id="Pain" style="width: 100px;">
+                                            <!-- Pain Scale 0-10  -->
+                                            <input type="number" name="Pain" id="Pain" style="width: 100px;" min="0" max="10">
                                         </td>
                                         <td>
                                             <input type="text" name="Oxygen_Saturation" id="Oxygen_Saturation" style="width: 100px;">

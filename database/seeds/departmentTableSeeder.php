@@ -15,8 +15,10 @@ class departmentTableSeeder extends Seeder
     {
 
         //clear out staging table
+
         DB::table('csv_data')->truncate();
-        DB::table('department')->truncate();
+        DB::table('department')->delete();
+
 
 
         //Load tab-delimited file for medications

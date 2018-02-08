@@ -855,6 +855,68 @@ else {
 }
 
     //All PE post routes
+    public function post_gastrointestinal(Request $request)
+    {
+        $role='';
+        if(Auth::check()) {
+            $role = Auth::user()->role;
+        }
+
+        if($role == 'Student') {
+            try {
+                //First deleting all saved symptoms
+                active_record::where('patient_id', $request['patient_id'])
+                    ->where('navigation_id','30')->where('doc_control_id','63')->delete();
+
+                $gastrointestinal_symptoms = $request['$gastrointestinal_symptoms'];
+
+                //Now saving
+                foreach ((array)$gastrointestinal_symptoms as $key=>$gastrointestinal_symptom) {
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $request['patient_id'];
+                    $active_record['navigation_id'] = '30';
+                    $active_record['doc_control_id'] = '63';
+                    $active_record['value'] = $gastrointestinal_symptom;
+                    $active_record['created_by'] = $request['user_id'];
+                    $active_record['updated_by'] = $request['user_id'];
+                    $active_record->save();
+                }
+                //Saving comment
+                $comment_gastrointestinal_record = active_record::where('patient_id', $request['patient_id'])
+                    ->where('navigation_id','30')
+                    ->where('doc_control_id','64')->get();
+
+                if(!count($comment_gastrointestinal_record)>0)
+                {
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $request['patient_id'];
+                    $active_record['navigation_id'] = '30';
+                    $active_record['doc_control_id'] = '64';
+                    $active_record['value'] = $request['gastrointestinal_comment'];
+                    $active_record['created_by'] = $request['user_id'];
+                    $active_record['updated_by'] = $request['user_id'];
+                    $active_record->save();
+                }
+                else {
+                    $active_record = active_record::where('active_record_id', $comment_gastrointestinal_record[0]->active_record_id)->first();
+                    $active_record['value'] = $request['gastrointestinal_comment'];
+                    $active_record->save();
+                }
+
+                //Now redirecting to page
+                return redirect()->route('Gastrointestinal20',[$request['patient_id']]);
+
+            } catch (\Exception $e) {
+                return view('errors/503');
+            }
+        }
+        else
+        {
+            return view('auth/not_authorized');
+        }
+
+    }
+
     public function post_psychological(Request $request)
     {
         $role='';
@@ -1354,7 +1416,7 @@ else {
                 try {
                     //First deleting all saved symptoms
                     active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','20')->where('doc_control_id','43')->delete();
+                        ->where('navigation_id','21')->where('doc_control_id','43')->delete();
 
                     $constitutional_symptoms = $request['$constitutional_symptoms'];
 
@@ -1362,7 +1424,7 @@ else {
                     foreach ((array)$constitutional_symptoms as $key=>$constitutional_symptom) {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
-                        $active_record['navigation_id'] = '20';
+                        $active_record['navigation_id'] = '21';
                         $active_record['doc_control_id'] = '43';
                         $active_record['value'] = $constitutional_symptom;
                         $active_record['created_by'] = $request['user_id'];
@@ -1371,14 +1433,14 @@ else {
                     }
                     //Saving comment
                     $comment_constitutional_record = active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','20')
+                        ->where('navigation_id','22')
                         ->where('doc_control_id','44')->get();
 
                     if(!count($comment_constitutional_record)>0)
                     {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
-                        $active_record['navigation_id'] = '20';
+                        $active_record['navigation_id'] = '22';
                         $active_record['doc_control_id'] = '44';
                         $active_record['value'] = $request['constitutional_comment'];
                         $active_record['created_by'] = $request['user_id'];
@@ -1937,6 +1999,66 @@ else {
 
                 //Now redirecting to page
                 return redirect()->route('Psychological9',[$request['patient_id']]);
+
+            } catch (\Exception $e) {
+                return view('errors/503');
+            }
+        }
+        else
+        {
+            return view('auth/not_authorized');
+        }
+    }
+    public function post_ros_gastrointestinal(Request $request)
+    {
+        $role='';
+        if(Auth::check()) {
+            $role = Auth::user()->role;
+        }
+
+        if($role == 'Student') {
+            try {
+                //First deleting all saved symptoms
+                active_record::where('patient_id', $request['patient_id'])
+                    ->where('navigation_id','19')->where('doc_control_id','43')->delete();
+
+                $ros_gastrointestinal_symptoms = $request['$ros_gastrointestinal_symptoms'];
+
+                //Now saving
+                foreach ((array)$ros_gastrointestinal_symptoms as $key=>$ros_gastrointestinal_symptom) {
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $request['patient_id'];
+                    $active_record['navigation_id'] = '19';
+                    $active_record['doc_control_id'] = '43';
+                    $active_record['value'] = $ros_gastrointestinal_symptom;
+                    $active_record['created_by'] = $request['user_id'];
+                    $active_record['updated_by'] = $request['user_id'];
+                    $active_record->save();
+                }
+                //Saving comment
+                $comment_ros_gastrointestinal_record = active_record::where('patient_id', $request['patient_id'])
+                    ->where('navigation_id','19')
+                    ->where('doc_control_id','44')->get();
+
+                if(!count($comment_ros_gastrointestinal_record)>0)
+                {
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $request['patient_id'];
+                    $active_record['navigation_id'] = '19';
+                    $active_record['doc_control_id'] = '44';
+                    $active_record['value'] = $request['ros_gastrointestinal_comment'];
+                    $active_record['created_by'] = $request['user_id'];
+                    $active_record['updated_by'] = $request['user_id'];
+                    $active_record->save();
+                }
+                else {
+                    $active_record = active_record::where('active_record_id', $comment_ros_gastrointestinal_record[0]->active_record_id)->first();
+                    $active_record['value'] = $request['ros_gastrointestinal_comment'];
+                    $active_record->save();
+                }
+
+                //Now redirecting to page
+                return redirect()->route('Gastrointestinal9',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');

@@ -94,7 +94,7 @@ Route::post('post_vital_signs', 'DocumentationController@post_vital_signs');
 Route::post('delete_vital_signs/{ts}', 'DocumentationController@delete_vital_signs')->name('delete_vital_signs');
 
 Route::get('/Review_of_System (ROS)/{id}', 'NavigationController@get_ROS')->name('Review of System (ROS)');
-Route::get('/Review_of_System (ROS)/{id}/#constitutional')->name('Constitutional20');
+Route::get('/Review_of_System (ROS)/{id}/#constitutional')->name('Constitutional9');
 Route::get('/Review_of_System (ROS)/{id}/#hent')->name('HENT9');
 Route::get('/Review_of_System (ROS)/{id}/#eyes')->name('Eyes9');
 Route::get('/Review_of_System (ROS)/{id}/#respiratory')->name('Respiratory9');
@@ -114,18 +114,23 @@ Route::post('ros_musculoskeletal', 'DocumentationController@post_ros_musculoskel
 Route::post('ros_integumentary', 'DocumentationController@post_ros_integumentary')->name('ros_integumentary');
 Route::post('ros_neurological', 'DocumentationController@post_ros_neurological')->name('ros_neurological');
 Route::post('ros_psychological', 'DocumentationController@post_ros_psychological')->name('ros_psychological');
+Route::post('ros_gastrointestinal', 'DocumentationController@post_ros_gastrointestinal')->name('ros_gastrointestinal');
+
 
 Route::get('/Physical_Exam/{id}', 'NavigationController@get_physical_exams')->name('Physical Exam');
-Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional19');
-Route::get('/Physical_Exam/{id}/#hent')->name('HENT19');
-Route::get('/Physical_Exam/{id}/#eyes')->name('Eyes19');
-Route::get('/Physical_Exam/{id}/#respiratory')->name('Respiratory19');
-Route::get('/Physical_Exam/{id}/#cardiovascular')->name('Cardiovascular19');
-Route::get('/Physical_Exam/{id}/#musculoskeletal')->name('Musculoskeletal19');
-Route::get('/Physical_Exam/{id}/#integumentary')->name('Integumentary19');
-Route::get('/Physical_Exam/{id}/#neurological')->name('Neurological19');
-Route::get('/Physical_Exam/{id}/#psychological')->name('Psychological19');
+Route::get('/Physical_Exam/{id}/#constitutional')->name('Constitutional20');
+Route::get('/Physical_Exam/{id}/#hent')->name('HENT20');
+Route::get('/Physical_Exam/{id}/#eyes')->name('Eyes20');
+Route::get('/Physical_Exam/{id}/#respiratory')->name('Respiratory20');
+Route::get('/Physical_Exam/{id}/#cardiovascular')->name('Cardiovascular20');
+Route::get('/Physical_Exam/{id}/#musculoskeletal')->name('Musculoskeletal20');
+Route::get('/Physical_Exam/{id}/#integumentary')->name('Integumentary20');
+Route::get('/Physical_Exam/{id}/#neurological')->name('Neurological20');
+Route::get('/Physical_Exam/{id}/#psychological')->name('Psychological20');
+Route::get('/Physical_Exam/{id}/#gastrointestinal')->name('Gastrointestinal20');
 
+
+Route::post('Gastrointestinal', 'DocumentationController@post_gastrointestinal')->name('Gastrointestinal');
 Route::post('Psychological', 'DocumentationController@post_psychological')->name('Psychological');
 Route::post('Neurological', 'DocumentationController@post_neurological')->name('Neurological');
 Route::post('Integumentary', 'DocumentationController@post_integumentary')->name('Integumentary');

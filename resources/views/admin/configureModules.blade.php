@@ -37,7 +37,7 @@
                             <h5 style="width: 150px;color: #000000"><b>Demographics</b></h5>
                         </td>
                         @foreach ($navs as $nav)
-                            @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '19')
+                            @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '20')
                                 <td  style="background-color:#5DADE2;color: #000000"  align="middle">
                                     <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}</b></h5>
                                 </td>
@@ -66,7 +66,7 @@
                         @foreach ($navs as $nav)
                             @if($nav->parent_id != NULL)
                                 <td  style="background-color:#5DADE2; color: #000000"  align="middle">
-                                    <h5 style="padding-left: 1%;padding-right: 1%;width: 100px">
+                                    <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
                                     <b>{{ $nav->navigation_name }}</b>
                                     </h5>
                                 </td>
@@ -143,7 +143,7 @@
                     </h5>
                 </td>
                 @foreach ($navs as $nav)
-                    @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '19')
+                    @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '20')
                         <td  style="background-color:#5DADE2;"  align="middle">
                             <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}- All</b></h5>
                         </td>
@@ -168,7 +168,7 @@
                 @foreach ($navs as $nav)
                     @if($nav->parent_id != NULL)
                         <td  style="background-color:#5DADE2;"  align="middle">
-                            <h5 style="padding-left: 1%;padding-right: 1%;width: 100px">
+                            <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
                                 <b>{{ $nav->navigation_name }}</b>
                             </h5>
                         </td>
@@ -194,8 +194,8 @@
                @foreach ($navs as $nav)
                    <td align="middle">
                         {{-- To ensure Disposition is always checked --}}
-                       @if($nav->navigation_id == 32)
-                            <input type="checkbox" id=32 name="navs[]" value=32 checked onclick="return false">
+                       @if($nav->navigation_id == 34)
+                            <input type="checkbox" id=34 name="navs[]" value=34 checked onclick="return false">
                        @else
                             <input type="checkbox" id={{$nav->navigation_id}} name="navs[]" value={{$nav->navigation_id}}>
                        @endif
@@ -237,7 +237,7 @@
                 $('#childTable').hide();
                 $("#add-record").show();
 
-                for (var i = 1; i < 32; i++) {
+                for (var i = 1; i < 34; i++) {
                     $('#'+i).prop('checked', false);
                 }
                 $('#new_module_name').val('');
@@ -267,7 +267,7 @@
 
             // Selecting ROS selects all children
             $('#9').click(function () {
-                for (var i = 10; i < 19; i++) {
+                for (var i = 10; i < 20; i++) {
                     $('#'+i).prop('checked', true);
                 }
             });
@@ -299,41 +299,49 @@
             $('#18').click(function () {
                 $('#9').prop('checked',false);
             });
+            $('#19').click(function () {
+                $('#9').prop('checked',false);
+            });
+
 
             // Selecting PE selects all children
-            $('#19').click(function () {
-                for (var i = 20; i < 29; i++) {
+            $('#20').click(function () {
+                for (var i = 21; i < 31; i++) {
                     $('#'+i).prop('checked', true);
                 }
             });
 
-            $('#20').click(function () {
-                $('#19').prop('checked',false);
-            });
             $('#21').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#22').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#23').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#24').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#25').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#26').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#27').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
             $('#28').click(function () {
-                $('#19').prop('checked',false);
+                $('#20').prop('checked',false);
             });
+            $('#29').click(function () {
+                $('#20').prop('checked',false);
+            });
+            $('#30').click(function () {
+                $('#20').prop('checked',false);
+            });
+
 
         });
     </script>

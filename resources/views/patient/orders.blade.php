@@ -92,10 +92,10 @@
                     <!-- Search For labs -->
                     <div class="col-sm-4">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="orders_labs"> Labs:</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <select id="search_labs_orders" class="js-example-basic-multiple js-states form-control" name="search_labs_orders[]" multiple></select>
                             </div>
                         </div>
@@ -103,10 +103,10 @@
                     <!-- Search For Imaging -->
                     <div class="col-sm-4">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="orders_imaging"> Imaging:</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <select id="search_labs_imaging" class="js-example-basic-multiple js-states form-control" name="search_labs_imaging[]" multiple></select>
                             </div>
                         </div>
@@ -114,10 +114,10 @@
                     <!-- Search for procedure -->
                     <div class="col-sm-4">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="orders_procedure"> Procedure:</label>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-12">
                                 <select id="search_labs_procedure" class="js-example-basic-multiple js-states form-control" name="search_labs_procedure[]" multiple></select>
                             </div>
                         </div>
