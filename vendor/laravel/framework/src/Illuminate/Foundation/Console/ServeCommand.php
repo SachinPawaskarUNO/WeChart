@@ -32,7 +32,7 @@ class ServeCommand extends Command
      */
     public function handle()
     {
-        chdir(public_path());
+        chdir($this->laravel->publicPath());
 
         $this->line("<info>Laravel development server started:</info> <http://{$this->host()}:{$this->port()}>");
 
@@ -50,7 +50,7 @@ class ServeCommand extends Command
             ProcessUtils::escapeArgument((new PhpExecutableFinder)->find(false)),
             $this->host(),
             $this->port(),
-            ProcessUtils::escapeArgument(base_path())
+            ProcessUtils::escapeArgument($this->laravel->basePath())
         );
     }
 
