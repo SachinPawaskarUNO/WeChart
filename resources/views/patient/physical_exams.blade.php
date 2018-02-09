@@ -643,18 +643,19 @@
                             <br>
                             {{--Buttons--}}
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <button type="reset" id="btn_clear_gastrointestinal" class="btn btn-success" style="float: left">
                                         <i class="fa fa-refresh" aria-hidden="true"></i> Reset Gastrointestinal
                                     </button>
                                 </div>
                             </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-5" >
-                                    <button type="submit" id="btn_save_gastrointestinal" class="btn btn-primary" style="float: right">
-                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Gastrointestinal
-                                    </button>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6" >
+                                        <button type="submit" id="btn_save_gastrointestinal" class="btn btn-primary" style="float: left">
+                                          <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Gastrointestinal
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -663,89 +664,6 @@
 
             </div>
         </div>
-    @endif
-    @if(in_array("22", $navIds))
-        {{--HENT--}}
-        <div class="col-md-6" id="hent">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                    <h4 style="margin-top: 0">Physical Exam- HENT</h4>
-                </div>
-                <div class="panel-body">
-                    <br>
-                    <form class="form-horizontal" method="POST" action="{{ route('HENT') }}" id="HENT_form">
-                        {{ csrf_field() }}
-                        <input id="module_id" name="module_id" type="hidden" value="{{ $patient->module_id }}">
-                        <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
-                        <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <tbody>
-                                        @foreach ($HENT_symptoms as $HENT_symptom)
-                                            <tr>
-                                                <td>
-                                                    @if($HENT_symptom->is_saved)
-                                                        <input
-                                                                type="checkbox"
-                                                                name="$HENT_symptoms[]"
-                                                                value="{{$HENT_symptom->value}}"
-                                                                id="{{$HENT_symptom->value}}" checked>
-                                                    @else
-                                                        <input
-                                                                type="checkbox"
-                                                                name="$HENT_symptoms[]"
-                                                                value="{{$HENT_symptom->value}}"
-                                                                id="{{$HENT_symptom->value}}">
-
-                                                    @endif
-                                                    {{$HENT_symptom->value}}
-                                                    <br>
-                                                    <br>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- Comment box -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="Comment"> Comments:</label>
-                                    <br>
-                                    @if(!count($HENT_comment)>0)
-                                        <textarea rows="4" id="HENT_comment" name="HENT_comment" style="width: 100%;display: block"></textarea>
-                                    @else
-                                        <textarea rows="4" id="HENT_comment" name="HENT_comment" style="width: 100%;display: block">{{$HENT_comment[0]}}</textarea>
-                                    @endif
-                                </div>
-                            </div>
-                            <br>
-                            {{--Buttons--}}
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <button type="reset" id="btn_clear_HENT" class="btn btn-success" style="float: left">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i> Reset HENT
-                                    </button>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-5" >
-                                    <button type="submit" id="btn_save_HENT" class="btn btn-primary" style="float: left">
-                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save HENT
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-
     @endif
     @if(in_array("21", $navIds))
         {{--Constitutional--}}
