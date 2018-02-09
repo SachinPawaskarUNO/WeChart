@@ -686,6 +686,90 @@
         
 
     @endif
+    
+    @if(in_array("19", $navIds))
+        {{--ros_gastrointestinal--}}
+        <div class="col-md-6" id="gastrointestinal">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <h4 style="margin-top: 0">ROS- Gastrointestinal</h4>
+                </div>
+                <div class="panel-body">
+                    <br>
+                    <form class="form-horizontal" method="POST" action="{{ route('ros_gastrointestinal') }}" id="ros_gastrointestinal_form">
+                        {{ csrf_field() }}
+                        <input id="module_id" name="module_id" type="hidden" value="{{ $patient->module_id }}">
+                        <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
+                        <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <tbody>
+                                        @foreach ($ros_gastrointestinal_symptoms as $ros_gastrointestinal_symptom)
+                                            <tr>
+                                                <td>
+                                                    @if($ros_gastrointestinal_symptom->is_saved)
+                                                        <input
+                                                                type="checkbox"
+                                                                name="$ros_gastrointestinal_symptoms[]"
+                                                                value="{{$ros_gastrointestinal_symptom->value}}"
+                                                                id="{{$ros_gastrointestinal_symptom->value}}" checked>
+                                                    @else
+                                                        <input
+                                                                type="checkbox"
+                                                                name="$ros_gastrointestinal_symptoms[]"
+                                                                value="{{$ros_gastrointestinal_symptom->value}}"
+                                                                id="{{$ros_gastrointestinal_symptom->value}}">
+
+                                                    @endif
+                                                    {{$ros_gastrointestinal_symptom->value}}
+                                                    <br>
+                                                    <br>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Comment box -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="Comment"> Comments:</label>
+                                    <br>
+                                    @if(!count($ros_gastrointestinal_comment)>0)
+                                        <textarea rows="4" id="ros_gastrointestinal_comment" name="ros_gastrointestinal_comment" style="width: 100%;display: block"></textarea>
+                                    @else
+                                        <textarea rows="4" id="ros_gastrointestinal_comment" name="ros_gastrointestinal_comment" style="width: 100%;display: block">{{$ros_gastrointestinal_comment[0]}}</textarea>
+                                    @endif
+                                </div>
+                            </div>
+                            <br>
+                            {{--Buttons--}}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="reset" id="btn_clear_ros_gastrointestinal" class="btn btn-success" style="float: left">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i> Reset Gastrointestinal
+                                    </button>
+                                </div>
+                            </div>
+                                <br>
+                            <div class="row">
+                                <div class="col-md-6" >
+                                    <button type="submit" id="btn_save_ros_gastrointestinal" class="btn btn-primary" style="float: left">
+                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Gastrointestinal
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    @endif
+    
     @if(in_array("14", $navIds))
         {{--ros_cardiovascular--}}
         
@@ -771,86 +855,6 @@
         </div>
         
         
-    @endif
-    @if(in_array("19", $navIds))
-        {{--ros_gastrointestinal--}}
-        <div class="col-md-6" id="gastrointestinal">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                    <h4 style="margin-top: 0">ROS- Gastrointestinal</h4>
-                </div>
-                <div class="panel-body">
-                    <br>
-                    <form class="form-horizontal" method="POST" action="{{ route('ros_gastrointestinal') }}" id="ros_gastrointestinal_form">
-                        {{ csrf_field() }}
-                        <input id="module_id" name="module_id" type="hidden" value="{{ $patient->module_id }}">
-                        <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
-                        <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12 ">
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <tbody>
-                                        @foreach ($ros_gastrointestinal_symptoms as $ros_gastrointestinal_symptom)
-                                            <tr>
-                                                <td>
-                                                    @if($ros_gastrointestinal_symptom->is_saved)
-                                                        <input
-                                                                type="checkbox"
-                                                                name="$ros_gastrointestinal_symptoms[]"
-                                                                value="{{$ros_gastrointestinal_symptom->value}}"
-                                                                id="{{$ros_gastrointestinal_symptom->value}}" checked>
-                                                    @else
-                                                        <input
-                                                                type="checkbox"
-                                                                name="$ros_gastrointestinal_symptoms[]"
-                                                                value="{{$ros_gastrointestinal_symptom->value}}"
-                                                                id="{{$ros_gastrointestinal_symptom->value}}">
-
-                                                    @endif
-                                                    {{$ros_gastrointestinal_symptom->value}}
-                                                    <br>
-                                                    <br>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- Comment box -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="Comment"> Comments:</label>
-                                    <br>
-                                    @if(!count($ros_gastrointestinal_comment)>0)
-                                        <textarea rows="4" id="ros_gastrointestinal_comment" name="ros_gastrointestinal_comment" style="width: 100%;display: block"></textarea>
-                                    @else
-                                        <textarea rows="4" id="ros_gastrointestinal_comment" name="ros_gastrointestinal_comment" style="width: 100%;display: block">{{$ros_gastrointestinal_comment[0]}}</textarea>
-                                    @endif
-                                </div>
-                            </div>
-                            <br>
-                            {{--Buttons--}}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button type="reset" id="btn_clear_ros_gastrointestinal" class="btn btn-success" style="float: left">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i> Reset Gastrointestinal
-                                    </button>
-                                </div>
-                                <div class="col-md-6" >
-                                    <button type="submit" id="btn_save_ros_gastrointestinal" class="btn btn-primary" style="float: right">
-                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Gastrointestinal
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-        <hr>
     @endif
     <script>
         $(document).ready(function(){
