@@ -117,7 +117,7 @@ class DocumentationController extends Controller
         }
         $lookups = User::where('role', 'Instructor')->where('archived',false)->where(function ($q) use ($term)
         {
-            $q->whereRaw('UPPER(firstname) LIKE ?', '%'.strtoupper($term).'%')->orWhereRaw('UPPER(lastname)', 'LIKE', '%'.strtoupper($term).'%');
+            $q->whereRaw('UPPER(firstname) LIKE ?', '%'.strtoupper($term).'%')->orWhereRaw('UPPER(lastname) LIKE ?', '%'.strtoupper($term).'%');
         })->get();
         $formatted_lookups = [];
         foreach ($lookups as $lookup) {
