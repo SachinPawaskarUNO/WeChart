@@ -248,15 +248,15 @@ class AdminController extends Controller
                     break;
                 }
             }
-            for ($i = 10; $i < 19; $i++) {
+            for ($i = 10; $i < 20; $i++) {
                 if (in_array("$i", $navs)) {
                     array_push($navs, '9');
                     break;
                 }
             }
-            for ($i = 20; $i < 29; $i++) {
+            for ($i = 21; $i < 31; $i++) {
                 if (in_array("$i", $navs)) {
-                    array_push($navs, '19');
+                    array_push($navs, '20');
                     break;
                 }
             }
