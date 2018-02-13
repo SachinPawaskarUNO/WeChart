@@ -10,29 +10,16 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript">
-      function Checkfunc(val) {
-          var element = document.getElementById('newDepartmentName');
-          if (val == 'other')
-              element.style.display = 'block';
+      function Checkfunc(val){
+          var element=document.getElementById('newDepartmentName');
+          if(val=='other')
+              element.style.display='block';
           else
-              element.style.display = 'none';
+              element.style.display='none';
       }
 
   </script>
-  @if($user['role'] == 'Instructor')
-    <script type="text/javascript">
-        function Checkfunc(val){
-            var element=document.getElementById('newDepartmentName');
-            if(val=='other')
-                element.style.display='block';
-                document.getElementById("newDepartmentName").required;
 
-            else
-                element.style.display='none';
-        }
-
-    </script>
-    @endif
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
       @if($user['role'] == 'Admin')
@@ -123,13 +110,8 @@
 
 
                 </select>
-                @if($user['role'] == 'Instructor')
-                <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none" />
-                  <input type="hidden" name="role" value="Instructor">
-                  @endif
-                @if($user['role'] == 'Student')
-                  <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
-                @endif
+
+                <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
               </div>
             </div>
             <div class="form-group">

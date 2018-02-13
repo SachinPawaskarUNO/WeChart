@@ -32,6 +32,12 @@ class UsersController extends Controller
     }
     public function postEditProfile(Request $request)
     {
+        if($request['departmentName']=='other')
+
+            $request->validate([
+            'departmentName' => 'max:255|required_if:role,Instructor',
+            'newDepartmentName' => 'max:255|required_if:role,Instructor',
+        ]);
         $email = Auth::user()->email;
         $user = User::where('email', $email)->first();
         $oldHashedPassword = $user->password;
