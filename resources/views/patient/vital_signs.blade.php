@@ -176,7 +176,7 @@
                                         </td>
                                         <td>
                                             <!-- Pain Scale 0-10  -->
-                                            <input type="number" name="Pain" id="Pain" style="width: 100px;" min="0" max="10">
+                                            <input type="number" name="Pain" id="Pain" style="width: 100px;" min="0" max="10"  oninput="this.value=this.value.replace(/[^0-9]/g,'');">
                                         </td>
                                         <td>
                                             <input type="text" name="Oxygen_Saturation" id="Oxygen_Saturation" style="width: 100px;">

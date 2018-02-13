@@ -133,13 +133,21 @@
 
                                     </select>
 
-                                    <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
+
 
                                     @if ($errors->has('departmentName'))
                                         <span class="help-block" >
                                         <strong id="departmentNamealert">{{ $errors->first('departmentName') }}</strong>
                                     </span>
                                     @endif
+                                    <div class="form-group{{ $errors->has('newDepartmentName') ? ' has-error' : '' }}">
+                                        <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
+                                    @if ($errors->has('newDepartmentName'))
+                                        <span class="help-block" >
+                                        <strong id="newDepartmentNamealert" style="color: brown;">{{ $errors->first('newDepartmentName') }}</strong>
+                                    </span>
+                                    @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

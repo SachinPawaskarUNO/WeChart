@@ -11,9 +11,11 @@ use Auth;
 use App\User;
 use App\department;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Log;
 class UsersController extends Controller
 {
+
     public function getEditProfile()
     {
         try {

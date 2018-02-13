@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @extends('patient.vital_signs_header')
 @section('Maincontent')
+
     {{--@parent--}}
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -10,8 +11,10 @@
     <div class="container-fluid" style="margin-top: 0;padding-top: 0;padding-left: 1%;">
         <div class="row" style="border: solid;padding-top: 0;border-top:0;">
             {{--Navigation Panel--}}
-            <div class="col-md-2" style="float: left;padding-left: 0;padding-right: 0">
-                <ul class="list-group" style="cursor: pointer">
+
+            <div class="col-md-2" style="padding-left: 0;padding-right: 0">
+
+                <ul class="list-group test" style="cursor: pointer;">
                     <li class="list-group-item">
                         {{--Adding Demographics to existing nav modules--}}
                         <a
@@ -49,6 +52,7 @@
                     </li>
                 </ul>
             </div>
+
 
             {{--Documentation Panel--}}
             <div class="col-md-6" style="padding-left: 0;margin-left: 0;padding-right: 0;margin-right: 0">

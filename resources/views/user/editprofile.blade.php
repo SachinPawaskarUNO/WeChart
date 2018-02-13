@@ -110,8 +110,12 @@
 
 
                 </select>
-
-                <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
+                @if($user['role'] == 'Instructor')
+                <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none" required/>
+                  @endif
+                @if($user['role'] == 'Student')
+                  <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
+                @endif
               </div>
             </div>
             <div class="form-group">
