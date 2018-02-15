@@ -125,10 +125,7 @@
                                                                     <td><p id="visitDate">{{$patient->visit_date}}</p></td>
                                                                     <td style="text-align: right">
                                                                         <a href="{{ route( 'patient_preview', ['patient_id' => $patient->patient_id ] ) }}" class="btn btn-primary" id="preview">
-                                                                            <i class="fa fa-file-text" aria-hidden="true"></i> Preview
-                                                                        </a>
-                                                                        <a href="{{ route( 'pdf_generate', ['patient_id' => $patient->patient_id ] ) }}" class="btn btn-success" id="generate_report">
-                                                                            <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generate PDF
+                                                                            <i class="fa fa-file-text" aria-hidden="true"></i> Print/Preview
                                                                         </a>
                                                                         <a href="{{ route( 'patient.destroy', ['patient_id' => $patient->patient_id]) }}" class="btn btn-danger confirmation" id="delete">
                                                                             <i class="fa fa-trash-o" aria-hidden="true"></i> Delete

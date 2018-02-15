@@ -53,7 +53,6 @@ Route::post('deletemodule/{modid}', 'AdminController@deletemodule')->name('delet
 Route::get('/StudentHome', 'StudentController@index')->name('student.home');
 Route::get('/PatientView/{patient_id}', 'StudentController@view_patient')->name('patient.view');
 Route::get('/PatientPreview/{patient_id}', 'NavigationController@get_preview')->name('patient_preview');
-Route::get('/Patient_pdf/{patient_id}', 'NavigationController@generate_pdf')->name('pdf_generate');
 Route::get('/PatientDelete/{id}', 'StudentController@destroy')->name('patient.destroy');
 
 //Patient routes
