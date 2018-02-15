@@ -854,6 +854,16 @@ class CreateDocControlTable extends Migration
                 'created_by' => 1				//admin
             )
         );
+        DB::table('doc_control')->insert (
+            array (
+                'navigation_id' => 34,           //Disposition
+                'label' => 'Disposition Diagnosis',
+                'doc_control_type_id' => 5,     //Search bar
+                'lookup_table_used' => 'diagnosis_lookup_value',
+                'freetext_value_type_id' => 3,  //character
+                'created_by' => 1               //admin
+            )
+        );
     }
     /**
      * Reverse the migrations.

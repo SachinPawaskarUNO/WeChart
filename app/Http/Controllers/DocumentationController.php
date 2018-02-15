@@ -218,15 +218,15 @@ class DocumentationController extends Controller
             try {
                 //Saving results
                 $results_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','30')
-                    ->where('doc_control_id','67')->get();
+                    ->where('navigation_id','32')
+                    ->where('doc_control_id','71')->get();
 
                 if(!count($results_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '30';
-                    $active_record['doc_control_id'] = '67';
+                    $active_record['navigation_id'] = '32';
+                    $active_record['doc_control_id'] = '71';
                     $active_record['value'] = $request['results'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -800,7 +800,7 @@ class DocumentationController extends Controller
         $active_record = new active_record();
         $active_record['patient_id'] = $request['patient_id'];
         $active_record['navigation_id'] = '8';
-        $active_record['doc_control_id'] = '72';
+        $active_record['doc_control_id'] = '76';
         $active_record['value'] = $request['Weight'] . " " . $request['weight_unit'];
         $active_record['created_by'] = $request['user_id'];
         //$active_record['created_at'] = $request['timestamp'];
@@ -809,7 +809,7 @@ class DocumentationController extends Controller
         $active_record = new active_record();
         $active_record['patient_id'] = $request['patient_id'];
         $active_record['navigation_id'] = '8';
-        $active_record['doc_control_id'] = '73';
+        $active_record['doc_control_id'] = '77';
         $active_record['value'] = $request['Height'] . " " . $request['height_unit'];
         $active_record['created_by'] = $request['user_id'];
         //$active_record['created_at'] = $request['timestamp'];
@@ -827,7 +827,7 @@ class DocumentationController extends Controller
         $active_record = new active_record();
         $active_record['patient_id'] = $request['patient_id'];
         $active_record['navigation_id'] = '8';
-        $active_record['doc_control_id'] = '65';
+        $active_record['doc_control_id'] = '69';
         $active_record['value'] = $request['Oxygen_Saturation'];
         $active_record['created_by'] = $request['user_id'];
         //$active_record['created_at'] = $request['timestamp'];
@@ -928,7 +928,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','28')->where('doc_control_id','59')->delete();
+                    ->where('navigation_id','29')->where('doc_control_id','61')->delete();
 
                 $psychological_symptoms = $request['$psychological_symptoms'];
 
@@ -936,8 +936,8 @@ else {
                 foreach ((array)$psychological_symptoms as $key=>$psychological_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '28';
-                    $active_record['doc_control_id'] = '59';
+                    $active_record['navigation_id'] = '29';
+                    $active_record['doc_control_id'] = '61';
                     $active_record['value'] = $psychological_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -945,15 +945,15 @@ else {
                 }
                 //Saving comment
                 $comment_psychological_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','28')
-                    ->where('doc_control_id','60')->get();
+                    ->where('navigation_id','29')
+                    ->where('doc_control_id','62')->get();
 
                 if(!count($comment_psychological_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '28';
-                    $active_record['doc_control_id'] = '60';
+                    $active_record['navigation_id'] = '29';
+                    $active_record['doc_control_id'] = '62';
                     $active_record['value'] = $request['psychological_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -966,7 +966,7 @@ else {
                 }
 
                 //Now redirecting to orders page
-                return redirect()->route('Psychological19',[$request['patient_id']]);
+                return redirect()->route('Psychological20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -989,7 +989,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','27')->where('doc_control_id','57')->delete();
+                    ->where('navigation_id','28')->where('doc_control_id','59')->delete();
 
                 $neurological_symptoms = $request['$neurological_symptoms'];
 
@@ -997,8 +997,8 @@ else {
                 foreach ((array)$neurological_symptoms as $key=>$neurological_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '27';
-                    $active_record['doc_control_id'] = '57';
+                    $active_record['navigation_id'] = '28';
+                    $active_record['doc_control_id'] = '59';
                     $active_record['value'] = $neurological_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1006,15 +1006,15 @@ else {
                 }
                 //Saving comment
                 $comment_neurological_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','27')
-                    ->where('doc_control_id','58')->get();
+                    ->where('navigation_id','28')
+                    ->where('doc_control_id','60')->get();
 
                 if(!count($comment_neurological_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '27';
-                    $active_record['doc_control_id'] = '58';
+                    $active_record['navigation_id'] = '28';
+                    $active_record['doc_control_id'] = '60';
                     $active_record['value'] = $request['neurological_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1027,7 +1027,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('Neurological19',[$request['patient_id']]);
+                return redirect()->route('Neurological20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1050,7 +1050,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','26')->where('doc_control_id','55')->delete();
+                    ->where('navigation_id','27')->where('doc_control_id','57')->delete();
 
                 $integumentary_symptoms = $request['$integumentary_symptoms'];
 
@@ -1058,8 +1058,8 @@ else {
                 foreach ((array)$integumentary_symptoms as $key=>$integumentary_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '26';
-                    $active_record['doc_control_id'] = '55';
+                    $active_record['navigation_id'] = '27';
+                    $active_record['doc_control_id'] = '57';
                     $active_record['value'] = $integumentary_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1067,15 +1067,15 @@ else {
                 }
                 //Saving comment
                 $comment_integumentary_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','26')
-                    ->where('doc_control_id','56')->get();
+                    ->where('navigation_id','27')
+                    ->where('doc_control_id','58')->get();
 
                 if(!count($comment_integumentary_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '26';
-                    $active_record['doc_control_id'] = '56';
+                    $active_record['navigation_id'] = '27';
+                    $active_record['doc_control_id'] = '58';
                     $active_record['value'] = $request['integumentary_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1088,7 +1088,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('Integumentary19',[$request['patient_id']]);
+                return redirect()->route('Integumentary20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1111,7 +1111,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','25')->where('doc_control_id','53')->delete();
+                    ->where('navigation_id','26')->where('doc_control_id','55')->delete();
 
                 $musculoskeletal_symptoms = $request['$musculoskeletal_symptoms'];
 
@@ -1119,8 +1119,8 @@ else {
                 foreach ((array)$musculoskeletal_symptoms as $key=>$musculoskeletal_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '25';
-                    $active_record['doc_control_id'] = '53';
+                    $active_record['navigation_id'] = '26';
+                    $active_record['doc_control_id'] = '55';
                     $active_record['value'] = $musculoskeletal_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1128,15 +1128,15 @@ else {
                 }
                 //Saving comment
                 $comment_musculoskeletal_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','25')
-                    ->where('doc_control_id','54')->get();
+                    ->where('navigation_id','26')
+                    ->where('doc_control_id','56')->get();
 
                 if(!count($comment_musculoskeletal_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '25';
-                    $active_record['doc_control_id'] = '54';
+                    $active_record['navigation_id'] = '26';
+                    $active_record['doc_control_id'] = '56';
                     $active_record['value'] = $request['musculoskeletal_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1149,7 +1149,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('Musculoskeletal19',[$request['patient_id']]);
+                return redirect()->route('Musculoskeletal20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1172,7 +1172,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','24')->where('doc_control_id','51')->delete();
+                    ->where('navigation_id','25')->where('doc_control_id','53')->delete();
 
                 $cardiovascular_symptoms = $request['$cardiovascular_symptoms'];
 
@@ -1180,8 +1180,8 @@ else {
                 foreach ((array)$cardiovascular_symptoms as $key=>$cardiovascular_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '24';
-                    $active_record['doc_control_id'] = '51';
+                    $active_record['navigation_id'] = '25';
+                    $active_record['doc_control_id'] = '53';
                     $active_record['value'] = $cardiovascular_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1189,15 +1189,15 @@ else {
                 }
                 //Saving comment
                 $comment_cardiovascular_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','24')
-                    ->where('doc_control_id','52')->get();
+                    ->where('navigation_id','25')
+                    ->where('doc_control_id','54')->get();
 
                 if(!count($comment_cardiovascular_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '24';
-                    $active_record['doc_control_id'] = '52';
+                    $active_record['navigation_id'] = '25';
+                    $active_record['doc_control_id'] = '54';
                     $active_record['value'] = $request['cardiovascular_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1210,7 +1210,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('Cardiovascular19',[$request['patient_id']]);
+                return redirect()->route('Cardiovascular20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1233,7 +1233,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','23')->where('doc_control_id','49')->delete();
+                    ->where('navigation_id','24')->where('doc_control_id','51')->delete();
 
                 $respiratory_symptoms = $request['$respiratory_symptoms'];
 
@@ -1241,8 +1241,8 @@ else {
                 foreach ((array)$respiratory_symptoms as $key=>$respiratory_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '23';
-                    $active_record['doc_control_id'] = '49';
+                    $active_record['navigation_id'] = '24';
+                    $active_record['doc_control_id'] = '51';
                     $active_record['value'] = $respiratory_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1250,15 +1250,15 @@ else {
                 }
                 //Saving comment
                 $comment_respiratory_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','23')
-                    ->where('doc_control_id','50')->get();
+                    ->where('navigation_id','24')
+                    ->where('doc_control_id','52')->get();
 
                 if(!count($comment_respiratory_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '23';
-                    $active_record['doc_control_id'] = '50';
+                    $active_record['navigation_id'] = '24';
+                    $active_record['doc_control_id'] = '52';
                     $active_record['value'] = $request['respiratory_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1271,7 +1271,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('Respiratory19',[$request['patient_id']]);
+                return redirect()->route('Respiratory20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1294,7 +1294,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','22')->where('doc_control_id','47')->delete();
+                    ->where('navigation_id','23')->where('doc_control_id','49')->delete();
 
                 $eyes_symptoms = $request['$eyes_symptoms'];
 
@@ -1302,8 +1302,8 @@ else {
                 foreach ((array)$eyes_symptoms as $key=>$eyes_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '22';
-                    $active_record['doc_control_id'] = '47';
+                    $active_record['navigation_id'] = '23';
+                    $active_record['doc_control_id'] = '49';
                     $active_record['value'] = $eyes_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1311,15 +1311,15 @@ else {
                 }
                 //Saving comment
                 $comment_eyes_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','22')
-                    ->where('doc_control_id','48')->get();
+                    ->where('navigation_id','23')
+                    ->where('doc_control_id','50')->get();
 
                 if(!count($comment_eyes_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '22';
-                    $active_record['doc_control_id'] = '48';
+                    $active_record['navigation_id'] = '23';
+                    $active_record['doc_control_id'] = '50';
                     $active_record['value'] = $request['eyes_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1332,7 +1332,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('Eyes19',[$request['patient_id']]);
+                return redirect()->route('Eyes20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1355,7 +1355,7 @@ else {
             try {
                 //First deleting all saved symptoms
                 active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','21')->where('doc_control_id','45')->delete();
+                    ->where('navigation_id','22')->where('doc_control_id','47')->delete();
 
                 $HENT_symptoms = $request['$HENT_symptoms'];
 
@@ -1363,8 +1363,8 @@ else {
                 foreach ((array)$HENT_symptoms as $key=>$HENT_symptom) {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '21';
-                    $active_record['doc_control_id'] = '45';
+                    $active_record['navigation_id'] = '22';
+                    $active_record['doc_control_id'] = '47';
                     $active_record['value'] = $HENT_symptom;
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1372,15 +1372,15 @@ else {
                 }
                 //Saving comment
                 $comment_HENT_record = active_record::where('patient_id', $request['patient_id'])
-                    ->where('navigation_id','21')
-                    ->where('doc_control_id','46')->get();
+                    ->where('navigation_id','22')
+                    ->where('doc_control_id','48')->get();
 
                 if(!count($comment_HENT_record)>0)
                 {
                     $active_record = new active_record();
                     $active_record['patient_id'] = $request['patient_id'];
-                    $active_record['navigation_id'] = '21';
-                    $active_record['doc_control_id'] = '46';
+                    $active_record['navigation_id'] = '22';
+                    $active_record['doc_control_id'] = '48';
                     $active_record['value'] = $request['HENT_comment'];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
@@ -1393,7 +1393,7 @@ else {
                 }
 
                 //Now redirecting to page
-                return redirect()->route('HENT19',[$request['patient_id']]);
+                return redirect()->route('HENT20',[$request['patient_id']]);
 
             } catch (\Exception $e) {
                 return view('errors/503');
@@ -1416,7 +1416,7 @@ else {
                 try {
                     //First deleting all saved symptoms
                     active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','21')->where('doc_control_id','43')->delete();
+                        ->where('navigation_id','21')->where('doc_control_id','45')->delete();
 
                     $constitutional_symptoms = $request['$constitutional_symptoms'];
 
@@ -1425,7 +1425,7 @@ else {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
                         $active_record['navigation_id'] = '21';
-                        $active_record['doc_control_id'] = '43';
+                        $active_record['doc_control_id'] = '45';
                         $active_record['value'] = $constitutional_symptom;
                         $active_record['created_by'] = $request['user_id'];
                         $active_record['updated_by'] = $request['user_id'];
@@ -1433,15 +1433,15 @@ else {
                     }
                     //Saving comment
                     $comment_constitutional_record = active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','22')
-                        ->where('doc_control_id','44')->get();
+                        ->where('navigation_id','21')
+                        ->where('doc_control_id','46')->get();
 
                     if(!count($comment_constitutional_record)>0)
                     {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
-                        $active_record['navigation_id'] = '22';
-                        $active_record['doc_control_id'] = '44';
+                        $active_record['navigation_id'] = '21';
+                        $active_record['doc_control_id'] = '46';
                         $active_record['value'] = $request['constitutional_comment'];
                         $active_record['created_by'] = $request['user_id'];
                         $active_record['updated_by'] = $request['user_id'];
@@ -1454,7 +1454,7 @@ else {
                     }
 
                     //Now redirecting to page
-                    return redirect()->route('Constitutional19',[$request['patient_id']]);
+                    return redirect()->route('Constitutional20',[$request['patient_id']]);
 
                 } catch (\Exception $e) {
                     return view('errors/503');
@@ -2126,14 +2126,14 @@ else {
                 try {
                     //Saving MDM
                     $MDM_record = active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','31')
-                        ->where('doc_control_id','61')->get();
+                        ->where('navigation_id','33')
+                        ->where('doc_control_id','65')->get();
                     if(!count($MDM_record)>0)
                     {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
-                        $active_record['navigation_id'] = '31';
-                        $active_record['doc_control_id'] = '61';
+                        $active_record['navigation_id'] = '33';
+                        $active_record['doc_control_id'] = '65';
                         $active_record['value'] = $request['MDM'];
                         $active_record['created_by'] = $request['user_id'];
                         $active_record['updated_by'] = $request['user_id'];
@@ -2170,17 +2170,31 @@ else {
                 ]);
 
                 try {
+                     $diagnosis = $request['search_diagnosis_disposition'];
+
+                //Saving medications
+                foreach ((array)$diagnosis as $key=>$item) {
+                    $lab_value = diagnosis_lookup_value::where('diagnosis_lookup_value_id',$item)->pluck('diagnosis_lookup_value');
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $request['patient_id'];
+                    $active_record['navigation_id'] = '34';
+                    $active_record['doc_control_id'] = '79';
+                    $active_record['value'] = $lab_value[0];
+                    $active_record['created_by'] = $request['user_id'];
+                    $active_record['updated_by'] = $request['user_id'];
+                    $active_record->save();
+                }
                     //Saving Disposition
                     $disposition_record = active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','32')
-                        ->where('doc_control_id','63')->get();
+                        ->where('navigation_id','34')
+                        ->where('doc_control_id','67')->get();
 
                     if(!count($disposition_record)>0)
                     {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
-                        $active_record['navigation_id'] = '32';
-                        $active_record['doc_control_id'] = '63';
+                        $active_record['navigation_id'] = '34';
+                        $active_record['doc_control_id'] = '67';
                         $active_record['value'] = $request['disposition'];
                         $active_record['created_by'] = $request['user_id'];
                         $active_record['updated_by'] = $request['user_id'];
@@ -2194,15 +2208,15 @@ else {
 
                     //Saving comment
                     $comment_disposition_record = active_record::where('patient_id', $request['patient_id'])
-                        ->where('navigation_id','32')
-                        ->where('doc_control_id','64')->get();
+                        ->where('navigation_id','34')
+                        ->where('doc_control_id','68')->get();
 
                     if(!count($comment_disposition_record)>0)
                     {
                         $active_record = new active_record();
                         $active_record['patient_id'] = $request['patient_id'];
-                        $active_record['navigation_id'] = '32';
-                        $active_record['doc_control_id'] = '64';
+                        $active_record['navigation_id'] = '34';
+                        $active_record['doc_control_id'] = '68';
                         $active_record['value'] = $request['disposition_comment'];
                         $active_record['created_by'] = $request['user_id'];
                         $active_record['updated_by'] = $request['user_id'];
@@ -2244,9 +2258,9 @@ else {
             active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','22')->delete();
             active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','23')->delete();
             active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','24')->delete();
-            active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','65')->delete();
-            active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','72')->delete();
-            active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','73')->delete();
+            active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','69')->delete();
+            active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','76')->delete();
+            active_record::where('created_at',$ts)->where('navigation_id', '8')->where('doc_control_id','77')->delete();
 
             return redirect()->route('Vital Signs',[$request['patient_id']]);
         }
@@ -2312,5 +2326,13 @@ else {
         $patient_id = $procedure->patient_id;
         $procedure->delete();
         return redirect()->route('Orders',$patient_id);
+    }
+    public function delete_disposition($id)
+    {
+        $record = active_record::find($id);
+        $patient_id = $record->patient_id;
+        $record->delete();
+        //Now redirecting back to the disposition page
+        return redirect()->route('Disposition',$patient_id);
     }
 }

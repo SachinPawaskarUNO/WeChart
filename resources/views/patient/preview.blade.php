@@ -919,6 +919,12 @@
                 <a data-toggle="collapse" href="#disposition">Disposition</a>
             </div>
             <div class="panel-body " id="disposition" class="panel-collapse collapse in">
+                <p><strong>List of Diagnosis: </strong><br>
+                    @foreach ($diagnosis_list_personal_history as $diagnosis)
+                        <br>
+                       * <?php echo ($diagnosis->value); ?>
+                    @endforeach
+               </p>
                 <p><strong>Status: </strong>
                     @if(count($disposition_value)>0)
                         {{$disposition_value[0]}}
