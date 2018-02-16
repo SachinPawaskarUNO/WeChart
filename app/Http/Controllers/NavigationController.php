@@ -1789,7 +1789,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
-                return view('patient/Disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition'));
+                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition'));
             }
             else
             {
