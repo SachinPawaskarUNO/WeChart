@@ -142,7 +142,7 @@ Route::post('HENT', 'DocumentationController@post_HENT')->name('HENT');
 Route::post('Constitutional', 'DocumentationController@post_Constitutional')->name('Constitutional');
 
 Route::get('/Orders/{id}', 'NavigationController@get_orders')->name('Orders');
-Route::post('post_orders}', 'DocumentationController@post_orders')->name('post_orders');
+Route::post('post_orders', 'DocumentationController@post_orders')->name('post_orders');
 Route::post('orders_delete/{id}', 'DocumentationController@delete_image_order')->name('delete_image_order');
 Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')->name('delete_lab_order');
 Route::any('orders_image_delete/{id}', 'DocumentationController@delete_image_order')->name('delete_image_order');
