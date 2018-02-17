@@ -85,7 +85,7 @@ class CreateDocControlTable extends Migration
                         )
                     );
         */
-        //Insert records for History of Present Illness
+        /*//Insert records for History of Present Illness
         DB::table('doc_control')->insert (
             array (
                 'navigation_id' => 1,   		//History of Present Illness
@@ -853,7 +853,7 @@ class CreateDocControlTable extends Migration
                 'freetext_value_type_id' => 3,  //character
                 'created_by' => 1				//admin
             )
-        );
+        );*/
     }
     /**
      * Reverse the migrations.

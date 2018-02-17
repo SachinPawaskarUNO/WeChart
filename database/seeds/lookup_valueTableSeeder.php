@@ -1,25 +1,17 @@
 <?php
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
-class CreateLookupValueTable extends Migration
+
+use Illuminate\Database\Seeder;
+
+class lookup_valueTableSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function up()
+    public function run()
     {
-        Schema::create('lookup_value', function (Blueprint $table) {
-            $table->increments('lookup_value_id');
-            $table->string('lookup_value');
-            $table->boolean('archived')->default(0);
-            $table->integer('created_by')->unsigned();
-            $table->integer('updated_by')->unsigned()->nullable();
-//            $table->rememberToken();
-            $table->timestamps();
-        });
+        //
         //Inserting record for male 1
         DB::table('lookup_value')->insert(
             array(
@@ -681,14 +673,5 @@ class CreateLookupValueTable extends Migration
                 'created_by' => 1
             )
         );
-    }
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('lookup_value');
     }
 }

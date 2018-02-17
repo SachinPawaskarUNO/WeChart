@@ -1,30 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Seeder;
 
-class CreateNavigationsTable extends Migration
+class navigationsTableSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function up()
+    public function run()
     {
-        Schema::create('navigations', function (Blueprint $table) {
-            $table->increments('navigation_id');
-            $table->string('navigation_name');
-            $table->integer('parent_id')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
-        });
-
-        Schema::table('navigations', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('navigation_id')->on('navigations');
-        });
-
+        //
         DB::table('navigations')->insert([
             [
                 'navigation_name' => 'History of Present Illness (HPI)',
@@ -163,15 +150,5 @@ class CreateNavigationsTable extends Migration
                 'parent_id' =>  null
             ]
         ]);
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('navigations');
     }
 }

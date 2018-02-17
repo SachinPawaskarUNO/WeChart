@@ -45,7 +45,7 @@ class CreateDocLookupValueTable extends Migration
                         )
                     );
         */
-        //Inserting record for Smoke Tobacco - YES
+        /*//Inserting record for Smoke Tobacco - YES
         DB::table('doc_lookup_value')->insert(
             array(
                 'doc_control_id' => 11,		//Smoke Tobacco
@@ -975,7 +975,7 @@ class CreateDocLookupValueTable extends Migration
                 'sort_order_number' => 6,
                 'created_by' => 1
             )
-        );
+        );*/
     }
     /**
      * Reverse the migrations.

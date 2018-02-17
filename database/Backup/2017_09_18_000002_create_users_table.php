@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
 
 
         //Inserting record for admin
-        DB::table('users')->insert(
+       /* DB::table('users')->insert(
             array(
                 'email' => 'admin@wechart.com',
                 'password' => Hash::make('wechartadmin'),
@@ -50,7 +50,7 @@ class CreateUsersTable extends Migration
                 'lastname' => 'Nguyen',
                 'role' => 'Admin'
                 )
-            );
+            );*/
     }
 
     /**

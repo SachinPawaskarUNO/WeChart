@@ -20,7 +20,7 @@ class CreateSecurityQuestionTable extends Migration
             $table->timestamps();
         });
 
-        //Inserting security questions
+        /*//Inserting security questions
         DB::table('security_question')->insert([
             [
                 'security_question' => 'Your first employer'
@@ -43,7 +43,7 @@ class CreateSecurityQuestionTable extends Migration
             [
                 'security_question' => 'Your favourite holiday destination'
             ]
-        ]);
+        ]);*/
     }
 
     /**

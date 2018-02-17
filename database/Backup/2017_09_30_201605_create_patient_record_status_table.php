@@ -22,7 +22,7 @@ class CreatePatientRecordStatusTable extends Migration
         });
 
         //Inserting record for saved
-        DB::table('patient_record_status')->insert(
+        /*DB::table('patient_record_status')->insert(
             array(
                 'patient_record_status' => 'saved',
                 'created_by' => 1
@@ -43,7 +43,7 @@ class CreatePatientRecordStatusTable extends Migration
                 'patient_record_status' => 'reviewed',
                 'created_by' => 1
             )
-        );
+        );*/
     }
 
     /**

@@ -21,7 +21,7 @@ class CreateFreetextValueTypeTable extends Migration
             $table->timestamps();
         });
 
-        //Inserting record for number
+        /*//Inserting record for number
         DB::table('freetext_value_type')->insert(
             array(
                 'freetext_value_type' => 'number',
@@ -46,6 +46,7 @@ class CreateFreetextValueTypeTable extends Migration
                 'created_by' => 1
             )
         );
+        */
     }
 
     /**

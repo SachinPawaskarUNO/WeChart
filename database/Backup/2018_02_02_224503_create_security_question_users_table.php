@@ -31,7 +31,7 @@ class CreateSecurityQuestionUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
-        DB::table('security_question_users')->insert(
+        /*DB::table('security_question_users')->insert(
             array(
                 ['security_question_id' => 1,
                     'user_id' => 1,
@@ -43,7 +43,7 @@ class CreateSecurityQuestionUsersTable extends Migration
                     'user_id' => 1,
                     'security_question_answer' => 'Omaha']
             )
-        );
+        );*/
     }
 
     /**

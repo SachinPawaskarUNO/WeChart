@@ -21,12 +21,12 @@ class CreateEmailIdRoleTable extends Migration
         });
 
          //Inserting record for admin
-        DB::table('EmailIdRole')->insert(
+       /* DB::table('EmailIdRole')->insert(
             array(
                 'email' => 'admin@wechart.com',
                 'role' => 'Admin'
                 )
-            );
+            );*/
     }
 
     /**
