@@ -865,3 +865,14 @@ class CreateDocControlTable extends Migration
         Schema::dropIfExists('doc_control');
     }
 }
+    }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('doc_control');
+    }
+}

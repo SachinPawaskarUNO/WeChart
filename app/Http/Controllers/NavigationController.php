@@ -100,7 +100,7 @@ class NavigationController extends Controller
 
                 //Extracting disposition to enable or disable the submit button
                 $disposition = active_record::where('patient_id', $id)
-                    ->where('navigation_id', '32')->get();
+                    ->where('navigation_id', '34')->get();
 
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id', $id)->where('user_id', $user_id)->first();
@@ -164,7 +164,7 @@ class NavigationController extends Controller
 
                     //Extracting disposition to enable or disable the submit button
                     $disposition = active_record::where('patient_id', $id)
-                        ->where('navigation_id', '32')->get();
+                        ->where('navigation_id', '34')->get();
                     $user_id = Auth::user()->id;
                     $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                             if($status) {
@@ -327,7 +327,7 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
 
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
@@ -392,7 +392,7 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
              if($status) {
@@ -471,11 +471,11 @@ class NavigationController extends Controller
                     ->where('created_at',$ts)->pluck('value');
                 $vital_sign_detail->Weight = active_record::where('patient_id', $id)
                     ->where('navigation_id','8')
-                    ->where('doc_control_id','72')
+                    ->where('doc_control_id','76')
                     ->where('created_at',$ts)->pluck('value');
                 $vital_sign_detail->Height = active_record::where('patient_id', $id)
                     ->where('navigation_id','8')
-                    ->where('doc_control_id','73')
+                    ->where('doc_control_id','77')
                     ->where('created_at',$ts)->pluck('value');
                 $vital_sign_detail->Pain = active_record::where('patient_id', $id)
                     ->where('navigation_id','8')
@@ -483,7 +483,7 @@ class NavigationController extends Controller
                     ->where('created_at',$ts)->pluck('value');
                 $vital_sign_detail->Oxygen_Saturation = active_record::where('patient_id', $id)
                     ->where('navigation_id','8')
-                    ->where('doc_control_id','65')
+                    ->where('doc_control_id','69')
                     ->where('created_at',$ts)->pluck('value');
                 $vital_sign_detail->Comment = active_record::where('patient_id', $id)
                     ->where('navigation_id','8')
@@ -496,7 +496,7 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                if($status) {
@@ -538,73 +538,73 @@ class NavigationController extends Controller
                 return view('errors/error', compact('error_message'));
             }
             else {
-                //Now getting actual selected values
-                $gastrointestinal_symptoms= $this->get_physical_exams_gastrointestinal_symptoms($id);
-                $gastrointestinal_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','30')->where('doc_control_id','64')->pluck('value');
+            //Now getting actual selected values
+            $gastrointestinal_symptoms= $this->get_physical_exams_gastrointestinal_symptoms($id);
+            $gastrointestinal_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','30')->where('doc_control_id','64')->pluck('value');
 
-                $psychological_symptoms= $this->get_physical_exams_psychological_symptoms($id);
-                $psychological_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','29')->where('doc_control_id','62')->pluck('value');
+            $psychological_symptoms= $this->get_physical_exams_psychological_symptoms($id);
+            $psychological_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','29')->where('doc_control_id','62')->pluck('value');
 
-                $neurological_symptoms= $this->get_physical_exams_neurological_symptoms($id);
-                $neurological_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','28')->where('doc_control_id','60')->pluck('value');
+            $neurological_symptoms= $this->get_physical_exams_neurological_symptoms($id);
+            $neurological_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','28')->where('doc_control_id','60')->pluck('value');
 
-                $integumentary_symptoms= $this->get_physical_exams_integumentary_symptoms($id);
-                $integumentary_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','27')->where('doc_control_id','58')->pluck('value');
+            $integumentary_symptoms= $this->get_physical_exams_integumentary_symptoms($id);
+            $integumentary_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','27')->where('doc_control_id','58')->pluck('value');
 
-                $musculoskeletal_symptoms= $this->get_physical_exams_musculoskeletal_symptoms($id);
-                $musculoskeletal_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','26')->where('doc_control_id','56')->pluck('value');
+            $musculoskeletal_symptoms= $this->get_physical_exams_musculoskeletal_symptoms($id);
+            $musculoskeletal_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','26')->where('doc_control_id','56')->pluck('value');
 
-                $cardiovascular_symptoms= $this->get_physical_exams_cardiovascular_symptoms($id);
-                $cardiovascular_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','25')->where('doc_control_id','54')->pluck('value');
+            $cardiovascular_symptoms= $this->get_physical_exams_cardiovascular_symptoms($id);
+            $cardiovascular_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','25')->where('doc_control_id','54')->pluck('value');
 
-                $respiratory_symptoms= $this->get_physical_exams_respiratory_symptoms($id);
-                $respiratory_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','24')->where('doc_control_id','52')->pluck('value');
+            $respiratory_symptoms= $this->get_physical_exams_respiratory_symptoms($id);
+            $respiratory_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','24')->where('doc_control_id','52')->pluck('value');
 
-                $eyes_symptoms= $this->get_physical_exams_eyes_symptoms($id);
-                $eyes_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','23')->where('doc_control_id','50')->pluck('value');
+            $eyes_symptoms= $this->get_physical_exams_eyes_symptoms($id);
+            $eyes_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','23')->where('doc_control_id','50')->pluck('value');
 
-                $HENT_symptoms= $this->get_physical_exams_HENT_symptoms($id);
-                $HENT_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','22')->where('doc_control_id','48')->pluck('value');
+            $HENT_symptoms= $this->get_physical_exams_HENT_symptoms($id);
+            $HENT_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','22')->where('doc_control_id','48')->pluck('value');
 
-                $constitutional_symptoms= $this->get_physical_exams_constitutional_symptoms($id);
-                $constitutional_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','21')->where('doc_control_id','46')->pluck('value');
+            $constitutional_symptoms= $this->get_physical_exams_constitutional_symptoms($id);
+            $constitutional_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','21')->where('doc_control_id','46')->pluck('value');
 
-                //Fetching all navs associated with this patient's module
-                $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            //Fetching all navs associated with this patient's module
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
 
-                $navs = array();
-                //Now get nav names
-                foreach ($navIds as $nav_id) {
-                    $nav = navigation::where('navigation_id', $nav_id)->get();
-                    array_push($navs, $nav);
-                }
+            $navs = array();
+            //Now get nav names
+            foreach ($navIds as $nav_id) {
+                $nav = navigation::where('navigation_id', $nav_id)->get();
+                array_push($navs, $nav);
+            }
 
-                //Converting object to array
-                $navIds = str_replace(['['], '', $navIds);
-                $navIds = str_replace(['"'], '', $navIds);
-                $navIds = str_replace(['"'], '', $navIds);
-                $navIds = str_replace([']'], '', $navIds);
+            //Converting object to array
+            $navIds = str_replace(['['], '', $navIds);
+            $navIds = str_replace(['"'], '', $navIds);
+            $navIds = str_replace(['"'], '', $navIds);
+            $navIds = str_replace([']'], '', $navIds);
 
-                $navIds = explode(",", $navIds);
+            $navIds = explode(",", $navIds);
 
-                //Extracting vital signs for header
-                $vital_signs_header = $this->get_vital_signs_header($id);
+            //Extracting vital signs for header
+            $vital_signs_header = $this->get_vital_signs_header($id);
 
-                //Extracting disposition to enable or disable the submit button
-                $disposition = active_record::where('patient_id', $id)
-                    ->where('navigation_id', '34')->get();
-                $user_id = Auth::user()->id;
-                $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
+            //Extracting disposition to enable or disable the submit button
+            $disposition = active_record::where('patient_id', $id)
+                ->where('navigation_id', '34')->get();
+            $user_id = Auth::user()->id;
+            $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
                     return view('patient/physical_exams', compact ('status_id','navIds',
@@ -1030,6 +1030,7 @@ class NavigationController extends Controller
         return $constitutional_symptoms;
 
     }
+
     //ROS methods
     public function get_ROS($id)
     {
@@ -1053,73 +1054,73 @@ class NavigationController extends Controller
             else {
 
                 //Now getting actual selected values
-                $ros_constitutional_symptoms= $this->get_ROS_costitutional_symptoms($id);
-                $ros_constitutional_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','10')->where('doc_control_id','26')->pluck('value');
+            $ros_constitutional_symptoms= $this->get_ROS_costitutional_symptoms($id);
+            $ros_constitutional_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','10')->where('doc_control_id','26')->pluck('value');
 
-                $ros_hent_symptoms= $this->get_ROS_hent_symptoms($id);
-                $ros_hent_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','11')->where('doc_control_id','28')->pluck('value');
+            $ros_hent_symptoms= $this->get_ROS_hent_symptoms($id);
+            $ros_hent_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','11')->where('doc_control_id','28')->pluck('value');
 
-                $ros_eyes_symptoms= $this->get_ROS_eyes_symptoms($id);
-                $ros_eyes_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','12')->where('doc_control_id','30')->pluck('value');
+            $ros_eyes_symptoms= $this->get_ROS_eyes_symptoms($id);
+            $ros_eyes_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','12')->where('doc_control_id','30')->pluck('value');
 
-                $ros_respiratory_symptoms= $this->get_ROS_respiratory_symptoms($id);
-                $ros_respiratory_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','13')->where('doc_control_id','32')->pluck('value');
+            $ros_respiratory_symptoms= $this->get_ROS_respiratory_symptoms($id);
+            $ros_respiratory_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','13')->where('doc_control_id','32')->pluck('value');
 
-                $ros_cardiovascular_symptoms= $this->get_ROS_cardiovascular_symptoms($id);
-                $ros_cardiovascular_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','14')->where('doc_control_id','34')->pluck('value');
+            $ros_cardiovascular_symptoms= $this->get_ROS_cardiovascular_symptoms($id);
+            $ros_cardiovascular_comment = active_record::where('patient_id', $id)
+                ->where('navigation_id','14')->where('doc_control_id','34')->pluck('value');
 
-                $ros_musculoskeletal_symptoms= $this->get_ROS_musculoskeletal_symptoms($id);
-                $ros_musculoskeletal_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','15')->where('doc_control_id','36')->pluck('value');
+           $ros_musculoskeletal_symptoms= $this->get_ROS_musculoskeletal_symptoms($id);
+           $ros_musculoskeletal_comment = active_record::where('patient_id', $id)
+               ->where('navigation_id','15')->where('doc_control_id','36')->pluck('value');
 
-                $ros_integumentary_symptoms= $this->get_ROS_integumentary_symptoms($id);
-                $ros_integumentary_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','16')->where('doc_control_id','38')->pluck('value');
+           $ros_integumentary_symptoms= $this->get_ROS_integumentary_symptoms($id);
+           $ros_integumentary_comment = active_record::where('patient_id', $id)
+               ->where('navigation_id','16')->where('doc_control_id','38')->pluck('value');
 
-                $ros_neurological_symptoms= $this->get_ROS_neurological_symptoms($id);
-                $ros_neurological_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','17')->where('doc_control_id','40')->pluck('value');
+           $ros_neurological_symptoms= $this->get_ROS_neurological_symptoms($id);
+           $ros_neurological_comment = active_record::where('patient_id', $id)
+               ->where('navigation_id','17')->where('doc_control_id','40')->pluck('value');
 
-                $ros_psychological_symptoms= $this->get_ROS_psychological_symptoms($id);
-                $ros_psychological_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','18')->where('doc_control_id','42')->pluck('value');
+           $ros_psychological_symptoms= $this->get_ROS_psychological_symptoms($id);
+           $ros_psychological_comment = active_record::where('patient_id', $id)
+               ->where('navigation_id','18')->where('doc_control_id','42')->pluck('value');
 
-                $ros_gastrointestinal_symptoms= $this->get_ROS_gastrointestinal_symptoms($id);
-                $ros_gastrointestinal_comment = active_record::where('patient_id', $id)
-                    ->where('navigation_id','19')->where('doc_control_id','44')->pluck('value');
+            $ros_gastrointestinal_symptoms= $this->get_ROS_gastrointestinal_symptoms($id);
+           $ros_gastrointestinal_comment = active_record::where('patient_id', $id)
+               ->where('navigation_id','19')->where('doc_control_id','44')->pluck('value');
 
-                //Fetching all navs associated with this patient's module
-                $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            //Fetching all navs associated with this patient's module
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
 
-                $navs = array();
-                //Now get nav names
-                foreach ($navIds as $nav_id) {
-                    $nav = navigation::where('navigation_id', $nav_id)->get();
-                    array_push($navs, $nav);
-                }
+            $navs = array();
+            //Now get nav names
+            foreach ($navIds as $nav_id) {
+                $nav = navigation::where('navigation_id', $nav_id)->get();
+                array_push($navs, $nav);
+            }
 
-                //Converting object to array
-                $navIds = str_replace(['['], '', $navIds);
-                $navIds = str_replace(['"'], '', $navIds);
-                $navIds = str_replace(['"'], '', $navIds);
-                $navIds = str_replace([']'], '', $navIds);
+            //Converting object to array
+            $navIds = str_replace(['['], '', $navIds);
+            $navIds = str_replace(['"'], '', $navIds);
+            $navIds = str_replace(['"'], '', $navIds);
+            $navIds = str_replace([']'], '', $navIds);
 
-                $navIds = explode(",", $navIds);
+            $navIds = explode(",", $navIds);
 
-                //Extracting vital signs for header
-                $vital_signs_header = $this->get_vital_signs_header($id);
+            //Extracting vital signs for header
+            $vital_signs_header = $this->get_vital_signs_header($id);
 
-                //Extracting disposition to enable or disable the submit button
-                $disposition = active_record::where('patient_id', $id)
-                    ->where('navigation_id', '34')->get();
-                $user_id = Auth::user()->id;
-                $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
-                if($status) {
+            //Extracting disposition to enable or disable the submit button
+            $disposition = active_record::where('patient_id', $id)
+                ->where('navigation_id', '34')->get();
+            $user_id = Auth::user()->id;
+            $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
+                 if($status) {
                     $status_id = $status->patient_record_status_id;
                     return view('patient/review_of_system', compact ('navIds','vital_signs_header','patient','navs','disposition',
                         'ros_constitutional_symptoms','ros_constitutional_comment', 'ros_hent_symptoms','ros_hent_comment',
@@ -1337,203 +1338,204 @@ class NavigationController extends Controller
             array_push($ros_cardiovascular_symptoms, $ros_cardiovascular_symptom);
         }
         return $ros_cardiovascular_symptoms;
-    }
+}
     public function get_ROS_musculoskeletal_symptoms($id)
+{
+    $ros_musculoskeletal_all_symptoms = array();
+    $ros_musculoskeletal_all_lookup_values = doc_lookup_value::where('doc_control_id',35)->pluck('lookup_value_id');
+
+    foreach ($ros_musculoskeletal_all_lookup_values as $ros_musculoskeletal_all_lookup_value)
     {
-        $ros_musculoskeletal_all_symptoms = array();
-        $ros_musculoskeletal_all_lookup_values = doc_lookup_value::where('doc_control_id',35)->pluck('lookup_value_id');
-
-        foreach ($ros_musculoskeletal_all_lookup_values as $ros_musculoskeletal_all_lookup_value)
-        {
-            $symptom = lookup_value::where('lookup_value_id',$ros_musculoskeletal_all_lookup_value)->pluck('lookup_value');
-            array_push($ros_musculoskeletal_all_symptoms,$symptom );
-        }
-
-        $ros_musculoskeletal_saved_symptoms = active_record::where('patient_id', $id)
-            ->where('navigation_id','15')->where('doc_control_id','35')->pluck('value');
-
-        //Converting object to array
-        $ros_musculoskeletal_saved_symptoms = str_replace(['['], '', $ros_musculoskeletal_saved_symptoms);
-        $ros_musculoskeletal_saved_symptoms = str_replace(['"'], '', $ros_musculoskeletal_saved_symptoms);
-        $ros_musculoskeletal_saved_symptoms = str_replace(['"'], '', $ros_musculoskeletal_saved_symptoms);
-        $ros_musculoskeletal_saved_symptoms = str_replace([']'], '', $ros_musculoskeletal_saved_symptoms);
-        $ros_musculoskeletal_saved_symptoms = explode(",", $ros_musculoskeletal_saved_symptoms);
-
-        $ros_musculoskeletal_symptoms = Array();
-
-        foreach($ros_musculoskeletal_all_symptoms as $symptom)
-        {
-            $ros_musculoskeletal_symptom = new symptom();
-            $ros_musculoskeletal_symptom->value = $symptom[0];
-            if(in_array($symptom[0], $ros_musculoskeletal_saved_symptoms))
-            {
-                $ros_musculoskeletal_symptom->is_saved = true;
-            }
-            else
-            {
-                $ros_musculoskeletal_symptom->is_saved = false;
-            }
-            array_push($ros_musculoskeletal_symptoms, $ros_musculoskeletal_symptom);
-        }
-        return $ros_musculoskeletal_symptoms;
+        $symptom = lookup_value::where('lookup_value_id',$ros_musculoskeletal_all_lookup_value)->pluck('lookup_value');
+        array_push($ros_musculoskeletal_all_symptoms,$symptom );
     }
+
+    $ros_musculoskeletal_saved_symptoms = active_record::where('patient_id', $id)
+        ->where('navigation_id','15')->where('doc_control_id','35')->pluck('value');
+
+    //Converting object to array
+    $ros_musculoskeletal_saved_symptoms = str_replace(['['], '', $ros_musculoskeletal_saved_symptoms);
+    $ros_musculoskeletal_saved_symptoms = str_replace(['"'], '', $ros_musculoskeletal_saved_symptoms);
+    $ros_musculoskeletal_saved_symptoms = str_replace(['"'], '', $ros_musculoskeletal_saved_symptoms);
+    $ros_musculoskeletal_saved_symptoms = str_replace([']'], '', $ros_musculoskeletal_saved_symptoms);
+    $ros_musculoskeletal_saved_symptoms = explode(",", $ros_musculoskeletal_saved_symptoms);
+
+    $ros_musculoskeletal_symptoms = Array();
+
+    foreach($ros_musculoskeletal_all_symptoms as $symptom)
+    {
+        $ros_musculoskeletal_symptom = new symptom();
+        $ros_musculoskeletal_symptom->value = $symptom[0];
+        if(in_array($symptom[0], $ros_musculoskeletal_saved_symptoms))
+        {
+            $ros_musculoskeletal_symptom->is_saved = true;
+        }
+        else
+        {
+            $ros_musculoskeletal_symptom->is_saved = false;
+        }
+        array_push($ros_musculoskeletal_symptoms, $ros_musculoskeletal_symptom);
+    }
+    return $ros_musculoskeletal_symptoms;
+}
     public function get_ROS_integumentary_symptoms($id)
+{
+    $ros_integumentary_all_symptoms = array();
+    $ros_integumentary_all_lookup_values = doc_lookup_value::where('doc_control_id',37)->pluck('lookup_value_id');
+
+    foreach ($ros_integumentary_all_lookup_values as $ros_integumentary_all_lookup_value)
     {
-        $ros_integumentary_all_symptoms = array();
-        $ros_integumentary_all_lookup_values = doc_lookup_value::where('doc_control_id',37)->pluck('lookup_value_id');
-
-        foreach ($ros_integumentary_all_lookup_values as $ros_integumentary_all_lookup_value)
-        {
-            $symptom = lookup_value::where('lookup_value_id',$ros_integumentary_all_lookup_value)->pluck('lookup_value');
-            array_push($ros_integumentary_all_symptoms,$symptom );
-        }
-
-        $ros_integumentary_saved_symptoms = active_record::where('patient_id', $id)
-            ->where('navigation_id','16')->where('doc_control_id','37')->pluck('value');
-
-        //Converting object to array
-        $ros_integumentary_saved_symptoms = str_replace(['['], '', $ros_integumentary_saved_symptoms);
-        $ros_integumentary_saved_symptoms = str_replace(['"'], '', $ros_integumentary_saved_symptoms);
-        $ros_integumentary_saved_symptoms = str_replace(['"'], '', $ros_integumentary_saved_symptoms);
-        $ros_integumentary_saved_symptoms = str_replace([']'], '', $ros_integumentary_saved_symptoms);
-        $ros_integumentary_saved_symptoms = explode(",", $ros_integumentary_saved_symptoms);
-
-        $ros_integumentary_symptoms = Array();
-
-        foreach($ros_integumentary_all_symptoms as $symptom)
-        {
-            $ros_integumentary_symptom = new symptom();
-            $ros_integumentary_symptom->value = $symptom[0];
-            if(in_array($symptom[0], $ros_integumentary_saved_symptoms))
-            {
-                $ros_integumentary_symptom->is_saved = true;
-            }
-            else
-            {
-                $ros_integumentary_symptom->is_saved = false;
-            }
-            array_push($ros_integumentary_symptoms, $ros_integumentary_symptom);
-        }
-        return $ros_integumentary_symptoms;
+        $symptom = lookup_value::where('lookup_value_id',$ros_integumentary_all_lookup_value)->pluck('lookup_value');
+        array_push($ros_integumentary_all_symptoms,$symptom );
     }
+
+    $ros_integumentary_saved_symptoms = active_record::where('patient_id', $id)
+        ->where('navigation_id','16')->where('doc_control_id','37')->pluck('value');
+
+    //Converting object to array
+    $ros_integumentary_saved_symptoms = str_replace(['['], '', $ros_integumentary_saved_symptoms);
+    $ros_integumentary_saved_symptoms = str_replace(['"'], '', $ros_integumentary_saved_symptoms);
+    $ros_integumentary_saved_symptoms = str_replace(['"'], '', $ros_integumentary_saved_symptoms);
+    $ros_integumentary_saved_symptoms = str_replace([']'], '', $ros_integumentary_saved_symptoms);
+    $ros_integumentary_saved_symptoms = explode(",", $ros_integumentary_saved_symptoms);
+
+    $ros_integumentary_symptoms = Array();
+
+    foreach($ros_integumentary_all_symptoms as $symptom)
+    {
+        $ros_integumentary_symptom = new symptom();
+        $ros_integumentary_symptom->value = $symptom[0];
+        if(in_array($symptom[0], $ros_integumentary_saved_symptoms))
+        {
+            $ros_integumentary_symptom->is_saved = true;
+        }
+        else
+        {
+            $ros_integumentary_symptom->is_saved = false;
+        }
+        array_push($ros_integumentary_symptoms, $ros_integumentary_symptom);
+    }
+    return $ros_integumentary_symptoms;
+}
     public function get_ROS_neurological_symptoms($id)
+{
+    $ros_neurological_all_symptoms = array();
+    $ros_neurological_all_lookup_values = doc_lookup_value::where('doc_control_id',39)->pluck('lookup_value_id');
+
+    foreach ($ros_neurological_all_lookup_values as $ros_neurological_all_lookup_value)
     {
-        $ros_neurological_all_symptoms = array();
-        $ros_neurological_all_lookup_values = doc_lookup_value::where('doc_control_id',39)->pluck('lookup_value_id');
-
-        foreach ($ros_neurological_all_lookup_values as $ros_neurological_all_lookup_value)
-        {
-            $symptom = lookup_value::where('lookup_value_id',$ros_neurological_all_lookup_value)->pluck('lookup_value');
-            array_push($ros_neurological_all_symptoms,$symptom );
-        }
-
-        $ros_neurological_saved_symptoms = active_record::where('patient_id', $id)
-            ->where('navigation_id','17')->where('doc_control_id','39')->pluck('value');
-
-        //Converting object to array
-        $ros_neurological_saved_symptoms = str_replace(['['], '', $ros_neurological_saved_symptoms);
-        $ros_neurological_saved_symptoms = str_replace(['"'], '', $ros_neurological_saved_symptoms);
-        $ros_neurological_saved_symptoms = str_replace(['"'], '', $ros_neurological_saved_symptoms);
-        $ros_neurological_saved_symptoms = str_replace([']'], '', $ros_neurological_saved_symptoms);
-        $ros_neurological_saved_symptoms = explode(",", $ros_neurological_saved_symptoms);
-
-        $ros_neurological_symptoms = Array();
-
-        foreach($ros_neurological_all_symptoms as $symptom)
-        {
-            $ros_neurological_symptom = new symptom();
-            $ros_neurological_symptom->value = $symptom[0];
-            if(in_array($symptom[0], $ros_neurological_saved_symptoms))
-            {
-                $ros_neurological_symptom->is_saved = true;
-            }
-            else
-            {
-                $ros_neurological_symptom->is_saved = false;
-            }
-            array_push($ros_neurological_symptoms, $ros_neurological_symptom);
-        }
-        return $ros_neurological_symptoms;
+        $symptom = lookup_value::where('lookup_value_id',$ros_neurological_all_lookup_value)->pluck('lookup_value');
+        array_push($ros_neurological_all_symptoms,$symptom );
     }
+
+    $ros_neurological_saved_symptoms = active_record::where('patient_id', $id)
+        ->where('navigation_id','17')->where('doc_control_id','39')->pluck('value');
+
+    //Converting object to array
+    $ros_neurological_saved_symptoms = str_replace(['['], '', $ros_neurological_saved_symptoms);
+    $ros_neurological_saved_symptoms = str_replace(['"'], '', $ros_neurological_saved_symptoms);
+    $ros_neurological_saved_symptoms = str_replace(['"'], '', $ros_neurological_saved_symptoms);
+    $ros_neurological_saved_symptoms = str_replace([']'], '', $ros_neurological_saved_symptoms);
+    $ros_neurological_saved_symptoms = explode(",", $ros_neurological_saved_symptoms);
+
+    $ros_neurological_symptoms = Array();
+
+    foreach($ros_neurological_all_symptoms as $symptom)
+    {
+        $ros_neurological_symptom = new symptom();
+        $ros_neurological_symptom->value = $symptom[0];
+        if(in_array($symptom[0], $ros_neurological_saved_symptoms))
+        {
+            $ros_neurological_symptom->is_saved = true;
+        }
+        else
+        {
+            $ros_neurological_symptom->is_saved = false;
+        }
+        array_push($ros_neurological_symptoms, $ros_neurological_symptom);
+    }
+    return $ros_neurological_symptoms;
+}
     public function get_ROS_psychological_symptoms($id)
+{
+    $ros_psychological_all_symptoms = array();
+    $ros_psychological_all_lookup_values = doc_lookup_value::where('doc_control_id',41)->pluck('lookup_value_id');
+
+    foreach ($ros_psychological_all_lookup_values as $ros_psychological_all_lookup_value)
     {
-        $ros_psychological_all_symptoms = array();
-        $ros_psychological_all_lookup_values = doc_lookup_value::where('doc_control_id',41)->pluck('lookup_value_id');
-
-        foreach ($ros_psychological_all_lookup_values as $ros_psychological_all_lookup_value)
-        {
-            $symptom = lookup_value::where('lookup_value_id',$ros_psychological_all_lookup_value)->pluck('lookup_value');
-            array_push($ros_psychological_all_symptoms,$symptom );
-        }
-
-        $ros_psychological_saved_symptoms = active_record::where('patient_id', $id)
-            ->where('navigation_id','18')->where('doc_control_id','41')->pluck('value');
-
-        //Converting object to array
-        $ros_psychological_saved_symptoms = str_replace(['['], '', $ros_psychological_saved_symptoms);
-        $ros_psychological_saved_symptoms = str_replace(['"'], '', $ros_psychological_saved_symptoms);
-        $ros_psychological_saved_symptoms = str_replace(['"'], '', $ros_psychological_saved_symptoms);
-        $ros_psychological_saved_symptoms = str_replace([']'], '', $ros_psychological_saved_symptoms);
-        $ros_psychological_saved_symptoms = explode(",", $ros_psychological_saved_symptoms);
-
-        $ros_psychological_symptoms = Array();
-
-        foreach($ros_psychological_all_symptoms as $symptom)
-        {
-            $ros_psychological_symptom = new symptom();
-            $ros_psychological_symptom->value = $symptom[0];
-            if(in_array($symptom[0], $ros_psychological_saved_symptoms))
-            {
-                $ros_psychological_symptom->is_saved = true;
-            }
-            else
-            {
-                $ros_psychological_symptom->is_saved = false;
-            }
-            array_push($ros_psychological_symptoms, $ros_psychological_symptom);
-        }
-        return $ros_psychological_symptoms;
+        $symptom = lookup_value::where('lookup_value_id',$ros_psychological_all_lookup_value)->pluck('lookup_value');
+        array_push($ros_psychological_all_symptoms,$symptom );
     }
 
-    public function get_ROS_gastrointestinal_symptoms($id)
+    $ros_psychological_saved_symptoms = active_record::where('patient_id', $id)
+        ->where('navigation_id','18')->where('doc_control_id','41')->pluck('value');
+
+    //Converting object to array
+    $ros_psychological_saved_symptoms = str_replace(['['], '', $ros_psychological_saved_symptoms);
+    $ros_psychological_saved_symptoms = str_replace(['"'], '', $ros_psychological_saved_symptoms);
+    $ros_psychological_saved_symptoms = str_replace(['"'], '', $ros_psychological_saved_symptoms);
+    $ros_psychological_saved_symptoms = str_replace([']'], '', $ros_psychological_saved_symptoms);
+    $ros_psychological_saved_symptoms = explode(",", $ros_psychological_saved_symptoms);
+
+    $ros_psychological_symptoms = Array();
+
+    foreach($ros_psychological_all_symptoms as $symptom)
     {
-        $ros_gastrointestinal_all_symptoms = array();
-        $ros_gastrointestinal_all_lookup_values = doc_lookup_value::where('doc_control_id',43)->pluck('lookup_value_id');
-
-        foreach ($ros_gastrointestinal_all_lookup_values as $ros_gastrointestinal_all_lookup_value)
+        $ros_psychological_symptom = new symptom();
+        $ros_psychological_symptom->value = $symptom[0];
+        if(in_array($symptom[0], $ros_psychological_saved_symptoms))
         {
-            $symptom = lookup_value::where('lookup_value_id',$ros_gastrointestinal_all_lookup_value)->pluck('lookup_value');
-            array_push($ros_gastrointestinal_all_symptoms,$symptom );
+            $ros_psychological_symptom->is_saved = true;
         }
-
-        $ros_gastrointestinal_saved_symptoms = active_record::where('patient_id', $id)
-            ->where('navigation_id','19')->where('doc_control_id','43')->pluck('value');
-
-        //Converting object to array
-        $ros_gastrointestinal_saved_symptoms = str_replace(['['], '', $ros_gastrointestinal_saved_symptoms);
-        $ros_gastrointestinal_saved_symptoms = str_replace(['"'], '', $ros_gastrointestinal_saved_symptoms);
-        $ros_gastrointestinal_saved_symptoms = str_replace(['"'], '', $ros_gastrointestinal_saved_symptoms);
-        $ros_gastrointestinal_saved_symptoms = str_replace([']'], '', $ros_gastrointestinal_saved_symptoms);
-        $ros_gastrointestinal_saved_symptoms = explode(",", $ros_gastrointestinal_saved_symptoms);
-
-        $ros_gastrointestinal_symptoms = Array();
-
-        foreach($ros_gastrointestinal_all_symptoms as $symptom)
+        else
         {
-            $ros_gastrointestinal_symptom = new symptom();
-            $ros_gastrointestinal_symptom->value = $symptom[0];
-            if(in_array($symptom[0], $ros_gastrointestinal_saved_symptoms))
-            {
-                $ros_gastrointestinal_symptom->is_saved = true;
-            }
-            else
-            {
-                $ros_gastrointestinal_symptom->is_saved = false;
-            }
-            array_push($ros_gastrointestinal_symptoms, $ros_gastrointestinal_symptom);
+            $ros_psychological_symptom->is_saved = false;
         }
-        return $ros_gastrointestinal_symptoms;
+        array_push($ros_psychological_symptoms, $ros_psychological_symptom);
     }
+    return $ros_psychological_symptoms;
+}
+
+public function get_ROS_gastrointestinal_symptoms($id)
+{
+    $ros_gastrointestinal_all_symptoms = array();
+    $ros_gastrointestinal_all_lookup_values = doc_lookup_value::where('doc_control_id',43)->pluck('lookup_value_id');
+
+    foreach ($ros_gastrointestinal_all_lookup_values as $ros_gastrointestinal_all_lookup_value)
+    {
+        $symptom = lookup_value::where('lookup_value_id',$ros_gastrointestinal_all_lookup_value)->pluck('lookup_value');
+        array_push($ros_gastrointestinal_all_symptoms,$symptom );
+    }
+
+    $ros_gastrointestinal_saved_symptoms = active_record::where('patient_id', $id)
+        ->where('navigation_id','19')->where('doc_control_id','43')->pluck('value');
+
+    //Converting object to array
+    $ros_gastrointestinal_saved_symptoms = str_replace(['['], '', $ros_gastrointestinal_saved_symptoms);
+    $ros_gastrointestinal_saved_symptoms = str_replace(['"'], '', $ros_gastrointestinal_saved_symptoms);
+    $ros_gastrointestinal_saved_symptoms = str_replace(['"'], '', $ros_gastrointestinal_saved_symptoms);
+    $ros_gastrointestinal_saved_symptoms = str_replace([']'], '', $ros_gastrointestinal_saved_symptoms);
+    $ros_gastrointestinal_saved_symptoms = explode(",", $ros_gastrointestinal_saved_symptoms);
+
+    $ros_gastrointestinal_symptoms = Array();
+
+    foreach($ros_gastrointestinal_all_symptoms as $symptom)
+    {
+        $ros_gastrointestinal_symptom = new symptom();
+        $ros_gastrointestinal_symptom->value = $symptom[0];
+        if(in_array($symptom[0], $ros_gastrointestinal_saved_symptoms))
+        {
+            $ros_gastrointestinal_symptom->is_saved = true;
+        }
+        else
+        {
+            $ros_gastrointestinal_symptom->is_saved = false;
+        }
+        array_push($ros_gastrointestinal_symptoms, $ros_gastrointestinal_symptom);
+    }
+    return $ros_gastrointestinal_symptoms;
+}
+
     public function get_orders($id)
     {
         $role='';
@@ -1561,7 +1563,7 @@ class NavigationController extends Controller
                 ->where('navigation_id','31') ->where('doc_control_id','74')->get();
 
             $procedures = active_record::where('patient_id', $id)
-                    ->where('navigation_id','31') ->where('doc_control_id','78')->get();
+                ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
             $comment_order = active_record::where('patient_id', $id)
                 ->where('navigation_id','31')
@@ -1581,7 +1583,7 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
@@ -1628,11 +1630,11 @@ class NavigationController extends Controller
                 ->where('navigation_id','31') ->where('doc_control_id','74')->get();
 
             $procedures = active_record::where('patient_id', $id)
-                    ->where('navigation_id','31') ->where('doc_control_id','78')->get();
+                ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
             $results = active_record::where('patient_id', $id)
-                ->where('navigation_id','30')
-                ->where('doc_control_id','67')->get();
+                ->where('navigation_id','32')
+                ->where('doc_control_id','71')->get();
 
             //Fetching all navs associated with this patient's module
             $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
@@ -1648,7 +1650,7 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
@@ -1689,8 +1691,8 @@ class NavigationController extends Controller
             }
             else {
             $MDM = active_record::where('patient_id', $id)
-                ->where('navigation_id','31')
-                ->where('doc_control_id','61')->get();
+                ->where('navigation_id','33')
+                ->where('doc_control_id','65')->get();
 
             //Fetching all navs associated with this patient's module
             $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
@@ -1706,7 +1708,7 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
@@ -1747,13 +1749,17 @@ class NavigationController extends Controller
                 return view('errors/error', compact('error_message'));
             }
             else {
+            $diagnosis_list_disposition = active_record::where('patient_id', $id)
+                ->where('navigation_id','34')
+                ->where('doc_control_id','79')->get();
+
             $disposition_value = active_record::where('patient_id', $id)
-                ->where('navigation_id','32')
-                ->where('doc_control_id','63')->pluck('value');
+                ->where('navigation_id','34')
+                ->where('doc_control_id','67')->pluck('value');
 
             $disposition_comment = active_record::where('patient_id', $id)
-                ->where('navigation_id','32')
-                ->where('doc_control_id','64')->pluck('value');
+                ->where('navigation_id','34')
+                ->where('doc_control_id','68')->pluck('value');
 
             if(!count($disposition_value)>0)
             {
@@ -1777,13 +1783,13 @@ class NavigationController extends Controller
 
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
-                ->where('navigation_id', '32')->get();
+                ->where('navigation_id', '34')->get();
 
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
-                return view('patient/disposition', compact ('disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition'));
+                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition'));
             }
             else
             {
@@ -1842,7 +1848,7 @@ class NavigationController extends Controller
 
         $vital_signs_header->oxygen_saturation = active_record::where('patient_id', $id)
             ->where('navigation_id','8')
-            ->where('doc_control_id','65')
+            ->where('doc_control_id','69')
             ->orderBy('created_at','desc')
             ->pluck('value');
 
@@ -1881,7 +1887,7 @@ class NavigationController extends Controller
                 $vital_signs_header = $this->get_vital_signs_header($id);
                 //Extracting disposition to enable or disable the submit button
                 $disposition = active_record::where('patient_id', $id)
-                    ->where('navigation_id', '32')->get();
+                    ->where('navigation_id', '34')->get();
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
@@ -2046,11 +2052,11 @@ class NavigationController extends Controller
                         ->where('created_at', $ts)->pluck('value');
                     $vital_sign_detail->Weight = active_record::where('patient_id', $id)
                         ->where('navigation_id', '8')
-                        ->where('doc_control_id', '72')
+                        ->where('doc_control_id', '76')
                         ->where('created_at', $ts)->pluck('value');
                     $vital_sign_detail->Height = active_record::where('patient_id', $id)
                         ->where('navigation_id', '8')
-                        ->where('doc_control_id', '73')
+                        ->where('doc_control_id', '77')
                         ->where('created_at', $ts)->pluck('value');
                     $vital_sign_detail->Pain = active_record::where('patient_id', $id)
                         ->where('navigation_id', '8')
@@ -2058,7 +2064,7 @@ class NavigationController extends Controller
                         ->where('created_at', $ts)->pluck('value');
                     $vital_sign_detail->Oxygen_Saturation = active_record::where('patient_id', $id)
                         ->where('navigation_id', '8')
-                        ->where('doc_control_id', '65')
+                        ->where('doc_control_id', '69')
                         ->where('created_at', $ts)->pluck('value');
                     $vital_sign_detail->Comment = active_record::where('patient_id', $id)
                         ->where('navigation_id', '8')
@@ -2102,6 +2108,7 @@ class NavigationController extends Controller
                 $ros_psychological_symptoms = $this->get_ROS_psychological_symptoms($id);
                 $ros_psychological_comment = active_record::where('patient_id', $id)
                     ->where('navigation_id', '18')->where('doc_control_id', '42')->pluck('value');
+
                 $ros_gastrointestinal_symptoms = $this->get_ROS_gastrointestinal_symptoms($id);
                 $ros_gastrointestinal_comment = active_record::where('patient_id', $id)
                     ->where('navigation_id', '19')->where('doc_control_id', '44')->pluck('value');
@@ -2170,6 +2177,10 @@ class NavigationController extends Controller
                     ->where('doc_control_id', '65')->get();
 
                 //Get Disposition
+                $diagnosis_list_disposition = active_record::where('patient_id', $id)
+                    ->where('navigation_id', '34')
+                    ->where('doc_control_id', '79')->get();
+
                 $disposition_value = active_record::where('patient_id', $id)
                     ->where('navigation_id', '34')
                     ->where('doc_control_id', '67')->pluck('value');
@@ -2226,12 +2237,12 @@ class NavigationController extends Controller
                         'ros_respiratory_comment', 'ros_cardiovascular_symptoms', 'ros_cardiovascular_comment',
                         'ros_musculoskeletal_symptoms', 'ros_musculoskeletal_comment', 'ros_integumentary_symptoms',
                         'ros_integumentary_comment', 'ros_neurological_symptoms', 'ros_neurological_comment',
-                        'ros_psychological_symptoms', 'ros_psychological_comment','ros_gastrointestinal_symptoms','ros_gastrointestinal_comment', 'neurological_symptoms',
-                        'neurological_comment', 'psychological_symptoms', 'psychological_comment','gastrointestinal_symptoms', 'gastrointestinal_comment', 'integumentary_symptoms',
+                        'ros_psychological_symptoms', 'ros_psychological_comment',  'ros_gastrointestinal_symptoms', 'ros_gastrointestinal_comment', 'neurological_symptoms',
+                        'neurological_comment', 'psychological_symptoms', 'psychological_comment', 'gastrointestinal_symptoms', 'gastrointestinal_comment', 'integumentary_symptoms',
                         'integumentary_comment', 'musculoskeletal_symptoms', 'musculoskeletal_comment',
                         'cardiovascular_symptoms', 'cardiovascular_comment', 'respiratory_symptoms', 'respiratory_comment',
                         'eyes_symptoms', 'eyes_comment', 'hent_symptoms', 'hent_comment', 'constitutional_symptoms',
-                        'constitutional_comment', 'comment_order', 'labs', 'images', 'results','procedures','mdm', 'disposition_value', 'disposition_comment'));
+                        'constitutional_comment', 'comment_order', 'labs', 'images', 'results','procedures', 'mdm', 'diagnosis_list_disposition','disposition_value', 'disposition_comment'));
 
                     return $pdf->download('patient_report.pdf');
                 } catch (\Exception $e) {
@@ -2389,11 +2400,11 @@ class NavigationController extends Controller
                             ->where('created_at', $ts)->pluck('value');
                         $vital_sign_detail->Weight = active_record::where('patient_id', $id)
                             ->where('navigation_id', '8')
-                            ->where('doc_control_id', '72')
+                            ->where('doc_control_id', '76')
                             ->where('created_at', $ts)->pluck('value');
                         $vital_sign_detail->Height = active_record::where('patient_id', $id)
                             ->where('navigation_id', '8')
-                            ->where('doc_control_id', '73')
+                            ->where('doc_control_id', '77')
                             ->where('created_at', $ts)->pluck('value');
                         $vital_sign_detail->Pain = active_record::where('patient_id', $id)
                             ->where('navigation_id', '8')
@@ -2401,7 +2412,7 @@ class NavigationController extends Controller
                             ->where('created_at', $ts)->pluck('value');
                         $vital_sign_detail->Oxygen_Saturation = active_record::where('patient_id', $id)
                             ->where('navigation_id', '8')
-                            ->where('doc_control_id', '65')
+                            ->where('doc_control_id', '69')
                             ->where('created_at', $ts)->pluck('value');
                         $vital_sign_detail->Comment = active_record::where('patient_id', $id)
                             ->where('navigation_id', '8')
@@ -2445,12 +2456,12 @@ class NavigationController extends Controller
                     $ros_psychological_symptoms = $this->get_ROS_psychological_symptoms($id);
                     $ros_psychological_comment = active_record::where('patient_id', $id)
                         ->where('navigation_id', '18')->where('doc_control_id', '42')->pluck('value');
+
                     $ros_gastrointestinal_symptoms = $this->get_ROS_gastrointestinal_symptoms($id);
                     $ros_gastrointestinal_comment = active_record::where('patient_id', $id)
                         ->where('navigation_id', '19')->where('doc_control_id', '43')->pluck('value');
 
                     //PE
-
 
                     $gastrointestinal_symptoms = $this->get_physical_exams_gastrointestinal_symptoms($id);
                     $gastrointestinal_comment = active_record::where('patient_id', $id)
@@ -2492,7 +2503,6 @@ class NavigationController extends Controller
                     $constitutional_comment = active_record::where('patient_id', $id)
                         ->where('navigation_id', '21')->where('doc_control_id', '46')->pluck('value');
 
-
                     //Get orders
                     $labs = active_record::where('patient_id', $id)
                         ->where('navigation_id', '31')->where('doc_control_id', '73')->get();
@@ -2511,17 +2521,21 @@ class NavigationController extends Controller
 
                     //Get MDM
                     $mdm = active_record::where('patient_id', $id)
-                        ->where('navigation_id', '33')
-                        ->where('doc_control_id', '65')->get();
+                        ->where('navigation_id','33')
+                        ->where('doc_control_id','65')->get();
 
                     //Get Disposition
-                    $disposition_value = active_record::where('patient_id', $id)
+                    $diagnosis_list_disposition = active_record::where('patient_id', $id)
                         ->where('navigation_id', '34')
-                        ->where('doc_control_id', '67')->pluck('value');
+                        ->where('doc_control_id', '79')->get();
+                        
+                    $disposition_value = active_record::where('patient_id', $id)
+                        ->where('navigation_id','34')
+                        ->where('doc_control_id','67')->pluck('value');
 
                     $disposition_comment = active_record::where('patient_id', $id)
-                        ->where('navigation_id', '34')
-                        ->where('doc_control_id', '68')->pluck('value');
+                        ->where('navigation_id','34')
+                        ->where('doc_control_id','68')->pluck('value');
 
 
                     $patient = patient::where('patient_id', $id)->first();
@@ -2571,12 +2585,12 @@ class NavigationController extends Controller
                         'ros_respiratory_comment', 'ros_cardiovascular_symptoms', 'ros_cardiovascular_comment',
                         'ros_musculoskeletal_symptoms', 'ros_musculoskeletal_comment', 'ros_integumentary_symptoms',
                         'ros_integumentary_comment', 'ros_neurological_symptoms', 'ros_neurological_comment',
-                        'ros_psychological_symptoms', 'ros_psychological_comment','ros_gastrointestinal_symptoms', 'ros_gastrointestinal_comment', 'gastrointestinal_symptoms', 'gastrointestinal_comment', 'neurological_symptoms',
+                        'ros_psychological_symptoms', 'ros_psychological_comment', 'ros_gastrointestinal_symptoms', 'ros_gastrointestinal_comment', 'gastrointestinal_symptoms', 'gastrointestinal_comment', 'neurological_symptoms',
                         'neurological_comment', 'psychological_symptoms', 'psychological_comment', 'integumentary_symptoms',
                         'integumentary_comment', 'musculoskeletal_symptoms', 'musculoskeletal_comment',
                         'cardiovascular_symptoms', 'cardiovascular_comment', 'respiratory_symptoms', 'respiratory_comment',
                         'eyes_symptoms', 'eyes_comment', 'hent_symptoms', 'hent_comment', 'constitutional_symptoms',
-                        'constitutional_comment', 'comment_order', 'labs','procedures' ,'images', 'results','mdm','disposition_value','disposition_comment'));
+                        'constitutional_comment', 'comment_order', 'labs', 'procedures', 'images', 'results','mdm','diagnosis_list_disposition','disposition_value','disposition_comment'));
                 }
             }
             else

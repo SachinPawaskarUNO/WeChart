@@ -158,6 +158,7 @@ Route::post('MDM','DocumentationController@post_MDM')->name('post_MDM');
 
 Route::get('/Disposition/{id}', 'NavigationController@get_disposition')->name('Disposition');
 Route::post('disposition', 'DocumentationController@post_disposition')->name('post_disposition');
+Route::any('disposition_delete/{id}', 'DocumentationController@delete_disposition')->name('delete_disposition');
 
 Route::get('/{id}/AssignInstructor', 'NavigationController@get_assignInstructor')->name('AssignInstructor');
 Route::post('InstructorAssigned', 'DocumentationController@post_assignInstructor')->name('InstructorAssigned');
