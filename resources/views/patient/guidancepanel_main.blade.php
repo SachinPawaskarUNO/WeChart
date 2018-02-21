@@ -1,5 +1,15 @@
-
-<br>    <div class="container-fluid">
+<div class="container-fluid" style="padding-left: 0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Results:</h3>
+            @if(!count($results)>0)
+            <br>
+            @else
+            <textarea id="results" name="results" rows="6" style="width: 100%;display: block" readonly>{{$results[0]->value}}</textarea>
+            @endif 
+        </div>
+    </div>
+    <br>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-striped table-bordered table-hover">

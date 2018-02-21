@@ -4,7 +4,7 @@
     {{--@parent--}}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-14">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                         <h4 style="margin-top: 0" id="hpi_heading">Vital Signs</h4>
@@ -17,7 +17,8 @@
                             </button>
                         </div>
                         <br><br>
-                        <div class="row" style="overflow-x: auto;width: 100%; display: block">
+                        
+                        <div class="row" style="overflow-x: auto;width: 100%; display: block;">
                             <table class="table table-striped table-bordered table-hover" style="margin-top:10px; margin-left:15px;" id="vital_signs_table">
                                 <thead>
                                 <tr style="background: lightblue">
@@ -114,6 +115,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        
                         <br><br>
 
                         <div class="row" style="overflow-x: auto;width: 100%;display: block" id="table_child_vital_signs">
@@ -176,7 +178,6 @@
                                         </td>
                                         <td>
                                             <!-- Pain Scale 0-10  -->
-                                            <!-- <input type="number" name="Pain" id="Pain" style="width: 100px;" min="0" max="10"  oninput="this.value=this.value.replace(/[^0-9]/g,''); "> -->
                                             <input type="text" name="Pain" id="Pain" style="width: 100px" maxlength="2" pattern="(10|([0-9]))"  oninvalid="this.setCustomValidity('Enter value between 0 to 10')" oninput="setCustomValidity('')" >
 
                                         </td>
@@ -204,16 +205,6 @@
     </div>
 
     <script>
-        var pin = document.getElementById("Pain");
-
-            pin.addEventListener("input",function (event) {
-                if(pin.validity.typeMismatch){
-                    pin.setCustomValidity("Enter values from 0 to 10");
-                }
-                else{
-                    pin.setCustomValidity("");
-                }
-            });
 
         $(document).ready(function(){
 

@@ -120,11 +120,14 @@ class NavigationController extends Controller
                 $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
 
+                $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id', $id)->where('user_id', $user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/demographics_patient', compact('patient', 'navs', 'vital_signs_header', 'disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/demographics_patient', compact('patient', 'navs', 'vital_signs_header', 'disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications','results'));
 
                 }
                 else
@@ -194,14 +197,17 @@ class NavigationController extends Controller
                         ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
                     $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+                        ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
+                    $results = active_record::where('patient_id', $id)
+                        ->where('navigation_id','32') ->where('doc_control_id','71')->get();
 
                     $user_id = Auth::user()->id;
                     $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
 
                             if($status) {
                                 $status_id = $status->patient_record_status_id;
-                                return view('patient/HPI', compact ('status_id','HPI','patient','navs','vital_signs_header','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+                                return view('patient/HPI', compact ('status_id','HPI','patient','navs','vital_signs_header','disposition','videos','pictures','audios','labs','images','procedures','medications','results'));
                             }
                             else
                             {
@@ -376,12 +382,15 @@ class NavigationController extends Controller
             $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
 
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
 
-                    return view('patient/medical_history', compact ('status_id','navIds','disposition','vital_signs_header','patient','diagnosis_list_surgical_history','surgical_history_comment','diagnosis_list_personal_history','personal_history_comment','family_members_details','comment_family_history','is_new_entry_social_history','diagnosis_list_personal_history','navs','social_history_smoke_tobacco','social_history_non_smoke_tobacco','social_history_alcohol','social_history_sexual_activity','social_history_comment','social_history_smoke_tobacco_id','social_history_non_smoke_tobacco_id','social_history_alcohol_id','social_history_sexual_activity_id','social_history_comment_id','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/medical_history', compact ('status_id','navIds','disposition','vital_signs_header','patient','diagnosis_list_surgical_history','surgical_history_comment','diagnosis_list_personal_history','personal_history_comment','family_members_details','comment_family_history','is_new_entry_social_history','diagnosis_list_personal_history','navs','social_history_smoke_tobacco','social_history_non_smoke_tobacco','social_history_alcohol','social_history_sexual_activity','social_history_comment','social_history_smoke_tobacco_id','social_history_non_smoke_tobacco_id','social_history_alcohol_id','social_history_sexual_activity_id','social_history_comment_id','videos','pictures','audios','labs','images','procedures','medications','results'));
                 }
                 else
                 {
@@ -443,7 +452,7 @@ class NavigationController extends Controller
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
                 ->where('navigation_id', '34')->get();
-           $labs = active_record::where('patient_id', $id)
+            $labs = active_record::where('patient_id', $id)
                 ->where('navigation_id','31')->where('doc_control_id','73')->get();
 
             $images = active_record::where('patient_id', $id)
@@ -452,11 +461,14 @@ class NavigationController extends Controller
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
              if($status) {
                 $status_id = $status->patient_record_status_id;
-                return view('patient/medications', compact ('status_id','vital_signs_header','medications','medication_comment','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+                return view('patient/medications', compact ('status_id','vital_signs_header','medications','medication_comment','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','results'));
 
             }
             else
@@ -574,12 +586,15 @@ class NavigationController extends Controller
             $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
 
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
 
                if($status) {
                     $status_id = $status->patient_record_status_id;
-            return view('patient/vital_signs', compact('status_id','vital_signs_header','patient','navs','vital_sign_details','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+            return view('patient/vital_signs', compact('status_id','vital_signs_header','patient','navs','vital_sign_details','disposition','videos','pictures','audios','labs','images','procedures','medications','results'));
 
                 }
                 else
@@ -698,6 +713,9 @@ class NavigationController extends Controller
             $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
 
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
@@ -708,7 +726,7 @@ class NavigationController extends Controller
                         'integumentary_symptoms','integumentary_comment','musculoskeletal_symptoms',
                         'musculoskeletal_comment','cardiovascular_symptoms','cardiovascular_comment',
                         'respiratory_symptoms','respiratory_comment','eyes_symptoms','eyes_comment','HENT_symptoms',
-                        'HENT_comment','constitutional_symptoms','constitutional_comment', 'gastrointestinal_symptoms','gastrointestinal_comment' ));
+                        'HENT_comment','constitutional_symptoms','constitutional_comment', 'gastrointestinal_symptoms','gastrointestinal_comment','results' ));
                 }
                 else
                 {
@@ -1228,11 +1246,15 @@ class NavigationController extends Controller
 
             $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                  if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/review_of_system', compact ('navIds','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications',
+                    return view('patient/review_of_system', compact ('navIds','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','results',
                         'ros_constitutional_symptoms','ros_constitutional_comment', 'ros_hent_symptoms','ros_hent_comment',
                         'ros_eyes_symptoms','ros_eyes_comment', 'ros_respiratory_symptoms','ros_respiratory_comment',
                         'ros_cardiovascular_symptoms','ros_cardiovascular_comment', 'ros_musculoskeletal_symptoms','ros_musculoskeletal_comment',
@@ -1677,6 +1699,10 @@ public function get_ROS_gastrointestinal_symptoms($id)
 
             $medications = active_record::where('patient_id', $id)      
                 ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $comment_order = active_record::where('patient_id', $id)
                 ->where('navigation_id','31')
                 ->where('doc_control_id','75')->get();
@@ -1703,7 +1729,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/orders', compact ('status_id','vital_signs_header','patient','navs','labs','images','procedures','comment_order','disposition','videos','pictures','audios','medications'));
+                    return view('patient/orders', compact ('status_id','vital_signs_header','patient','navs','labs','images','procedures','comment_order','disposition','videos','pictures','audios','medications','results'));
                 }
                 else
                 {
@@ -1749,6 +1775,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
 
             $medications = active_record::where('patient_id', $id)      
                 ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
             $results = active_record::where('patient_id', $id)
                 ->where('navigation_id','32')
                 ->where('doc_control_id','71')->get();
@@ -1843,12 +1870,16 @@ public function get_ROS_gastrointestinal_symptoms($id)
 
             $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
 
-                    return view('patient/MDM', compact ('MDM','patient','navs','vital_signs_header','disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/MDM', compact ('MDM','patient','navs','vital_signs_header','disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications','results'));
                 }
                 else
                 {
@@ -1933,12 +1964,16 @@ public function get_ROS_gastrointestinal_symptoms($id)
 
             $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
 
-                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','results'));
 
             }
             else
@@ -2052,11 +2087,15 @@ public function get_ROS_gastrointestinal_symptoms($id)
 
                 $medications = active_record::where('patient_id', $id)      
                     ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+
+                $results = active_record::where('patient_id', $id)
+                    ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/assign_instructor', compact ('disposition','status_id','vital_signs_header','medications','medication_comment','patient','navs','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/assign_instructor', compact ('disposition','status_id','vital_signs_header','medications','medication_comment','patient','navs','videos','pictures','audios','labs','images','procedures','medications','results'));
 
                 }
                 else
