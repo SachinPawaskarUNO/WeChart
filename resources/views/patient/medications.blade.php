@@ -27,7 +27,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($medications as $medicine)
+                                    @foreach ($medications_main as $medicine)
                                         <tr>
                                             <td><p>{{$medicine->value}}</p></td>
                                             @if($medicine->dosage==null)

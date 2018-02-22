@@ -17,6 +17,60 @@
 
                 <div class="panel-body">
                     <div class="row">
+                        <div class="col-sm-6">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    <label for="orders_medication"> Medications:</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                    <select id="search_labs_medication" class="js-example-basic-multiple js-states form-control" name="search_labs_medication[]" multiple></select>
+                                    </div>
+                                </div>
+
+                        </div>  
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr class="bg-info">
+                                    <th>List of Medications</th>
+                                    <th colspan="20">Dosage</th>
+                                    <th colspan="2"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($medications as $medicine)
+                                        <tr>
+                                            <td><p>{{$medicine->value}}</p></td>
+                                            @if($medicine->dosage==null)
+                                                <td colspan="20"><input type="text" id="Dosage" name="Dosage[]" data-medid="{{$medicine->active_record_id}}"></td>
+                                                <td style="text-align: right">
+                                                    <a href="{{ route( 'delete_medication_order', ['id' => $medicine->active_record_id]) }}"
+                                                       class="btn btn-danger confirmation" id="delete" >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td colspan="20"><p>{{$medicine->dosage}}</p></td>
+                                                <td style="text-align: right">
+                                                    <a class="btn btn-danger disabled">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                    </a>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div>
+
+                    <div class="row">
 
                         <!-- Search For labs -->
                         <div class="col-sm-6">
@@ -113,7 +167,7 @@
                                     </div>
                                 </div>
 
-                        </div>
+                        </div>   
 
                     </div> <br>
                     <div  class="row">
@@ -139,8 +193,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
+                        </div>        
 
                     </div>
 
@@ -172,7 +225,7 @@
                             </button>
                         </div>
                     </div>
-
+                </div>
             </form>
         </div>
     </div>
@@ -240,6 +293,26 @@
                 cache: false
             }
         });
+        $('#search_labs_medication').select2({
+            placeholder: "Choose medication...",
+            minimumInputLength: 2,
+            ajax: {
+                url: '{{route('orders_medication_find')}}',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        q: $.trim(params.term)
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: false
+            }
+        });
+
 
         $(document).ready(function(){
             var inputsChanged = false;
@@ -255,8 +328,18 @@
 
             $("#btn_save_orders").click(function(){
                 inputsChanged = false;
-            });
+                $('input[name^="Dosage"]').each(function() {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: '{{route('post_medication_dosage')}}',
+                        data: { dosage:$(this).val() ,medid:$(this).attr("data-medid")}
+                    });
+                });
 
+            });
             window.onbeforeunload = unloadPage;
 
             $('#btn_clear_orders_comment').click( function()
@@ -265,6 +348,7 @@
                 $('#search_labs_imaging').empty().trigger('change');
                 $('#search_labs_orders').empty().trigger('change');
                 $('#search_labs_procedure').empty().trigger('change');
+                $('#search_labs_medication').empty().trigger('change');
                 inputsChanged = false;
             } );
         });

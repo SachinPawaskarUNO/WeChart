@@ -117,14 +117,20 @@ class NavigationController extends Controller
                 $procedures = active_record::where('patient_id', $id)
                     ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-                $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+                $results = active_record::where('patient_id', $id)
+                    ->where('navigation_id','32') ->where('doc_control_id','71')->get();
 
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id', $id)->where('user_id', $user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/demographics_patient', compact('patient', 'navs', 'vital_signs_header', 'disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/demographics_patient', compact('patient', 'navs', 'vital_signs_header', 'disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results'));
 
                 }
                 else
@@ -193,15 +199,21 @@ class NavigationController extends Controller
                     $procedures = active_record::where('patient_id', $id)
                         ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-                    $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+                $results = active_record::where('patient_id', $id)
+                    ->where('navigation_id','32') ->where('doc_control_id','71')->get();
 
                     $user_id = Auth::user()->id;
                     $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
 
                             if($status) {
                                 $status_id = $status->patient_record_status_id;
-                                return view('patient/HPI', compact ('status_id','HPI','patient','navs','vital_signs_header','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+                                return view('patient/HPI', compact ('status_id','HPI','patient','navs','vital_signs_header','disposition','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results'));
                             }
                             else
                             {
@@ -372,16 +384,22 @@ class NavigationController extends Controller
 
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
 
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
 
-                    return view('patient/medical_history', compact ('status_id','navIds','disposition','vital_signs_header','patient','diagnosis_list_surgical_history','surgical_history_comment','diagnosis_list_personal_history','personal_history_comment','family_members_details','comment_family_history','is_new_entry_social_history','diagnosis_list_personal_history','navs','social_history_smoke_tobacco','social_history_non_smoke_tobacco','social_history_alcohol','social_history_sexual_activity','social_history_comment','social_history_smoke_tobacco_id','social_history_non_smoke_tobacco_id','social_history_alcohol_id','social_history_sexual_activity_id','social_history_comment_id','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/medical_history', compact ('status_id','navIds','disposition','vital_signs_header','patient','diagnosis_list_surgical_history','surgical_history_comment','diagnosis_list_personal_history','personal_history_comment','family_members_details','comment_family_history','is_new_entry_social_history','diagnosis_list_personal_history','navs','social_history_smoke_tobacco','social_history_non_smoke_tobacco','social_history_alcohol','social_history_sexual_activity','social_history_comment','social_history_smoke_tobacco_id','social_history_non_smoke_tobacco_id','social_history_alcohol_id','social_history_sexual_activity_id','social_history_comment_id','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results'));
                 }
                 else
                 {
@@ -417,11 +435,13 @@ class NavigationController extends Controller
                 return view('errors/error', compact('error_message'));
             }
             else {
-                //$medications = active_record::where('patient_id', $id)
-                //->where('navigation_id','7')
-                //->where('doc_control_id','16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
 
-                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '7' and act1.doc_control_id = '16' and act1.doc_control_group is NULL "));
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+                $medications_main = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '7' and act1.doc_control_id = '16' and act1.doc_control_group is NULL "));
                 //Log::info($medications);
 
             $medication_comment = active_record::where('patient_id', $id)
@@ -456,11 +476,15 @@ class NavigationController extends Controller
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
              if($status) {
                 $status_id = $status->patient_record_status_id;
-                return view('patient/medications', compact ('status_id','vital_signs_header','medications','medication_comment','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','dosage','i'));
+                return view('patient/medications', compact ('status_id','vital_signs_header','medications','medication_comment','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications_main','dosage','i','results'));
 
             }
             else
@@ -575,15 +599,21 @@ class NavigationController extends Controller
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
 
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
 
                if($status) {
                     $status_id = $status->patient_record_status_id;
-            return view('patient/vital_signs', compact('status_id','vital_signs_header','patient','navs','vital_sign_details','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+            return view('patient/vital_signs', compact('status_id','vital_signs_header','patient','navs','vital_sign_details','disposition','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results'));
 
                 }
                 else
@@ -698,16 +728,21 @@ class NavigationController extends Controller
 
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
 
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
                     return view('patient/physical_exams', compact ('status_id','navIds',
-                        'vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','neurological_symptoms',
+                        'vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results','neurological_symptoms',
                         'neurological_comment','psychological_symptoms','psychological_comment',
                         'integumentary_symptoms','integumentary_comment','musculoskeletal_symptoms',
                         'musculoskeletal_comment','cardiovascular_symptoms','cardiovascular_comment',
@@ -1230,13 +1265,19 @@ class NavigationController extends Controller
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                  if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/review_of_system', compact ('navIds','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications',
+                    return view('patient/review_of_system', compact ('navIds','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results',
                         'ros_constitutional_symptoms','ros_constitutional_comment', 'ros_hent_symptoms','ros_hent_comment',
                         'ros_eyes_symptoms','ros_eyes_comment', 'ros_respiratory_symptoms','ros_respiratory_comment',
                         'ros_cardiovascular_symptoms','ros_cardiovascular_comment', 'ros_musculoskeletal_symptoms','ros_musculoskeletal_comment',
@@ -1679,8 +1720,17 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
+
             $comment_order = active_record::where('patient_id', $id)
                 ->where('navigation_id','31')
                 ->where('doc_control_id','75')->get();
@@ -1707,7 +1757,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/orders', compact ('status_id','vital_signs_header','patient','navs','labs','images','procedures','comment_order','disposition','videos','pictures','audios','medications'));
+                    return view('patient/orders', compact ('status_id','vital_signs_header','patient','navs','labs','images','procedures','comment_order','disposition','videos','pictures','audios','medications','dosage','i','results'));
                 }
                 else
                 {
@@ -1751,8 +1801,11 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
             $results = active_record::where('patient_id', $id)
                 ->where('navigation_id','32')
                 ->where('doc_control_id','71')->get();
@@ -1779,7 +1832,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
-                return view('patient/results', compact ('status_id','vital_signs_header','labs','procedures','images','results','patient','navs','disposition','videos','pictures','audios','medications'));
+                return view('patient/results', compact ('status_id','vital_signs_header','labs','procedures','images','results','patient','navs','disposition','videos','pictures','audios','medications','dosage','i'));
             }
             else
             {
@@ -1845,14 +1898,20 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
 
-                    return view('patient/MDM', compact ('MDM','patient','navs','vital_signs_header','disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/MDM', compact ('MDM','patient','navs','vital_signs_header','disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results'));
                 }
                 else
                 {
@@ -1935,14 +1994,21 @@ public function get_ROS_gastrointestinal_symptoms($id)
             $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-            $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+
+            $results = active_record::where('patient_id', $id)
+                ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
 
-                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','results','dosage','i'));
 
             }
             else
@@ -2054,13 +2120,19 @@ public function get_ROS_gastrointestinal_symptoms($id)
                 $procedures = active_record::where('patient_id', $id)
                 ->where('navigation_id','31') ->where('doc_control_id','78')->get();
 
-                $medications = active_record::where('patient_id', $id)      
-                    ->where('navigation_id', '7') ->where('doc_control_id', '16')->get();
+            // $medications = active_record::where('patient_id', $id)      
+            //     ->where('navigation_id', '31') ->where('doc_control_id', '81')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '31' and act1.doc_control_id = '81' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
+                $results = active_record::where('patient_id', $id)
+                    ->where('navigation_id','32') ->where('doc_control_id','71')->get();
+
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/assign_instructor', compact ('disposition','status_id','vital_signs_header','medications','medication_comment','patient','navs','videos','pictures','audios','labs','images','procedures','medications'));
+                    return view('patient/assign_instructor', compact ('disposition','status_id','vital_signs_header','medications','medication_comment','patient','navs','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results'));
 
                 }
                 else

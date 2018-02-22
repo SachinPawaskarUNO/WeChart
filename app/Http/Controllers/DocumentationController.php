@@ -109,6 +109,25 @@ class DocumentationController extends Controller
 
         return \Response::json($formatted_lookups);
     }
+
+    public function find_medication_orders(Request $request)
+    {
+        $term = trim($request->q);
+
+        if (empty($term)) {
+            return \Response::json([]);
+        }
+
+        $lookups = med_lookup_value::search($term)->get();
+
+        $formatted_lookups = [];
+
+        foreach ($lookups as $lookup) {
+            $formatted_lookups[] = ['id' => $lookup->med_lookup_value_id, 'text' => $lookup->med_lookup_value];
+        }
+
+        return \Response::json($formatted_lookups);
+    }        
     public function find_instructor(Request $request)
     {
         $term = trim($request->q);
@@ -263,6 +282,7 @@ class DocumentationController extends Controller
                 $labs = $request['search_labs_orders'];
                 $images = $request['search_labs_imaging'];
                 $procedures = $request['search_labs_procedure'];
+                $medications = $request['search_labs_medication'];
                 //Saving labs
                 foreach ((array)$labs as $key=>$lab) {
                     $lab_value = lab_orders_lookup_value::where('lab_orders_lookup_value_id',$lab)->pluck('lab_orders_lookup_value');
@@ -298,6 +318,17 @@ class DocumentationController extends Controller
                     $active_record['navigation_id'] = '31';
                     $active_record['doc_control_id'] = '78';
                     $active_record['value'] = $procedure_value[0];
+                    $active_record['created_by'] = $request['user_id'];
+                    $active_record['updated_by'] = $request['user_id'];
+                    $active_record->save();
+                }
+                foreach ((array)$medications as $key=>$medicine) {
+                    $lab_value = med_lookup_value::where('med_lookup_value_id',$medicine)->pluck('med_lookup_value');
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $request['patient_id'];
+                    $active_record['navigation_id'] = '31';
+                    $active_record['doc_control_id'] = '81';
+                    $active_record['value'] = $lab_value[0];
                     $active_record['created_by'] = $request['user_id'];
                     $active_record['updated_by'] = $request['user_id'];
                     $active_record->save();
@@ -710,7 +741,6 @@ class DocumentationController extends Controller
                     $active_record['updated_by'] = $request['user_id'];
                     $active_record->save();
                 }
-
                 //Saving comment
                 $comment_medicine_record = active_record::where('patient_id', $request['patient_id'])
                     ->where('navigation_id','7')
@@ -752,16 +782,12 @@ class DocumentationController extends Controller
         if(Auth::check()) {
             $role = Auth::user()->role;
         }
-
         if($role == 'Student') {
             try {
                 $dosage = $_POST['dosage'];
                 $medid = $_POST['medid'];
                 $med = active_record::where('active_record_id', $medid)->first();
-
-
                 //Saving medications
-
                 $active_record = new active_record();
                 $active_record['patient_id'] = $med->patient_id;
                 $active_record['navigation_id'] = '7';
@@ -771,10 +797,8 @@ class DocumentationController extends Controller
                 $active_record['created_by'] = $med->created_by;
                 $active_record['updated_by'] = $med->updated_by;
                 $active_record->save();
-
                 //Now redirecting to orders page
                 return redirect()->route('Medications',$med->patient_id);
-
             }catch (Exception $e) {
                 return view('errors/503');
             }
@@ -783,7 +807,6 @@ class DocumentationController extends Controller
         {
             return view('auth/not_authorized');
         }
-
     }
     public function post_vital_signs(Request $request)
 {
@@ -2336,7 +2359,6 @@ else {
         $med = active_record::find($id);
         $patient_id = $med->patient_id;
         $med->delete();
-
         return redirect()->route('Medications',$patient_id);
     }
     public function delete_image_order($id)
@@ -2361,6 +2383,14 @@ else {
         $procedure->delete();
         return redirect()->route('Orders',$patient_id);
     }
+    public function delete_medication_order($id)
+    {
+        $medication = active_record::find($id);
+        $patient_id = $medication->patient_id;
+        $medication->delete();
+        return redirect()->route('Orders',$patient_id);
+    }
+    
     public function delete_disposition($id)
     {
         $record = active_record::find($id);

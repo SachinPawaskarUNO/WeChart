@@ -148,6 +148,7 @@ Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')
 Route::any('orders_image_delete/{id}', 'DocumentationController@delete_image_order')->name('delete_image_order');
 Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')->name('delete_lab_order');
 Route::any('orders_procedure_delete/{id}', 'DocumentationController@delete_procedure_order')->name('delete_procedure_order');
+Route::any('orders_medication_delete/{id}', 'DocumentationController@delete_medication_order')->name('delete_medication_order');
 
 
 Route::get('/Results/{id}', 'NavigationController@get_results')->name('Results');
@@ -173,6 +174,7 @@ Route::get('/medications/find', 'DocumentationController@find_medications')->nam
 Route::get('/orders_labs/find', 'DocumentationController@find_lab_orders')->name('orders_labs_find');
 Route::get('/orders_imaging/find', 'DocumentationController@find_imaging_orders')->name('orders_imaging_find');
 Route::get('/orders_procedure/find', 'DocumentationController@find_procedure_orders')->name('orders_procedure_find');
+Route::get('/orders_medication/find', 'DocumentationController@find_medication_orders')->name('orders_medication_find');
 Route::get('/instructors/find', 'DocumentationController@find_instructor')->name('instructors_find');
 
 Route::get('/guidance', 'GuidanceController@get_video_list')->name('get_video_list');

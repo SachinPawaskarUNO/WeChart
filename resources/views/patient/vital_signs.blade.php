@@ -4,7 +4,7 @@
     {{--@parent--}}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-14">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
                         <h4 style="margin-top: 0" id="hpi_heading">Vital Signs</h4>
