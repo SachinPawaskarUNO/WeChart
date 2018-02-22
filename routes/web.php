@@ -86,6 +86,7 @@ Route::any('surgical_history_delete/{id}', 'DocumentationController@delete_surgi
 
 Route::get('/Medications/{id}', 'NavigationController@get_medications')->name('Medications');
 Route::post('post_medications}', 'DocumentationController@post_medications')->name('post_medications');
+Route::post('post_medication_dosage}', 'DocumentationController@post_medication_dosage')->name('post_medication_dosage');
 Route::any('medication_delete/{id}', 'DocumentationController@delete_medication')->name('delete_medication');
 
 Route::get('/Vital_Signs/{id}', 'NavigationController@get_vital_signs')->name('Vital Signs');

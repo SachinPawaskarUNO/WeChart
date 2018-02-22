@@ -791,5 +791,14 @@ class doc_controlTableSeeder extends Seeder
                 'created_by' => 1               //admin
             )
         );
+        DB::table('doc_control')->insert (
+            array (
+                'navigation_id' => 7,           //Disposition
+                'label' => 'Dosage',
+                'doc_control_type_id' => 3,     //freetext
+                'freetext_value_type_id' => 3,  //character
+                'created_by' => 1               //admin
+            )
+        );
     }
 }

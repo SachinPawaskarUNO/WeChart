@@ -710,6 +710,7 @@ class DocumentationController extends Controller
                     $active_record['updated_by'] = $request['user_id'];
                     $active_record->save();
                 }
+
                 //Saving comment
                 $comment_medicine_record = active_record::where('patient_id', $request['patient_id'])
                     ->where('navigation_id','7')
@@ -736,6 +737,45 @@ class DocumentationController extends Controller
                 return redirect()->route('Medications',[$request['patient_id']]);
 
             } catch (\Exception $e) {
+                return view('errors/503');
+            }
+        }
+        else
+        {
+            return view('auth/not_authorized');
+        }
+
+    }
+    public function post_medication_dosage(Request $request)
+    {
+        $role='';
+        if(Auth::check()) {
+            $role = Auth::user()->role;
+        }
+
+        if($role == 'Student') {
+            try {
+                $dosage = $_POST['dosage'];
+                $medid = $_POST['medid'];
+                $med = active_record::where('active_record_id', $medid)->first();
+
+
+                //Saving medications
+
+                $active_record = new active_record();
+                $active_record['patient_id'] = $med->patient_id;
+                $active_record['navigation_id'] = '7';
+                $active_record['doc_control_id'] = '80';
+                $active_record['value'] = $dosage;
+                $active_record['doc_control_group'] = $medid;
+                $active_record['created_by'] = $med->created_by;
+                $active_record['updated_by'] = $med->updated_by;
+                $active_record->save();
+
+                //Now redirecting to orders page
+                return redirect()->route('Medications',$med->patient_id);
+
+            }catch (Exception $e) {
                 return view('errors/503');
             }
         }
@@ -2296,6 +2336,7 @@ else {
         $med = active_record::find($id);
         $patient_id = $med->patient_id;
         $med->delete();
+
         return redirect()->route('Medications',$patient_id);
     }
     public function delete_image_order($id)

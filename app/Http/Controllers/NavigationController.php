@@ -417,9 +417,12 @@ class NavigationController extends Controller
                 return view('errors/error', compact('error_message'));
             }
             else {
-                $medications = active_record::where('patient_id', $id)
-                ->where('navigation_id','7')
-                ->where('doc_control_id','16')->get();
+                //$medications = active_record::where('patient_id', $id)
+                //->where('navigation_id','7')
+                //->where('doc_control_id','16')->get();
+
+                $medications = DB::select(DB::raw("select act1.*, act2.value as dosage from active_record act1 left outer join active_record act2 on act1.active_record_id = act2.doc_control_group where act1.patient_id = '$id' and act1.navigation_id = '7' and act1.doc_control_id = '16' and act1.doc_control_group is NULL "));
+                //Log::info($medications);
 
             $medication_comment = active_record::where('patient_id', $id)
                 ->where('navigation_id','7')
@@ -431,6 +434,7 @@ class NavigationController extends Controller
             $videos = video_lookup_value::all()->toArray();
             $pictures = image_lookup_value::all()->toArray();
             $audios = audio_lookup_value::all()->toArray();
+
             //Now get nav names
             foreach ($navIds as $nav_id) {
             $nav = navigation::where('navigation_id', $nav_id)->get();
@@ -443,7 +447,7 @@ class NavigationController extends Controller
             //Extracting disposition to enable or disable the submit button
             $disposition = active_record::where('patient_id', $id)
                 ->where('navigation_id', '34')->get();
-           $labs = active_record::where('patient_id', $id)
+            $labs = active_record::where('patient_id', $id)
                 ->where('navigation_id','31')->where('doc_control_id','73')->get();
 
             $images = active_record::where('patient_id', $id)
@@ -456,7 +460,7 @@ class NavigationController extends Controller
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
              if($status) {
                 $status_id = $status->patient_record_status_id;
-                return view('patient/medications', compact ('status_id','vital_signs_header','medications','medication_comment','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications'));
+                return view('patient/medications', compact ('status_id','vital_signs_header','medications','medication_comment','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','dosage','i'));
 
             }
             else

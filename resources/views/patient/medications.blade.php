@@ -22,24 +22,35 @@
                                     <thead>
                                     <tr class="bg-info">
                                         <th>List of Medicines</th>
-                                        <th colspan="2"></th>
+                                        <th colspan="20">Dosage</th>
+                                        <th> </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($medications as $medicine)
                                         <tr>
                                             <td><p>{{$medicine->value}}</p></td>
-                                            <td style="text-align: right">
-                                                <a href="{{ route( 'delete_medication', ['active_record_id' => $medicine->active_record_id]) }}"
-                                                   class="btn btn-danger confirmation" id="delete">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
-                                                </a>
-                                            </td>
+                                            @if($medicine->dosage==null)
+                                                <td colspan="20"><input type="text" id="Dosage" name="Dosage[]" data-medid="{{$medicine->active_record_id}}"></td>
+                                                <td style="text-align: right">
+                                                    <a href="{{ route( 'delete_medication', ['id' => $medicine->active_record_id]) }}"
+                                                       class="btn btn-danger confirmation" id="delete" >
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td colspan="20"><p>{{$medicine->dosage}}</p></td>
+                                                <td style="text-align: right">
+                                                    <a class="btn btn-danger disabled">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                    </a>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
-                                </table>
-                        </div>
+                            </table>
+                         </div>
                        <hr>
                          <!-- Search For Medications -->
                          <div class="row">
@@ -123,6 +134,17 @@
 
             $("#btn_save_medication").click(function(){
                 inputsChanged = false;
+                $('input[name^="Dosage"]').each(function() {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: '{{route('post_medication_dosage')}}',
+                        data: { dosage:$(this).val() ,medid:$(this).attr("data-medid")}
+                    });
+                });
+
             });
 
             $('#btn_clear_medication').click( function()
