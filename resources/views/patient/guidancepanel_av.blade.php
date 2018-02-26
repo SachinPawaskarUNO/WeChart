@@ -5,11 +5,11 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<style>
-    .glyphicon.glyphicon-remove {
-        font-size: 25px;
-    }
-</style>
+    <style>
+        .glyphicon.glyphicon-remove {
+            font-size: 25px;
+        }
+    </style>
 </head>
 
 <body><br>
@@ -22,20 +22,20 @@
             </div>
         </div>
         <div class="row"><div class="col-sm-1"></div><label> Audio: </label></div>
-            <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-8">
-                    <select class="form-control" id="searchaudio" onchange='Checkaudio(this.value);'>
-                        <option value=""></option>
-                        @foreach($audios as $audio)
-                            <option value="<?php echo $audio['audio_lookup_value_link'];?>"><?php echo $audio['audio_lookup_value_tag'];?></option>
-                        @endforeach
-                        <option value="1"></option>
-                    </select>
-                </div>
-                <div class="col-sm-3"><a id="closeaudio" ><span class="glyphicon glyphicon-remove"></span></a></div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
+                <select class="form-control" id="searchaudio" onchange='Checkaudio(this.value);'>
+                    <option value=""></option>
+                    @foreach($audios as $audio)
+                        <option value="<?php echo $audio['audio_lookup_value_link'];?>"><?php echo $audio['audio_lookup_value_tag'];?></option>
+                    @endforeach
+                    <option value="1"></option>
+                </select>
             </div>
-            <br>
+            <div class="col-sm-3"><a id="closeaudio" ><span class="glyphicon glyphicon-remove"></span></a></div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
@@ -46,46 +46,46 @@
     </div>
     <div class="form-group">
         <div class="row"><div class="col-sm-1"></div><label> Video: </label></div>
-            <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-8">
-                    <select class="form-control" id="search" onchange='Checkfunc(this.value);'>
-                        <option value=""></option>
-                        @foreach($videos as $video)
-                            <option value="<?php echo $video['video_lookup_value_link'];?>"><?php echo $video['video_lookup_value_tag'];?></option>
-                        @endforeach
-                        <option value="1"></option>
-                    </select>
-                </div>
-                <div class="col-sm-3"><a id="closevideo" ><span class="glyphicon glyphicon-remove"></span></a></div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
+                <select class="form-control" id="search" onchange='Checkfunc(this.value);'>
+                    <option value=""></option>
+                    @foreach($videos as $video)
+                        <option value="<?php echo $video['video_lookup_value_link'];?>"><?php echo $video['video_lookup_value_tag'];?></option>
+                    @endforeach
+                    <option value="1"></option>
+                </select>
+            </div>
+            <div class="col-sm-3"><a id="closevideo" ><span class="glyphicon glyphicon-remove"></span></a></div>
 
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-10">
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
                 <div id="myvideo"></div>
-                </div>
-                <div class="col-sm-1"></div>
             </div>
+            <div class="col-sm-1"></div>
+        </div>
 
     </div>
     <div class="form-group">
         <div class="row"><div class="col-sm-1"></div><label> Picture: </label></div>
-            <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-8">
-                    <select class="form-control" id="searchpic" onchange='CheckPicture(this.value);'>
-                        <option value=""></option>
-                        @foreach($pictures as $picture)
-                            <option value="<?php echo $picture['image_lookup_value_link'];?>"><?php echo $picture['image_lookup_value_tag'];?></option>
-                        @endforeach
-                        <option value="1"></option>
-                    </select>
-                </div>
-                <div class="col-sm-3"><a id="closepictures" ><span class="glyphicon glyphicon-remove"></span></a></div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-8">
+                <select class="form-control" id="searchpic" onchange='CheckPicture(this.value);'>
+                    <option value=""></option>
+                    @foreach($pictures as $picture)
+                        <option value="<?php echo $picture['image_lookup_value_link'];?>"><?php echo $picture['image_lookup_value_tag'];?></option>
+                    @endforeach
+                    <option value="1"></option>
+                </select>
             </div>
-            <br>
+            <div class="col-sm-3"><a id="closepictures" ><span class="glyphicon glyphicon-remove"></span></a></div>
+        </div>
+        <br>
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
@@ -97,122 +97,174 @@
 </div>
 
 <script type="text/javascript">
-        function Checkfunc(val){
-            if(val=='')
-            {
-            return 'false';
-            }
-            else
-            {
-                var myId = getId(val);
-                $('#myvideo').addClass('embed-responsive embed-responsive-16by9')
-                document.getElementById('myvideo').innerHTML+='<iframe class="embed-responsive-item" width="380" height="225" allowfullscreen="1" src="//www.youtube.com/embed/' + myId + '" allowfullscreen></iframe>';
-
-                function getId(url)
-                {
-                    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                    var match = url.match(regExp);
-
-                    if (match && match[2].length == 11)
-                    {
-                        return match[2];
-                    }
-                    else
-                    {
-                        return 'error';
-                    }
-                }
-            }
-
-        }
-        $('#search').select2({
-            placeholder: 'Select a video..',
-            width:'100%'
-        });
-
-        function Checkaudio(val){
-            if(val=='')
-            {
-            return 'false';
-            }
-            else
-            {
-                var myId = getId(val);
-                $('#myaudio').addClass('embed-responsive embed-responsive-16by9')
-                document.getElementById('myaudio').innerHTML+='<iframe class="embed-responsive-item" width="380" height="225" allowfullscreen="true" src="//www.youtube.com/embed/' + myId + '" allowfullscreen></iframe>';
-
-                function getId(url)
-                {
-                    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                    var match = url.match(regExp);
-
-                    if (match && match[2].length == 11)
-                    {
-                        return match[2];
-                    }
-                    else
-                    {
-                        return 'error';
-                    }
-                }
-            }
-
-        }
-        $('#searchaudio').select2({
-            placeholder: 'Select an audio..',
-            width:'100%'
-        });
-
-        function CheckPicture(val)
+    function Checkfunc(val){
+        if(val=='')
         {
-            if(val=='')
-            {
             return 'false';
-            }
-            else
+        }
+        else
+        {
+            var myId = getId(val);
+            $('#myvideo').addClass('embed-responsive embed-responsive-16by9')
+            document.getElementById('myvideo').innerHTML+='<iframe class="embed-responsive-item" width="380" height="225" allowfullscreen="1" src="//www.youtube.com/embed/' + myId + '" allowfullscreen></iframe>';
+            function getId(url)
             {
-                console.log("test");
-                console.log(val);
-                $('#mypicture').addClass('embed-responsive embed-responsive-16by9')
-                document.getElementById('mypicture').innerHTML+='<img id="image" class="embed-responsive-item" onmousemove="zoomIn(event)" onmouseout="zoomOut()" width="380" height="225" src='+ val +'>';
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = url.match(regExp);
+                if (match && match[2].length == 11)
+                {
+                    return match[2];
+                }
+                else
+                {
+                    return 'error';
+                }
             }
-
+        }
+    }
+    $('#search').select2({
+        placeholder: 'Select a video..',
+        width:'100%'
+    });
+    function Checkaudio(val){
+        if(val=='')
+        {
+            return 'false';
+        }
+        else
+        {
+            var myId = getId(val);
+            $('#myaudio').addClass('embed-responsive embed-responsive-16by9')
+            document.getElementById('myaudio').innerHTML+='<iframe class="embed-responsive-item" width="380" height="225" allowfullscreen="true" src="//www.youtube.com/embed/' + myId + '" allowfullscreen></iframe>';
+            function getId(url)
+            {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = url.match(regExp);
+                if (match && match[2].length == 11)
+                {
+                    return match[2];
+                }
+                else
+                {
+                    return 'error';
+                }
             }
-        $('#searchpic').select2({
-            placeholder: 'Select a picture..',
-            width:'100%'
-        });
-        $('#mybutton').click(function () {
-            $('#searchpic').val('1').change();
-            $('#mypicture').hide();
-            $('#search').val('1').change();
-            $('#myvideo').hide();
-            $('#searchaudio').val('1').change();
-            $('#myaudio').hide();
-        });
-        $('#closepictures').click(function () {
-            $('#searchpic').val('1').change();
-            $('#mypicture').hide();
-        });
-        $('#closevideo').click(function () {
-            $('#search').val('1').change();
-            $('#myvideo').hide();
-        });
-        $('#closeaudio').click(function () {
-            $('#searchaudio').val('1').change();
-            $('#myaudio').hide();
-        });
-        $('#searchpic').change(function () {
-            $('#mypicture').show();
-        });
-        $('#searchaudio').change(function () {
-            $('#myaudio').show();
-        });
-        $('#search').change(function () {
-            $('#myvideo').show();
-        });
+        }
+    }
+    $('#searchaudio').select2({
+        placeholder: 'Select an audio..',
+        width:'100%'
+    });
+    function CheckPicture(val)
+    {
+        if(val=='')
+        {
+            return 'false';
+        }
+        else
+        {
+            $('#mypicture').addClass('embed-responsive embed-responsive-16by9')
+            document.getElementById('mypicture').innerHTML+='<img id="image" class="embed-responsive-item" width="380" height="225" style="background-color:#EDF1F2;" src='+ val +'>';
+        }
+    }
+    $('#searchpic').select2({
+        placeholder: 'Select a picture..',
+        width:'100%',
+        allowClear: true
+    });
+    $('#mybutton').click(function () {
+        $('#searchpic').val('1').change();
+        $('#mypicture').hide();
+        clearPic();
+        $('#search').val('1').change();
+        $('#myvideo').hide();
+        clearVid();
+        $('#searchaudio').val('1').change();
+        $('#myaudio').hide();
+        clearAuid();
+    });
+    $('#closepictures').click(function () {
+        $('#searchpic').val('1').change();
+        $('#mypicture').hide();
+        clearPic();
+    });
+    function clearPic()
+    {
+        var x = document.getElementById("searchpic");
+        var len= x.length;
+        var txt = new Array();
+        var val = new Array();
+        var i;
+        for (i = 0; i < x.length; i++) {
+            txt[i] = x.options[i].text ;
+            val[i] = x.options[i].value;
+        }
+        $("#searchpic").empty();
+        for (i = 0; i < len; i++) {
+            $('#searchpic').append($('<option>', {
+                value: val[i],
+                text: txt[i]
+            }));
+        }
+    }
 
 
+    $('#closevideo').click(function () {
+        $('#search').val('1').change();
+        $('#myvideo').hide();
+        clearVid();
+    });
+    function clearVid()
+    {
+        var x = document.getElementById("search");
+        var len= x.length;
+        var txt = new Array();
+        var val = new Array();
+        var i;
+        for (i = 0; i < x.length; i++) {
+            txt[i] = x.options[i].text ;
+            val[i] = x.options[i].value;
+        }
+        $("#search").empty();
+        for (i = 0; i < len; i++) {
+            $('#search').append($('<option>', {
+                value: val[i],
+                text: txt[i]
+            }));
+        }
+    }
+    $('#closeaudio').click(function () {
+        $('#searchaudio').val('1').change();
+        $('#myaudio').hide();
+        clearAuid();
+    });
+    function clearAuid(){
+        var x = document.getElementById("searchaudio");
+        var len= x.length;
+        var txt = new Array();
+        var val = new Array();
+        var i;
+        for (i = 0; i < x.length; i++) {
+            txt[i] = x.options[i].text ;
+            val[i] = x.options[i].value;
+        }
+        $("#searchaudio").empty();
+        for (i = 0; i < len; i++) {
+            $('#searchaudio').append($('<option>', {
+                value: val[i],
+                text: txt[i]
+            }));
+        }
+    }
+    $('#searchpic').change(function () {
+        $('#mypicture').show();
+    });
+    $('#searchaudio').change(function () {
+        $('#myaudio').show();
+    });
+    $('#search').change(function () {
+        $('#myvideo').show();
+    });
 </script>
 
 

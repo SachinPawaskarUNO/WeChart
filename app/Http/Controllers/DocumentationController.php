@@ -788,18 +788,20 @@ class DocumentationController extends Controller
         if($role == 'Student') {
             try {
                 $dosage = $_POST['dosage'];
-                $medid = $_POST['medid'];
-                $med = active_record::where('active_record_id', $medid)->first();
-                //Saving medications
-                $active_record = new active_record();
-                $active_record['patient_id'] = $med->patient_id;
-                $active_record['navigation_id'] = '7';
-                $active_record['doc_control_id'] = '80';
-                $active_record['value'] = $dosage;
-                $active_record['doc_control_group'] = $medid;
-                $active_record['created_by'] = $med->created_by;
-                $active_record['updated_by'] = $med->updated_by;
-                $active_record->save();
+                if($dosage!=null) {
+                    $medid = $_POST['medid'];
+                    $med = active_record::where('active_record_id', $medid)->first();
+                    //Saving medications
+                    $active_record = new active_record();
+                    $active_record['patient_id'] = $med->patient_id;
+                    $active_record['navigation_id'] = '7';
+                    $active_record['doc_control_id'] = '80';
+                    $active_record['value'] = $dosage;
+                    $active_record['doc_control_group'] = $medid;
+                    $active_record['created_by'] = $med->created_by;
+                    $active_record['updated_by'] = $med->updated_by;
+                    $active_record->save();
+                }
                 //Now redirecting to orders page
                 return redirect()->route('Medications',$med->patient_id);
             }catch (Exception $e) {

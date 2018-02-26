@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                         <a class="navbar-brand" >
-                            <img src="logos\WeChart.png" height="150%">
+                            <img src="{{ URL::asset('logos/WeChart.png') }}" height="150%">
                         </a>
                   </div>
 
