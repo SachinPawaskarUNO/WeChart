@@ -1,7 +1,50 @@
 @extends('patient.active_record')
 
 @section('documentation_panel')
+    <style type="text/css">
+        .blockDiv {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #FFF;
+            width: 0px;
+            height: 0px;
+            z-index: 10;
+        }
+        #loading-image{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+        #loading-Done{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+    </style>
 
+    <script type="text/javascript" language="javascript">
+
+        function block_screen() {
+            $('<div id="screenBlock"></div>').appendTo('body');
+            $('#screenBlock').css( { opacity: 0, width: $(document).width(), height: $(document).height() } );
+            $('#screenBlock').addClass('blockDiv');
+            $('#screenBlock').animate({opacity: 0.7}, 200);
+        }
+
+        function unblock_screen() {
+            $('#screenBlock').animate({opacity: 0}, 200, function() {
+                $('#screenBlock').remove();
+            });
+        }
+
+    </script>
     @if(in_array("3", $navIds))
         {{--Personal History--}}
         <div class="container-fluid">
@@ -207,7 +250,7 @@
                 </form>
             </div>
         </div>
-    </div>      
+    </div>
     @endif
 
     @if(in_array("5", $navIds))
@@ -292,7 +335,7 @@
                 </div>
 
             </div>
-        </div>        
+        </div>
     @endif
 
     @if(in_array("6", $navIds))
@@ -417,6 +460,8 @@
                     </div>
                 </form>
             </div>
+            <div id="loading-image" style="display: none;"><img src="{{URL::asset('logos/load.gif')}}"> <br> <center><h3> Saving Data..</h3></center></div>
+            <div id="loading-Done" style="display: none;"><img src="{{URL::asset('logos/saved.png')}}"> <br> <center><h3> Saved </h3></center></div>
         </div>
     </div>
     @endif
@@ -425,11 +470,11 @@
                                 <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Medical History
                             </button>
 
-                        
+
 
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script>
          $('#search_diagnosis_personal_history').select2({
@@ -451,7 +496,7 @@
                  cache: false
              }
          });
-         
+
          $('#search_diagnosis_surgical_history').select2({
              placeholder: "Choose Diagnosis...",
              minimumInputLength: 2,
@@ -494,6 +539,8 @@
 
          $(document).ready(function()
          {
+             $('#loading-image').hide();
+             $('#loading-Done').hide();
              $('#new_family_member_panel').hide();
              $("#add_family_member").click(function(){
                  $('#new_family_member_panel').show();
@@ -580,6 +627,8 @@
 
         $('#btn_save_all').click(function()
         {
+            $('#loading-image').show();
+            block_screen();
 
                                  $.ajax(
                                  {
@@ -621,8 +670,16 @@
                                                                                           family_member_status: $(".family_member_status:checked").val(),
                                                                                       },
                                                                                   });
-                                                                                  alert('Medical History data has been saved');
-                                                                                  window.location.reload();
+                                                                                  $("#loading-image").fadeTo("slow", 0);
+                                                                                  $("#loading-image").remove();
+                                                                                  $("#loading-Done").fadeIn("slow");
+                                                                                  setTimeout(function(){
+                                                                                      $("#loading-Done").remove();
+                                                                                  }, 1000);
+                                                                                  unblock_screen()
+                                                                                  setTimeout(function(){
+                                                                                      location.reload();
+                                                                                  }, 1000);
                                                                               }
                                                                           });
 

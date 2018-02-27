@@ -170,7 +170,6 @@
     $('#searchpic').select2({
         placeholder: 'Select a picture..',
         width:'100%',
-        allowClear: true
     });
     $('#mybutton').click(function () {
         $('#searchpic').val('1').change();

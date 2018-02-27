@@ -1,7 +1,50 @@
 @extends('patient.active_record')
 
 @section('documentation_panel')
+    <style type="text/css">
+        .blockDiv {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #FFF;
+            width: 0px;
+            height: 0px;
+            z-index: 10;
+        }
+        #loading-image{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+        #loading-Done{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+    </style>
 
+    <script type="text/javascript" language="javascript">
+
+        function block_screen() {
+            $('<div id="screenBlock"></div>').appendTo('body');
+            $('#screenBlock').css( { opacity: 0, width: $(document).width(), height: $(document).height() } );
+            $('#screenBlock').addClass('blockDiv');
+            $('#screenBlock').animate({opacity: 0.7}, 200);
+        }
+
+        function unblock_screen() {
+            $('#screenBlock').animate({opacity: 0}, 200, function() {
+                $('#screenBlock').remove();
+            });
+        }
+
+    </script>
     @if(in_array("10", $navIds))
         {{--ros_constitutional--}}
         <div class="col-md-6" id="constitutional">
@@ -850,17 +893,22 @@
                         </div>
                     </form>
                 </div>
-
+                <div id="loading-image" style="display: none;"><img src="{{URL::asset('logos/load.gif')}}"> <br> <center><h3> Saving Data..</h3></center></div>
+                <div id="loading-Done" style="display: none;"><img src="{{URL::asset('logos/saved.png')}}"> <br> <center><h3> Saved </h3></center></div>
             </div>
         </div>
 
     @endif
+
+
 
     <button id="MyButton" class="btn btn-primary btn-lg btn-block"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save ROS</button>
 
 
     <script>
         $(document).ready(function(){
+            $('#loading-image').hide();
+            $('#loading-Done').hide();
             var inputsChanged_ros_constitutional_form = false;
             $('#ros_constitutional_form').change(function() {
                 inputsChanged_ros_constitutional_form = true;
@@ -984,11 +1032,14 @@
                 form8 = $('#ros_psychological_form');
                 form9 = $('#ros_gastrointestinal_form');
                 form10 = $('#ros_cardiovascular_form');
+                $('#loading-image').show();
+                block_screen();
                 $.ajax({
                     type: "POST",
                     url:'{{ route('ros_constitutional') }}',
                     data: form1.serialize(),
                     success: function() {
+
                         inputsChanged_ros_constitutional_form = false;
                         $.ajax({
                             type: "POST",
@@ -1049,8 +1100,18 @@
                                                                                             data: form10.serialize(),
                                                                                             success: function() {
                                                                                                 inputsChanged_ros_cardiovascular_form = false;
-                                                                                            alert('Ros data has been saved');
-                                                                                            window.location.reload();
+                                                                                               // $('#loading-image').show();
+                                                                                                $("#loading-image").fadeTo("slow", 0);
+                                                                                                $("#loading-image").remove();
+                                                                                                $("#loading-Done").fadeIn("slow");
+                                                                                                setTimeout(function(){
+                                                                                                    $("#loading-Done").remove();
+                                                                                                }, 1000);
+                                                                                                unblock_screen()
+                                                                                                setTimeout(function(){
+                                                                                                    location.reload();
+                                                                                                }, 1000);
+
                                                                                             }
                                                                                         });
                                                                                     }
@@ -1073,7 +1134,7 @@
                 });
 
             });
-            
+
             window.onbeforeunload = unloadPage;
         });
 

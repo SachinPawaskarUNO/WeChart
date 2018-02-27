@@ -1,6 +1,50 @@
 @extends('patient.active_record')
 
 @section('documentation_panel')
+    <style type="text/css">
+        .blockDiv {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #FFF;
+            width: 0px;
+            height: 0px;
+            z-index: 10;
+        }
+        #loading-image{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+        #loading-Done{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+    </style>
+
+    <script type="text/javascript" language="javascript">
+
+        function block_screen() {
+            $('<div id="screenBlock"></div>').appendTo('body');
+            $('#screenBlock').css( { opacity: 0, width: $(document).width(), height: $(document).height() } );
+            $('#screenBlock').addClass('blockDiv');
+            $('#screenBlock').animate({opacity: 0.7}, 200);
+        }
+
+        function unblock_screen() {
+            $('#screenBlock').animate({opacity: 0}, 200, function() {
+                $('#screenBlock').remove();
+            });
+        }
+
+    </script>
 
     @if(in_array("23", $navIds))
         {{--Eyes--}}
@@ -827,7 +871,8 @@
                         </div>
                     </form>
                 </div>
-
+                <div id="loading-image" style="display: none;"><img src="{{URL::asset('logos/load.gif')}}"> <br> <center><h3> Saving Data..</h3></center></div>
+                <div id="loading-Done" style="display: none;"><img src="{{URL::asset('logos/saved.png')}}"> <br> <center><h3> Saved </h3></center></div>
             </div>
         </div>
 
@@ -836,224 +881,236 @@
     <button id="MyButton" class="btn btn-primary btn-lg btn-block"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Physical Exam</button>
 
     <script>
-         $(document).ready(function(){
-             var inputsChanged_Constitutional_form = false;
-             var inputsChanged_HENT_form = false;
-             var inputsChanged_Eyes_form = false;
-             var inputsChanged_Respiratory_form = false;
-             var inputsChanged_Cardiovascular_form = false;
-             var inputsChanged_Musculoskeletal_form = false;
-             var inputsChanged_Integumentary_form = false;
-             var inputsChanged_Neurological_form = false;
-             var inputsChanged_Psychological_form = false;
-             var inputsChanged_Gastrointestinal_form= false;
+        $(document).ready(function(){
+            $('#loading-image').hide();
+            $('#loading-Done').hide();
+            var inputsChanged_Constitutional_form = false;
+            var inputsChanged_HENT_form = false;
+            var inputsChanged_Eyes_form = false;
+            var inputsChanged_Respiratory_form = false;
+            var inputsChanged_Cardiovascular_form = false;
+            var inputsChanged_Musculoskeletal_form = false;
+            var inputsChanged_Integumentary_form = false;
+            var inputsChanged_Neurological_form = false;
+            var inputsChanged_Psychological_form = false;
+            var inputsChanged_Gastrointestinal_form= false;
 
-             $('#Constitutional_form').change(function() {
-                 inputsChanged_Constitutional_form = true;
-             });
-             $('#HENT_form').change(function() {
-                 inputsChanged_HENT_form = true;
-             });
-             $('#Eyes_form').change(function() {
-                 inputsChanged_Eyes_form = true;
-             });
-             $('#Respiratory_form').change(function() {
-                 inputsChanged_Respiratory_form = true;
-             });
-             $('#Cardiovascular_form').change(function() {
-                 inputsChanged_Cardiovascular_form = true;
-             });
-             $('#Musculoskeletal_form').change(function() {
-                 inputsChanged_Musculoskeletal_form = true;
-             });
-             $('#Integumentary_form').change(function() {
-                 inputsChanged_Integumentary_form = true;
-             });
-             $('#Neurological_form').change(function() {
-                 inputsChanged_Neurological_form = true;
-             });
-             $('#Psychological_form').change(function() {
-                 inputsChanged_Psychological_form = true;
-             });
-             $('#Gastrointestinal_form').change(function() {
-                 inputsChanged_Gastrointestinal_form = true;
-             });
+            $('#Constitutional_form').change(function() {
+                inputsChanged_Constitutional_form = true;
+            });
+            $('#HENT_form').change(function() {
+                inputsChanged_HENT_form = true;
+            });
+            $('#Eyes_form').change(function() {
+                inputsChanged_Eyes_form = true;
+            });
+            $('#Respiratory_form').change(function() {
+                inputsChanged_Respiratory_form = true;
+            });
+            $('#Cardiovascular_form').change(function() {
+                inputsChanged_Cardiovascular_form = true;
+            });
+            $('#Musculoskeletal_form').change(function() {
+                inputsChanged_Musculoskeletal_form = true;
+            });
+            $('#Integumentary_form').change(function() {
+                inputsChanged_Integumentary_form = true;
+            });
+            $('#Neurological_form').change(function() {
+                inputsChanged_Neurological_form = true;
+            });
+            $('#Psychological_form').change(function() {
+                inputsChanged_Psychological_form = true;
+            });
+            $('#Gastrointestinal_form').change(function() {
+                inputsChanged_Gastrointestinal_form = true;
+            });
 
-             function unloadPage(){
-                 if(inputsChanged_Psychological_form || inputsChanged_Constitutional_form || inputsChanged_HENT_form ||inputsChanged_Eyes_form || inputsChanged_Respiratory_form || inputsChanged_Cardiovascular_form || inputsChanged_Musculoskeletal_form || inputsChanged_Integumentary_form || inputsChanged_Neurological_form){
-                     return "Do you want to leave this page?. Changes you made may not be saved.";
-                 }
-             }
-             $("#btn_save_constitutional").click(function(){
-                 inputsChanged_Constitutional_form = false;
-             });
-             $("#btn_save_HENT").click(function(){
-                 inputsChanged_HENT_form = false;
-             });
-             $("#btn_save_eyes").click(function(){
-                 inputsChanged_Eyes_form = false;
-             });
-             $("#btn_save_respiratory").click(function(){
-                 inputsChanged_Respiratory_form = false;
-             });
-             $("#btn_save_cardiovascular").click(function(){
-                 inputsChanged_Cardiovascular_form = false;
-             });
-             $("#btn_save_musculoskeletal").click(function(){
-                 inputsChanged_Musculoskeletal_form = false;
-             });
-             $("#btn_save_integumentary").click(function(){
-                 inputsChanged_Integumentary_form = false;
-             });
-             $("#btn_save_neurological").click(function(){
-                 inputsChanged_Neurological_form = false;
-             });
-             $("#btn_save_psychological").click(function(){
-                 inputsChanged_Psychological_form = false;
-             });
-             $("#btn_save_gastrointestinal").click(function(){
-                 inputsChanged_Gastrointestinal_form = false;
-             });
+            function unloadPage(){
+                if(inputsChanged_Psychological_form || inputsChanged_Constitutional_form || inputsChanged_HENT_form ||inputsChanged_Eyes_form || inputsChanged_Respiratory_form || inputsChanged_Cardiovascular_form || inputsChanged_Musculoskeletal_form || inputsChanged_Integumentary_form || inputsChanged_Neurological_form){
+                    return "Do you want to leave this page?. Changes you made may not be saved.";
+                }
+            }
+            $("#btn_save_constitutional").click(function(){
+                inputsChanged_Constitutional_form = false;
+            });
+            $("#btn_save_HENT").click(function(){
+                inputsChanged_HENT_form = false;
+            });
+            $("#btn_save_eyes").click(function(){
+                inputsChanged_Eyes_form = false;
+            });
+            $("#btn_save_respiratory").click(function(){
+                inputsChanged_Respiratory_form = false;
+            });
+            $("#btn_save_cardiovascular").click(function(){
+                inputsChanged_Cardiovascular_form = false;
+            });
+            $("#btn_save_musculoskeletal").click(function(){
+                inputsChanged_Musculoskeletal_form = false;
+            });
+            $("#btn_save_integumentary").click(function(){
+                inputsChanged_Integumentary_form = false;
+            });
+            $("#btn_save_neurological").click(function(){
+                inputsChanged_Neurological_form = false;
+            });
+            $("#btn_save_psychological").click(function(){
+                inputsChanged_Psychological_form = false;
+            });
+            $("#btn_save_gastrointestinal").click(function(){
+                inputsChanged_Gastrointestinal_form = false;
+            });
 
-             // Reset buttons
-             $("#btn_clear_constitutional").click(function(){
-                 inputsChanged_Constitutional_form = false;
-             });
-             $("#btn_clear_HENT").click(function(){
-                 inputsChanged_HENT_form = false;
-             });
-             $("#btn_clear_eyes").click(function(){
-                 inputsChanged_Eyes_form = false;
-             });
-             $("#btn_clear_respiratory").click(function(){
-                 inputsChanged_Respiratory_form = false;
-             });
-             $("#btn_clear_cardiovascular").click(function(){
-                 inputsChanged_Cardiovascular_form = false;
-             });
-             $("#btn_clear_musculoskeletal").click(function(){
-                 inputsChanged_Musculoskeletal_form = false;
-             });
-             $("#btn_clear_integumentary").click(function(){
-                 inputsChanged_Integumentary_form = false;
-             });
-             $("#btn_clear_neurological").click(function(){
-                 inputsChanged_Neurological_form = false;
-             });
-             $("#btn_clear_psychological").click(function(){
-                 inputsChanged_Psychological_form = false;
-             });
-             $("#btn_clear_gastrointestinal").click(function(){
-                 inputsChanged_Gastrointestinal_form = false;
-             });
-             $('#MyButton').click(function() {
+            // Reset buttons
+            $("#btn_clear_constitutional").click(function(){
+                inputsChanged_Constitutional_form = false;
+            });
+            $("#btn_clear_HENT").click(function(){
+                inputsChanged_HENT_form = false;
+            });
+            $("#btn_clear_eyes").click(function(){
+                inputsChanged_Eyes_form = false;
+            });
+            $("#btn_clear_respiratory").click(function(){
+                inputsChanged_Respiratory_form = false;
+            });
+            $("#btn_clear_cardiovascular").click(function(){
+                inputsChanged_Cardiovascular_form = false;
+            });
+            $("#btn_clear_musculoskeletal").click(function(){
+                inputsChanged_Musculoskeletal_form = false;
+            });
+            $("#btn_clear_integumentary").click(function(){
+                inputsChanged_Integumentary_form = false;
+            });
+            $("#btn_clear_neurological").click(function(){
+                inputsChanged_Neurological_form = false;
+            });
+            $("#btn_clear_psychological").click(function(){
+                inputsChanged_Psychological_form = false;
+            });
+            $("#btn_clear_gastrointestinal").click(function(){
+                inputsChanged_Gastrointestinal_form = false;
+            });
+            $('#MyButton').click(function() {
 
-                 form1 = $('#Constitutional_form');
-                 form2 = $('#HENT_form');
-                 form3 = $('#Eyes_form');
-                 form4 = $('#Respiratory_form');
-                 form5 = $('#Musculoskeletal_form');
-                 form6 = $('#Integumentary_form');
-                 form7 = $('#Neurological_form');
-                 form8 = $('#Psychological_form');
-                 form9 = $('#Gastrointestinal_form');
-                 form10 = $('#Cardiovascular_form');
-                 $.ajax({
-                     type: "POST",
-                     url:'{{ route('Constitutional') }}',
-                     data: form1.serialize(),
-                     success: function() {
-                         inputsChanged_Constitutional_form = false;
+                form1 = $('#Constitutional_form');
+                form2 = $('#HENT_form');
+                form3 = $('#Eyes_form');
+                form4 = $('#Respiratory_form');
+                form5 = $('#Musculoskeletal_form');
+                form6 = $('#Integumentary_form');
+                form7 = $('#Neurological_form');
+                form8 = $('#Psychological_form');
+                form9 = $('#Gastrointestinal_form');
+                form10 = $('#Cardiovascular_form');
+                $('#loading-image').show();
+                block_screen();
+                $.ajax({
+                    type: "POST",
+                    url:'{{ route('Constitutional') }}',
+                    data: form1.serialize(),
+                    success: function() {
+                        inputsChanged_Constitutional_form = false;
 
-                         $.ajax({
-                             type: "POST",
-                             url: '{{ route('HENT') }}',
-                             data: form2.serialize(),
-                             success: function() {
-                                 inputsChanged_HENT_form = false;
+                        $.ajax({
+                            type: "POST",
+                            url: '{{ route('HENT') }}',
+                            data: form2.serialize(),
+                            success: function() {
+                                inputsChanged_HENT_form = false;
 
-                                 $.ajax({
-                                     type: "POST",
-                                     url: '{{ route('Eyes') }}',
-                                     data: form3.serialize(),
-                                     success: function() {
-                                         inputsChanged_Eyes_form = false;
+                                $.ajax({
+                                    type: "POST",
+                                    url: '{{ route('Eyes') }}',
+                                    data: form3.serialize(),
+                                    success: function() {
+                                        inputsChanged_Eyes_form = false;
 
-                                         $.ajax({
-                                             type: "POST",
-                                             url: '{{ route('Respiratory') }}',
-                                             data: form4.serialize(),
-                                             success: function() {
-                                                 inputsChanged_Respiratory_form = false;
+                                        $.ajax({
+                                            type: "POST",
+                                            url: '{{ route('Respiratory') }}',
+                                            data: form4.serialize(),
+                                            success: function() {
+                                                inputsChanged_Respiratory_form = false;
 
-                                                 $.ajax({
-                                                     type: "POST",
-                                                     url: '{{ route('Musculoskeletal') }}',
-                                                     data: form5.serialize(),
-                                                     success: function() {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: '{{ route('Musculoskeletal') }}',
+                                                    data: form5.serialize(),
+                                                    success: function() {
 
-                                                         inputsChanged_Musculoskeletal_form = false;
+                                                        inputsChanged_Musculoskeletal_form = false;
 
-                                                         $.ajax({
-                                                             type: "POST",
-                                                             url: '{{ route('Integumentary') }}',
-                                                             data: form6.serialize(),
-                                                             success: function() {
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: '{{ route('Integumentary') }}',
+                                                            data: form6.serialize(),
+                                                            success: function() {
 
-                                                                 inputsChanged_Integumentary_form = false;
+                                                                inputsChanged_Integumentary_form = false;
 
-                                                                 $.ajax({
-                                                                     type: "POST",
-                                                                     url: '{{ route('Neurological') }}',
-                                                                     data: form7.serialize(),
-                                                                     success: function() {
-                                                                         inputsChanged_Neurological_form = false;
+                                                                $.ajax({
+                                                                    type: "POST",
+                                                                    url: '{{ route('Neurological') }}',
+                                                                    data: form7.serialize(),
+                                                                    success: function() {
+                                                                        inputsChanged_Neurological_form = false;
 
-                                                                         $.ajax({
-                                                                             type: "POST",
-                                                                             url: '{{ route('Psychological') }}',
-                                                                             data: form8.serialize(),
-                                                                             success: function() {
-                                                                                 inputsChanged_Psychological_form = false;
+                                                                        $.ajax({
+                                                                            type: "POST",
+                                                                            url: '{{ route('Psychological') }}',
+                                                                            data: form8.serialize(),
+                                                                            success: function() {
+                                                                                inputsChanged_Psychological_form = false;
 
-                                                                                 $.ajax({
-                                                                                     type: "POST",
-                                                                                     url: '{{ route('Gastrointestinal') }}',
-                                                                                     data: form9.serialize(),
-                                                                                     success: function() {
-                                                                                         inputsChanged_Gastrointestinal_form = false;
-                                                                                         $.ajax({
-                                                                                             type: "POST",
-                                                                                             url: '{{ route('Cardiovascular') }}',
-                                                                                             data: form10.serialize(),
-                                                                                             success: function() {
-                                                                                                 inputsChanged_Cardiovascular_form = false;
-                                                                                                 alert('Physical Exam data has been saved');
-                                                                                                 window.location.reload();
-                                                                                             }
-                                                                                         });
-                                                                                     }
-                                                                                 });
-                                                                             }
-                                                                         });
-                                                                     }
-                                                                 });
-                                                             }
-                                                         });
-                                                     }
-                                                 });
-                                             }
-                                         });
-                                     }
-                                 });
-                             }
-                         });
-                     }
-                 });
+                                                                                $.ajax({
+                                                                                    type: "POST",
+                                                                                    url: '{{ route('Gastrointestinal') }}',
+                                                                                    data: form9.serialize(),
+                                                                                    success: function() {
+                                                                                        inputsChanged_Gastrointestinal_form = false;
+                                                                                        $.ajax({
+                                                                                            type: "POST",
+                                                                                            url: '{{ route('Cardiovascular') }}',
+                                                                                            data: form10.serialize(),
+                                                                                            success: function() {
+                                                                                                inputsChanged_Cardiovascular_form = false;
+                                                                                                $("#loading-image").fadeTo("slow", 0);
+                                                                                                $("#loading-image").remove();
+                                                                                                $("#loading-Done").fadeIn("slow");
+                                                                                                setTimeout(function(){
+                                                                                                    $("#loading-Done").remove();
+                                                                                                }, 1000);
+                                                                                                unblock_screen()
+                                                                                                setTimeout(function(){
+                                                                                                    location.reload();
+                                                                                                }, 1000);
+                                                                                            }
+                                                                                        });
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
 
-             });
-             window.onbeforeunload = unloadPage;
-         });
-     </script>
+            });
+            window.onbeforeunload = unloadPage;
+        });
+    </script>
 
 @endsection
