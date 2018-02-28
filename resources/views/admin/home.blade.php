@@ -17,9 +17,11 @@
                 <a href="{{url('/RemoveEmails')}}" class="btn btn-success">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i> Remove Emails</a>
             </div>
-            <div class="col-md-8">
-                <a class="btn btn-success" style="float: right" href={{url('/ConfigureModules')}}>
-                    <i class="fa fa-cog" aria-hidden="true"></i> Configure Modules</a>
+            <div class="col-md-8 "style= " text-align:right">
+                <a class="btn btn-success"  href={{url('/ConfigureModules')}}>
+                <i class="fa fa-cog" aria-hidden="true"></i> Configure Modules</a>
+                <a class="btn btn-success"  href={{url('/AudioVideoImages')}}>
+                <i class="fa fa-plus" aria-hidden="true"></i> Add Media</a>
             </div>
     </div>
     <br>

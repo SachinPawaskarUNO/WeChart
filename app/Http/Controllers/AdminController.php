@@ -197,6 +197,11 @@ class AdminController extends Controller
         $navs_mods = module_navigation::where('visible', true)->get();
         return view('admin/configureModules', compact ('navs', 'mods', 'navs_mods'));
     }
+    public function getAudioVideoImages()
+    {
+        return view('admin/audiovideoimages');
+    }
+
     public function submitmodule(Request $request)
     {
         $role='';
@@ -271,4 +276,25 @@ class AdminController extends Controller
         $email = User::where('id',$id)->pluck('email');
         return redirect('/home')->with('success','Email has been  deleted');
     }
+    public function getaudios()
+    {
+        $counter = 1;
+        session()->put('counter', 1);
+        return view('admin/audiovideoimages', compact('counter'));
+    }
+
+    public function addAudios()
+    {
+        return view('admin/audiovideoimages');
+    }  
+    public function addVideos()
+    {
+        return view('admin/addVideos');
+    }
+        public function addImages()
+    {
+        return view('admin/addImages');
+    }
+
+
 }

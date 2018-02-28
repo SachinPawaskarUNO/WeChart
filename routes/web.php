@@ -30,6 +30,10 @@ Route::post('AddStudentEmails', 'AdminController@postStudentEmails');
 Route::get('AddMoreStudentEmails', 'AdminController@addStudentEmails');
 Route::get('RemoveStudentEmails', 'AdminController@removeStudentEmails');
 
+//Add Videos
+Route::get('/AddVideos', 'AdminController@addVideos');
+//Add Images
+Route::get('/AddImages', 'AdminController@addImages');
 //Add Instructor emails
 Route::get('/AddInstructorEmails', 'AdminController@getInstructorEmails');
 Route::post('AddInstructorEmails', 'AdminController@postInstructorEmails');
@@ -45,6 +49,7 @@ Route::any('archive/{id}', 'AdminController@archive_user')->name('archiveuser');
 
 //Admin module management
 Route::get('/ConfigureModules','AdminController@getConfigureModules');
+Route::get('/AudioVideoImages','AdminController@getAudioVideoImages');
 Route::post('submitmodule', 'AdminController@submitmodule')->name('submitmodule');
 Route::post('deletemodule/{modid}', 'AdminController@deletemodule')->name('deletemodule');
 
