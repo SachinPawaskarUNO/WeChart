@@ -14,7 +14,7 @@
             </div>
             <br><br>
             <div class="panel panel-default">
-                <div class="panel-heading" style="backgroundd-color: lightblue">
+                <div class="panel-heading" style="background-color: lightblue">
                         <h4>Add Instructor Email Address</h4>
                 </div>
 
