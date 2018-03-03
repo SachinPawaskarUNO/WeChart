@@ -30,10 +30,7 @@ Route::post('AddStudentEmails', 'AdminController@postStudentEmails');
 Route::get('AddMoreStudentEmails', 'AdminController@addStudentEmails');
 Route::get('RemoveStudentEmails', 'AdminController@removeStudentEmails');
 
-//Add Videos
-Route::get('/AddVideos', 'AdminController@addVideos');
-//Add Images
-Route::get('/AddImages', 'AdminController@addImages');
+
 //Add Instructor emails
 Route::get('/AddInstructorEmails', 'AdminController@getInstructorEmails');
 Route::post('AddInstructorEmails', 'AdminController@postInstructorEmails');
@@ -42,14 +39,21 @@ Route::get('RemoveInstructorEmails', 'AdminController@removeInstructorEmails');
 
 //Admin can manage emails
 Route::get('/RemoveEmails', 'AdminController@get_remove_emails')->name('RemoveEmails');
-
+//Add can add videos
+Route::get('/AddVideos', 'AdminController@getVideos')->name("AddVideo");
+Route::post('AddVideos', 'AdminController@postVideos');
+//Add can add images
+Route::get('/AddImages', 'AdminController@getImages')->name("AddImage");
+Route::post('AddImages', 'AdminController@postImages');
+//Add can add audios
+Route::get('/AddAudios', 'AdminController@getAudios')->name("AddAudio");
+Route::post('AddAudios', 'AdminController@postAudios');
 //Admin can delete a email from remove email page.
 Route::any('deleteuser/{id}', 'AdminController@delete_email')->name('deleteuser');
 Route::any('archive/{id}', 'AdminController@archive_user')->name('archiveuser');
 
 //Admin module management
 Route::get('/ConfigureModules','AdminController@getConfigureModules');
-Route::get('/AudioVideoImages','AdminController@getAudioVideoImages');
 Route::post('submitmodule', 'AdminController@submitmodule')->name('submitmodule');
 Route::post('deletemodule/{modid}', 'AdminController@deletemodule')->name('deletemodule');
 

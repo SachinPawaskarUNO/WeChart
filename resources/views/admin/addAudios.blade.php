@@ -5,9 +5,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <div class="container" style="width: 100%">
         <div class="row" style="padding-top: 0; margin: 0">
-            <h3 align="center">Video</h3>
+            <h3 align="center">Audio</h3>
             <br>
         </div>
+
         <div class="col-md-8 col-md-offset-2">
             <div class="row">
 
@@ -23,30 +24,31 @@
                 </div>
             </div>
             <br>
-
             <div class="panel panel-default">
                 <div class="panel-heading" style="background-color: lightblue">
-                    <h4>Add Video</h4>
+                    <h4>Add Audio</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('AddVideos') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('AddAudios') }}">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="form-group">
                                 @if($error=='Does not Exist')
-                                <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Tag :</label>
-                                <div class="col-md-3">
-                                    <input id="tag" type="tag" class="form-control" name="tag" required>
-                                </div>
-                                <label for="link" class="col-md-1 control-label" style="padding-right: 0">Link :</label>
-                                <div class="col-md-6">
-                                    <input id="link" type="link" class="form-control" name="link" required>
-                                </div>
+                                    <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Tag
+                                        :</label>
+                                    <div class="col-md-3">
+                                        <input id="tag" type="tag" class="form-control" name="tag" required>
+                                    </div>
+                                    <label for="link" class="col-md-1 control-label" style="padding-right: 0">Link
+                                        :</label>
+                                    <div class="col-md-6">
+                                        <input id="link" type="link" class="form-control" name="link" required>
+                                    </div>
                             </div>
                         </div>
 
                         <div class="col-md-2" style="float:right">
-                            <a type="button" href="{{url('AddMoreVideos')}}">
+                            <a type="button" href="{{url('AddMoreAudios')}}">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i> Add row
                             </a>
                         </div>
@@ -63,20 +65,25 @@
             </div>
         </div>
     </div>
+
     @else
-        <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Tag :</label>
+        <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Tag
+            :</label>
         <div class="col-md-3">
             <input id="tag" type="tag" class="form-control" name="tag" required>
         </div>
-        <label for="link" class="col-md-1 control-label" style="padding-right: 0">Link :</label>
+        <label for="link" class="col-md-1 control-label" style="padding-right: 0">Link
+            :</label>
         <div class="col-md-6">
             <input id="link" type="link" class="form-control" name="link" required>
         </div>
+        <br>
+
         </div>
         </div>
 
         <div class="col-md-2" style="float:right">
-            <a type="button" href="{{url('AddMoreVideos')}}">
+            <a type="button" href="{{url('AddMoreAudios')}}">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> Add row
             </a>
         </div>
@@ -92,10 +99,11 @@
         </div>
         </div>
         <div class="col-md-6">
-            <h7>Video already exists</h7>
+            <h7>Audio already exists</h7>
         </div>
         </div>
         </div>
-@endif
+
+        @endif
 
 @endsection
