@@ -135,136 +135,6 @@ class AdminController extends Controller
             return view ('errors/503');
         }
     }
-    public function getAudios()
-    {
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Admin') {
-            $exists=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_id');
-            if(($exists->count())>0)
-            {
-                $error='Exists';
-                DB::table('audio_lookup_value')->where('audio_lookup_value_id',$exists)->update(['archived' => 'false']);
-
-            }
-            else{
-                $error='Does not Exist';
-            }
-            return view('admin/addAudios',compact('error'));
-        }
-        else
-        {
-            return view('auth/not_authorized');
-        }
-    }
-    public function postAudios(Request $request)
-    {
-        $exist_tag=audio_lookup_value::where('audio_lookup_value_tag',$request['tag'])->pluck('audio_lookup_value_tag');
-        $exist_link=audio_lookup_value::where('audio_lookup_value_link',$request['link'])->pluck('audio_lookup_value_link');
-        if(($exist_tag->count())>0) {
-            DB::table('audio_lookup_value')->where('audio_lookup_value_tag',$request['tag'])->update(['archived' => 'true']);
-        }
-        elseif(($exist_link->count())>0) {
-            DB::table('audio_lookup_value')->where('audio_lookup_value_link',$request['link'])->update(['archived' => 'true']);
-        }else {
-            $audio_lookup_value = new audio_lookup_value;
-            $audio_lookup_value['audio_lookup_value_tag'] = $request['tag'];
-            $audio_lookup_value['audio_lookup_value_link'] = $request['link'];
-            $audio_lookup_value['archived'] = false;
-            $audio_lookup_value['created_by'] = 1;
-            $audio_lookup_value->save();
-        }
-        return redirect()->route('AddAudio');
-    }
-    
-    public function getVideos()
-    {
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Admin') {
-            $exists=video_lookup_value::where('archived','true')->pluck('video_lookup_value_id');
-            if(($exists->count())>0)
-            {
-                $error='Exists';
-                DB::table('video_lookup_value')->where('video_lookup_value_id',$exists)->update(['archived' => 'false']);
-
-            }
-            else{
-                $error='Does not Exist';
-            }
-            return view('admin/addVideos',compact('error'));
-        }
-        else
-        {
-            return view('auth/not_authorized');
-        }
-    }
-    public function postVideos(Request $request)
-    {
-        $exist_tag=video_lookup_value::where('video_lookup_value_tag',$request['tag'])->pluck('video_lookup_value_tag');
-        $exist_link=video_lookup_value::where('video_lookup_value_link',$request['link'])->pluck('video_lookup_value_link');
-        if(($exist_tag->count())>0) {
-            DB::table('video_lookup_value')->where('video_lookup_value_tag',$request['tag'])->update(['archived' => 'true']);
-        }
-        elseif(($exist_link->count())>0) {
-            DB::table('video_lookup_value')->where('video_lookup_value_link',$request['link'])->update(['archived' => 'true']);
-        }else {
-            $video_lookup_value = new video_lookup_value;
-            $video_lookup_value['video_lookup_value_tag'] = $request['tag'];
-            $video_lookup_value['video_lookup_value_link'] = $request['link'];
-            $video_lookup_value['archived'] = false;
-            $video_lookup_value['created_by'] = 1;
-            $video_lookup_value->save();
-        }
-        return redirect()->route('AddVideo');
-    }
-    public function getImages()
-    {
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Admin') {
-            $exists=image_lookup_value::where('archived','true')->pluck('image_lookup_value_id');
-            if(($exists->count())>0)
-            {
-                $error='Exists';
-                DB::table('image_lookup_value')->where('image_lookup_value_id',$exists)->update(['archived' => 'false']);
-
-            }
-            else{
-                $error='Does not Exist';
-            }
-            return view('admin/addImages',compact('error'));
-        }
-        else
-        {
-            return view('auth/not_authorized');
-        }
-    }
-    public function postImages(Request $request)
-    {
-        $exist_tag=image_lookup_value::where('image_lookup_value_tag',$request['tag'])->pluck('image_lookup_value_tag');
-        $exist_link=image_lookup_value::where('image_lookup_value_link',$request['link'])->pluck('image_lookup_value_link');
-        if(($exist_tag->count())>0) {
-            DB::table('image_lookup_value')->where('image_lookup_value_tag',$request['tag'])->update(['archived' => 'true']);
-        }
-        elseif(($exist_link->count())>0) {
-            DB::table('image_lookup_value')->where('image_lookup_value_link',$request['link'])->update(['archived' => 'true']);
-        }else {
-            $image_lookup_value = new image_lookup_value;
-            $image_lookup_value['image_lookup_value_tag'] = $request['tag'];
-            $image_lookup_value['image_lookup_value_link'] = $request['link'];
-            $image_lookup_value['archived'] = false;
-            $image_lookup_value['created_by'] = 1;
-            $image_lookup_value->save();
-        }
-        return redirect()->route('AddImage');
-    }
     public function addInstructorEmails()
     {
         $counter = session()->get('counter');
@@ -280,6 +150,216 @@ class AdminController extends Controller
         session()->put('counter', $counter);
         $Error = '';
         return view('admin/addInstructorEmails',compact('Error','counter'));
+    }
+    public function getAudios()
+    {
+        $role='';
+        if(Auth::check()) {
+            $role = Auth::user()->role;
+        }
+        if($role == 'Admin') {
+            $counter = 1;
+            session()->put('counter', 1);
+            $Error = '';
+            $exists=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_id');
+            $count = $exists->count();
+            $exists_tag=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_tag');
+            if(($exists->count())>0)
+            {
+                $error='Exists';
+                for($i=0; $i<($exists->count()); $i++)
+                {
+                    DB::table('audio_lookup_value')->where('audio_lookup_value_id',$exists[$i])->update(['archived' => 'false']);
+                }
+
+
+            }
+            else{
+                $error='Does not Exist';
+            }
+            return view('admin/addAudios',compact('error','counter','count','Error','exists_tag'));
+        }
+        else
+        {
+            return view('auth/not_authorized');
+        }
+    }
+    public function postAudios(Request $request)
+    {
+        $counter = session()->get('counter');
+        for ($i = 0; $i < $counter; $i++) {
+            $exist_tag = audio_lookup_value::where('audio_lookup_value_tag', $request['tag'][$i])->pluck('audio_lookup_value_tag');
+            $exist_link = audio_lookup_value::where('audio_lookup_value_link', $request['link'][$i])->pluck('audio_lookup_value_link');
+            if (($exist_tag->count()) > 0) {
+                DB::table('audio_lookup_value')->where('audio_lookup_value_tag', $request['tag'][$i])->update(['archived' => 'true']);
+            } elseif (($exist_link->count()) > 0) {
+                DB::table('audio_lookup_value')->where('audio_lookup_value_link', $request['link'][$i])->update(['archived' => 'true']);
+            } else {
+                $audio_lookup_value = new audio_lookup_value;
+                $audio_lookup_value['audio_lookup_value_tag'] = $request['tag'][$i];
+                $audio_lookup_value['audio_lookup_value_link'] = $request['link'][$i];
+                $audio_lookup_value['archived'] = false;
+                $audio_lookup_value['created_by'] = 1;
+                $audio_lookup_value->save();
+            }
+        }
+
+        return redirect()->route('AddAudio');
+    }
+    public function addAudios()
+    {
+        $counter = session()->get('counter');
+        $counter = $counter + 1;
+        session()->put('counter', $counter);
+        $error = '';
+        return view('admin/addAudios',compact('error','counter'));
+    }
+    public function removeAudios()
+    {
+        $counter = session()->get('counter');
+        $counter = $counter - 1;
+        session()->put('counter', $counter);
+        $error = '';
+        return view('admin/addAudios',compact('error','counter'));
+    }
+    public function getVideos()
+    {
+        $role='';
+        if(Auth::check()) {
+            $role = Auth::user()->role;
+        }
+        if($role == 'Admin') {
+            $counter = 1;
+            session()->put('counter', 1);
+            $Error = '';
+            $exists=video_lookup_value::where('archived','true')->pluck('video_lookup_value_id');
+            $count = $exists->count();
+            $exists_tag=video_lookup_value::where('archived','true')->pluck('video_lookup_value_tag');
+            if(($exists->count())>0)
+            {
+                $error='Exists';
+                for($i=0; $i<($exists->count()); $i++)
+                {
+                    DB::table('video_lookup_value')->where('video_lookup_value_id',$exists[$i])->update(['archived' => 'false']);
+                }
+
+            }
+            else{
+                $error='Does not Exist';
+            }
+            return view('admin/addVideos',compact('error','counter','Error','count','exists_tag'));
+        }
+        else
+        {
+            return view('auth/not_authorized');
+        }
+    }
+    public function postVideos(Request $request)
+    {
+        $counter = session()->get('counter');
+        for ($i = 0; $i < $counter; $i++) {
+            $exist_tag = video_lookup_value::where('video_lookup_value_tag', $request['tag'][$i])->pluck('video_lookup_value_tag');
+            $exist_link = video_lookup_value::where('video_lookup_value_link', $request['link'][$i])->pluck('video_lookup_value_link');
+            if (($exist_tag->count()) > 0) {
+                DB::table('video_lookup_value')->where('video_lookup_value_tag', $request['tag'][$i])->update(['archived' => 'true']);
+            } elseif (($exist_link->count()) > 0) {
+                DB::table('video_lookup_value')->where('video_lookup_value_link', $request['link'][$i])->update(['archived' => 'true']);
+            } else {
+                $video_lookup_value = new video_lookup_value;
+                $video_lookup_value['video_lookup_value_tag'] = $request['tag'][$i];
+                $video_lookup_value['video_lookup_value_link'] = $request['link'][$i];
+                $video_lookup_value['archived'] = false;
+                $video_lookup_value['created_by'] = 1;
+                $video_lookup_value->save();
+            }
+        }
+        return redirect()->route('AddVideo');
+    }
+    public function addVideos()
+    {
+        $counter = session()->get('counter');
+        $counter = $counter + 1;
+        session()->put('counter', $counter);
+        $error = '';
+        return view('admin/addVideos',compact('error','counter'));
+    }
+    public function removeVideos()
+    {
+        $counter = session()->get('counter');
+        $counter = $counter - 1;
+        session()->put('counter', $counter);
+        $error = '';
+        return view('admin/addVideos',compact('error','counter'));
+    }
+    public function getImages()
+    {
+        $role='';
+        if(Auth::check()) {
+            $role = Auth::user()->role;
+        }
+        if($role == 'Admin') {
+            $counter = 1;
+            session()->put('counter', 1);
+            $Error = '';
+            $exists=image_lookup_value::where('archived','true')->pluck('image_lookup_value_id');
+            $count = $exists->count();
+            $exists_tag=image_lookup_value::where('archived','true')->pluck('image_lookup_value_tag');
+            if(($exists->count())>0)
+            {
+                $error='Exists';
+                for($i=0; $i<($exists->count()); $i++)
+                {
+                    DB::table('image_lookup_value')->where('image_lookup_value_id',$exists[$i])->update(['archived' => 'false']);
+
+                }
+
+            }
+            else{
+                $error='Does not Exist';
+            }
+            return view('admin/addImages',compact('error','counter','Error','count','exists_tag'));
+        }
+        else
+        {
+            return view('auth/not_authorized');
+        }
+    }
+    public function postImages(Request $request)
+    {
+        $counter = session()->get('counter');
+        for ($i = 0; $i < $counter; $i++) {
+            $exist_tag = image_lookup_value::where('image_lookup_value_tag', $request['tag'][$i])->pluck('image_lookup_value_tag');
+            $exist_link = image_lookup_value::where('image_lookup_value_link', $request['link'][$i])->pluck('image_lookup_value_link');
+            if (($exist_tag->count()) > 0) {
+                DB::table('image_lookup_value')->where('image_lookup_value_tag', $request['tag'][$i])->update(['archived' => 'true']);
+            } elseif (($exist_link->count()) > 0) {
+                DB::table('image_lookup_value')->where('image_lookup_value_link', $request['link'][$i])->update(['archived' => 'true']);
+            } else {
+                $image_lookup_value = new image_lookup_value;
+                $image_lookup_value['image_lookup_value_tag'] = $request['tag'][$i];
+                $image_lookup_value['image_lookup_value_link'] = $request['link'][$i];
+                $image_lookup_value['archived'] = false;
+                $image_lookup_value['created_by'] = 1;
+                $image_lookup_value->save();
+            }
+        }
+        return redirect()->route('AddImage');
+    }
+    public function addImages()
+    {
+        $counter = session()->get('counter');
+        $counter = $counter + 1;
+        session()->put('counter', $counter);
+        $error = '';
+        return view('admin/addImages',compact('error','counter'));
+    }
+    public function removeImages()
+    {
+        $counter = session()->get('counter');
+        $counter = $counter - 1;
+        session()->put('counter', $counter);
+        $error = '';
+        return view('admin/addImages',compact('error','counter'));
     }
     public function get_remove_emails()
     {
