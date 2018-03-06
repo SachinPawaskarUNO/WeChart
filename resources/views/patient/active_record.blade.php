@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @extends('patient.vital_signs_header')
 @section('Maincontent')
+<br>
 <style type="text/css">
         .ScrollStyle {
             /*float: left;
             width: 445px;*/
-            height: 413px;
+            height: 100vh;
             overflow-y: auto; 
         }
         </style>
@@ -21,7 +22,7 @@
             {{--Navigation Panel--}}
 
             <div class="col-md-2" style="padding-left: 0;padding-right: 0">
-                <div class="ScrollStyle">
+                <div class="ScrollStyle" style="overflow:auto;height:100vh">
 
                 <ul class="list-group test" style="cursor: pointer;">
                     <li class="list-group-item">
@@ -82,16 +83,16 @@
                 <br>
                 <div class="container-fluid">
                     <ul class="nav nav-pills">
-                        <li><a data-toggle="pill" href="#main">Main</a></li>
-                        <li class="active"><a data-toggle="pill" href="#ddx">DDx</a></li>
+                        <li class="active"><a data-toggle="pill" href="#main">Main</a></li>
+                        <li><a data-toggle="pill" href="#ddx">DDx</a></li>
                         <li><a data-toggle="pill" href="#av">A/V</a></li>
                     </ul>
 
                     <div class="tab-content">
-                        <div id="main" class="tab-pane fade">
+                        <div id="main" class="tab-pane fade in active">
                             @include('patient.guidancepanel_main')
                         </div>
-                        <div id="ddx" class="tab-pane fade in active">
+                        <div id="ddx" class="tab-pane fade">
                             @include('patient.guidancepanel_ddx')
                         </div>
                         <div id="av" class="tab-pane fade">
@@ -100,11 +101,12 @@
 
                     </div>
                 </div>
+            </div>
 
                 <!-- Guidance Panel -->
 
             </div>
         </div>
-        </div>
     </div>
+</div>
 @endsection

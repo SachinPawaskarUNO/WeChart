@@ -2,6 +2,18 @@
 
 @section('documentation_panel')
     <style type="text/css">
+        #btn_save_all{
+            position: absolute;
+            left:13.5vw;
+            top: 2vh;
+            center: 100vw;
+            width: 15em;
+            margin-top: -2.5em;
+            height: 5%;
+            line-height: 5%;
+            padding-top: 1%;
+            margin-right: 20vw;
+        }
         .blockDiv {
             position: absolute;
             top: 0px;
@@ -45,6 +57,9 @@
         }
 
     </script>
+    <br>
+    <br>
+
 
     @if(in_array("3", $navIds))
         {{--Personal History--}}
@@ -467,8 +482,8 @@
     </div>
     @endif
 
-                            <button type="submit" id="btn_save_all" class="btn btn-primary btn-lg btn-block" style="float: left">
-                                <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Medical History
+                            <button type="submit" id="btn_save_all" class="btn btn-primary btn-lg btn-block" value="">
+                                <center><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Medical History </center>
                             </button>
 
 
