@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
+     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -135,7 +137,7 @@
 
         {{ Form::open(array('method' => 'post', 'route' => array('submitmodule'))) }}
         <div class="row" id="childTable" style="overflow-x: scroll;width: 1200px">
-        <table border="2" >
+        <table border="2" id="edokati">
             <tr>
                 <td style="background-color:#5DADE2;">
                     <h5 style="width: 150px;margin-left: 1%;margin-right: 1%">
@@ -187,9 +189,9 @@
                    <input type="text" name="modulename" required id="new_module_name" placeholder="Module name">
                    @if ($errors->has('modulename'))
                        <span class="help-block" >
-                                        <strong id="module_alert">{{ $errors->first('modulename') }}</strong>
+                                        <strong id="module_alert" >{{ $errors->first('modulename') }}</strong>
                        </span>
-                   @endif
+                   @endif 
                </td>
                @foreach ($navs as $nav)
                    <td align="middle">
@@ -211,6 +213,7 @@
             <a href="#" title="" class="btn btn-primary" id="cancel_add_module" style="float: left">
                 Cancel</a>
             <br>
+            <a id ="123"></a>
 
         </div>
         {{ Form::close() }}
@@ -218,12 +221,30 @@
 <br>
     <script>
         $(document).ready(function(){
+        
+            $("#add_new_module").click(function () {
+                
+                var x = document.getElementById("main_table").rows.length;
+                var y = $("#new_module_name").val();
+                var i;
+                for (i=2;i<x;i++) {
+                    var z=document.getElementById("main_table").rows[i].cells[0].innerHTML;        
+                    if(z.trim() == y.trim()) {
+                        alert("Module name already exist")
+                        return false;
+                    } 
+                 }
+            });
+
+        
             $("#new_module_name").keyup(function() {
                 if($(this).val() != '') {
-                    $('#add_new_module').prop('disabled', false);
+                    $('#add_new_module').prop('disabled', false); 
                 }
             });
 
+            
+       
             $('#childTable').hide();
 
             $("#add-record").click(function(){

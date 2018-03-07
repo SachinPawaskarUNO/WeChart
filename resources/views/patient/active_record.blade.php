@@ -9,11 +9,11 @@
 
     {{--Three Panels--}}
     <div class="container-fluid" style="margin-top: 0;padding-top: 0;padding-left: 1%;">
-        <div class="row" style="border: solid;padding-top: 0;border-top:0;">
+        <div class="row" style="border: solid;padding-top: 0;border-top:0;height: 100%;">
             {{--Navigation Panel--}}
 
-            <div class="col-md-2" style="padding-left: 0;padding-right: 0">
-
+            <div class="col-md-2" style="padding-left: 0;padding-right: 0;height: auto;">
+                
                 <ul class="list-group test" style="cursor: pointer;">
                     <li class="list-group-item">
                         {{--Adding Demographics to existing nav modules--}}
@@ -51,18 +51,21 @@
                         @endif
                     </li>
                 </ul>
+                
             </div>
 
 
             {{--Documentation Panel--}}
-            <div class="col-md-6" style="padding-left: 0;margin-left: 0;padding-right: 0;margin-right: 0">
+            <div class="col-md-6" style="padding-left: 0;margin-left: 0;padding-right: 5px;margin-right: 0;height: auto;">
+                
                 @yield('documentation_panel')
+                
             </div>
 
             {{--Guidance Panel--}}
 
-            <div class="col-md-4" style="float: right;border: thin solid grey; height: auto; padding: 0; border-radius: 5px;" id="guidance_panel">
-
+            <div class="col-md-4" style="float: right;border: thin solid lightblue; padding: 0; border-radius: 5px; height: auto;" id="guidance_panel">
+                
                 <!-- Guidance Panel -->
 
                 <div style="background-color: lightpink; display: flex; border-radius: 5px;">
@@ -90,8 +93,8 @@
                 </div>
 
                 <!-- Guidance Panel -->
-
+                </div>
             </div>
-        </div>
+        
     </div>
 @endsection

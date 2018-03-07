@@ -209,13 +209,14 @@ class AdminController extends Controller
             $this->validate($request, [
                 'modulename' => 'required',
             ], $messages);
+
             $module = new module;
             $module->module_name = $request->input('modulename');
             $module->archived = false;
             $module->save();
             $var = $module->module_id;
             $navs = $request->input('navs');
-            //if any child selected, parent shoul get auto selected.
+            //if any child selected, parent should get auto selected.
             for ($i = 3; $i < 7; $i++) {
                 if (in_array("$i", $navs)) {
                     array_push($navs, '2');
@@ -243,6 +244,8 @@ class AdminController extends Controller
             $mods = module::where('archived', false)->get();
             $navs_mods = module_navigation::where('visible', true)->get();
             return view('admin/configureModules', compact('navs', 'mods', 'navs_mods'));
+        
+
         }
         else
         {
