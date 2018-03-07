@@ -42,20 +42,17 @@ Route::get('/RemoveEmails', 'AdminController@get_remove_emails')->name('RemoveEm
 //Admin can add videos
 Route::get('/AddVideos', 'AdminController@getVideos')->name("AddVideo");
 Route::post('AddVideos', 'AdminController@postVideos');
-Route::get('AddMoreVideos', 'AdminController@addVideos');
-Route::get('RemoveVideos', 'AdminController@removeVideos');
+
 
 //Admin can add images
 Route::get('/AddImages', 'AdminController@getImages')->name("AddImage");
 Route::post('AddImages', 'AdminController@postImages');
-Route::get('AddMoreImages', 'AdminController@addImages');
-Route::get('RemoveImages', 'AdminController@removeImages');
+
 
 //Admin can add audios
 Route::get('/AddAudios', 'AdminController@getAudios')->name("AddAudio");
 Route::post('AddAudios', 'AdminController@postAudios');
-Route::get('AddMoreAudios', 'AdminController@addAudios');
-Route::get('RemoveAudios', 'AdminController@removeAudios');
+
 
 //Admin can delete a email from remove email page.
 Route::any('deleteuser/{id}', 'AdminController@delete_email')->name('deleteuser');

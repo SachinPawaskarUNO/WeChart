@@ -26,16 +26,16 @@
             <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}"/>
             <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}"/>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-2">
                     <label for="Diagnosis"> Diagnosis:</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <select id="search_diagnosis_ddx" class="form-control" name="search_diagnosis_ddx[]" multiple></select>
+            
+                <div class="col-md-9">
+                    <select id="search_diagnosis_ddx" class="js-example-basic-multiple js-states form-control" name="search_diagnosis_ddx[]" multiple style="width: 100%"></select>
                 </div>
+                
             </div>
-                <br>
+              <br>  
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered table-hover" id="ddxtable">
@@ -113,15 +113,12 @@
         }
     });
     $(document).ready(function(){
-
         var inputsChanged = false;
-
         function unloadPage(){
             if(inputsChanged){
                 return "Do you want to leave this page?. Changes you made may not be saved.";
             }
         }
-
         $("#btn_save_ddx").click(function(){
             inputsChanged = false;
             $('input[name^="Comments"]').each(function() {

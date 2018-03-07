@@ -31,9 +31,9 @@
                     <form class="form-horizontal" method="POST" action="{{ url('AddVideos') }}">
                         {{ csrf_field() }}
                         @for ($i = 0; $i < $counter ; $i++)
-                        <div class="row">
+                        <div class="row" id="videolist">
                             <div class="form-group">
-                                <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Tag :</label>
+                                <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Name :</label>
                                 <div class="col-md-3">
                                     <input id="tag[]" type="tag" class="form-control" name="tag[]" required>
                                 </div>
@@ -44,18 +44,11 @@
                             </div>
                         </div>
                         @endfor
-                        @if ($counter != '1')
-                            <div class="col-md-4" style="float:right">
-                                <a type="button" href="{{url('RemoveVideos')}}">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i> Remove row
-                                </a>
-                            </div>
 
-                        @endif
-                        <div class="col-md-4" style="float:right">
-                            <a type="button" href="{{url('AddMoreVideos')}}">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Add row
-                            </a>
+                        <div class="col-md-2" style="float:right">
+                               <a href="#" type="button" id="addvideo">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Add row
+                                </a>
                         </div>
                         <br>
                         <div class="form-group">
@@ -85,9 +78,26 @@
             @endif
         </div>
     <script>
-        $(document).ready(function () {
-            $(".alert").fadeOut(5000);
-        });
+            $(document).ready(function() {
+                $(".alert").fadeOut(5000);
+                var max_fields      = 10; //maximum input boxes allowed
+                var wrapper         = $("#videolist"); //Fields wrapper
+                var add_button      = $("#addvideo"); //Add button ID
 
-    </script>
+                var x = 1; //initlal text box count
+                $(add_button).click(function(e){ //on add input button click
+                    e.preventDefault();
+                    if(x < max_fields){ //max input box allowed
+                        x++; //text box increment   
+                    $(wrapper).append('<div class="row"><br><label for="tag" class="col-md-1 control-label" style="padding-right: 0">Name :</label> <div class="col-md-3"> <input id="tag[]" type="tag" class="form-control" name="tag[]" required> </div> <label for="link" class="col-md-1 control-label" style="padding-right: 0">Link :</label> <div class="col-md-6"> <input id="link[]" type="link" class="form-control" name="link[]" required></div><br><div class="col-md-1" ><a href="#" class="remove_field"><i class="fa fa-close" style="font-size:25px"></i></a></div> </div>');
+                }
+                
+                });
+
+                $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                    e.preventDefault(); $(this).parent().parent('div').remove(); x--;
+                })
+
+            });
+        </script>
 @endsection

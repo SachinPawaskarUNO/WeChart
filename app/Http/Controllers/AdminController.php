@@ -155,8 +155,8 @@ class AdminController extends Controller
     }
     public function postAudios(Request $request)
     {
-        $counter = session()->get('counter');
-        for ($i = 0; $i < $counter; $i++) {
+        $counter = count($request['link']);
+        for ($i = 0; $i <$counter; $i++) {
             $exist_tag = audio_lookup_value::where('audio_lookup_value_tag', $request['tag'][$i])->pluck('audio_lookup_value_tag');
             $exist_link = audio_lookup_value::where('audio_lookup_value_link', $request['link'][$i])->pluck('audio_lookup_value_link');
             if (($exist_tag->count()) > 0) {
@@ -175,22 +175,7 @@ class AdminController extends Controller
 
         return redirect()->route('AddAudio');
     }
-    public function addAudios()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter + 1;
-        session()->put('counter', $counter);
-        $error = '';
-        return view('admin/addAudios',compact('error','counter'));
-    }
-    public function removeAudios()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter - 1;
-        session()->put('counter', $counter);
-        $error = '';
-        return view('admin/addAudios',compact('error','counter'));
-    }
+
     public function getVideos()
     {
         $role='';
@@ -225,7 +210,7 @@ class AdminController extends Controller
     }
     public function postVideos(Request $request)
     {
-        $counter = session()->get('counter');
+        $counter = count($request['link']);
         for ($i = 0; $i < $counter; $i++) {
             $exist_tag = video_lookup_value::where('video_lookup_value_tag', $request['tag'][$i])->pluck('video_lookup_value_tag');
             $exist_link = video_lookup_value::where('video_lookup_value_link', $request['link'][$i])->pluck('video_lookup_value_link');
@@ -243,22 +228,6 @@ class AdminController extends Controller
             }
         }
         return redirect()->route('AddVideo');
-    }
-    public function addVideos()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter + 1;
-        session()->put('counter', $counter);
-        $error = '';
-        return view('admin/addVideos',compact('error','counter'));
-    }
-    public function removeVideos()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter - 1;
-        session()->put('counter', $counter);
-        $error = '';
-        return view('admin/addVideos',compact('error','counter'));
     }
     public function getImages()
     {
@@ -295,7 +264,7 @@ class AdminController extends Controller
     }
     public function postImages(Request $request)
     {
-        $counter = session()->get('counter');
+        $counter = count($request['link']);
         for ($i = 0; $i < $counter; $i++) {
             $exist_tag = image_lookup_value::where('image_lookup_value_tag', $request['tag'][$i])->pluck('image_lookup_value_tag');
             $exist_link = image_lookup_value::where('image_lookup_value_link', $request['link'][$i])->pluck('image_lookup_value_link');
@@ -313,22 +282,6 @@ class AdminController extends Controller
             }
         }
         return redirect()->route('AddImage');
-    }
-    public function addImages()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter + 1;
-        session()->put('counter', $counter);
-        $error = '';
-        return view('admin/addImages',compact('error','counter'));
-    }
-    public function removeImages()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter - 1;
-        session()->put('counter', $counter);
-        $error = '';
-        return view('admin/addImages',compact('error','counter'));
     }
     public function get_remove_emails()
     {
