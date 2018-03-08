@@ -224,13 +224,15 @@
         
             $("#add_new_module").click(function () {
                 
-                var x = document.getElementById("main_table").rows.length;
-                var y = $("#new_module_name").val();
+                var rows_length= document.getElementById("main_table").rows.length;
+                var new_module = $("#new_module_name").val();
                 var i;
-                for (i=2;i<x;i++) {
-                    var z=document.getElementById("main_table").rows[i].cells[0].innerHTML;        
+                var y = new_module.toUpperCase();
+                for (i=2;i<rows_length;i++) {
+                    var z=document.getElementById("main_table").rows[i].cells[0].innerHTML;
+                    var z = z.toUpperCase();
                     if(z.trim() == y.trim()) {
-                        alert("Module name already exist")
+                        alert("Module name already exists")
                         return false;
                     } 
                  }
