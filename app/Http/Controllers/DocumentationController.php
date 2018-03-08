@@ -2435,6 +2435,14 @@ else {
         $med->delete();
         return redirect()->route('Medications',$patient_id);
     }
+    public function delete_dosage($id)
+    {
+        $med = active_record::find($id);
+        $patient_id = $med->patient_id;
+        $record = active_record::where('doc_control_group',$id)->delete();
+        $med->delete();
+        return redirect()->route('Medications',$patient_id);
+    }
     public function delete_image_order($id)
     {
         $image = active_record::find($id);

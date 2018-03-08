@@ -45,17 +45,23 @@ Route::post('AddVideos', 'AdminController@postVideos');
 Route::get('AddMoreVideos', 'AdminController@addVideos');
 Route::get('RemoveVideos', 'AdminController@removeVideos');
 
+Route::any('delete_video/{id}','AdminController@delete_video')->name("delete_video");
+
 //Admin can add images
 Route::get('/AddImages', 'AdminController@getImages')->name("AddImage");
 Route::post('AddImages', 'AdminController@postImages');
 Route::get('AddMoreImages', 'AdminController@addImages');
 Route::get('RemoveImages', 'AdminController@removeImages');
 
+Route::any('delete_image/{id}','AdminController@delete_image')->name("delete_image");
+
 //Admin can add audios
 Route::get('/AddAudios', 'AdminController@getAudios')->name("AddAudio");
 Route::post('AddAudios', 'AdminController@postAudios');
 Route::get('AddMoreAudios', 'AdminController@addAudios');
 Route::get('RemoveAudios', 'AdminController@removeAudios');
+
+Route::any('delete_audio/{id}','AdminController@delete_audio')->name("delete_audio");
 
 //Admin can delete a email from remove email page.
 Route::any('deleteuser/{id}', 'AdminController@delete_email')->name('deleteuser');
@@ -106,6 +112,7 @@ Route::get('/Medications/{id}', 'NavigationController@get_medications')->name('M
 Route::post('post_medications}', 'DocumentationController@post_medications')->name('post_medications');
 Route::post('post_medication_dosage}', 'DocumentationController@post_medication_dosage')->name('post_medication_dosage');
 Route::any('medication_delete/{id}', 'DocumentationController@delete_medication')->name('delete_medication');
+Route::any('dosage_delete/{id}', 'DocumentationController@delete_dosage')->name('delete_dosage');
 
 Route::get('/Vital_Signs/{id}', 'NavigationController@get_vital_signs')->name('Vital Signs');
 Route::post('post_vital_signs', 'DocumentationController@post_vital_signs');

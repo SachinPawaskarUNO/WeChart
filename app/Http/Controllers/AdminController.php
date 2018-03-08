@@ -167,7 +167,7 @@ class AdminController extends Controller
     }
     public function postAudios(Request $request)
     {
-        $counter = session()->get('counter');
+        $counter = count($request['link']);
         for ($i = 0; $i < $counter; $i++) {
             $exist_tag = audio_lookup_value::where('audio_lookup_value_tag', $request['tag'][$i])->pluck('audio_lookup_value_tag');
             $exist_link = audio_lookup_value::where('audio_lookup_value_link', $request['link'][$i])->pluck('audio_lookup_value_link');
@@ -262,7 +262,7 @@ class AdminController extends Controller
     }
     public function postVideos(Request $request)
     {
-        $counter = session()->get('counter');
+        $counter = count($request['link']);
         for ($i = 0; $i < $counter; $i++) {
             $exist_tag = video_lookup_value::where('video_lookup_value_tag', $request['tag'][$i])->pluck('video_lookup_value_tag');
             $exist_link = video_lookup_value::where('video_lookup_value_link', $request['link'][$i])->pluck('video_lookup_value_link');
@@ -360,7 +360,7 @@ class AdminController extends Controller
     }
     public function postImages(Request $request)
     {
-        $counter = session()->get('counter');
+        $counter = count($request['link']);
         for ($i = 0; $i < $counter; $i++) {
             $exist_tag = image_lookup_value::where('image_lookup_value_tag', $request['tag'][$i])->pluck('image_lookup_value_tag');
             $exist_link = image_lookup_value::where('image_lookup_value_link', $request['link'][$i])->pluck('image_lookup_value_link');
@@ -532,6 +532,24 @@ class AdminController extends Controller
             ->update(['archived'=> 1]);
         $email = User::where('id',$id)->pluck('email');
         return redirect('/home')->with('success','Email has been  deleted');
+    }
+    public function delete_audio($id)
+    {
+        $audio = audio_lookup_value::find($id);
+        $audio->delete();
+        return redirect()->back();
+    }
+    public function delete_video($id)
+    {
+        $video = video_lookup_value::find($id);
+        $video->delete();
+        return redirect()->back();
+    }
+    public function delete_image($id)
+    {
+        $image = image_lookup_value::find($id);
+        $image->delete();
+        return redirect()->back();
     }
 /*    public function getaudios()
     {

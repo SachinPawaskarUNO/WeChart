@@ -34,7 +34,7 @@
                     <form class="form-horizontal" method="POST" action="{{ url('AddAudios') }}">
                         {{ csrf_field() }}
                         @for ($i = 0; $i < $counter ; $i++)
-                        <div class="row">
+                        <div class="row" id="audiolist">
                             <div class="form-group">
                                     <label for="tag" class="col-md-1 control-label" style="padding-right: 0">Name :</label>
                                     <div class="col-md-3">
@@ -47,19 +47,12 @@
                             </div>
                         </div>
                         @endfor
-                        @if ($counter != '1')
-                            <div class="col-md-4" style="float:right">
-                                <a type="button" href="{{url('RemoveAudios')}}">
-                                    <i class="fa fa-minus-circle" aria-hidden="true"></i> Remove row
+                            <div class="col-md-2" style="float:right">
+                                <a href="#" type="button" id="addaudio">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Add row
                                 </a>
                             </div>
-
-                        @endif
-                        <div class="col-md-4" style="float:right">
-                            <a type="button" href="{{url('AddMoreAudios')}}">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Add row
-                            </a>
-                        </div>
+                        <br>
                         <br>
                         <div class="form-group">
                             <div align="center">
@@ -125,6 +118,7 @@
                             <tr class="panel-heading" style="background-color: lightblue;font-size: medium">
                                 <th><i aria-hidden="true"></i> Name</th>
                                 <th><i aria-hidden="true"></i> Link  </th>
+                                <th> </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -132,6 +126,11 @@
                                 <tr>
                                     <td><p><?php echo($audio->audio_lookup_value_tag); ?></p></td>
                                     <td><p><?php echo($audio->audio_lookup_value_link); ?></p></td>
+                                    <td style="text-align: right">
+                                        <a href="{{ route('delete_audio', ['id' => $audio->audio_lookup_value_id]) }}" class="btn btn-danger enable" id="delete">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -145,6 +144,24 @@
         <script>
         $(document).ready(function () {
             $(".alert").fadeOut(5000);
+            var max_fields      = 10; //maximum input boxes allowed
+            var wrapper         = $("#audiolist"); //Fields wrapper
+            var add_button      = $("#addaudio"); //Add button ID
+
+            var x = 1; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(x < max_fields){ //max input box allowed
+                    x++; //text box increment   
+                    $(wrapper).append('<div class="row"><br><label for="tag" class="col-md-1 control-label" style="padding-right: 0">Name :</label> <div class="col-md-3"> <input id="tag[]" type="tag" class="form-control" name="tag[]" required> </div> <label for="link" class="col-md-1 control-label" style="padding-right: 0">Link :</label> <div class="col-md-6"> <input id="link[]" type="link" class="form-control" name="link[]" required></div><br><div class="col-md-1"><a href="#" class="remove_field"><i class="fa fa-close" style="font-size:25px"></i></a></div> </div>');
+                }
+                
+            });
+
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent().parent('div').remove(); x--;
+            });
+
 
             var inputsChanged = false;
             $('#audios_form').change(function() {
@@ -153,7 +170,7 @@
 
         });
         $('#search_audios').select2({
-            placeholder: "Choose Audios...",
+            /*placeholder: "Choose Audios...",*/
             minimumInputLength: 2,
             ajax: {
                 url: '{{route('audios_find')}}',

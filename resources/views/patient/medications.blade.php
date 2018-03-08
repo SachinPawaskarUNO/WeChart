@@ -41,7 +41,8 @@
                                             @else
                                                 <td colspan="20"><p>{{$medicine->dosage}}</p></td>
                                                 <td style="text-align: right">
-                                                    <a class="btn btn-danger disabled">
+                                                    <a href="{{ route( 'delete_dosage', ['id' => $medicine->active_record_id]) }}" 
+                                                        class="btn btn-danger enable" id="delete">
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                                                     </a>
                                                 </td>
