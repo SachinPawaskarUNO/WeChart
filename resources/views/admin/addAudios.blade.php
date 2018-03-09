@@ -1,6 +1,23 @@
 @extends('layouts.app')
 @section('content')
 
+<style>
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+</style>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +70,6 @@
                                 </a>
                             </div>
                         <br>
-                        <br>
                         <div class="form-group">
                             <div align="center">
                                 <button type="submit" class="btn btn-primary">
@@ -72,7 +88,7 @@
                         Error! Audio <strong><i>{{$exists_tag[0]}}&nbsp; -&nbsp;{{$exists_link[0]}} </i></strong> is already present in the database.
                     @elseif ($count_exists > '1')
                         @for($i=0; $i < $count_exists;$i++)
-                         Error! Audio <strong><i>{{$exists_tag[$i]}}&nbsp; -&nbsp;{{$exists_link[$i]}}</i></strong> &nbsp;&nbsp; audio already present in the database.
+                         Error! Audio <strong><i>{{$exists_tag[$i]}}&nbsp; -&nbsp;{{$exists_link[$i]}}</i></strong> &nbsp;&nbsp; already present in the database.
                                  <br>
                         @endfor
                     @endif
@@ -94,22 +110,47 @@
         </div>
         <div class="container">
             <div class="col-md-10 col-md-offset-1">
-                <div class="panel-body">
-                    <div class="navbar-form navbar-left">
-                        <a href="{{url('/AddAudios')}}" class="btn btn-success">
-                            <i class="fa fa-refresh" aria-hidden="true"></i>
-                            Refresh Audios</a>
-                    </div>
-                    <form class="navbar-form navbar-right" method="GET" action="{{ url('AddAudios') }}">
-                        {{ csrf_field() }}
+                <div class="panel-body" style="alignment: center">
+                    <label style="margin-left: 260px"><strong>Upload Excel & Submit - Only 2 columns tag & link</strong></label>
+                    <div class="row">
+                        <div class="col-md-3" style="margin-top: 10px">
+                            <a href="{{url('/AddAudios')}}" class="btn btn-success">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                Refresh Audios</a>
+                        </div>
+                        <div class="col-md-4" style="margin-left: 100px;margin-top: 10px" title="Only 2 columns tag & link">
+                            <form class="form-horizontal" method="POST" action="{{ url('importaudio') }}" enctype="multipart/form-data">
+                                {{csrf_field()}}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                         <span class="btn btn-success btn-file field-tip" >
+                                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                             Upload <input type="file" name="file">
+                                         </span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-success " type="submit" value="Upload" title="Only 2 columns tag & link">
+                                            <i class="fa fa-submit"> </i>Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
 
-                        <input id="search_audios" type="text" class="form-control" name="search" placeholder="Search Audio...">
-                        <span class="input-group-btn-right">
+
+                        </div>
+                        <div class="col-md-4.5">
+                            <form class="navbar-form navbar-right" method="GET" action="{{ url('AddAudios') }}" style="float: right">
+                                {{ csrf_field() }}
+
+                                <input id="search_audios" type="text" class="form-control" name="search" placeholder="Search Audio...">
+                                <span class="input-group-btn-right">
                             <button class="btn btn-default-sm" type="submit">
                                 <i class="fa fa-search"> </i>
                             </button>
                         </span>
-                    </form>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel panel-default" style="margin-bottom: 0;padding-bottom: 0">
                     <div class="panel-body">
@@ -161,7 +202,6 @@
             $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
                 e.preventDefault(); $(this).parent().parent('div').remove(); x--;
             });
-
 
             var inputsChanged = false;
             $('#audios_form').change(function() {

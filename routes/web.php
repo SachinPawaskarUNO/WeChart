@@ -211,7 +211,10 @@ Route::get('/guidance', 'GuidanceController@get_video_list')->name('get_video_li
 Route::post('/ddx', 'GuidanceController@post_ddx')->name('post_ddx');
 Route::post('/ddxsorted', 'GuidanceController@post_ddx_sorted')->name('post_ddx_sorted');
 
-
+Route::get('/upload', 'ExcelController@upload');
+Route::post('importaudio','ExcelController@ImportAudio');
+Route::post('importvideo','ExcelController@ImportVideo');
+Route::post('importimage','ExcelController@ImportImage');
 
 Route::get('/account_deleted', function () {
     return view('errors/account_deleted');
