@@ -139,9 +139,11 @@ class AdminController extends Controller
             $exists=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_id');
             $count_exists = $exists->count();
             $exists_tag=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_tag');
+            $exists_link=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_link');
             $changed=audio_lookup_value::where('updated_by',1)->pluck('audio_lookup_value_id');
             $count_added = $changed->count();
             $added_tag=audio_lookup_value::where('updated_by',1)->pluck('audio_lookup_value_tag');
+            $added_link=audio_lookup_value::where('updated_by',1)->pluck('audio_lookup_value_link');
             if(($exists->count())>0)
             {
                 $Error='Exists';
@@ -158,7 +160,7 @@ class AdminController extends Controller
                     audio_lookup_value::where('audio_lookup_value_id',$changed[$i])->update(['updated_by' => null]);
                 }
             }
-            return view('admin/addAudios',compact('error','counter','count_exists','Error','exists_tag','count_added','added_tag','audios'));
+            return view('admin/addAudios',compact('error','counter','count_exists','Error','exists_tag','count_added','added_tag','audios','exists_link','added_link'));
         }
         else
         {
@@ -233,9 +235,11 @@ class AdminController extends Controller
             $exists=video_lookup_value::where('archived','true')->pluck('video_lookup_value_id');
             $count_exists = $exists->count();
             $exists_tag=video_lookup_value::where('archived','true')->pluck('video_lookup_value_tag');
+            $exists_link=video_lookup_value::where('archived','true')->pluck('video_lookup_value_link');
             $changed=video_lookup_value::where('updated_by',1)->pluck('video_lookup_value_id');
             $count_added = $changed->count();
             $added_tag=video_lookup_value::where('updated_by',1)->pluck('video_lookup_value_tag');
+            $added_link=video_lookup_value::where('updated_by',1)->pluck('video_lookup_value_link');
             if(($exists->count())>0)
             {
                 $Error='Exists';
@@ -253,7 +257,7 @@ class AdminController extends Controller
                     video_lookup_value::where('video_lookup_value_id',$changed[$i])->update(['updated_by' => null]);
                 }
             }
-            return view('admin/addVideos',compact('error','counter','Error','count_exists','exists_tag','count_added','added_tag','videos'));
+            return view('admin/addVideos',compact('error','counter','Error','count_exists','exists_tag','count_added','added_tag','videos','exists_link','added_link'));
         }
         else
         {
@@ -330,9 +334,11 @@ class AdminController extends Controller
             $exists=image_lookup_value::where('archived','true')->pluck('image_lookup_value_id');
             $count_exists = $exists->count();
             $exists_tag=image_lookup_value::where('archived','true')->pluck('image_lookup_value_tag');
+            $exists_link=image_lookup_value::where('archived','true')->pluck('image_lookup_value_link');
             $changed=image_lookup_value::where('updated_by',1)->pluck('image_lookup_value_id');
             $count_added = $changed->count();
             $added_tag=image_lookup_value::where('updated_by',1)->pluck('image_lookup_value_tag');
+            $added_link=image_lookup_value::where('updated_by',1)->pluck('image_lookup_value_link');
             if(($exists->count())>0)
             {
                 $Error='Exists';
@@ -351,7 +357,7 @@ class AdminController extends Controller
                     image_lookup_value::where('image_lookup_value_id',$changed[$i])->update(['updated_by' => null]);
                 }
             }
-            return view('admin/addImages',compact('error','counter','Error','count_exists','exists_tag','count_added','added_tag','images'));
+            return view('admin/addImages',compact('error','counter','Error','count_exists','exists_tag','count_added','added_tag','images','exists_link','added_link'));
         }
         else
         {
@@ -551,12 +557,6 @@ class AdminController extends Controller
         $image->delete();
         return redirect()->back();
     }
-/*    public function getaudios()
-    {
-        $counter = 1;
-        session()->put('counter', 1);
-        return view('admin/audiovideoimages', compact('counter'));
-    }*/
 
 
 }

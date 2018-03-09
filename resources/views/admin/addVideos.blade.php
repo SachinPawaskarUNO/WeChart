@@ -68,12 +68,12 @@
                 <div class="alert alert-danger alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     @if ($count_exists == '1')
-                        Error! Video <strong><i>{{$exists_tag[0]}}</i></strong> is already present in the database.
+                        Error! Video <strong><i>{{$exists_tag[0]}}&nbsp; -&nbsp;{{$exists_link[0]}} </i></strong> is already present in the database.
                     @elseif ($count_exists > '1')
-                        @foreach ($exists_tag as $tag)
-                            <strong><i>{{$tag}}</i></strong>&nbsp;&nbsp; video already present in the database.
+                        @for($i=0; $i < $count_exists;$i++)
+                            Error! Video <strong><i>{{$exists_tag[$i]}}&nbsp; -&nbsp;{{$exists_link[$i]}}</i></strong> &nbsp;&nbsp; audio already present in the database.
                             <br>
-                        @endforeach
+                        @endfor
                     @endif
                 </div>
             @endif
@@ -81,12 +81,12 @@
                 <div class="alert alert-danger alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     @if ($count_added == '1')
-                        Success!! <strong><i>{{$added_tag[0]}}</i></strong>  video added
+                        Success!! <strong><i>{{$added_tag[0]}} - {{$added_link[0]}}</i></strong>  video added
                     @elseif ($count_added > '1')
-                        @foreach ($added_tag as $tag)
-                            <strong><i>{{$tag}}</i></strong>&nbsp;&nbsp; video added to the database.
+                        @for($i=0; $i < $count_added; $i++)
+                            <strong><i>{{$added_tag[$i]}} - {{$added_link[$i]}}</i></strong>&nbsp;&nbsp; video added to the database.
                             <br>
-                        @endforeach
+                        @endfor
                     @endif
                 </div>
             @endif
