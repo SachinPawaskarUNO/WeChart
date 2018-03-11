@@ -34,7 +34,7 @@
             center: 100vw;
             width: 16em;
             margin-top: -2.5em;
-            height: 7%;
+            height: 4.5%;
             line-height: 5%;
             padding-top:1%;
             margin-right: 20vw;
