@@ -172,7 +172,7 @@ class AdminController extends Controller
             $Error = '';
             $error='';
             $search = $request['search'];
-            $audios = audio_lookup_value::where('audio_lookup_value_tag', 'like', '%'.$search.'%')
+            $audios = audio_lookup_value::where('audio_lookup_value_tag', 'ilike', '%'.$search.'%')
                 ->orderBy('audio_lookup_value_tag')
                 ->paginate(10);
             $exists=audio_lookup_value::where('archived','true')->pluck('audio_lookup_value_id');
@@ -236,7 +236,7 @@ class AdminController extends Controller
         $error = '';
         $Error = '';
         $search = $request['search'];
-        $audios = audio_lookup_value::where('audio_lookup_value_tag', 'like', '%'.$search.'%')
+        $audios = audio_lookup_value::where('audio_lookup_value_tag', 'ilike', '%'.$search.'%')
             ->orderBy('audio_lookup_value_tag')
             ->paginate(10);
         return view('admin/addAudios',compact('error','counter','Error','audios'));
@@ -249,7 +249,7 @@ class AdminController extends Controller
         $error = '';
         $Error = '';
         $search = $request['search'];
-        $audios = audio_lookup_value::where('audio_lookup_value_tag', 'like', '%'.$search.'%')
+        $audios = audio_lookup_value::where('audio_lookup_value_tag', 'ilike', '%'.$search.'%')
             ->orderBy('audio_lookup_value_tag')
             ->paginate(10);
         return view('admin/addAudios',compact('error','counter','Error','audios'));
@@ -266,7 +266,7 @@ class AdminController extends Controller
             session()->put('counter', 1);
             $Error = '';
             $search = $request['search'];
-            $videos = video_lookup_value::where('video_lookup_value_tag', 'like', '%'.$search.'%')
+            $videos = video_lookup_value::where('video_lookup_value_tag', 'ilike', '%'.$search.'%')
                 ->orderBy('video_lookup_value_tag')
                 ->paginate(10);
             $exists=video_lookup_value::where('archived','true')->pluck('video_lookup_value_id');
@@ -330,7 +330,7 @@ class AdminController extends Controller
         $error = '';
         $Error = '';
         $search = $request['search'];
-        $videos = video_lookup_value::where('video_lookup_value_tag', 'like', '%'.$search.'%')
+        $videos = video_lookup_value::where('video_lookup_value_tag', 'ilike', '%'.$search.'%')
             ->orderBy('video_lookup_value_tag')
             ->paginate(10);
         return view('admin/addVideos',compact('error','counter','Error','videos'));
@@ -343,7 +343,7 @@ class AdminController extends Controller
         $error = '';
         $Error = '';
         $search = $request['search'];
-        $videos = video_lookup_value::where('video_lookup_value_tag', 'like', '%'.$search.'%')
+        $videos = video_lookup_value::where('video_lookup_value_tag', 'ilike', '%'.$search.'%')
             ->orderBy('video_lookup_value_tag')
             ->paginate(10);
         return view('admin/addVideos',compact('error','counter','Error','videos'));
@@ -360,7 +360,7 @@ class AdminController extends Controller
             $Error = '';
             $error='';
             $search = $request['search'];
-            $images = image_lookup_value::where('image_lookup_value_tag', 'like', '%'.$search.'%')
+            $images = image_lookup_value::where('image_lookup_value_tag', 'ilike', '%'.$search.'%')
                 ->orderBy('image_lookup_value_tag')
                 ->paginate(10);
             $exists=image_lookup_value::where('archived','true')->pluck('image_lookup_value_id');
@@ -424,7 +424,7 @@ class AdminController extends Controller
         $error = '';
         $Error = '';
         $search = $request['search'];
-        $images = image_lookup_value::where('image_lookup_value_tag', 'like', '%'.$search.'%')
+        $images = image_lookup_value::where('image_lookup_value_tag', 'ilike', '%'.$search.'%')
             ->orderBy('image_lookup_value_tag')
             ->paginate(10);
         return view('admin/addImages',compact('error','counter','Error','images'));
@@ -437,7 +437,7 @@ class AdminController extends Controller
         $error = '';
         $Error = '';
         $search = $request['search'];
-        $images = image_lookup_value::where('image_lookup_value_tag', 'like', '%'.$search.'%')
+        $images = image_lookup_value::where('image_lookup_value_tag', 'ilike', '%'.$search.'%')
             ->orderBy('image_lookup_value_tag')
             ->paginate(10);
         return view('admin/addImages',compact('error','counter','Error','images'));
@@ -585,12 +585,29 @@ class AdminController extends Controller
         $image->delete();
         return redirect()->back();
     }
-/*    public function getaudios()
-    {
-        $counter = 1;
-        session()->put('counter', 1);
-        return view('admin/audiovideoimages', compact('counter'));
-    }*/
 
+    public function audio_refresh()
+    {
+        $audios = audio_lookup_value::where('created_by',1)
+            ->orderBy('audio_lookup_value_tag')
+            ->paginate(10);
+        return view("admin/audio_table",compact('audios'));
+    }
+
+    public function video_refresh()
+    {
+        $videos = video_lookup_value::where('created_by',1)
+            ->orderBy('video_lookup_value_tag')
+            ->paginate(10);
+        return view("admin/video_table",compact('videos'));
+    }
+
+    public function image_refresh()
+    {
+        $images = image_lookup_value::where('created_by',1)
+            ->orderBy('image_lookup_value_tag')
+            ->paginate(10);
+        return view("admin/image_table",compact('images'));
+    }
 
 }

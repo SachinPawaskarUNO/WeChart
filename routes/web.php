@@ -222,5 +222,6 @@ Route::get('/account_deleted', function () {
     return view('errors/account_deleted');
 });
 
-
-
+Route::get('/admin/audio_table', 'AdminController@audio_refresh');
+Route::get('/admin/video_table', 'AdminController@video_refresh');
+Route::get('/admin/image_table', 'AdminController@image_refresh');
