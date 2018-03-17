@@ -81,7 +81,7 @@ Route::post('deletemodule/{modid}', 'AdminController@deletemodule')->name('delet
 //Landing page for Student
 Route::get('/StudentHome', 'StudentController@index')->name('student.home');
 Route::get('/PatientView/{patient_id}', 'StudentController@view_patient')->name('patient.view');
-Route::get('/PatientPreview/{patient_id}', 'NavigationController@get_preview')->name('patient_preview');
+Route::get('/StudentPreview/{patient_id}', 'NavigationController@get_studentpreview')->name('student_preview');
 Route::get('/PatientDelete/{id}', 'StudentController@destroy')->name('patient.destroy');
 
 //Patient routes
@@ -196,10 +196,13 @@ Route::post('update_guidance_comments}', 'DocumentationController@update_guidanc
 
 Route::get('/{id}/AssignInstructor', 'NavigationController@get_assignInstructor')->name('AssignInstructor');
 Route::post('InstructorAssigned', 'DocumentationController@post_assignInstructor')->name('InstructorAssigned');
+Route::post('post_feedback', 'InstructorController@post_feedback')->name('post_feedback');
 
 //Landing page for Instructor
 Route::get('/InstructorHome', 'InstructorController@index')->name('instructor.home');
 Route::get('/{id}/InstructorHome', 'InstructorController@review_patient')->name('patient.reviewed');
+Route::get('/PatientPreview/{patient_id}', 'NavigationController@get_preview')->name('patient_preview');
+
 
 //Routes for autocomplete
 Route::get('/diagnosis/find', 'DocumentationController@find_diagnosis')->name('diagnosis_find');

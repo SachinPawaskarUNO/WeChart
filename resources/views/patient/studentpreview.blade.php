@@ -22,9 +22,7 @@
 <body>
 <div class="container-fluid">
     <!--This is a container for vital signs header -->
-    
     <div class="row" >
-
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-3">
@@ -947,28 +945,29 @@
                     <a data-toggle="collapse" href="#feedback">Feedback</a>
                 </div>        
             <div class="panel-body " id="feedback" class="panel-collapse collapse in">
-                <div class="col-md-9">
-                        @if($feedback!="null")
-                            <textarea rows="4" id="feedback" name="feedback" style="width: 100%;display: block">{{$feedback[0]}}
-                            </textarea>
-                        @else
-                            <textarea rows="4" id="feedback" name="feedback" style="width: 100%;display: block">
-                            </textarea>
-                        @endif
-                    </textarea>
-                    <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
-                    <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}"> 
-                </div>
-            
-                <div class="col-md-2">
-                    <button type="submit" id="btn_save_feedback" class="btn btn-primary" style="float: right"> 
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Feedback
-                    </button>            
-                </div>
+                <div class="col-sm-12">
+                    <table class="table table-bordered">
+                    <thead>
+                    <tr class="bg-info">
+                    <th>Name of the Instructor</th>
+                    <th>Feedback</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    @foreach( $feedbacks as $feedback)
+                        <tr>
+                            <td><p>{{$feedback->firstname}}{{$feedback->lastname}}</p></td>
+                            <td><p>{{$feedback->feedback}}</p></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+<!--                 <div class="col-md-12">
+                    <textarea rows="4" id="feedback" name="feedback" style="width: 100%;display: block" readonly>{{$feedback[0]}}</textarea>
+                </div> -->
             </div>
         </div>
     </div>
-
 </div>
 <?php
 set_time_limit(0);
@@ -976,21 +975,3 @@ set_time_limit(0);
 
 </body>
 </html>
-<script>
-    $(document).ready(function(){
-                $("#btn_save_feedback").click(function(){
-                inputsChanged = false;
-
-                       $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        type: "post",
-                        url: '{{route('post_feedback')}}',
-                        data: { feedback:$("textarea").val() ,patient_id:$('#patient_id').val(), user_id:$('#user_id').val()}
-                    });
-                    alert("Feedback updated");   
-                });
-
-        });
-</script>

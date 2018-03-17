@@ -85,4 +85,23 @@ class InstructorController extends Controller
             return view('errors/error',compact('error_message'));
         }
     }
+
+    //To save the feedback
+    public function post_feedback(Request $request)
+    {
+        $role = '';
+        if (Auth::check()) {
+            $role = Auth::user()->role;
+        }
+        if($role == 'Instructor'){
+
+            $feedback_record = users_patient::where('patient_id', $request['patient_id'])->where('user_id',$request['user_id'])->first();
+
+
+                $users_patient = users_patient::where('users_patient_id', $feedback_record->users_patient_id)->update(['feedback' => $request['feedback']]);
+                
+                   
+                return redirect()->route('patient_preview',[$request['patient_id']]);
+        }
+    }
 }
