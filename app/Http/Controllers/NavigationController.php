@@ -89,7 +89,7 @@ class NavigationController extends Controller
             }
             else {
                 //Fetching all navs associated with this patient's module
-                $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+                $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
                 $navs = array();
                 $videos = video_lookup_value::all()->toArray();
@@ -185,7 +185,7 @@ class NavigationController extends Controller
                         ->where('doc_control_id','1')->get();
 
                     //Fetching all navs associated with this patient's module
-                    $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+                    $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
                     $navs = array();
                     $videos = video_lookup_value::all()->toArray();
                     $pictures = image_lookup_value::all()->toArray();
@@ -374,7 +374,7 @@ class NavigationController extends Controller
 
             }
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
             $pictures = image_lookup_value::all()->toArray();
@@ -497,7 +497,7 @@ class NavigationController extends Controller
                 ->where('doc_control_id','17')->get();
 
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
             $pictures = image_lookup_value::all()->toArray();
@@ -576,7 +576,7 @@ class NavigationController extends Controller
                 return view('errors/error', compact('error_message'));
             }
             else {
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
             $pictures = image_lookup_value::all()->toArray();
@@ -762,7 +762,7 @@ class NavigationController extends Controller
                 ->where('navigation_id','21')->where('doc_control_id','46')->pluck('value');
 
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
@@ -1311,7 +1311,7 @@ class NavigationController extends Controller
                ->where('navigation_id','19')->where('doc_control_id','44')->pluck('value');
 
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
@@ -1843,7 +1843,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
                 ->where('doc_control_id','75')->get();
 
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
@@ -1931,7 +1931,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
                     ->orderBy('active_record.active_record_id', 'ASC')->get();
 
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
@@ -1992,7 +1992,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
                 ->where('doc_control_id','65')->get();
 
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
@@ -2101,7 +2101,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
                 $disposition_comment[0] = '';
             }
             //Fetching all navs associated with this patient's module
-            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+            $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
             $navs = array();
             $videos = video_lookup_value::all()->toArray();
@@ -2242,7 +2242,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
                 else {
                 $patient = patient::where('patient_id', $id)->first();
                 //Fetching all navs associated with this patient's module
-                $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+                $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
                 $navs = array();
                 $videos = video_lookup_value::all()->toArray();
                 $pictures = image_lookup_value::all()->toArray();
@@ -2590,7 +2590,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
 
                     $patient = patient::where('patient_id', $id)->first();
                     //Fetching all navs associated with this patient's module
-                    $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('navigation_id')->pluck('navigation_id');
+                    $navIds = module_navigation::where('module_id', $patient->module_id)->orderBy('display_order')->pluck('navigation_id');
 
                     $navs = array();
 

@@ -227,6 +227,7 @@ class CreateMigrationWechart extends Migration
             $table->integer('navigation_id');
             $table->integer('module_id');
             $table->boolean('visible');
+            $table->integer('display_order');
           //  $table->primary(['module_id', 'navigation_id']);
             $table->timestamps();
         });

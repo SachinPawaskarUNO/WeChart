@@ -494,9 +494,9 @@ class AdminController extends Controller
     }
     public function getConfigureModules()
     {
-        $navs = navigation::where('navigation_id', '<>', '35')->get();
+        $navs = navigation::where('navigation_id','<>','35')->get();
         $mods = module::where('archived', false)->get();
-        $navs_mods = module_navigation::where('visible', true)->get();
+        $navs_mods = module_navigation::where('visible', true)->where('navigation_id','<>','35')->get();
         return view('admin/configureModules', compact ('navs', 'mods', 'navs_mods'));
     }
 
@@ -541,11 +541,24 @@ class AdminController extends Controller
             $navs = array_unique($navs);
             foreach ($navs as $navid) {
                 DB::table('modules_navigations')->insert(
-                    ['module_id' => $var, 'navigation_id' => $navid, 'visible' => true]);
+                    ['module_id' => $var, 'navigation_id' => $navid, 
+                    'display_order' => $navid, 'visible' => true ]);
             }
-            $navs = navigation::all();
+            module_navigation::where('visible', true)->where('display_order','15')->where('module_id',$var)->update(['navigation_id' => '19']);
+            module_navigation::where('visible', true)->where('display_order','16')->where('module_id',$var)->update(['navigation_id' => '15']);
+            module_navigation::where('visible', true)->where('display_order','17')->where('module_id',$var)->update(['navigation_id' => '16']);
+            module_navigation::where('visible', true)->where('display_order','18')->where('module_id',$var)->update(['navigation_id' => '17']);
+            module_navigation::where('visible', true)->where('display_order','19')->where('module_id',$var)->update(['navigation_id' => '18']);
+            module_navigation::where('visible', true)->where('display_order','26')->where('module_id',$var)->update(['navigation_id' => '30']);
+            module_navigation::where('visible', true)->where('display_order','27')->where('module_id',$var)->update(['navigation_id' => '26']);
+            module_navigation::where('visible', true)->where('display_order','28')->where('module_id',$var)->update(['navigation_id' => '27']);
+            module_navigation::where('visible', true)->where('display_order','29')->where('module_id',$var)->update(['navigation_id' => '28']);
+            module_navigation::where('visible', true)->where('display_order','30')->where('module_id',$var)->update(['navigation_id' => '29']);
+
+
+            $navs = navigation::where('navigation_id','<>','35')->get();
             $mods = module::where('archived', false)->get();
-            $navs_mods = module_navigation::where('visible', true)->get();
+            $navs_mods = module_navigation::where('visible', true)->where('navigation_id','<>','35')->get();
             return view('admin/configureModules', compact('navs', 'mods', 'navs_mods'));
         }
         else
@@ -559,7 +572,7 @@ class AdminController extends Controller
         module::where('module_id',$modid)->update(['archived' => true]);
         $navs = navigation::all();
         $mods = module::where('archived', false)->get();
-        $navs_mods = module_navigation::where('visible', true)->get();
+        $navs_mods = module_navigation::where('visible', true)->where('navigation_id','<>','35')->get();
         return view('admin/configureModules', compact ('navs', 'mods', 'navs_mods'));
     }
     public function delete_email($id)

@@ -69,7 +69,7 @@
                         @if($nav->parent_id != NULL)
                             <td  style="background-color:#5DADE2; color: #000000"  align="middle">
                                 <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
-                                    <b>{{ $nav->navigation_name }}</b>
+                                    <b>{{ $nav->navigation_name}}</b>
                                 </h5>
                             </td>
                         @else
