@@ -544,16 +544,16 @@ class AdminController extends Controller
                     ['module_id' => $var, 'navigation_id' => $navid, 
                     'display_order' => $navid, 'visible' => true ]);
             }
-            module_navigation::where('visible', true)->where('display_order','15')->where('module_id',$var)->update(['navigation_id' => '19']);
-            module_navigation::where('visible', true)->where('display_order','16')->where('module_id',$var)->update(['navigation_id' => '15']);
-            module_navigation::where('visible', true)->where('display_order','17')->where('module_id',$var)->update(['navigation_id' => '16']);
-            module_navigation::where('visible', true)->where('display_order','18')->where('module_id',$var)->update(['navigation_id' => '17']);
-            module_navigation::where('visible', true)->where('display_order','19')->where('module_id',$var)->update(['navigation_id' => '18']);
-            module_navigation::where('visible', true)->where('display_order','26')->where('module_id',$var)->update(['navigation_id' => '30']);
-            module_navigation::where('visible', true)->where('display_order','27')->where('module_id',$var)->update(['navigation_id' => '26']);
-            module_navigation::where('visible', true)->where('display_order','28')->where('module_id',$var)->update(['navigation_id' => '27']);
-            module_navigation::where('visible', true)->where('display_order','29')->where('module_id',$var)->update(['navigation_id' => '28']);
-            module_navigation::where('visible', true)->where('display_order','30')->where('module_id',$var)->update(['navigation_id' => '29']);
+            module_navigation::where('visible', true)->where('navigation_id','19')->where('module_id',$var)->update(['display_order' => '15']);
+            module_navigation::where('visible', true)->where('navigation_id','15')->where('module_id',$var)->update(['display_order' => '16']);
+            module_navigation::where('visible', true)->where('navigation_id','16')->where('module_id',$var)->update(['display_order' => '17']);
+            module_navigation::where('visible', true)->where('navigation_id','17')->where('module_id',$var)->update(['display_order' => '18']);
+            module_navigation::where('visible', true)->where('navigation_id','18')->where('module_id',$var)->update(['display_order' => '19']);
+            module_navigation::where('visible', true)->where('navigation_id','30')->where('module_id',$var)->update(['display_order' => '26']);
+            module_navigation::where('visible', true)->where('navigation_id','26')->where('module_id',$var)->update(['display_order' => '27']);
+            module_navigation::where('visible', true)->where('navigation_id','27')->where('module_id',$var)->update(['display_order' => '28']);
+            module_navigation::where('visible', true)->where('navigation_id','28')->where('module_id',$var)->update(['display_order' => '29']);
+            module_navigation::where('visible', true)->where('navigation_id','29')->where('module_id',$var)->update(['display_order' => '30']);
 
 
             $navs = navigation::where('navigation_id','<>','35')->get();
