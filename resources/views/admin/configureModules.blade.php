@@ -14,11 +14,20 @@
         </div>
 
         <div class="row">
+            @if(Auth::user()->role =='Admin')
             <div class="col-md-2">
                 <a href="{{url('/home')}}" class="btn btn-success" >
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                     Back to Dashboard</a>
             </div>
+            @else
+            <div class="col-md-2">
+                <a href="{{url('/InstructorHome')}}" class="btn btn-success" >
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                    Back to Dashboard</a>
+            </div>
+            @endif
+
             <div class="col-md-2 col-md-offset-8">
                 <a href="#" title="" class="btn btn-primary" id="add-record" style="float: right">
                     <i class="fa fa-plus" aria-hidden="true"></i> Add new Module</a>

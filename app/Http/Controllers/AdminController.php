@@ -507,7 +507,7 @@ class AdminController extends Controller
         if(Auth::check()) {
             $role = Auth::user()->role;
         }
-        if($role == 'Admin') {
+        if($role == 'Admin'||'Instructor') {
             $messages = ['required' => 'Module name is mandatory.'];
             //Validating input data
             $this->validate($request, [

@@ -9,6 +9,13 @@
             <h3 style="text-align: center"><img src="logos\LogoInstructor.png" width="4%"> Instructor Dashboard <img src="logos\LogoInstructor.png" width="4%"></h3>
         </div>
         <div class="row">
+            <div class="col-md-11 " style=" text-align:right">
+                <a class="btn btn-success" href={{url('/ConfigureModules')}}>
+                    <i class="fa fa-cog" aria-hidden="true"></i> Configure Modules</a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default" style="margin-bottom: 0;padding-bottom: 0">
                     <div class="panel-heading" style="background-color: #5DADE2; padding-bottom: 0">
