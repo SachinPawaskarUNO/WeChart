@@ -174,8 +174,8 @@
                                                                     </td>
                                                                     <td><p id="patient_submitted_date">{{$patient->submitted_date}}</p></td>
                                                                     <td><p id="visitDate">{{$patient->visit_date}}</p></td>
-                                                                    <td style="text-align: center">
-                                                                        <a href="{{ route( 'patient_preview', ['patient_id' => $patient->patient_id ] ) }}" class="btn btn-primary" id="preview">
+                                                                    <td style="text-align: right">
+                                                                        <a href="{{ route( 'student_preview', ['patient_id' => $patient->patient_id ] ) }}" class="btn btn-primary" id="preview">
                                                                             <i class="fa fa-file-text" aria-hidden="true"></i> Print/Preview
                                                                         </a>
                                                                         <a href="{{ route( 'patient.destroy', ['patient_id' => $patient->patient_id]) }}" class="btn btn-danger confirmation" id="delete">
