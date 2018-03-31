@@ -51,15 +51,15 @@
                                                 <td colspan="20"><input type="text" id="Dosage" name="Dosage[]" data-medid="{{$medicine->active_record_id}}"></td>
                                                 <td style="text-align: right">
                                                     <a href="{{ route( 'delete_medication_order', ['id' => $medicine->active_record_id]) }}"
-                                                       class="btn btn-danger confirmation" id="delete" >
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             @else
                                                 <td colspan="20"><p>{{$medicine->dosage}}</p></td>
                                                 <td style="text-align: right">
                                                     <a class="btn btn-danger disabled">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             @endif
@@ -117,8 +117,8 @@
                                         <td><p>{{$lab->value}}</p></td>
                                         <td style="text-align: right">
                                             <a href="{{ route( 'delete_lab_order', ['active_record_id' => $lab->active_record_id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
@@ -141,8 +141,8 @@
                                         <td><p>{{$procedure->value}}</p></td>
                                         <td style="text-align: right">
                                             <a href="{{ route( 'delete_procedure_order', ['active_record_id' => $procedure->active_record_id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
@@ -185,8 +185,8 @@
                                         <td><p>{{$image->value}}</p></td>
                                         <td style="text-align: right">
                                             <a href="{{ route( 'delete_image_order', ['active_record_id' => $image->active_record_id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
@@ -352,5 +352,14 @@
                 inputsChanged = false;
             } );
         });
+
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+
     </script>
 @endsection

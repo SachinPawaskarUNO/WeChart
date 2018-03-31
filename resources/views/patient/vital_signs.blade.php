@@ -105,7 +105,8 @@
                                                  {{ Form::open(array('method' => 'post', 'route' => array('delete_vital_signs', $vs->timestamp))) }}
                                                  <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
                                                  <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
-                                                 <button name="delbutton" class="btn btn-danger btn-delete btn-sm" id="delete_vital_signs">Delete</button>
+                                                 <button name="delbutton" class="btn btn-danger btn-delete enable btn-sm" id="delete_vital_signs" onclick="return Delete()"><i class="fa fa-trash-o" aria-hidden="true"></i>
+</button>
                                                  {{ Form::close() }}                                               
                                              </td>
                                         </tr>
@@ -255,6 +256,15 @@
             $('#Oxygen_Saturation').val('');
             $('#Comments').val('');
         });
+
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+        
     </script>
 
 @endsection

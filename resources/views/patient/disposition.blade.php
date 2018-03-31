@@ -41,8 +41,8 @@
                                                 <td><p><?php echo ($diagnosis->value); ?></p></td>
                                                 <td style="text-align: right;">
                                                     <a href="{{ route( 'delete_disposition', ['active_record_id' => $diagnosis->active_record_id]) }}"
-                                                       class="btn btn-danger confirmation" id="delete">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             </tr>
@@ -221,6 +221,13 @@
             $('#btn_save_disposition').prop('disabled', false);
         } );
 
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
     </script>
 
 @endsection

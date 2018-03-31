@@ -131,7 +131,7 @@
                             <td>
                                 {{ Form::open(array('method' => 'post', 'route' => array('deletemodule', $mod->module_id))) }}
                                 <div class="form-group">
-                                    <button name="delbutton" class="btn btn-danger btn-delete">Delete</button>
+                                    <button name="delbutton" class="btn btn-danger enable btn-delete" onclick="return Delete()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                 </div>
                                 {{ Form::close() }}
                             </td>
@@ -376,6 +376,13 @@
 
 
         });
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
     </script>
 
 @endsection

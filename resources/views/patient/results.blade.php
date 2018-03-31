@@ -140,6 +140,6 @@
                 $('#results').val('');
                 inputsChanged = false;
             } );
-        });
+        });   
     </script>
 @endsection

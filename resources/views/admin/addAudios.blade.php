@@ -136,12 +136,12 @@
                             <tr>
                                 <td><?php echo($audio->audio_lookup_value_tag); ?> </td>
                                 <td><?php echo($audio->audio_lookup_value_link); ?></td>
-                                <td style="text-align: right">
-                                    <button class="editButton btn btn-info" id="<?php echo $rownum ?>"><i class="fa fa-edit" aria-hidden="true"></i></button>
-                                    <button class="saveButton btn btn-success" id="<?php echo $rownum ?>" value="{{$audio->audio_lookup_value_id}}"><i class="fa fa-save" aria-hidden="true"></i></button>
+                                <td style="text-align: right; padding-top:10px; height:37px" >
+                                    <button style="height:37px" class="editButton btn btn-info" id="<?php echo $rownum ?>"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                                    <button style="height:37px" class="saveButton btn btn-success" id="<?php echo $rownum ?>" value="{{$audio->audio_lookup_value_id}}"><i class="fa fa-save" aria-hidden="true"></i></button>
                                 </td>
-                                <td style="text-align: right">
-                                    <a href="{{ route('delete_audio', ['id' => $audio->audio_lookup_value_id]) }}" class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                <td style="text-align: right; padding-top:10px; height:37px">
+                                    <a style="padding-top:10px; height:37px" href="{{ route('delete_audio', ['id' => $audio->audio_lookup_value_id]) }}" class="btn btn-danger enable" id="delete" onclick="return Delete()">
                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </a>
                                 </td>

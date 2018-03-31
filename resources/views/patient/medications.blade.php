@@ -34,16 +34,16 @@
                                                 <td colspan="20"><input type="text" id="Dosage" name="Dosage[]" data-medid="{{$medicine->active_record_id}}"></td>
                                                 <td style="text-align: right">
                                                     <a href="{{ route( 'delete_medication', ['id' => $medicine->active_record_id]) }}"
-                                                       class="btn btn-danger confirmation" id="delete" >
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             @else
                                                 <td colspan="20"><p>{{$medicine->dosage}}</p></td>
                                                 <td style="text-align: right">
                                                     <a href="{{ route( 'delete_dosage', ['id' => $medicine->active_record_id]) }}" 
-                                                        class="btn btn-danger enable" id="delete">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                        class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             @endif
@@ -157,6 +157,15 @@
 
             window.onbeforeunload = unloadPage;
         });
+
+
+        function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
 
     </script>
 
