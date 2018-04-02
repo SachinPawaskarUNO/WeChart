@@ -98,7 +98,7 @@
 
                                                 {!! Form::hidden('case_id', $instructorDetail[0]->id, ['class' => 'form-control']) !!}
 
-                                                <button id="student_minus_delete" data-id='<?php echo $instructorDetail[0]->id ;?>' style="margin:auto;  text-align:center; display:block; height: 10px" class="btn btn-danger enable" onclick="return Delete()">
+                                                <button id="student_minus_delete" data-id='<?php echo $instructorDetail[0]->id ;?>' style="margin:auto;  text-align:center; display:block" class="btn btn-danger enable" onclick="return Delete()">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
 
                                                 {!! Form::close() !!}
