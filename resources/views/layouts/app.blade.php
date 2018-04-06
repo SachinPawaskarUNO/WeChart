@@ -44,7 +44,7 @@
                     <div class="navbar-header" style="padding-left: 5%;">
 
                         <a class="navbar-brand" href="/login">
-                            <img src="{{ URL::asset('logos/WeChart.png') }}" height="150%">
+                            <img src="{{ URL::asset('logos/Logo.png') }}" height="550%" style="margin-top: -20%">
                         </a>
 
                     </div>
@@ -68,18 +68,18 @@
                     @if(Auth::user()->role == 'Student')
 
                         <a class="navbar-brand" href="/StudentHome">
-                            <img src="{{ URL::asset('logos/WeChart.png') }}" height="150%">
+                            <img src="{{ URL::asset('logos/Logo.png') }}" height="550%" style="margin-top: -20%">
                         </a>
 
                     @elseif(Auth::user()->role == 'Instructor')
 
                         <a class="navbar-brand" href="/InstructorHome">
-                            <img src="{{ URL::asset('logos/WeChart.png') }}" height="150%">
+                            <img src="{{ URL::asset('logos/Logo.png') }}" height="550%" style="margin-top: -20%">
                         </a>
 
                     @else
                         <a class="navbar-brand" href="/home">
-                            <img src="{{ URL::asset('logos/WeChart.png') }}" height="150%">
+                            <img src="{{ URL::asset('logos/Logo.png') }}" height="550%" style="margin-top: -20%">
                         </a>
                     @endif
 
