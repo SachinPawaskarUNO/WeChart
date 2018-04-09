@@ -41,7 +41,7 @@
         @guest
 
             <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #AC1F2D;font-family: Montserrat, sans-serif;" id="navigation_bar">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="navbar-header">
 
                         <a class="navbar-brand" href="/login">
