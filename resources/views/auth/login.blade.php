@@ -14,7 +14,7 @@
 <style>
 
     body {
-        background-size: 1540px 700px;
+        background-size: 1540px 740px;
         background-repeat: no-repeat;
         padding: 0;
         margin: 0 0 -10px;
