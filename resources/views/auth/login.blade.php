@@ -215,12 +215,12 @@
     </form>
     <div class="form-group">
         @if ($errors->has('email'))
-            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:11.8%;position: fixed">
+            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:9.8%;position: fixed">
                 <a href="#">About WeChart</a><br>
                 <a href="#">Contact us</a>
             </div>
         @else
-            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:13.2%;position: fixed">
+            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:11.2%;position: fixed">
                 <a href="#">About WeChart</a><br>
                 <a href="#">Contact us</a>
             </div>
