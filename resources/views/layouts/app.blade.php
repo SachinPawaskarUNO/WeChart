@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+
         .footr a{
             font-family: Montserrat, sans-serif;
             font-weight: bold;
@@ -134,10 +135,11 @@
     </div>
 
     <div>
-    <img src="/logos/footer.png" alt="Footer" style="height:250px;width:100%;">
-        <img src="/logos/unmc.png" alt="UNMC logo" style="height: 65px;width: 90px;margin-left: 45%;margin-top: -6%">
+
     </div>
     <div class="form-group footr">
+        <img src="/logos/footer.png" alt="Footer" style="height:250px;width:100%;">
+        <img src="/logos/unmc.png" alt="UNMC logo" style="height: 65px;width: 90px;margin-left: 45%;margin-top: -6%">
         <div class="col-md-3 col-md-offset-5" style="margin-top: -5.3%;margin-left: 50%">
             <a href="#">About WeChart</a><br>
             <a href="#">Contact us</a>

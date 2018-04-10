@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeChart</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -14,11 +14,14 @@
 <style>
 
     body {
+        background-size: 1540px 700px;
         background-repeat: no-repeat;
-        background-size: cover;
+        padding: 0;
+        margin: 0 0 -10px;
+        overflow: hidden;
     }
     img{
-        position: fixed;
+        position: absolute;
         top: 55%;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -166,26 +169,24 @@
 </style>
 </head>
 
-<body style="background-image: url(logos/Login_Background.jpg); z-index: -1;" >
+<body style="background-image: url(logos/Login_Background.jpg); z-index: -1; width: 1000%" >
 
 <nav class="navbar navbar-inverse navbar-static-top" id="navigation_bar"></nav>
 
-<img src="/logos/footer.png" alt="Footer" style="width: 100%; height: 35%;margin-top: 14.5%">
+<img src="/logos/footer.png" alt="Footer" style="width: 100%; height: 30%;margin-top: 14.3%">
 <img src="/logos/unmc.png" alt="UNMC logo" style="width: 5%; height: 8%; left: 47%; top: 96%;">
 
 
 <div class="loginBox">
-    <img src="/logos/login_panel.png" alt="LoginPanel">
-    <img src="/logos/Logo.png" style="width: 20%; height: 30%;margin-top: -16%">
+    <img src="/logos/login_panel.png" alt="LoginPanel" style="width: 1200px; height: 800px;margin-left: 10%" >
+    <img src="/logos/Logo.png" style="width: 300px; height: 200px;margin-top: -90%">
     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <div class="col-md-6">
                 <input id="email" autocomplete="new-password" type="email" placeholder="Enter Email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                 @if ($errors->has('email'))
-                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                    <p style="width: 600%">Details do not match records</p>
                 @endif
             </div>
         </div>
@@ -194,9 +195,7 @@
                 <input id="password" placeholder="Enter Password" autocomplete="new-password" type="password" class="form-control" name="password" required>
 
                 @if ($errors->has('password'))
-                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                    <p style="width: 600%">Details do not match records</p>
                 @endif
             </div>
         </div>
@@ -215,10 +214,19 @@
         </div>
     </form>
     <div class="form-group">
-        <div class="col-md-1 col-md-offset-5" style="margin-top: 98%; margin-left: 120%;">
-        <a href="#">About WeChart</a><br>
-        <a href="#">Contact us</a>
-    </div>
+        @if ($errors->has('email'))
+            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:8.8%;position: fixed">
+                <a href="#">About WeChart</a><br>
+                <a href="#">Contact us</a>
+            </div>
+        @else
+            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:10.2%;position: fixed">
+                <a href="#">About WeChart</a><br>
+                <a href="#">Contact us</a>
+            </div>
+        @endif
+
+
     </div>
 </div>
 
