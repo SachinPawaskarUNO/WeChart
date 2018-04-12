@@ -9,7 +9,24 @@
             height: 100vh;
             overflow-y: auto;
         }
-        </style>
+        .navigation, .guidance, .documentation{
+            border-radius: 2%;
+        }
+        .documentation:hover,.guidance:hover{
+            background: #ECE9E6;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            box-shadow: 2px 2px 50px 2px darkgray;
+        }
+        .navigation:hover .list-group-item{
+            background: #ECE9E6;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .navigation:hover{
+            box-shadow: 2px 2px 50px 2px darkgray;
+        }
+</style>
 
     {{--@parent--}}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -21,7 +38,7 @@
         <div class="row" style="padding-top: 0;border-top:0;">
             {{--Navigation Panel--}}
 
-            <div class="col-md-2" style="padding-left: 0;padding-right: 0">
+            <div class="col-md-2 navigation" style="padding-left: 0;padding-right: 0">
                 <div class="ScrollStyle" style="overflow:auto;height:100vh">
 
                 <ul class="list-group test" style="cursor: pointer;">
@@ -66,14 +83,15 @@
 
 
             {{--Documentation Panel--}}
-            <div class="col-md-6" style="padding-left: 0;margin-left: 0;padding-right: 15px;margin-right: 0">
+            <div class="col-md-6 documentation" style="padding-left: 0;margin-left: 0;padding-right: 15px;margin-right: 0">
                 <div class="ScrollStyle">
+                    <br>
                 @yield('documentation_panel')
             </div>
         </div>
 
             {{--Guidance Panel--}}
-            <div class="col-md-4" style="float: right;border: thin solid grey; height: auto; padding: 0; border-radius: 5px;" id="guidance_panel">
+            <div class="col-md-4 guidance" style="float: right;border: thin solid grey; height: auto; padding: 0; border-radius: 5px;" id="guidance_panel">
                 <div class="ScrollStyle" style="overflow:auto;height:100vh">
 
                 <!-- Guidance Panel -->
