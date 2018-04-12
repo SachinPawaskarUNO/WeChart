@@ -3,6 +3,8 @@
 @section('content')
     <br>
     <br>
+    <br>
+    <br>
 <div class="container">
  @if(empty($user))
     <div class="row">
@@ -48,6 +50,8 @@
     </div>
         <br>
         <br>
+        <br>
+        <br>
  @endif
 
 <!-- After user submits request --> 
@@ -68,7 +72,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                        <br>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/ResetPassword') }}">
                         {{ csrf_field() }}
 
@@ -140,6 +144,7 @@
                     </form>
                 </div>
 
+                     <br>
                 @endif
 
             </div>

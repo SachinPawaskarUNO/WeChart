@@ -4,7 +4,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-
+<br>
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -13,7 +14,7 @@
                         <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                         Back to Dashboard</a>
                 </div>
-                <br><br>
+                <br><br><br>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="backgroundd-color: lightblue">
                         <h4>Add Student Email Address</h4>
@@ -91,6 +92,13 @@
                 @endif
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
         <script>
 
             $(document).ready(function() {

@@ -1,36 +1,32 @@
-<style>
-    .table
-    {
-        table-layout: fixed;
-        word-wrap: break-word;
-    }
-    table tr th:nth-child(1){
-        width: 22%;
-    }
-    table tr th:nth-child(2){
-        width: 10%;
-    }
-    table tr th:nth-child(3){
-        width: 40%;
-    }
-    table tr th:nth-child(4){
-        width: 10%;
-    }
-    table tr th:nth-child(5){
-        width: 10%;
-    }
-
-
-
-</style>
-
 @extends('layouts.app')
 @section('content')
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
+    <style>
+        .table
+        {
+            table-layout: fixed;
+            word-wrap: break-word;
+        }
+        table tr th:nth-child(1){
+            width: 22%;
+        }
+        table tr th:nth-child(2){
+            width: 10%;
+        }
+        table tr th:nth-child(3){
+            width: 40%;
+        }
+        table tr th:nth-child(4){
+            width: 10%;
+        }
+        table tr th:nth-child(5){
+            width: 10%;
+        }
 
+    </style>
     {{--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />--}}
 

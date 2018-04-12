@@ -7,7 +7,7 @@
 
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+<br>
     <div class="container">
         <div class="row" style="padding-top: 0; margin: 0">
             <h3 align = "center">Active Modules</h3>
@@ -227,7 +227,6 @@
         </div>
         {{ Form::close() }}
     </div>
-    <br>
     <script>
         $(document).ready(function(){
 
@@ -384,7 +383,9 @@ function Delete() {
                 return false;
         }
     </script>
-
+    <br>
+    <br>
+    <br>
 @endsection
 
 

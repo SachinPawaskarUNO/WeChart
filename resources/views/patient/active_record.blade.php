@@ -18,7 +18,7 @@
 
     {{--Three Panels--}}
     <div class="container-fluid" style="margin-top: 0;padding-top: 0;padding-left: 1%;">
-        <div class="row" style="border: solid;padding-top: 0;border-top:0;">
+        <div class="row" style="padding-top: 0;border-top:0;">
             {{--Navigation Panel--}}
 
             <div class="col-md-2" style="padding-left: 0;padding-right: 0">

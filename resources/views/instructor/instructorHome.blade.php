@@ -4,18 +4,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <style type="text/css">
-        
-    #module_wrap 
+
+    #module_wrap
 {
-    margin-top: 0px;  
-    margin-bottom: 30px; 
+    margin-top: 0px;
+    margin-bottom: 30px;
     background: #bdc3c7;
     width: auto; height: 50px;
 }
 
 
 
-    #savedModuleName 
+    #savedModuleName
 {
     display: block;
     width: 100%;
@@ -30,7 +30,7 @@
     text-decoration:none;
 }
 
-    #savedModuleName:hover 
+    #savedModuleName:hover
 {
     text-decoration:none;
     border-top: 1px groove white;
@@ -136,6 +136,10 @@
                                 </div>
                             @endforeach
                         @else
+                            <br>
+                            <br>
+
+                            <br>
                             <p>{{$for_review_message}}</p>
                         @endif
                     </div>
@@ -151,6 +155,10 @@
                     </div>
                     <div class="panel-body" style="margin-bottom: 0;padding-bottom: 0">
                             @if(!empty($reviewed_patients))
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                                 <?php $modid = 0; ?>
                                 @foreach($modules_reviewed as $module)
                                     <?php $modid = $modid + 1; ?>
@@ -210,13 +218,16 @@
                                 @endforeach
 
                             @else
+
                                 <p>{{$reviewed_message}}</p>
+
                             @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<br>
     <script type="text/javascript">
 
         jQuery(document).ready(function($)

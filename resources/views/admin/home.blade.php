@@ -5,9 +5,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-
-
 @section('content')
+    <br>
     <div class="container">
         <div class="row" style="padding-top: 0;margin: 0">
             <h3 id="lblAdminHeader" style="text-align: center;padding-top: 0;margin: 0"><img src="logos\LogoAdmin.png"
@@ -132,7 +131,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <script>
         function ConfirmDelete() {

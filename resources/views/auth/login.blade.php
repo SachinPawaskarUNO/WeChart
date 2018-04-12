@@ -1,6 +1,7 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
 <style>
 
     body {
-        background-size: 1540px 700px;
+        background-size: 1540px 740px;
         background-repeat: no-repeat;
         padding: 0;
         margin: 0 0 -10px;
@@ -132,38 +133,70 @@
     #mask {
         display: none;
         position: fixed;
-        alignment: center;
+        left: 0;
+        top: 0;
         z-index: 10;
-        width: 100%; height: 100%;
+        width: 100%;
+        height: 100%;
         opacity: 0.8;
         z-index: 999;
     }
 
-    .login-popup{
-        display:none;
-        position: absolute;
-        width: 300px;
-        height: 200px;
-
-        top: 10%;
-        left: 10%;
-        margin: -100px 0 0 -150px;
-        background: #3F80B8;
+    /* You can customize to your needs  */
+    .popup {
+        display: none;
+        background: rgba(93, 173, 226, 1);
         padding: 10px;
+        color: white;
+        font-weight: bold;
         border: 2px solid #ddd;
-        float: left;
         font-size: 1.2em;
-
+        position: fixed;
+        top: 20%;
+        left: 20%;
+        right: 20%;
         z-index: 99999;
-        box-shadow: 0px 0px 20px #999;
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-        border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
+        box-shadow: 10px 10px 20000px 10px #FFFFFF;
+        /* CSS3 */
+        -moz-box-shadow: 10px 10px 20000px 10px #FFFFFF;
+        /* Firefox */
+        -webkit-box-shadow: 10px 10px 20000px 10px #FFFFFF;
+        /* Safari, Chrome */
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px;
+        /* Firefox */
+        -webkit-border-radius: 3px;
+        /* Safari, Chrome */;
     }
+
+    .popup2 {
+        display: none;
+        background: rgba(93, 173, 226, 1);
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        border: 2px solid #ddd;
+        font-size: 1.2em;
+        position: fixed;
+        top: 20%;
+        left: 30%;
+        right: 30%;
+        z-index: 99999;
+        box-shadow: 10px 10px 20000px 10px #FFFFFF;
+        /* CSS3 */
+        -moz-box-shadow: 10px 10px 20000px 10px #FFFFFF;
+        /* Firefox */
+        -webkit-box-shadow: 10px 10px 20000px 10px #FFFFFF;
+        /* Safari, Chrome */
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px;
+        /* Firefox */
+        -webkit-border-radius: 3px;
+        /* Safari, Chrome */;
+    }
+
     fieldset {
-        border:none;
+        border: none;
     }
 
 </style>
@@ -174,7 +207,7 @@
 <nav class="navbar navbar-inverse navbar-static-top" id="navigation_bar"></nav>
 
 <img src="/logos/footer.png" alt="Footer" style="width: 100%; height: 30%;margin-top: 14.3%">
-<img src="/logos/unmc.png" alt="UNMC logo" style="width: 5%; height: 8%; left: 47%; top: 96%;">
+<img src="/logos/unmc.png" alt="UNMC logo" style="width: 5%; height: 8%; left: 51%; top: 96%;">
 
 
 <div class="loginBox">
@@ -187,6 +220,7 @@
                 <input id="email" autocomplete="new-password" type="email" placeholder="Enter Email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                 @if ($errors->has('email'))
                     <p style="width: 600%">Details do not match records</p>
+
                 @endif
             </div>
         </div>
@@ -215,14 +249,49 @@
     </form>
     <div class="form-group">
         @if ($errors->has('email'))
-            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:8.8%;position: fixed">
-                <a href="#">About WeChart</a><br>
+            <div class="col-md-1 col-md-offset-5" style="margin-left:5%;margin-top:10.6%;position: fixed">
+                <a href="#login-box" class="login-window">About WeChart</a><br>
+            </div>
+            <div class="col-md-1 col-md-offset-5" style="margin-left:18.5%;margin-top:10.6%;position: fixed">
                 <a href="#">Contact us</a>
             </div>
+        <script>
+            setTimeout(function() {
+                document.location.reload()
+            }, 3000);
+        </script>
+
         @else
-            <div class="col-md-1 col-md-offset-5" style="margin-left:15%;margin-top:10.2%;position: fixed">
-                <a href="#">About WeChart</a><br>
-                <a href="#">Contact us</a>
+            <div class="col-md-1 col-md-offset-5" style="margin-left:5%;margin-top:12%;position: fixed">
+                <a href="#aboutus" class="window">About WeChart</a><br>
+                <div id="aboutus" class="popup">
+                    <p style="text-align: center; font-size: 120%">About WeChart</p>
+                    <hr style="border-width: 2px;margin-left: 35%;margin-right: 35%;">
+                    <p style="text-align: center;">The process of medical documentation is a vital skill for all allied health professionals.  The written record is essential for communication of the patient’s status to ensure proper treatment while minimizing adverse outcomes. Medical errors represent a serious threat to patient safety and have been estimated to add millions to the global healthcare cost.
+                    <br>
+                    <br>
+                    Unfortunately, students are often expected to develop this skill during the clinical exposure phase of their education with minimal guidance.
+                    WeChart was developed by the Department of Emergency Medicine at The University of Nebraska Medical Center (UNMC), in collaboration with The University of Nebraska Omaha (UNO). Our goal was to optimize the learning experience for health care students during their clinical internships.</p>
+                    <br>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-1 col-md-offset-5" style="margin-left:18.5%;margin-top:12%;position: fixed">
+                <a href="#login-box" class="window">Contact Us</a><br>
+                <div id="login-box" class="popup2">
+                    <p style="text-align: center; font-size: 120%">Contact Us</p>
+                    <hr style="border-width: 2px;margin-left: 35%;margin-right: 35%;">
+                    <p style="text-align: center;">Project Lead:<br>
+                    Thanh Nguyen<br>
+                    402-559-6705<br>
+                    Thang.Nguyen@UNMC.edu<br>
+                    <br>
+                    Licensing Information:<br>
+                    Catherine Murari<br>
+                    402-559-3265<br>
+                    Catherine.Murari@UNMC.edu<br></p>
+                    <br>
+                </div>
             </div>
         @endif
 
@@ -232,25 +301,17 @@
 
 </body>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('a.login-window').click(function() {
+        $('a.window').click(function() {
 
             // Getting the variable's value from a link
             var loginBox = $(this).attr('href');
 
             //Fade in the Popup and add close button
             $(loginBox).fadeIn(300);
-
-            //Set the center alignment padding + border
-            var popMargTop = ($(loginBox).height() + 24) / 2;
-            var popMargLeft = ($(loginBox).width() + 24) / 2;
-
-            $(loginBox).css({
-                'margin-top' : -popMargTop,
-                'margin-left' : -popMargLeft
-            });
 
             // Add the mask to body
             $('body').append('<div id="mask"></div>');
@@ -260,8 +321,8 @@
         });
 
         // When clicking on the button close or the mask layer the popup closed
-        $('a.close, #mask').live('click', function() {
-            $('#mask , .login-popup').fadeOut(300 , function() {
+        $('body').on('click','#mask', function() {
+            $('#mask , .popup, .popup2').fadeOut(300 , function() {
                 $('#mask').remove();
             });
             return false;
