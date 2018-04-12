@@ -2,12 +2,13 @@
 namespace App\Http\Controllers;
 use App\users_patient;
 use App\module;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Carbon;
-
+use App\Notifications\FeedbackNotification;
 class InstructorController extends Controller
 {
     public function index()
@@ -96,11 +97,21 @@ class InstructorController extends Controller
         if($role == 'Instructor'){
 
             $feedback_record = users_patient::where('patient_id', $request['patient_id'])->where('user_id',$request['user_id'])->first();
+            Log::info("created");
+
+           
 
 
                 $users_patient = users_patient::where('users_patient_id', $feedback_record->users_patient_id)->update(['feedback' => $request['feedback']]);
+
+                $user = User::find($feedback_record->created_by);
+                Log::info($user);
+
+            
                 
-                   
+                
+                $user->notify(new FeedbackNotification());                
+
                 return redirect()->route('patient_preview',[$request['patient_id']]);
         }
     }

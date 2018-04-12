@@ -136,12 +136,14 @@ class NavigationController extends Controller
                     ->select('active_record.*','act2.value as comments')->orderBy('active_record.doc_control_group_order', 'ASC')
                     ->orderBy('active_record.active_record_id', 'ASC')->get();
 
+                $notifications = users_patient::join('users','users.id','=','users_patient.user_id')->join('patient','patient.patient_id','=','users_patient.patient_id')->whereNotNull('feedback')->where('users_patient.created_by', Auth::user()->id)->get();                    
+
 
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id', $id)->where('user_id', $user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/demographics_patient', compact('patient', 'navs', 'vital_signs_header', 'disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results', 'diagnosis_list_ddx'));
+                    return view('patient/demographics_patient', compact('patient', 'navs', 'vital_signs_header', 'disposition', 'status_id','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results', 'diagnosis_list_ddx','notifications'));
 
                 }
                 else
@@ -2148,12 +2150,14 @@ public function get_ROS_gastrointestinal_symptoms($id)
                     ->select('active_record.*','act2.value as comments')->orderBy('active_record.doc_control_group_order', 'ASC')
                     ->orderBy('active_record.active_record_id', 'ASC')->get();
 
+                    $notifications = users_patient::join('users','users.id','=','users_patient.user_id')->join('patient','patient.patient_id','=','users_patient.patient_id')->whereNotNull('feedback')->where('users_patient.created_by', Auth::user()->id)->get();
+
             $user_id = Auth::user()->id;
             $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
             if($status) {
                 $status_id = $status->patient_record_status_id;
 
-                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','results','dosage','i','diagnosis_list_ddx'));
+                return view('patient/disposition', compact ('diagnosis_list_disposition','disposition_value','disposition_comment','status_id','vital_signs_header','patient','navs','disposition','videos','pictures','audios','labs','images','procedures','medications','results','dosage','i','diagnosis_list_ddx','notifications'));
 
             }
             else
@@ -2286,11 +2290,13 @@ public function get_ROS_gastrointestinal_symptoms($id)
                         ->select('active_record.*','act2.value as comments')->orderBy('active_record.doc_control_group_order', 'ASC')
                         ->orderBy('active_record.active_record_id', 'ASC')->get();
 
+                        $notifications = users_patient::join('users','users.id','=','users_patient.user_id')->join('patient','patient.patient_id','=','users_patient.patient_id')->whereNotNull('feedback')->where('users_patient.created_by', Auth::user()->id)->get();  
+
                 $user_id = Auth::user()->id;
                 $status = users_patient::where('patient_id',$id)->where('user_id',$user_id)->first();
                 if($status) {
                     $status_id = $status->patient_record_status_id;
-                    return view('patient/assign_instructor', compact ('disposition','status_id','vital_signs_header','medications','medication_comment','patient','navs','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results','diagnosis_list_ddx'));
+                    return view('patient/assign_instructor', compact ('disposition','status_id','vital_signs_header','medications','medication_comment','patient','navs','videos','pictures','audios','labs','images','procedures','medications','dosage','i','results','diagnosis_list_ddx','notifications'));
 
                 }
                 else
@@ -2641,6 +2647,8 @@ public function get_ROS_gastrointestinal_symptoms($id)
                     array_push($instructor_Details, $instructorDetail);
                 }
 
+                $notifications = users_patient::join('users','users.id','=','users_patient.user_id')->join('patient','patient.patient_id','=','users_patient.patient_id')->whereNotNull('feedback')->where('users_patient.created_by', Auth::user()->id)->get();  
+
                 //getting student name for instructor
                 $student_record = users_patient::where('patient_id',$id)
                     ->where('patient_record_status_id','2')->first();
@@ -2662,7 +2670,7 @@ public function get_ROS_gastrointestinal_symptoms($id)
                     'integumentary_comment', 'musculoskeletal_symptoms', 'musculoskeletal_comment',
                     'cardiovascular_symptoms', 'cardiovascular_comment', 'respiratory_symptoms', 'respiratory_comment',
                     'eyes_symptoms', 'eyes_comment', 'hent_symptoms', 'hent_comment', 'constitutional_symptoms',
-                    'constitutional_comment', 'comment_order', 'labs', 'procedures', 'images', 'results','mdm','diagnosis_list_disposition','disposition_value','disposition_comment','dosage','i','diagnosis_list_ddx'));
+                    'constitutional_comment', 'comment_order', 'labs', 'procedures', 'images', 'results','mdm','diagnosis_list_disposition','disposition_value','disposition_comment','dosage','i','diagnosis_list_ddx','notifications'));
             }
         }
         else

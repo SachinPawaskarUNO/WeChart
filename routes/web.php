@@ -19,7 +19,6 @@ Route::post('/ResetPassword', 'Auth\ResetPasswordController@resetUserPassword');
 Route::post('/ChangePassword', 'Auth\ResetPasswordController@changePassword');
 Route::get('/User/{id}/EditProfile', 'UsersController@getEditProfile')->name('EditProfile');
 Route::post('EditProfile', 'UsersController@postEditProfile');
-
 //Admin Routes
 //Landing page for Admin
 Route::get('/home', 'AdminController@index')->name('home');

@@ -10,12 +10,12 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-
+use App\Notifications\FeedbackNotification;
 use Illuminate\Http\Request;
 use App\patient;
 
 class StudentController extends Controller
-{
+{     
     public function index()
     {
         //Only Student can access Student Dashboard
@@ -24,6 +24,8 @@ class StudentController extends Controller
             $role = Auth::user()->role;
         }
         if($role == 'Student') {
+
+
 
             $saved_patients_modules = array();
             $submitted_patients_modules = array();
@@ -39,6 +41,11 @@ class StudentController extends Controller
                 ->where('completed_flag',true)
                 ->where('archived',false)
                 ->get();
+                
+            $notifications = users_patient::join('patient','patient.patient_id','=','users_patient.patient_id')->whereNotNull('feedback')->where('users_patient.created_by', Auth::user()->id)->get();
+
+           Log::info($notifications);
+
 
             if(count($saved_patients)>0) {
                 foreach ($saved_patients as $patient) {
@@ -69,7 +76,7 @@ class StudentController extends Controller
             $saved_patients_modules = array_unique($saved_patients_modules);
             $submitted_patients_modules = array_unique($submitted_patients_modules);
 
-            return view('student/studentHome', compact('saved_patients','saved_patients_modules', 'submitted_patients_modules', 'saved_message','submitted_patients','submitted_message'));
+            return view('student/studentHome', compact('saved_patients','saved_patients_modules', 'submitted_patients_modules', 'saved_message','submitted_patients','submitted_message','notifications'));
         }
         else
         {
@@ -128,7 +135,8 @@ class StudentController extends Controller
         if($role == 'Student') {
             try {
                     $modules = module::where('archived', 0)->get();
-                    return view('patient/add_patient', compact('modules'));
+    $notifications = users_patient::join('users','users.id','=','users_patient.user_id')->join('patient','patient.patient_id','=','users_patient.patient_id')->whereNotNull('feedback')->where('users_patient.created_by', Auth::user()->id)->get();
+                    return view('patient/add_patient', compact('modules','notifications'));
 
             } catch (\Exception $e) {
                 return view('errors/503');
