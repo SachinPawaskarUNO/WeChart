@@ -81,7 +81,7 @@
                 {{--if successfully submitted--}}
                 @if($Error == 'No')
                 @foreach($mailsaved as $mailsave)
-                    <div class="alert alert-success alert-dismissable">
+                    <div class="alert alert-success alert-dismissable" style="height: 37px">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
                             Success! email address {{$mailsave['emailsaved']}}  is saved in the database.
@@ -112,7 +112,7 @@
                     e.preventDefault();
                     if(x < max_fields){ //max input box allowed
                         x++; //text box increment
-                        $(wrapper).append('<div class="row"><br><div class="col-md-11"><input class="test form-control" type="email" name="email[]" id="email[]" required></div><div class="col-md-1" ><a href="#" class="remove_field"><i class="fa fa-close" style="font-size:25px; color: #DD0000"></i></a></div></div>'); //add input box
+                        $(wrapper).append('<div class="row"><br><div class="col-md-11"><input class="test form-control" type="email" name="email[]" id="email[]" required></div><div class="col-md-1" ><a href="#" class="remove_field"><i class="fa fa-close" style="font-size:27px; color: #DD0000"></i></a></div></div>'); //add input box
                     }
                 });
 

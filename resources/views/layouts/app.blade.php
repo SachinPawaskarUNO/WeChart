@@ -146,7 +146,7 @@
 
             <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #AC1F2D;font-family: Montserrat, sans-serif;" id="navigation_bar">
             <div class="container-fluid">
-                <div class="navbar-header" style="padding-left: 5%;">
+                <div class="navbar-header" style="padding-left: 0%;">
 
                     @if(Auth::user()->role == 'Student')
 

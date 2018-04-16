@@ -9,8 +9,7 @@
     <br>
     <div class="container">
         <div class="row" style="padding-top: 0;margin: 0">
-            <h3 id="lblAdminHeader" style="text-align: center;padding-top: 0;margin: 0"><img src="logos\LogoAdmin.png"
-                                                                                             width="4%"> Admin Dashboard
+            <h3 id="lblAdminHeader" style="text-align: center;padding-top: 0;margin: 0"><img src="logos\LogoAdmin.png" width="4%"> <b>Admin Dashboard</b>
                 <img src="logos\LogoAdmin.png" width="4%"></h3>
         </div>
                 <br>

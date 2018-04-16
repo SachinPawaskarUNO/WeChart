@@ -7,7 +7,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <style>
         .glyphicon.glyphicon-remove {
-            font-size: 25px;
+            font-size: 22px;
+            color: red;
         }
     </style>
 </head>
@@ -18,7 +19,7 @@
     <div class="form-group">
         <div class="row ">
             <div class="col-md-5  pull-right">
-                <button id="mybutton" class="btn btn-info" ><span class="glyphicon glyphicon-off"></span> Clear All</button>
+                <button id="mybutton" class="btn btn-info"><span class="glyphicon glyphicon-off" ></span> Clear All</button>
             </div>
         </div>
         <div class="row">

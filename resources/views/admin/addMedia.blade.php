@@ -25,6 +25,7 @@
         table tr th:nth-child(5){
             width: 10%;
         }
+        #alert
 
     </style>
     {{--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -136,7 +137,6 @@
                             <th><i aria-hidden="true"></i> Type</th>
                             <th><i aria-hidden="true"></i> Link</th>
                             <th style="border-right: hidden"><i aria-hidden="true"></i> Actions </th>
-                            <th style="border-left: hidden"><i aria-hidden="true"></i> </th>
                         </tr>
                         </thead>
                         <?php $rownum=0; ?>
@@ -148,12 +148,11 @@
                                 <td class="<?php echo "selectop".$rownum ?>">
                                     <p class="display"><?php echo($mediarow->media_lookup_value_type); ?></p>
                                 </td>
-                                <td><a class="linktest" href="<?php echo($mediarow->media_lookup_value_link); ?>" target="_blank"> <?php echo($mediarow->media_lookup_value_link); ?></a></td>
+                                <td><a class="linktest" href="<?php echo($mediarow->media_lookup_value_link); ?>" target="_blank"> <?php echo($mediarow->media_lookup_value_link); ?></a>
+                                </td>
                                 <td>
                                     <button class="editButton btn btn-info" id="<?php echo $rownum ?>"><i class="fa fa-edit" aria-hidden="true"></i></button>
                                     <button class="saveButton btn btn-success" id="<?php echo $rownum ?>" value="{{$mediarow->media_lookup_value_id}}"><i class="fa fa-save" aria-hidden="true"></i></button>
-                                </td>
-                                <td>
                                     <a href="{{ route('delete_media', ['id' => $mediarow->media_lookup_value_id]) }}" class="btn btn-danger enable" id="delete" onclick="return Delete()">
                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </a>
@@ -182,11 +181,10 @@
                     null,
                     null,
                     { "searchable": false },
-                    { "searchable": false },
                     { "searchable": false }
                 ],
                 "columnDefs": [
-                    { orderable: false, targets: 4 }
+                    { orderable: false, targets: 3 }
                 ],
                 "dom": 'l<"toolbar">frtip',
                 "createdRow": function( row, data, dataIndex ) {
@@ -286,7 +284,7 @@
 
             });
 
-            $("div.toolbar").html('<button id="clearsearch" autocomplete="off" class="close" type="button"><i class="fa fa-close" style="font-size:22px;color:#DD0000"></i></button>');
+            $("div.toolbar").html('<button id="clearsearch" autocomplete="off" class="close" type="button"><i class="fa fa-close" style="font-size:27px;color:#DD0000"></i></button>');
             var medtable = $('#media_table').DataTable();
             $("#clearsearch").click(function(event){
                 medtable.search('').draw();
@@ -302,7 +300,7 @@
                 if (x >= max_fields) {
                 } else { //max input box allowed
                     x++; //text box increment
-                    $(wrapper).append('<div class="row" style="padding-top: 20px;margin-left: 0px;"><div class="form-group"><label for="tag" class="col-md-1 control-label" style="padding-right: 0">Name :</label> <div class="col-md-3" style="width:22%"> <input id="tag[]" type="tag" class="tag form-control" name="tag[]" autocomplete="off" required></div><label for="type" class="col-md-1 control-label" style="padding-right: 0;">Type :</label><div class="col-md-1" style="width:auto"><select id="type[]" class="tag form-control" name="type[]" required><option></option><option>Audio</option><option>Video</option><option>Image</option></select></div><label for="link" class="col-md-1 control-label" style="padding-right: 0;">Link :</label><div class="col-md-3" style="width:31%"><input id="link[]" type="url" class="form-control" name="link[]" autocomplete="off" required></div><div class="col-md-1" style="width:auto"><a href="#" class="remove_field"><i class="fa fa-close" style="font-size: 18px;padding-top: 8px; color: red;"></i></a></div> </div></div>');
+                    $(wrapper).append('<div class="row" style="padding-top: 20px;margin-left: 0px;"><div class="form-group"><label for="tag" class="col-md-1 control-label" style="padding-right: 0">Name :</label> <div class="col-md-3" style="width:22%"> <input id="tag[]" type="tag" class="tag form-control" name="tag[]" autocomplete="off" required></div><label for="type" class="col-md-1 control-label" style="padding-right: 0;">Type :</label><div class="col-md-1" style="width:auto"><select id="type[]" class="tag form-control" name="type[]" required><option></option><option>Audio</option><option>Video</option><option>Image</option></select></div><label for="link" class="col-md-1 control-label" style="padding-right: 0;">Link :</label><div class="col-md-3" style="width:31%"><input id="link[]" type="url" class="form-control" name="link[]" autocomplete="off" required></div><div class="col-md-1" style="width:auto"><a href="#" class="remove_field"><i class="fa fa-close" style="font-size: 27px;padding-top: 8px; color: red;"></i></a></div> </div></div>');
                 }
 
             });
