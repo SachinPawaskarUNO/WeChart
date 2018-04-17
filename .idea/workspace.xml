@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7801dfde-ab39-482e-a6ba-e1576d9b5c3e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/InstructorController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/InstructorController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/patient/guidancepanel_av.blade.php" afterPath="$PROJECT_DIR$/resources/views/patient/guidancepanel_av.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/patient/preview.blade.php" afterPath="$PROJECT_DIR$/resources/views/patient/preview.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +17,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="guidancepanel_av.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="guidancepanel_av.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/patient/guidancepanel_av.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
@@ -29,6 +25,16 @@
               <folding>
                 <marker date="1523922746689" expanded="true" signature="6840:6865" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="preview.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/patient/preview.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="692">
+              <caret line="1157" column="16" lean-forward="false" selection-start-line="1157" selection-start-column="16" selection-end-line="1157" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -62,10 +68,10 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/partials/notification/feedback_notification.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/addMedia.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/patient/preview.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/InstructorController.php" />
         <option value="$PROJECT_DIR$/resources/views/patient/guidancepanel_av.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/patient/preview.blade.php" />
       </list>
     </option>
   </component>
@@ -556,12 +562,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523313522210</updated>
       <workItem from="1523313524038" duration="10334000" />
-      <workItem from="1523905633006" duration="14874000" />
+      <workItem from="1523905633006" duration="15505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25208000" />
+    <option name="totallyTimeSpent" value="25839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -890,14 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/patient/preview.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="1154" column="61" lean-forward="false" selection-start-line="1154" selection-start-column="61" selection-end-line="1154" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DocumentationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -936,6 +934,14 @@
           <folding>
             <marker date="1523922746689" expanded="true" signature="6840:6865" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/patient/preview.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="1157" column="16" lean-forward="false" selection-start-line="1157" selection-start-column="16" selection-end-line="1157" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>

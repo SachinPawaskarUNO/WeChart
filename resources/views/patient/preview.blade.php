@@ -1152,7 +1152,10 @@ set_time_limit(0);
                 buttons: false,
                 timer: 1500,
             });
-            window.location.href = "{{URL::to('InstructorHome')}}";
+            setTimeout(function(){
+                window.location.href = "{{URL::to('InstructorHome')}}";
+
+            }, 1000);
 
         });
 
