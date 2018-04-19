@@ -21,7 +21,7 @@
     width: 100%;
     height: 35px;
     line-height: 35px;
-    background: #bdc3c7;
+    background: linear-gradient(#ffe4ba, #f4f2b2);
     text-align: center;
     color: #000000;
     font-weight: bold;
@@ -38,7 +38,7 @@
     border-bottom: 1px solid #7B7B78;
     border-right: 1px solid #7B7B78;
     color: #ffffff;
-    background: #bdc3c7;
+    background: linear-gradient(#ffe4ba, #f4f2b2);
     box-shadow: 1px 1px 2px #888888;
 }
 
@@ -53,7 +53,7 @@
 
     <div class="container">
         <div class="row">
-            <h3 style="text-align: center"><img src="logos\LogoInstructor.png" width="4%"> Instructor Dashboard <img src="logos\LogoInstructor.png" width="4%"></h3>
+            <h3 style="text-align: center">Instructor Dashboard</h3>
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-1">
@@ -68,7 +68,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default" style="margin-bottom: 0;padding-bottom: 0">
-                    <div class="panel-heading" style="background-color: #5DADE2; padding-bottom: 0">
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
                         <h4 style="margin-top: 0">Submitted For Review</h4>
                     </div>
                     <div class="panel-body" style="margin-bottom: 0;padding-bottom: 0">
@@ -88,7 +88,7 @@
                                         @if($for_review_patients)
                                             <table class="table table-striped table-bordered table-hover" style="float: left;">
                                                 <thead>
-                                                <tr class="bg-info">
+                                                <tr class="bg-custom">
                                                     <th>Patient Name</th>
                                                     <th>Visit Date</th>
                                                     <th>Submitted By</th>
@@ -119,7 +119,7 @@
                                                                     <a href="{{ route( 'patient_preview', ['patient_id' => $for_review_patient->patient_id ] ) }}" class="btn btn-primary" id="preview">
                                                                         <i class="fa fa-file-text" aria-hidden="true"></i> Print/Preview
                                                                     </a>
-                                                                    <a href="{{ route( 'patient.reviewed', ['patient_id' => $for_review_patient->patient_id]) }}" class="btn btn-info confirmation" id="mark_reviewed">
+                                                                    <a href="{{ route( 'patient.reviewed', ['patient_id' => $for_review_patient->patient_id]) }}" class="btn btn-success confirmation" id="mark_reviewed">
                                                                         <i class="fa fa-check-square-o" aria-hidden="true"></i> Mark Reviewed
                                                                     </a>
                                                                 </td>
@@ -150,15 +150,11 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default" style="margin-bottom: 0;padding-bottom: 0">
-                    <div class="panel-heading" style="background-color: #5DADE2; padding-bottom: 0">
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
                         <h4 style="margin-top: 0">Reviewed Patients</h4>
                     </div>
                     <div class="panel-body" style="margin-bottom: 0;padding-bottom: 0">
                             @if(!empty($reviewed_patients))
-                            <br>
-                            <br>
-                            <br>
-                            <br>
                                 <?php $modid = 0; ?>
                                 @foreach($modules_reviewed as $module)
                                     <?php $modid = $modid + 1; ?>
@@ -173,7 +169,7 @@
                                             @if($reviewed_patients)
                                                 <table class="table table-striped table-bordered table-hover" style="float: left;">
                                                     <thead>
-                                                    <tr class="bg-info">
+                                                    <tr class="bg-custom">
                                                         <th>Patient Name</th>
                                                         <th>Visit Date</th>
                                                         <th>Submitted By</th>

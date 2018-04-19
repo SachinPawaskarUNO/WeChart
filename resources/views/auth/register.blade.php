@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="padding-bottom: 0;padding-top: 0">
-                        <h3 >Register</h3>
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);font-weight:600">
+                        Register
                     </div>
 
                     <div class="panel-body">

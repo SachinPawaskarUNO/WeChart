@@ -9,9 +9,8 @@
     <br>
     <div class="container">
         <div class="row" style="padding-top: 0;margin: 0">
-            <h3 id="lblAdminHeader" style="text-align: center;padding-top: 0;margin: 0"><img src="logos\LogoAdmin.png"
-                                                                                             width="4%"> Admin Dashboard
-                <img src="logos\LogoAdmin.png" width="4%"></h3>
+            <h3 id="lblAdminHeader" style="text-align: center;padding-top: 0;margin: 0"> Admin Dashboard
+                </h3>
         </div>
                 <br>
         <div class="row">
@@ -20,7 +19,7 @@
                     <i class="fa fa-envelope-o" aria-hidden="true"></i> Remove Emails</a>
             </div>
             <div class="col-md-8 " style=" text-align:right">
-                <a class="btn btn-success" href={{url('/ConfigureModules')}}>
+                <a class="btn btn-primary" href={{url('/ConfigureModules')}}>
                     <i class="fa fa-cog" aria-hidden="true"></i> Configure Modules</a>
                 <a class="btn btn-success" href={{url('/AddMedia')}}>Manage Media</a>
             </div>
@@ -30,14 +29,14 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: grey; padding-bottom: 0">
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf); padding-bottom: 0">
                         <h4 style="margin-top: 0">Students</h4>
                     </div>
 
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
-                            <tr class="bg-info">
+                            <tr class="bg-warning">
                                 <th>Name</th>
                                 <th><i class="fa fa-envelope-o" aria-hidden="true"></i> Email Address</th>
                                 <th><i class="fa fa-phone" aria-hidden="true"></i> Contact Number</th>
@@ -82,14 +81,14 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: grey; padding-bottom: 0">
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf); padding-bottom: 0">
                         <h4 style="margin-top: 0">Instructors</h4>
                     </div>
 
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
-                            <tr class="bg-info">
+                            <tr class="bg-warning">
                                 <th>Name</th>
                                 <th><i class="fa fa-envelope-o" aria-hidden="true"></i> Email Address</th>
                                 <th><i class="fa fa-phone" aria-hidden="true"></i> Contact Number</th>

@@ -14,10 +14,10 @@
                         <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                         Back to Dashboard</a>
                 </div>
-                <br><br><br>
+                <br><br>
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="backgroundd-color: lightblue">
-                        <h4>Add Student Email Address</h4>
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);font-weight:600">
+                        Add Student Email Address
                     </div>
 
                     <div class="panel-body">
