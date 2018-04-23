@@ -81,7 +81,7 @@
                     @if(count($instructorDetails)>0)
                         <table class="table table-striped table-bordered table-hover">
                                 <thead>
-                                <tr class="bg-info">
+                                <tr class="bg-warning">
                                     <th >Email Address</th>
                                     <th >Role</th>
                                     <th >Creation Date</th>
