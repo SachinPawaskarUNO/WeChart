@@ -1,0 +1,17 @@
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WeChartAutoTests.dll.config
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WeChartAutoTests.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WeChartAutoTests.pdb
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\Newtonsoft.Json.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\nunit.framework.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\System.ValueTuple.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\TechTalk.SpecFlow.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WebDriver.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WebDriver.Support.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\Newtonsoft.Json.xml
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\nunit.framework.xml
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WebDriver.xml
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\bin\Debug\WebDriver.Support.xml
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\obj\Debug\WeChartAutoTests.csprojResolveAssemblyReference.cache
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\obj\Debug\WeChartAutoTests.dll
+c:\Users\Advaith\Documents\Visual Studio 2015\Projects\WeChartAutoTests\WeChartAutoTests\obj\Debug\WeChartAutoTests.pdb
