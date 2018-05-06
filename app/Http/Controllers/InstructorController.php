@@ -2,22 +2,19 @@
 namespace App\Http\Controllers;
 use App\users_patient;
 use App\module;
+use App\User;
+use App\patient;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Carbon;
-
+use App\Notifications\FeedbackNotification;
 class InstructorController extends Controller
 {
     public function index()
     {
         //Only Instructor can access Instructor Dashboard
-        $role = '';
-        if (Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if ($role == 'Instructor') {
             $modules_for_review = array();
             $modules_reviewed = array();
             $for_review_message = '';
@@ -61,28 +58,35 @@ class InstructorController extends Controller
             $modules_for_review = array_unique( $modules_for_review );
             $modules_reviewed = array_unique( $modules_reviewed );
             return view( 'instructor/instructorHome', compact( 'for_review_patients', 'modules_for_review', 'modules_reviewed', 'for_review_message', 'reviewed_patients', 'reviewed_message' ) );
-        }
-        else
-        {
-            $error_message = "You are not authorized to view this page";
-            return view( 'auth/not_authorized', compact( $error_message ) );
-        }
+
     }
     // To mark patient's active record as "reviewed"
-    public function review_patient($id)
+
+    //To save the feedback
+    public function post_feedback(Request $request)
     {
-        $role = '';
-        if (Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if ($role == 'Instructor') {
-            DB::table( 'users_patient' )->where( 'patient_id', $id )->where( 'user_id', Auth::user()->id )->update( ['patient_record_status_id' => '3', 'updated_by' => Auth::user()->id, 'updated_at' => Carbon\Carbon::now( 'CDT' )] );
-            return redirect()->route( 'instructor.home' );
-        }
-        else
-        {
-            $error_message= "You are not authorized to view this page";
-            return view('errors/error',compact('error_message'));
-        }
+
+
+            $feedback_record = users_patient::where('patient_id', $request['patient_id'])->where('user_id',$request['user_id'])->first();
+
+            users_patient::where('users_patient_id', $feedback_record->users_patient_id)->update(['feedback' => $request['feedback']]);
+
+            $user = User::find($feedback_record->created_by);
+            $instructor = User::find(Auth::user()->id);
+            $insfname = $instructor->firstname;
+            $inslname = $instructor->lastname;
+
+            $patient = patient::where('patient_id',$request['patient_id'])->first();
+            $patientfname = $patient->first_name;
+            $patientlname = $patient->last_name;
+            $patientid = $request['patient_id'];
+
+
+            $user->notify(new FeedbackNotification($insfname,$inslname,$patientid,$patientfname,$patientlname));
+
+            DB::table( 'users_patient' )->where( 'patient_id', $request['patient_id'] )->where( 'user_id', $request['user_id'] )->update( ['patient_record_status_id' => '3', 'updated_by' => $request['user_id'], 'updated_at' => Carbon\Carbon::now( 'CDT' )] );
+
+            return redirect()->route('patient_preview',[$request['patient_id']]);
+
     }
 }

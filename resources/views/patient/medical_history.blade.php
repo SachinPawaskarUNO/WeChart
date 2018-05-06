@@ -1,13 +1,71 @@
 @extends('patient.active_record')
 
 @section('documentation_panel')
+    <style type="text/css">
+        .blockDiv {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #FFF;
+            width: 0px;
+            height: 0px;
+            z-index: 10;
+        }
+        #loading-image{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+        #loading-Done{
+            position: fixed;
+            left:38.3%;
+            top:50%;
+            center: 100%;
+            width: 10em;
+            margin-top: -2.5em;
+        }
+        #btn_save_all{
+            position: absolute;
+            left:13.5vw;
+            top:2vh;
+            center: 100vw;
+            width: 15em;
+            margin-top: -2.5em;
+            height: 4.5vh;
+            line-height: 2vh;
+            padding-top:1vh;
+            margin-right: 20vw;
+        }
+    </style>
+
+    <script type="text/javascript" language="javascript">
+
+        function block_screen() {
+            $('<div id="screenBlock"></div>').appendTo('body');
+            $('#screenBlock').css( { opacity: 0, width: $(document).width(), height: $(document).height() } );
+            $('#screenBlock').addClass('blockDiv');
+            $('#screenBlock').animate({opacity: 0.7}, 200);
+        }
+
+        function unblock_screen() {
+            $('#screenBlock').animate({opacity: 0}, 200, function() {
+                $('#screenBlock').remove();
+            });
+        }
+
+    </script>
+    <br>
+    <br>
 
     @if(in_array("3", $navIds))
         {{--Personal History--}}
         <div class="container-fluid">
             <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                    <h4 style="margin-top: 0">Personal History</h4>
+                <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                    <h4 style="margin-top: 0;color:#000; font-weight:500">Personal History</h4>
                 </div>
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('personal_history') }}" id="personal_history_form">
@@ -21,19 +79,19 @@
                                 <div class="col-md-12 ">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
-                                        <tr class="bg-info">
+                                        <tr class="bg-warning">
                                             <th>List of Diagnosis</th>
-                                            <th colspan="2"></th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($diagnosis_list_personal_history as $diagnosis)
                                             <tr>
                                                 <td><p><?php echo ($diagnosis->value); ?></p></td>
-                                                <td style="text-align: right">
+                                                <td>
                                                     <a href="{{ route( 'delete_personal_history', ['active_record_id' => $diagnosis->active_record_id]) }}"
-                                                       class="btn btn-danger confirmation" id="delete">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             </tr>
@@ -91,8 +149,8 @@
         {{--Family History--}}
         <div class="container-fluid" id="family_history">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <h4 style="margin-top: 0">Family History</h4>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <h4 style="margin-top: 0;color:#000; font-weight:500">Family History</h4>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="POST" action="{{ route('family_history') }}" id="family_history_form">
@@ -104,11 +162,11 @@
                     <div class="row">
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
-                            <tr class="bg-info">
+                            <tr class="bg-warning">
                                 <th>Relation</th>
                                 <th>Alive?</th>
                                 <th>List of Diagnosis</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -127,12 +185,12 @@
 
                                             @endforeach
                                         </td>
-                                        <td style="text-align:right">
+                                        <td>
                                             <!-- <a id="_delete" class="btn btn-danger btn-sm" style="float:right">
                                                 Delete </a> -->
                                             <a href="{{ route( 'delete_family_history', ['active_record_id' => $family_member_details->id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
@@ -207,15 +265,15 @@
                 </form>
             </div>
         </div>
-    </div>      
+    </div>
     @endif
 
     @if(in_array("5", $navIds))
         {{--Surgical History--}}
         <div class="container-fluid" id="surgical_history">
             <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                    <h4 style="margin-top: 0">Surgical History</h4>
+                <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                    <h4 style="margin-top: 0;color:#000; font-weight:500">Surgical History</h4>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('surgical_history') }}" id="surgical_history_form">
@@ -229,19 +287,19 @@
                                 <div class="col-md-12 ">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
-                                        <tr class="bg-info">
+                                        <tr class="bg-warning">
                                             <th>List of Diagnosis</th>
-                                            <th colspan="2"></th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($diagnosis_list_surgical_history as $diagnosis)
                                             <tr>
                                                 <td><p><?php echo ($diagnosis->value); ?></p></td>
-                                                <td style="text-align: right">
+                                                <td>
                                                     <a href="{{ route( 'delete_surgical_history', ['active_record_id' => $diagnosis->active_record_id]) }}"
-                                                       class="btn btn-danger confirmation" id="delete">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             </tr>
@@ -292,15 +350,15 @@
                 </div>
 
             </div>
-        </div>        
+        </div>
     @endif
 
     @if(in_array("6", $navIds))
         {{--Social History--}}
         <div class="container-fluid" id="social_history">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <h4 style="margin-top: 0">Social History</h4>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <h4 style="margin-top: 0;color:#000; font-weight:500">Social History</h4>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="POST" id="social_history_form" action="{{ route('social_history') }}">
@@ -414,15 +472,25 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                    </div>
                 </form>
             </div>
+            <div id="loading-image" style="display: none;"><img src="{{URL::asset('logos/load.gif')}}"> <br> <center><h3> Saving Data..</h3></center></div>
+            <div id="loading-Done" style="display: none;"><img src="{{URL::asset('logos/saved.png')}}"> <br> <center><h3> Saved </h3></center></div>
         </div>
     </div>
     @endif
 
+    <div id="loading-image" style="display: none;"><img src="{{URL::asset('logos/load.gif')}}"> <br> <center><h3> Saving Data..</h3></center></div>
+    <div id="loading-Done" style="display: none;"><img src="{{URL::asset('logos/saved.png')}}"> <br> <center><h3> Saved </h3></center></div>
+    <button type="submit" id="btn_save_all" class="btn btn-primary btn-lg btn-block">
+        <center><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Medical History</center>
+    </button>
+
+
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script>
          $('#search_diagnosis_personal_history').select2({
@@ -444,7 +512,7 @@
                  cache: false
              }
          });
-         
+
          $('#search_diagnosis_surgical_history').select2({
              placeholder: "Choose Diagnosis...",
              minimumInputLength: 2,
@@ -485,7 +553,10 @@
              }
          });
 
-         $(document).ready(function(){
+         $(document).ready(function()
+         {
+             $('#loading-image').hide();
+             $('#loading-Done').hide();
              $('#new_family_member_panel').hide();
              $("#add_family_member").click(function(){
                  $('#new_family_member_panel').show();
@@ -532,10 +603,11 @@
              });
 
              function unloadPage(){
-                 if(inputsChanged_personal_history_form || inputsChanged_family_history_form ||inputsChanged_social_history_form ||inputsChanged_surgical_history_form){
+                 if(inputsChanged_personal_history_form || inputsChanged_family_history_form || inputsChanged_social_history_form || inputsChanged_surgical_history_form||inputsChangedddx||inputchangepicture||inputchangevideo||inputchangeaudio){
                      return "Do you want to leave this page?. Changes you made may not be saved.";
                  }
              }
+
 
              $("#btn_save_social_history").click(function(){
                  inputsChanged_social_history_form = false;
@@ -549,6 +621,99 @@
              $("#btn_save_family_history").click(function(){
                  inputsChanged_family_history_form = false;
              });
+
+
+        $('#btn_save_all').click(function()
+        {
+            inputsChanged_social_history_form = false;
+            inputsChanged_personal_history_form = false;
+            inputsChanged_surgical_history_form = false;
+            inputsChanged_family_history_form = false;
+
+            $('#loading-image').show();
+            block_screen();
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: '{{route('personal_history')}}',
+                    data: $("#personal_history_form").serialize()
+                });
+            $.ajax(
+                {
+                    type: "POST",
+                    url: '{{route('family_history')}}',
+                    data: $("#family_history_form").serialize()
+                });
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: '{{route('surgical_history')}}',
+                    data: $("#surgical_history_form").serialize()
+                });
+            $.ajax(
+                {
+                    type: "POST",
+                    url: '{{route('social_history')}}',
+                    data: $("#social_history_form").serialize()
+                });
+            $.ajax({
+                url: '{{route('post_new_family_member')}}',
+                data: {
+                    relation: $("#relation_family_history").val(),
+                    diagnosis_list: $("#search_diagnosis_list_family_history").val(),
+                    patient_id: $("#patient_id").val(),
+                    user_id: $("#user_id").val(),
+                    family_member_status: $(".family_member_status:checked").val(),
+                },
+                success:function () {
+                    $("#loading-image").fadeTo("slow", 0);
+                    unblock_screen();
+                    window.location.reload();
+
+                },
+                error:function () {
+                    $("#loading-image").fadeTo("slow", 0);
+                    unblock_screen();
+                    window.location.reload();
+                }
+            });
+
+
+
+
+
+//                                                                                  $("#loading-image").fadeTo("slow", 0);
+//                                                                                  $("#loading-image").remove();
+//                                                                                  $("#loading-Done").fadeIn("slow");
+//                                                                                  setTimeout(function(){
+//                                                                                      $("#loading-Done").remove();
+//                                                                                  }, 1000);
+//                                                                                  unblock_screen()
+//                                                                                  setTimeout(function(){
+//                                                                                      location.reload();
+//                                                                                  }, 1000);
+//                                                                              }
+//                                                                          });
+//
+//                                                                  }
+//
+//                                                              }
+//                                                          );
+//                                                      }
+//
+//                                              });
+//
+//                                        }
+//                                });
+        });
+
+
+
+
+
+
 
              $("#btn_reset_personal_history").click(function(){
                  $('#search_diagnosis_personal_history').empty().trigger('change');
@@ -565,6 +730,16 @@
 
              window.onbeforeunload = unloadPage;
          });
+
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+
+
      </script>
 
 @endsection

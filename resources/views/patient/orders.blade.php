@@ -6,8 +6,9 @@
     {{--@parent--}}
     <div class="container-fluid">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <h4 style="margin-top: 0">Orders</h4>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);
+padding-bottom: 0">
+                <h4 style="margin-top: 0;color:#000; font-weight:500">Orders</h4>
             </div>
             <form class="form-horizontal" method="POST" action="{{ route('post_orders') }}" id="orders_form">
                 {{ csrf_field() }}
@@ -16,6 +17,60 @@
                 <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
 
                 <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    <label for="orders_medication"> Medications:</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                    <select id="search_labs_medication" class="js-example-basic-multiple js-states form-control" name="search_labs_medication[]" multiple></select>
+                                    </div>
+                                </div>
+
+                        </div>  
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr class="bg-warning">
+                                    <th>List of Medications</th>
+                                    <th colspan="20">Dosage</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($medications as $medicine)
+                                        <tr>
+                                            <td><p>{{$medicine->value}}</p></td>
+                                            @if($medicine->dosage==null)
+                                                <td colspan="20"><input type="text" id="Dosage" name="Dosage[]" data-medid="{{$medicine->active_record_id}}"></td>
+                                                <td>
+                                                    <a href="{{ route( 'delete_medication_order', ['id' => $medicine->active_record_id]) }}"
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td colspan="20"><p>{{$medicine->dosage}}</p></td>
+                                                <td>
+                                                    <a class="btn btn-danger disabled">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                                    </a>
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div>
+
                     <div class="row">
 
                         <!-- Search For labs -->
@@ -42,7 +97,8 @@
                                     <div class="row">
                                         <div class="col-sm-9">
                                     <select id="search_labs_procedure" class="js-example-basic-multiple js-states form-control" name="search_labs_procedure[]" multiple></select>
-                                        </div></div>
+                                        </div>
+                                    </div>
 
                         </div>
                     </div>
@@ -51,19 +107,19 @@
                         <div class="col-sm-6">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
-                                <tr class="bg-info">
+                                <tr class="bg-warning">
                                     <th>List of labs</th>
-                                    <th colspan="2"></th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($labs as $lab)
                                     <tr>
                                         <td><p>{{$lab->value}}</p></td>
-                                        <td style="text-align: right">
+                                        <td>
                                             <a href="{{ route( 'delete_lab_order', ['active_record_id' => $lab->active_record_id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
@@ -75,19 +131,19 @@
                         <div class="col-sm-6">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
-                                 <tr class="bg-info">
+                                 <tr class="bg-warning">
                                     <th>List of procedures</th>
-                                    <th colspan="2"></th>
+                                    <th>Action</th>
                                  </tr>
                                  </thead>
                                  <tbody>
                                  @foreach ($procedures as $procedure)
                                     <tr>
                                         <td><p>{{$procedure->value}}</p></td>
-                                        <td style="text-align: right">
+                                        <td>
                                             <a href="{{ route( 'delete_procedure_order', ['active_record_id' => $procedure->active_record_id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
@@ -112,34 +168,33 @@
                                     </div>
                                 </div>
 
-                        </div>
+                        </div>   
 
                     </div> <br>
                     <div  class="row">
                         <div class="col-sm-6">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
-                                <tr class="bg-info">
+                                <tr class="bg-warning">
                                     <th>List of Images</th>
-                                    <th colspan="2"></th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($images as $image)
                                     <tr>
                                         <td><p>{{$image->value}}</p></td>
-                                        <td style="text-align: right">
+                                        <td>
                                             <a href="{{ route( 'delete_image_order', ['active_record_id' => $image->active_record_id]) }}"
-                                               class="btn btn-danger confirmation" id="delete">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                               class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                             </a>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
+                        </div>        
 
                     </div>
 
@@ -171,7 +226,7 @@
                             </button>
                         </div>
                     </div>
-
+                </div>
             </form>
         </div>
     </div>
@@ -239,6 +294,26 @@
                 cache: false
             }
         });
+        $('#search_labs_medication').select2({
+            placeholder: "Choose medication...",
+            minimumInputLength: 2,
+            ajax: {
+                url: '{{route('orders_medication_find')}}',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        q: $.trim(params.term)
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: false
+            }
+        });
+
 
         $(document).ready(function(){
             var inputsChanged = false;
@@ -247,15 +322,25 @@
             });
 
             function unloadPage(){
-                if(inputsChanged){
+                if(inputsChanged||inputsChangedddx||inputchangepicture||inputchangevideo||inputchangeaudio){
                     return "Do you want to leave this page?. Changes you made may not be saved.";
                 }
             }
 
             $("#btn_save_orders").click(function(){
                 inputsChanged = false;
-            });
+                $('input[name^="Dosage"]').each(function() {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: '{{route('post_medication_dosage')}}',
+                        data: { dosage:$(this).val() ,medid:$(this).attr("data-medid")}
+                    });
+                });
 
+            });
             window.onbeforeunload = unloadPage;
 
             $('#btn_clear_orders_comment').click( function()
@@ -264,8 +349,18 @@
                 $('#search_labs_imaging').empty().trigger('change');
                 $('#search_labs_orders').empty().trigger('change');
                 $('#search_labs_procedure').empty().trigger('change');
+                $('#search_labs_medication').empty().trigger('change');
                 inputsChanged = false;
             } );
         });
+
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+
     </script>
 @endsection

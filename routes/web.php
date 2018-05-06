@@ -22,38 +22,55 @@ Route::post('EditProfile', 'UsersController@postEditProfile');
 
 //Admin Routes
 //Landing page for Admin
-Route::get('/home', 'AdminController@index')->name('home');
+Route::group(['middleware' => 'can:admin-only'], function() {
+    Route::get('/home', 'AdminController@index')->name('home');
 
 //Add Student emails
-Route::get('/AddStudentEmails', 'AdminController@getStudentEmails');
-Route::post('AddStudentEmails', 'AdminController@postStudentEmails');
-Route::get('AddMoreStudentEmails', 'AdminController@addStudentEmails');
-Route::get('RemoveStudentEmails', 'AdminController@removeStudentEmails');
+    Route::get('/AddStudentEmails', 'AdminController@getStudentEmails');
+    Route::post('AddStudentEmails', 'AdminController@postStudentEmails');
+    Route::get('AddMoreStudentEmails', 'AdminController@addStudentEmails');
+    Route::get('RemoveStudentEmails', 'AdminController@removeStudentEmails');
 
 //Add Instructor emails
-Route::get('/AddInstructorEmails', 'AdminController@getInstructorEmails');
-Route::post('AddInstructorEmails', 'AdminController@postInstructorEmails');
-Route::get('AddMoreInstructorEmails', 'AdminController@addInstructorEmails');
-Route::get('RemoveInstructorEmails', 'AdminController@removeInstructorEmails');
+    Route::get('/AddInstructorEmails', 'AdminController@getInstructorEmails');
+    Route::post('AddInstructorEmails', 'AdminController@postInstructorEmails');
+    Route::get('AddMoreInstructorEmails', 'AdminController@addInstructorEmails');
+    Route::get('RemoveInstructorEmails', 'AdminController@removeInstructorEmails');
 
 //Admin can manage emails
-Route::get('/RemoveEmails', 'AdminController@get_remove_emails')->name('RemoveEmails');
+    Route::get('/RemoveEmails', 'AdminController@get_remove_emails')->name('RemoveEmails');
 
-//Admin can delete a email from remove email page.
-Route::any('deleteuser/{id}', 'AdminController@delete_email')->name('deleteuser');
-Route::any('archive/{id}', 'AdminController@archive_user')->name('archiveuser');
+//Admin can add audios
+    Route::any('/AddMedia', 'AdminController@getMedia')->name("AddMedia");
+//Route::get('/AddAudios', 'AdminController@getAudios')->name("AddNewAudio");
+    Route::post('PostMedia', 'AdminController@postMedia');
+    Route::get('SearchMedia', 'AdminController@searchMedia');
+    Route::get('AddMoreMedia', 'AdminController@addMedia');
+    Route::get('RemoveMedia', 'AdminController@removeMedia');
+    Route::post('post_new_media}', 'AdminController@post_new_media')->name('post_new_media');
+    Route::any('delete_media/{id}', 'AdminController@delete_media')->name("delete_media");
+    //Admin can delete a email from remove email page.
+    Route::any('deleteuser/{id}', 'AdminController@delete_email')->name('deleteuser');
+    Route::any('archive/{id}', 'AdminController@archive_user')->name('archiveuser');
+    Route::get('/upload', 'ExcelController@upload');
+    Route::post('importmedia','ExcelController@ImportMedia');
+});
 
 //Admin module management
-Route::get('/ConfigureModules','AdminController@getConfigureModules');
-Route::post('submitmodule', 'AdminController@submitmodule')->name('submitmodule');
-Route::post('deletemodule/{modid}', 'AdminController@deletemodule')->name('deletemodule');
+Route::group(['middleware' => 'can:configure-modules'], function() {
+    Route::get('/ConfigureModules', 'AdminController@getConfigureModules');
+    Route::post('submitmodule', 'AdminController@submitmodule')->name('submitmodule');
+    Route::post('deletemodule/{modid}', 'AdminController@deletemodule')->name('deletemodule');
+});
+
 
 //Student routes
 //Landing page for Student
+Route::group(['middleware' => 'can:student-only'], function() {
 Route::get('/StudentHome', 'StudentController@index')->name('student.home');
 Route::get('/PatientView/{patient_id}', 'StudentController@view_patient')->name('patient.view');
-Route::get('/PatientPreview/{patient_id}', 'NavigationController@get_preview')->name('patient_preview');
-Route::get('/Patient_pdf/{patient_id}', 'NavigationController@generate_pdf')->name('pdf_generate');
+Route::get('/StudentPreview/{patient_id}', 'NavigationController@get_studentpreview')->name('student_preview');
+    Route::get('/Studentpreview/{notification_id}', 'NavigationController@get_studentnotificationpreview')->name('student_notification_preview');
 Route::get('/PatientDelete/{id}', 'StudentController@destroy')->name('patient.destroy');
 
 //Patient routes
@@ -87,7 +104,9 @@ Route::any('surgical_history_delete/{id}', 'DocumentationController@delete_surgi
 
 Route::get('/Medications/{id}', 'NavigationController@get_medications')->name('Medications');
 Route::post('post_medications}', 'DocumentationController@post_medications')->name('post_medications');
+Route::post('post_medication_dosage}', 'DocumentationController@post_medication_dosage')->name('post_medication_dosage');
 Route::any('medication_delete/{id}', 'DocumentationController@delete_medication')->name('delete_medication');
+Route::any('dosage_delete/{id}', 'DocumentationController@delete_dosage')->name('delete_dosage');
 
 Route::get('/Vital_Signs/{id}', 'NavigationController@get_vital_signs')->name('Vital Signs');
 Route::post('post_vital_signs', 'DocumentationController@post_vital_signs');
@@ -142,12 +161,13 @@ Route::post('HENT', 'DocumentationController@post_HENT')->name('HENT');
 Route::post('Constitutional', 'DocumentationController@post_Constitutional')->name('Constitutional');
 
 Route::get('/Orders/{id}', 'NavigationController@get_orders')->name('Orders');
-Route::post('post_orders', 'DocumentationController@post_orders')->name('post_orders');
+Route::post('post_orders}', 'DocumentationController@post_orders')->name('post_orders');
 Route::post('orders_delete/{id}', 'DocumentationController@delete_image_order')->name('delete_image_order');
 Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')->name('delete_lab_order');
 Route::any('orders_image_delete/{id}', 'DocumentationController@delete_image_order')->name('delete_image_order');
 Route::any('orders_lab_delete/{id}', 'DocumentationController@delete_lab_order')->name('delete_lab_order');
 Route::any('orders_procedure_delete/{id}', 'DocumentationController@delete_procedure_order')->name('delete_procedure_order');
+Route::any('orders_medication_delete/{id}', 'DocumentationController@delete_medication_order')->name('delete_medication_order');
 
 
 Route::get('/Results/{id}', 'NavigationController@get_results')->name('Results');
@@ -159,25 +179,52 @@ Route::post('MDM','DocumentationController@post_MDM')->name('post_MDM');
 Route::get('/Disposition/{id}', 'NavigationController@get_disposition')->name('Disposition');
 Route::post('disposition', 'DocumentationController@post_disposition')->name('post_disposition');
 Route::any('disposition_delete/{id}', 'DocumentationController@delete_disposition')->name('delete_disposition');
+Route::any('diagnosis_delete/{id}', 'DocumentationController@delete_diagnosis')->name('delete_diagnosis');
+Route::post('post_guidance_comments}', 'DocumentationController@post_guidance_comments')->name('post_guidance_comments');
+Route::post('update_guidance_comments}', 'DocumentationController@update_guidance_comments')->name('update_guidance_comments');
 
 Route::get('/{id}/AssignInstructor', 'NavigationController@get_assignInstructor')->name('AssignInstructor');
 Route::post('InstructorAssigned', 'DocumentationController@post_assignInstructor')->name('InstructorAssigned');
-
-//Landing page for Instructor
-Route::get('/InstructorHome', 'InstructorController@index')->name('instructor.home');
-Route::get('/{id}/InstructorHome', 'InstructorController@review_patient')->name('patient.reviewed');
-
 //Routes for autocomplete
 Route::get('/diagnosis/find', 'DocumentationController@find_diagnosis')->name('diagnosis_find');
 Route::get('/medications/find', 'DocumentationController@find_medications')->name('medications_find');
 Route::get('/orders_labs/find', 'DocumentationController@find_lab_orders')->name('orders_labs_find');
 Route::get('/orders_imaging/find', 'DocumentationController@find_imaging_orders')->name('orders_imaging_find');
 Route::get('/orders_procedure/find', 'DocumentationController@find_procedure_orders')->name('orders_procedure_find');
+Route::get('/orders_medication/find', 'DocumentationController@find_medication_orders')->name('orders_medication_find');
 Route::get('/instructors/find', 'DocumentationController@find_instructor')->name('instructors_find');
+Route::get('/audios/find', 'DocumentationController@find_audios')->name('audios_find');
+
+Route::get('/guidance', 'GuidanceController@get_video_list')->name('get_video_list');
+
+Route::post('/ddx', 'GuidanceController@post_ddx')->name('post_ddx');
+Route::post('/ddxsorted', 'GuidanceController@post_ddx_sorted')->name('post_ddx_sorted');
+});
+
+Route::group(['middleware' => 'can:instructor-only'], function() {
+//Landing page for Instructor
+Route::get('/InstructorHome', 'InstructorController@index')->name('instructor.home');
+Route::get('/{id}/InstructorHome', 'InstructorController@review_patient')->name('patient.reviewed');
+Route::post('post_feedback', 'InstructorController@post_feedback')->name('post_feedback');
+});
+
+Route::group(['middleware' => 'can:preview'], function() {
+Route::get('/PatientPreview/{patient_id}', 'NavigationController@get_preview')->name('patient_preview');
+Route::get('/Patientpreview/{notification_id}', 'NavigationController@get_notification_preview')->name('patient_notification_preview');
+});
+
+
+
 
 Route::get('/account_deleted', function () {
     return view('errors/account_deleted');
 });
 
+Route::get('markallAsRead',function() {
+
+    auth()->user()->unreadNotifications->markAsRead();
+
+    return redirect()->back();
+})->name('markallRead');
 
 

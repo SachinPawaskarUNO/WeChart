@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: lightBlue">Reset Password</div>
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);font-weight:600">
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('/ChangePassword') }}">
@@ -15,6 +16,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
+
                                 <input id="email" type="email" class="form-control" name="email" value="<?php echo ($user->email); ?>" required  readonly="true">
 
                                 @if ($errors->has('email'))
@@ -48,14 +50,14 @@
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
+                                    <br>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <input type="submit" value="Reset Password" class="btn btn-primary" >       
-                                
+                                <input type="submit" value="Reset Password" class="btn btn-primary" >
                             </div>
                         </div>
                     </form>
@@ -98,6 +100,5 @@
                 </div>
             </div>
      @endIf
-     
  </div>
 @endsection

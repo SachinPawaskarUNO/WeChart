@@ -7,6 +7,7 @@ use App\users_patient;
 use App\module_navigation;
 use App\navigation;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
@@ -18,11 +19,6 @@ class StudentController extends Controller
     public function index()
     {
         //Only Student can access Student Dashboard
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Student') {
 
             $saved_patients_modules = array();
             $submitted_patients_modules = array();
@@ -69,20 +65,11 @@ class StudentController extends Controller
             $submitted_patients_modules = array_unique($submitted_patients_modules);
 
             return view('student/studentHome', compact('saved_patients','saved_patients_modules', 'submitted_patients_modules', 'saved_message','submitted_patients','submitted_message'));
-        }
-        else
-        {
-            $error_message= "You are not authorized to view this page";
-            return view('errors/error',compact('error_message'));
-        }
+
     }
 
     public function view_patient($id){
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Student') {
+
             //Student cannot view submitted patients
             $patient_status = patient::where('patient_id',$id)->pluck('completed_flag');
             if($patient_status[0])
@@ -93,38 +80,20 @@ class StudentController extends Controller
             else {
                 return redirect()->route('Demographics', $id);
             }
-        }
-        else
-        {
-            $error_message= "You are not authorized to view this page";
-            return view('errors/error',compact('error_message'));
-        }
+
     }
    public function destroy($id)
    {
-       $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Student')
-        {
+
             patient::where('patient_id', $id)
                 ->update(['archived' => 1]);
             return redirect()->route('student.home');
-        }
-        else {
-                $error_message = "You are not authorized to view this page";
-                return view('errors/error', compact('error_message'));
-            }
+
     }
 
     public function get_add_patient()
     {
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Student') {
+
             try {
                     $modules = module::where('archived', 0)->get();
                     return view('patient/add_patient', compact('modules'));
@@ -132,28 +101,21 @@ class StudentController extends Controller
             } catch (\Exception $e) {
                 return view('errors/503');
             }
-        }
-        else
-        {
-            $error_message= "You are not authorized to view this page";
-            return view('errors/error',compact('error_message'));
-        }
+
     }
     public function post_add_patient(Request $request)
     {
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
 
-        if($role == 'Student') {
 
                //Validating input data
                 $this->validate($request, [
                     'gender' => 'required',
                     'age' => 'required|numeric',
                     'room_number' => 'required',
-                    'visit_date' => 'required|date|before:today',
+                    'visit_date' => 'required|date|before:tomorrow',
+                ],
+                [
+                    'visit_date.before' => 'The visit date cannot be a future date.',
                 ]);
 
                 $patient = new patient($request->all());
@@ -190,12 +152,7 @@ class StudentController extends Controller
 
                 //Now redirecting student to active record page.
                 return redirect()->route('Demographics',[$patient->patient_id]);
-        }
-        else
-        {
-            $error_message= "You are not authorized to view this page";
-            return view('errors/error',compact('error_message'));
-        }
+
 
     }
 

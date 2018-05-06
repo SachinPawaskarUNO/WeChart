@@ -8,6 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+
 <div class="container">
     <div class="row">
         <h3 align="center">Remove Emails</h3>
@@ -25,7 +26,7 @@
     <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: grey; padding-bottom: 0">
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf); padding-bottom: 0">
                         <h4 style="margin-top: 0">All Unregistered Student Emails</h4>
                     </div>
 
@@ -33,7 +34,7 @@
                         @if(count($studentDetails)>0)
                             <table class="table table-striped table-bordered table-hover">
                             <thead>
-                            <tr class="bg-info">
+                            <tr class="bg-warning">
                                 <th >Email Address</th>
                                 <th >Role</th>
                                 <th >Creation Date</th>
@@ -47,13 +48,13 @@
                                         <td><p>Student</p></td>
                                         <td><p><?php echo (date('m-d-Y',strtotime($studentDetail[0]->created_at))); ?></p></td>
 
-                                        <td style="text-align: right">
+                                        <td>
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['deleteuser', $studentDetail[0]->id],'id' => 'FormDeleteTime','class' =>'form-inline form-delete', 'onsubmit' => 'return ConfirmDelete()'])!!}
 
                                         {!! Form::hidden('case_id', $studentDetail[0]->id, ['class' => 'form-control']) !!}
 
-                                        <button id="student_minus_delete" data-id='<?php echo $studentDetail[0]->id ;?>' style="margin:auto;  text-align:center; display:block; width:100%;" class="btn btn-danger btn-sm">
-                                        Delete </button>
+                                        <button id="student_minus_delete" data-id='<?php echo $studentDetail[0]->id ;?>' style="margin:auto;  text-align:center; display:block; " class="btn btn-danger enable" onclick="return Delete()">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
 
                                         {!! Form::close() !!}
                                         </td>
@@ -73,14 +74,14 @@
     <div class="row">
          <div class="col-md-10 col-md-offset-1">
              <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: grey; padding-bottom: 0">
+                 <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf); padding-bottom: 0">
                     <h4 style="margin-top: 0">All Unregistered Instructor Emails</h4>
                 </div>
                 <div class="panel-body" style="height: 210px; overflow-y: scroll">
                     @if(count($instructorDetails)>0)
                         <table class="table table-striped table-bordered table-hover">
                                 <thead>
-                                <tr class="bg-info">
+                                <tr class="bg-warning">
                                     <th >Email Address</th>
                                     <th >Role</th>
                                     <th >Creation Date</th>
@@ -98,8 +99,8 @@
 
                                                 {!! Form::hidden('case_id', $instructorDetail[0]->id, ['class' => 'form-control']) !!}
 
-                                                <button id="student_minus_delete" data-id='<?php echo $instructorDetail[0]->id ;?>' style="margin:auto;  text-align:center; display:block; width:100%;" class="btn btn-danger btn-sm">
-                                                    Delete </button>
+                                                <button id="student_minus_delete" data-id='<?php echo $instructorDetail[0]->id ;?>' style="margin:auto;  text-align:center; display:block" class="btn btn-danger enable" onclick="return Delete()">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
 
                                                 {!! Form::close() !!}
                                             </td>
@@ -118,7 +119,7 @@
 <script>
     function ConfirmDelete()
     {
-        var x = confirm("Are you sure you want to delete? This action is irreversible.");
+        var x = confirm("Are you sure you want to delete?");
         if (x)
             return true;
         else

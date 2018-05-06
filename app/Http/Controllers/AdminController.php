@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\media_lookup_value;
 use App\User;
 use Illuminate\Http\Request;
 use App\EmailidRole;
@@ -27,126 +28,224 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //Only Admin can access Admin Dashboard
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Admin') {
-            //Fetching all students and instructors for display on admin landing page
             $students = User::where('role','Student')
                 ->where('archived','=','0')
                 ->get();
             $instructors = User::where('role','Instructor')
-                ->where('archived','=','0')
+                ->leftjoin('department', 'department.department_id', '=', 'users.department_id')
+                ->where('users.archived','=','0')
                 ->get();
             return view('admin/home', compact('students','instructors'));
-        }
-        else
-        {
-            return view('auth/not_authorized');
-        }
     }
     public function getStudentEmails()
     {
         $counter = 1;
-        session()->put('counter', 1);
         $Error = '';
-        return view('admin/addStudentEmails', compact('Error','counter'));
+        $ErrorPresent='';
+        $mailpre='';
+        $mailsaved='';
+        return view('admin/addStudentEmails', compact('Error','counter','ErrorPresent','mailpre','mailsaved'));
     }
     public function postStudentEmails(Request $request)
     {
         try {
-            $counter = session()->get('counter');
+            $counter = count($request['email']);
+            $mailsaved= array();
+            $mailpre= array();
+            $ErrorPresent='';
+            $Error='';
             //Removing Duplicates
             $request['email'] = array_unique($request['email']);
-            for ($i = 0; $i < count($request['email']) ; ++$i)
+            for ($i = 0; $i < $counter ; ++$i)
             {
-                $EmailIdRole = new EmailidRole;
-                $EmailIdRole['email'] = strtolower($request['email'][$i]);
-                $EmailIdRole['role'] = 'Student';
-                $EmailIdRole->save();
+                $studentEmails = EmailidRole::where('email',$request['email'][$i])->where('role',"Student")->pluck('email');
+                $registered_emails = User::where('email',$request['email'][$i])->pluck('email');
+                if($studentEmails->count()==1||$registered_emails->count()==1)
+                {
+                    $ErrorPresent = 'Email Present';
+                    array_push($mailpre, ['emailpresent' => $request['email'][$i]]);
+                }
+                else
+                {
+                    $EmailIdRole = new EmailidRole;
+                    $EmailIdRole['email'] = strtolower($request['email'][$i]);
+                    $EmailIdRole['role'] = 'Student';
+                    $EmailIdRole->save();
+                    $Error = 'No';
+                    array_push($mailsaved, ['emailsaved' => $request['email'][$i]]);
+
+
+
+                }
+
             }
-            $Error = 'No';
-            return view('admin/addStudentEmails',compact('Error','counter'));
+            //echo $mailsaved;
+            //print_r($mailsaved);
+            return view('admin/addStudentEmails',compact('Error','counter','ErrorPresent','mailpre','mailsaved'));
         }
         catch (\Exception $e)
         {
             //Checking if its UNIQUE constraint violation. This is one of the worst code I have ever written
             // in my life
             if(in_array('23505',$e->errorInfo)) {
-                $Error = 'Email Present';
-                return view('admin/addStudentEmails',compact('Error','counter'));
+                $ErrorPresent = 'Instructor Present';
+                return view('admin/addStudentEmails',compact('Error','counter','ErrorPresent','mailpre','mailsaved'));
             }
             return view ('errors/503');
         }
     }
-    public function addStudentEmails()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter + 1;
-        session()->put('counter', $counter);
-        $Error = '';
-        return view('admin/addStudentEmails',compact('Error','counter'));
-    }
-    public function removeStudentEmails()
-    {
-        $counter = session()->get('counter');
-        $counter = $counter - 1;
-        session()->put('counter', $counter);
-        $Error = '';
-        return view('admin/addStudentEmails',compact('Error','counter'));
-    }
+
     public function getInstructorEmails()
     {
         $counter = 1;
-        session()->put('counter', 1);
         $Error = '';
-        return view('admin/addInstructorEmails', compact('Error','counter'));
+        $ErrorPresent='';
+        $mailpre='';
+        $mailsaved='';
+        return view('admin/addInstructorEmails', compact('Error','counter','ErrorPresent','mailpre','mailsaved'));
     }
     public function postInstructorEmails(Request $request)
     {
         try {
-            $counter = session()->get('counter');
+            $counter = count($request['email']);
+            $mailsaved= array();
+            $mailpre= array();
+            $ErrorPresent='';
+            $Error='';
             //Removing Duplicates
             $request['email'] = array_unique($request['email']);
             for ($i = 0; $i < $counter; $i++)
             {
-                $EmailIdRole = new EmailidRole;
-                $EmailIdRole['email'] = strtolower($request['email'][$i]);
-                $EmailIdRole['role'] = 'Instructor';
-                $EmailIdRole->save();
+                $instructorEmails = EmailidRole::where('email',$request['email'][$i])->where('role',"Instructor")->pluck('email');
+                $registered_emails = User::where('email',$request['email'][$i])->pluck('email');
+                if($instructorEmails->count()==1||$registered_emails->count()==1)
+                {
+                    $ErrorPresent = 'Email Present';
+                    array_push($mailpre, ['emailpresent' => $request['email'][$i]]);
+                }
+                else {
+                    $EmailIdRole = new EmailidRole;
+                    $EmailIdRole['email'] = strtolower($request['email'][$i]);
+                    $EmailIdRole['role'] = 'Instructor';
+                    $EmailIdRole->save();
+                    $Error = 'No';
+                    array_push($mailsaved, ['emailsaved' => $request['email'][$i]]);
+                }
             }
-            $counter = session()->get('counter');
-            $Error = 'No';
-            return view('admin/addInstructorEmails',compact('Error','counter'));
+
+            return view('admin/addInstructorEmails',compact('Error','counter','ErrorPresent','mailpre','mailsaved'));
         }
         catch (\Exception $e)
         {
             //Checking if its UNIQUE constraint violation. This is one of the worst code I have ever written
             // in my life
             if(in_array('23505',$e->errorInfo)) {
-                $Error = 'Email Present';
-                return view('admin/addInstructorEmails',compact('Error','counter'));
+                $ErrorPresent = 'Student Present';
+                return view('admin/addInstructorEmails',compact('Error','counter','ErrorPresent','mailpre','mailsaved'));
             }
             return view ('errors/503');
         }
     }
-    public function addInstructorEmails()
+
+    public function getMedia(Request $request)
+    {
+            Log::info($request['search']);
+            $counter = 1;
+            session()->put('counter', 1);
+            $Error = '';
+            $error='';
+            $media = media_lookup_value::orderBy('media_lookup_value_tag')->get();
+            $exists=media_lookup_value::where('archived','true')->pluck('media_lookup_value_id');
+            $count_exists = $exists->count();
+            $exists_tag=media_lookup_value::where('archived','true')->pluck('media_lookup_value_tag');
+            $exists_link=media_lookup_value::where('archived','true')->pluck('media_lookup_value_link');
+            $changed=media_lookup_value::where('updated_by',1)->pluck('media_lookup_value_id');
+            $count_added = $changed->count();
+            $added_tag=media_lookup_value::where('updated_by',1)->pluck('media_lookup_value_tag');
+            $added_link=media_lookup_value::where('updated_by',1)->pluck('media_lookup_value_link');
+            if(($exists->count())>0)
+            {
+                $Error='Exists';
+                for($i=0; $i<($exists->count()); $i++)
+                {
+                    media_lookup_value::where('media_lookup_value_id',$exists[$i])->update(['archived' => 'false']);
+                }
+            }
+            if(($changed->count()))
+            {
+                $error='Does not Exist';
+                for($i=0; $i<($changed->count()); $i++)
+                {
+                    media_lookup_value::where('media_lookup_value_id',$changed[$i])->update(['updated_by' => null]);
+                }
+            }
+            return view('admin/addMedia',compact('error','counter','count_exists','Error','exists_tag','count_added','added_tag','media','exists_link','added_link'));
+    }
+    public function postMedia(Request $request)
+    {
+        $counter = count($request['link']);
+        for ($i = 0; $i < $counter; $i++) {
+            Log::info($request['tag'][$i]);
+            Log::info($request['link'][$i]);
+            Log::info($_POST['type'][$i]);
+            $exist_tag = media_lookup_value::where('media_lookup_value_tag', $request['tag'][$i])->pluck('media_lookup_value_tag');
+            $exist_link = media_lookup_value::where('media_lookup_value_link', $request['link'][$i])->pluck('media_lookup_value_link');
+            if (($exist_tag->count()) > 0) {
+                DB::table('media_lookup_value')->where('media_lookup_value_tag', $request['tag'][$i])->update(['archived' => 'true']);
+            } elseif (($exist_link->count()) > 0) {
+                DB::table('media_lookup_value')->where('media_lookup_value_link', $request['link'][$i])->update(['archived' => 'true']);
+            } else {
+                if($request['tag'][$i]!=null && $request['link'][$i]!=null) {
+                    $media_lookup_value = new media_lookup_value;
+                    $media_lookup_value['media_lookup_value_tag'] = $request['tag'][$i];
+                    $media_lookup_value['media_lookup_value_type'] = $_POST['type'][$i];
+                    $media_lookup_value['media_lookup_value_link'] = $request['link'][$i];
+                    $media_lookup_value['archived'] = false;
+                    $media_lookup_value['created_by'] = 1;
+                    $media_lookup_value['updated_by'] = 1;
+                    $media_lookup_value->save();
+                }
+            }
+        }
+        return redirect()->route('AddMedia');
+    }
+    public function addMedia(Request $request)
     {
         $counter = session()->get('counter');
         $counter = $counter + 1;
         session()->put('counter', $counter);
+        $error = '';
         $Error = '';
-        return view('admin/addInstructorEmails',compact('Error','counter'));
+        $search = $request['search'];
+        $media = media_lookup_value::where('media_lookup_value_tag', 'ilike', '%'.$search.'%')
+            ->orderBy('media_lookup_value_tag')->get();
+        return view('admin/addMedia',compact('error','counter','Error','media'));
     }
-    public function removeInstructorEmails()
+    public function removeMedia(Request $request)
     {
         $counter = session()->get('counter');
         $counter = $counter - 1;
         session()->put('counter', $counter);
+        $error = '';
         $Error = '';
-        return view('admin/addInstructorEmails',compact('Error','counter'));
+        $search = $request['search'];
+        $media = media_lookup_value::where('media_lookup_value_tag', 'ilike', '%'.$search.'%')
+            ->orderBy('media_lookup_value_tag')
+            ->get();
+        return view('admin/addMedia',compact('error','counter','Error','media'));
+    }
+
+    public function post_new_media(Request $request)
+    {
+            $mediaid = $request['id'];
+            $mediatag = $request['name'];
+            $mediatype = $request['type'];
+            $mediavalue = $request['link'];
+            media_lookup_value::where('media_lookup_value_id', $mediaid)->update(['media_lookup_value_tag' => $mediatag]);
+            media_lookup_value::where('media_lookup_value_id', $mediaid)->update(['media_lookup_value_type' => $mediatype]);
+            media_lookup_value::where('media_lookup_value_id', $mediaid)->update(['media_lookup_value_link' => $mediavalue]);
+            //Now redirecting to orders page
+            return redirect()->back();
     }
     public function get_remove_emails()
     {
@@ -192,18 +291,15 @@ class AdminController extends Controller
     }
     public function getConfigureModules()
     {
-        $navs = navigation::all();
+        $navs = navigation::where('navigation_id','<>','35')->get();
         $mods = module::where('archived', false)->get();
-        $navs_mods = module_navigation::where('visible', true)->get();
+        $navs_mods = module_navigation::where('visible', true)->where('navigation_id','<>','35')->get();
         return view('admin/configureModules', compact ('navs', 'mods', 'navs_mods'));
     }
+
+
     public function submitmodule(Request $request)
     {
-        $role='';
-        if(Auth::check()) {
-            $role = Auth::user()->role;
-        }
-        if($role == 'Admin') {
             $messages = ['required' => 'Module name is mandatory.'];
             //Validating input data
             $this->validate($request, [
@@ -237,25 +333,33 @@ class AdminController extends Controller
             $navs = array_unique($navs);
             foreach ($navs as $navid) {
                 DB::table('modules_navigations')->insert(
-                    ['module_id' => $var, 'navigation_id' => $navid, 'visible' => true]);
+                    ['module_id' => $var, 'navigation_id' => $navid,
+                        'display_order' => $navid, 'visible' => true ]);
             }
-            $navs = navigation::all();
+            module_navigation::where('visible', true)->where('navigation_id','19')->where('module_id',$var)->update(['display_order' => '15']);
+            module_navigation::where('visible', true)->where('navigation_id','15')->where('module_id',$var)->update(['display_order' => '16']);
+            module_navigation::where('visible', true)->where('navigation_id','16')->where('module_id',$var)->update(['display_order' => '17']);
+            module_navigation::where('visible', true)->where('navigation_id','17')->where('module_id',$var)->update(['display_order' => '18']);
+            module_navigation::where('visible', true)->where('navigation_id','18')->where('module_id',$var)->update(['display_order' => '19']);
+            module_navigation::where('visible', true)->where('navigation_id','30')->where('module_id',$var)->update(['display_order' => '26']);
+            module_navigation::where('visible', true)->where('navigation_id','26')->where('module_id',$var)->update(['display_order' => '27']);
+            module_navigation::where('visible', true)->where('navigation_id','27')->where('module_id',$var)->update(['display_order' => '28']);
+            module_navigation::where('visible', true)->where('navigation_id','28')->where('module_id',$var)->update(['display_order' => '29']);
+            module_navigation::where('visible', true)->where('navigation_id','29')->where('module_id',$var)->update(['display_order' => '30']);
+
+
+            $navs = navigation::where('navigation_id','<>','35')->get();
             $mods = module::where('archived', false)->get();
-            $navs_mods = module_navigation::where('visible', true)->get();
+            $navs_mods = module_navigation::where('visible', true)->where('navigation_id','<>','35')->get();
             return view('admin/configureModules', compact('navs', 'mods', 'navs_mods'));
-        }
-        else
-        {
-            $error_message= "You are not authorized to view this page.";
-            return view('errors/error',compact('error_message'));
-        }
+
     }
     public function deletemodule($modid)
     {
         module::where('module_id',$modid)->update(['archived' => true]);
-        $navs = navigation::all();
+        $navs = navigation::where('navigation_id','<>','35')->get();
         $mods = module::where('archived', false)->get();
-        $navs_mods = module_navigation::where('visible', true)->get();
+        $navs_mods = module_navigation::where('visible', true)->where('navigation_id','<>','35')->get();
         return view('admin/configureModules', compact ('navs', 'mods', 'navs_mods'));
     }
     public function delete_email($id)
@@ -271,4 +375,14 @@ class AdminController extends Controller
         $email = User::where('id',$id)->pluck('email');
         return redirect('/home')->with('success','Email has been  deleted');
     }
+    public function delete_media($id)
+    {
+        $media = media_lookup_value::find($id);
+        $media->delete();
+        return redirect()->back();
+    }
+
+
+
+
 }

@@ -4,22 +4,33 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+<br>
     <div class="container">
         <div class="row" style="padding-top: 0; margin: 0">
             <h3 align = "center">Active Modules</h3>
         </div>
 
         <div class="row">
+            @if(Auth::user()->role =='Admin')
             <div class="col-md-2">
                 <a href="{{url('/home')}}" class="btn btn-success" >
                     <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
                     Back to Dashboard</a>
             </div>
+            @else
+            <div class="col-md-2">
+                <a href="{{url('/InstructorHome')}}" class="btn btn-success" >
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                    Back to Dashboard</a>
+            </div>
+            @endif
+
             <div class="col-md-2 col-md-offset-8">
-                    <a href="#" title="" class="btn btn-primary" id="add-record" style="float: right">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add new Module</a>
+                <a href="#" title="" class="btn btn-primary" id="add-record" style="float: right">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Add new Module</a>
             </div>
         </div>
         <br>
@@ -27,59 +38,59 @@
         <div class="row" style="overflow-x: scroll;width: 1200px">
             <table class="table-responsive table-striped" border="2" id="main_table">
                 <thead >
-                    <tr>
-                        <td style="background-color:#5DADE2;">
-                            <h5 style="width: 150px;margin-left: 1%;margin-right: 1%">
-                                <h4 style="color: #000000">Module <i class="fa fa-arrows-v" aria-hidden="true"></i>/Navigations <i class="fa fa-arrows-h" aria-hidden="true"></i></h4>
-                            </h5>
-                        </td>
-                        <td style="background-color:#5DADE2;" align="middle">
-                            <h5 style="width: 150px;color: #000000"><b>Demographics</b></h5>
-                        </td>
-                        @foreach ($navs as $nav)
-                            @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '20')
-                                <td  style="background-color:#5DADE2;color: #000000"  align="middle">
+                <tr style="background: linear-gradient(#af9999,#b3b8bf)">
+                    <td>
+                        <h5 style="width: 150px;margin-left: 1%;margin-right: 1%">
+                            <h4 style="color: #000000">Module <i class="fa fa-arrows-v" aria-hidden="true"></i>/Navigations <i class="fa fa-arrows-h" aria-hidden="true"></i></h4>
+                        </h5>
+                    </td>
+                    <td align="middle">
+                        <h5 style="width: 150px;color: #000000"><b>Demographics</b></h5>
+                    </td>
+                    @foreach ($navs as $nav)
+                        @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '20')
+                            <td align="middle">
+                                <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}</b></h5>
+                            </td>
+                        @else
+                            @if($nav->parent_id != NULL)
+                                <td  style="color: #000000; border: none">
+
+                                </td>
+                            @else
+                                <td  style="color: #000000"  align="middle">
                                     <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}</b></h5>
                                 </td>
-                            @else
-                                @if($nav->parent_id != NULL)
-                                    <td  style="background-color:#5DADE2; color: #000000; border: none">
-
-                                    </td>
-                                @else
-                                    <td  style="background-color:#5DADE2; color: #000000"  align="middle">
-                                        <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}</b></h5>
-                                    </td>
-                                @endif
                             @endif
-                        @endforeach
-                        <td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="background-color:#5DADE2; color: #000000">
-                        </td>
+                        @endif
+                    @endforeach
+                    <td>
+                    </td>
+                </tr>
+                <tr style="background: linear-gradient(#af9999,#b3b8bf)">
+                    <td style="color: #000000">
+                    </td>
 
-                        <td style="background-color:#5DADE2; color: #000000" align="middle">
-                        </td>
+                    <td style="color: #000000" align="middle">
+                    </td>
 
-                        @foreach ($navs as $nav)
-                            @if($nav->parent_id != NULL)
-                                <td  style="background-color:#5DADE2; color: #000000"  align="middle">
-                                    <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
-                                    <b>{{ $nav->navigation_name }}</b>
-                                    </h5>
-                                </td>
-                            @else
-                                <td  style="background-color:#5DADE2; color: #000000"  align="middle">
-                                    <h5 style="padding-left: 1%;padding-right: 1%;width: 100px">
-                                    </h5>
-                                </td>
-                            @endif
-                        @endforeach
-                        <td>
-                        </td>
-                    </tr>
+                    @foreach ($navs as $nav)
+                        @if($nav->parent_id != NULL)
+                            <td  style="color: #000000"  align="middle">
+                                <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
+                                    <b>{{ $nav->navigation_name}}</b>
+                                </h5>
+                            </td>
+                        @else
+                            <td  style="color: #000000"  align="middle">
+                                <h5 style="padding-left: 1%;padding-right: 1%;width: 100px">
+                                </h5>
+                            </td>
+                        @endif
+                    @endforeach
+                    <td>
+                    </td>
+                </tr>
                 </thead>
                 <tbody style="overflow-x: scroll">
                 @if($mods->isEmpty())
@@ -89,43 +100,44 @@
                         </td>
                     </tr>
                 @else
-                @foreach ($mods as $mod)
-                    <tr style="overflow-x: scroll">
-                        <td align="middle">
-                            {{ $mod->module_name }}
-                        </td>
-                        <td align="middle">
-                            <input type="checkbox" checked onclick="return false">
-                        </td>
-                        @foreach ($navs as $nav)
+                    @foreach ($mods as $mod)
+                        <tr style="overflow-x: scroll">
                             <td align="middle">
-                                <?php $check = 0; ?>
-                                @foreach($navs_mods as $nm)
-                                    @if($nm->module_id == $mod->module_id && $nm->navigation_id == $nav->navigation_id && $nm->visible ==1)
-                                        <?php $check = 1; ?>
-                                        @break;
-                                    @else
-                                        <?php $check = 0; ?>
-                                    @endif
-                                @endforeach
-
-                                @if ($check == 1)
-                                    <input type="checkbox" class="form-check-input inline" checked="checked" onclick="return false" >
-                                @else
-                                    <input type="checkbox" class="form-check-input inline" onclick="return false">
-                                @endif
+                                {{ $mod->module_name }}
                             </td>
-                        @endforeach
+                            <td align="middle">
+                                <input type="checkbox" checked onclick="return false">
+                            </td>
+                            @foreach ($navs as $nav)
+                                <td align="middle">
+                                    <?php $check = 0; ?>
+                                    @foreach($navs_mods as $nm)
+                                        @if($nm->module_id == $mod->module_id && $nm->navigation_id == $nav->navigation_id && $nm->visible ==1)
+                                            <?php $check = 1; ?>
+                                            @break;
+                                        @else
+                                            <?php $check = 0; ?>
+                                        @endif
+                                    @endforeach
 
-                        <td>
-                            {{ Form::open(array('method' => 'post', 'route' => array('deletemodule', $mod->module_id))) }}
+                                    @if ($check == 1)
+                                        <input type="checkbox" class="form-check-input inline" checked="checked" onclick="return false" >
+                                    @else
+                                        <input type="checkbox" class="form-check-input inline" onclick="return false">
+                                    @endif
+                                </td>
+                            @endforeach
+
+                            <td>
+                                {{ Form::open(array('method' => 'post', 'route' => array('deletemodule', $mod->module_id))) }}
                                 <div class="form-group">
-                                    <button name="delbutton" class="btn btn-danger btn-delete">Delete</button>
+                                    <button name="delbutton" class="btn btn-danger enable btn-delete" onclick="return Delete()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                 </div>
-                            {{ Form::close() }}
-                        </td>
-                    </tr>
-                @endforeach
+                                {{ Form::close() }}
+                            </td>
+                        </tr>
+                    @endforeach
+                    <br>
                 @endif
                 </tbody>
             </table>
@@ -135,94 +147,114 @@
 
         {{ Form::open(array('method' => 'post', 'route' => array('submitmodule'))) }}
         <div class="row" id="childTable" style="overflow-x: scroll;width: 1200px">
-        <table border="2" >
-            <tr>
-                <td style="background-color:#5DADE2;">
-                    <h5 style="width: 150px;margin-left: 1%;margin-right: 1%">
-                        <b>Module/Navigations</b>
-                    </h5>
-                </td>
-                @foreach ($navs as $nav)
-                    @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '20')
-                        <td  style="background-color:#5DADE2;"  align="middle">
-                            <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}- All</b></h5>
-                        </td>
-                    @else
-                        @if($nav->parent_id != NULL)
-                            <td  style="background-color:#5DADE2;border: none">
-
+            <table border="2" id="edokati">
+                <tr style="background: linear-gradient(#af9999,#b3b8bf);">
+                    <td>
+                        <h5 style="width: 150px;margin-left: 1%;margin-right: 1%">
+                            <b>Module/Navigations</b>
+                        </h5>
+                    </td>
+                    @foreach ($navs as $nav)
+                        @if($nav->navigation_id == '2' || $nav->navigation_id == '9' || $nav->navigation_id == '20')
+                            <td align="middle">
+                                <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}- All</b></h5>
                             </td>
                         @else
-                            <td  style="background-color:#5DADE2;"  align="middle">
-                                <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}</b></h5>
+                            @if($nav->parent_id != NULL)
+                                <td  style="border: none">
+
+                                </td>
+                            @else
+                                <td align="middle">
+                                    <h5 style="padding-left: 1%;padding-right: 1%;width: 100px"><b>{{ $nav->navigation_name }}</b></h5>
+                                </td>
+                            @endif
+                        @endif
+                    @endforeach
+                    <td>
+                    </td>
+                </tr>
+                <tr style="background: linear-gradient(#af9999,#b3b8bf);">
+                    <td>
+                    </td>
+                    @foreach ($navs as $nav)
+                        @if($nav->parent_id != NULL)
+                            <td align="middle">
+                                <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
+                                    <b>{{ $nav->navigation_name }}</b>
+                                </h5>
+                            </td>
+                        @else
+                            <td align="middle">
+                                <h5 style="padding-left: 1%;padding-right: 1%;width: 100px">
+                                </h5>
                             </td>
                         @endif
-                    @endif
-                @endforeach
-                <td>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#5DADE2;">
-                </td>
-                @foreach ($navs as $nav)
-                    @if($nav->parent_id != NULL)
-                        <td  style="background-color:#5DADE2;"  align="middle">
-                            <h5 style="padding-left: 1%;padding-right: 1%;width: 120px">
-                                <b>{{ $nav->navigation_name }}</b>
-                            </h5>
-                        </td>
-                    @else
-                        <td  style="background-color:#5DADE2;"  align="middle">
-                            <h5 style="padding-left: 1%;padding-right: 1%;width: 100px">
-                            </h5>
-                        </td>
-                    @endif
-                @endforeach
-                <td>
-                </td>
-            </tr>
-            <tr>
-               <td align="middle">
-                   <input type="text" name="modulename" required id="new_module_name" placeholder="Module name">
-                   @if ($errors->has('modulename'))
-                       <span class="help-block" >
-                                        <strong id="module_alert">{{ $errors->first('modulename') }}</strong>
+                    @endforeach
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="middle">
+                        <input type="text" name="modulename" required id="new_module_name" placeholder="Module name">
+                        @if ($errors->has('modulename'))
+                            <span class="help-block" >
+                                        <strong id="module_alert" >{{ $errors->first('modulename') }}</strong>
                        </span>
-                   @endif
-               </td>
-               @foreach ($navs as $nav)
-                   <td align="middle">
-                        {{-- To ensure Disposition is always checked --}}
-                       @if($nav->navigation_id == 34)
-                            <input type="checkbox" id=34 name="navs[]" value=34 checked onclick="return false">
-                       @else
-                            <input type="checkbox" id={{$nav->navigation_id}} name="navs[]" value={{$nav->navigation_id}}>
-                       @endif
-                   </td>
-               @endforeach
-               <td>
-                   <button name="submitbutton" class="btn btn-success btn-submit" id="add_new_module">Add</button>
-               </td>
-            </tr>
-        </table>
+                        @endif
+                    </td>
+                    @foreach ($navs as $nav)
+                        <td align="middle">
+                            {{-- To ensure Disposition is always checked --}}
+                            @if($nav->navigation_id == 34)
+                                <input type="checkbox" id=34 name="navs[]" value=34 checked onclick="return false">
+                            @else
+                                <input type="checkbox" id={{$nav->navigation_id}} name="navs[]" value={{$nav->navigation_id}}>
+                            @endif
+                        </td>
+                    @endforeach
+                    <td>
+                        <button name="submitbutton" class="btn btn-success btn-submit" id="add_new_module">Add</button>
+                    </td>
+                </tr>
+            </table>
 
             <br>
             <a href="#" title="" class="btn btn-primary" id="cancel_add_module" style="float: left">
                 Cancel</a>
             <br>
+            <a id ="123"></a>
 
         </div>
         {{ Form::close() }}
     </div>
-<br>
     <script>
         $(document).ready(function(){
+
+            $("#add_new_module").click(function () {
+
+                var rows_length= document.getElementById("main_table").rows.length;
+                var new_module = $("#new_module_name").val();
+                var i;
+                var y = new_module.toUpperCase();
+                for (i=2;i<rows_length;i++) {
+                    var z=document.getElementById("main_table").rows[i].cells[0].innerHTML;
+                    var z = z.toUpperCase();
+                    if(z.trim() == y.trim()) {
+                        alert("Module name already exist")
+                        return false;
+                    }
+                }
+            });
+
+
             $("#new_module_name").keyup(function() {
                 if($(this).val() != '') {
                     $('#add_new_module').prop('disabled', false);
                 }
             });
+
+
 
             $('#childTable').hide();
 
@@ -344,9 +376,17 @@
 
 
         });
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
     </script>
-
+    <br>
+    <br>
+    <br>
 @endsection
-
 
 

@@ -4,8 +4,9 @@
     {{--Disposition--}}
     <div class="container-fluid">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <h4 style="margin-top: 0">Disposition<span style="color: red;font-size: large">*</span>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);
+padding-bottom: 0">
+                <h4 style="margin-top: 0;color:#000; font-weight:500">Disposition<span style="color: red;font-size: large">*</span>
 
                 </h4>
             </div>
@@ -30,19 +31,19 @@
                                 <div class="col-md-12 ">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
-                                        <tr class="bg-info">
+                                        <tr class="bg-warning">
                                             <th>List of Diagnosis</th>
-                                            <th colspan="2"></th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($diagnosis_list_disposition as $diagnosis)
                                             <tr>
                                                 <td><p><?php echo ($diagnosis->value); ?></p></td>
-                                                <td style="text-align: right;">
+                                                <td>
                                                     <a href="{{ route( 'delete_disposition', ['active_record_id' => $diagnosis->active_record_id]) }}"
-                                                       class="btn btn-danger confirmation" id="delete">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
                                                     </a>
                                                 </td>
                                             </tr>
@@ -196,7 +197,7 @@
             });
 
             function unloadPage(){
-                if(inputsChanged){
+                if(inputsChanged||inputsChangedddx||inputchangepicture||inputchangevideo||inputchangeaudio){
                     return "Do you want to leave this page?. Changes you made may not be saved.";
                 }
             }
@@ -221,6 +222,13 @@
             $('#btn_save_disposition').prop('disabled', false);
         } );
 
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
     </script>
 
 @endsection

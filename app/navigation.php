@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class navigation extends Model
 {
     protected $fillable = [
-        'navigation_name', 'parent_id'
+        'navigation_name', 'parent_id', 'navigation_order'
     ];
 
     public function parent()

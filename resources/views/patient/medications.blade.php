@@ -6,8 +6,8 @@
     {{--Medications--}}
     <div class="container-fluid">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <h4 style="margin-top: 0">Medications</h4>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <h4 style="margin-top: 0;color:#000; font-weight:500">Medications</h4>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal" method="POST" action="{{ route('post_medications') }}" id="medications_form">
@@ -20,26 +20,38 @@
                          <div class="row">
                             <table class="table table-striped table-bordered table-hover">
                                     <thead>
-                                    <tr class="bg-info">
+                                    <tr class="bg-warning">
                                         <th>List of Medicines</th>
-                                        <th colspan="2"></th>
+                                        <th colspan="20">Dosage</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($medications as $medicine)
+                                    @foreach ($medications_main as $medicine)
                                         <tr>
                                             <td><p>{{$medicine->value}}</p></td>
-                                            <td style="text-align: right">
-                                                <a href="{{ route( 'delete_medication', ['active_record_id' => $medicine->active_record_id]) }}"
-                                                   class="btn btn-danger confirmation" id="delete">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
-                                                </a>
-                                            </td>
+                                            @if($medicine->dosage==null)
+                                                <td colspan="20"><input type="text" id="Dosage" name="Dosage[]" data-medid="{{$medicine->active_record_id}}"></td>
+                                                <td>
+                                                    <a href="{{ route( 'delete_medication', ['id' => $medicine->active_record_id]) }}"
+                                                       class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                                    </a>
+                                                </td>
+                                            @else
+                                                <td colspan="20"><p>{{$medicine->dosage}}</p></td>
+                                                <td>
+                                                    <a href="{{ route( 'delete_dosage', ['id' => $medicine->active_record_id]) }}" 
+                                                        class="btn btn-danger enable" id="delete" onclick="return Delete()">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                                                    </a>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>
-                                </table>
-                        </div>
+                            </table>
+                         </div>
                        <hr>
                          <!-- Search For Medications -->
                          <div class="row">
@@ -116,13 +128,24 @@
             });
 
             function unloadPage(){
-                if(inputsChanged){
+                if(inputsChanged||inputsChangedddx||inputchangepicture||inputchangevideo||inputchangeaudio){
                     return "Do you want to leave this page?. Changes you made may not be saved.";
                 }
             }
 
             $("#btn_save_medication").click(function(){
                 inputsChanged = false;
+                $('input[name^="Dosage"]').each(function() {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "post",
+                        url: '{{route('post_medication_dosage')}}',
+                        data: { dosage:$(this).val() ,medid:$(this).attr("data-medid")}
+                    });
+                });
+
             });
 
             $('#btn_clear_medication').click( function()
@@ -134,6 +157,15 @@
 
             window.onbeforeunload = unloadPage;
         });
+
+
+        function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
 
     </script>
 

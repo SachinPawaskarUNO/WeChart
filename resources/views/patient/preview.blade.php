@@ -18,6 +18,26 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 12px;
+            border: none;
+            outline: none;
+            background: linear-gradient(#04A2C9,#075DBF);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+    </style>
+
 </head>
 <body>
 <div class="container-fluid">
@@ -46,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-body" style="margin-bottom: 0;padding-bottom: 0;background-color: #FFFAF0;margin-top: 0;padding-top: 0">
+        <div class="panel-body" style="margin-bottom: 0;padding-bottom: 0;background: linear-gradient(#FFE8C3, #f7f5be);margin-top: 0;padding-top: 0">
             <table class="table" style=" margin-top: 0;padding-top: 0;margin-bottom: 0;padding-bottom: 0">
                 <!--This is the first row in the vital signs panel -->
                 <tr style="padding-top: 0;padding-bottom: 0%; border-style: hidden">
@@ -156,10 +176,10 @@
     {{--HPI--}}
     <div class="row">
         <div class="panel panel-default">
-        <div class="panel-heading" style="background-color: lightblue">
-            <a data-toggle="collapse" href="#HPI">HPI</a>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf)">
+                <a data-toggle="collapse" href="#HPI" class="text-secondary">HPI</a>
         </div>
-        <div class="panel-body" id="HPI" class="panel-collapse collapse in ">
+        <div class="panel-body panel-collapse collapse in" id="HPI">
             @if(count($HPI)>0)
                 <p>{{$HPI[0]->value}}</p>
             @endif
@@ -169,14 +189,14 @@
     {{--Medical History--}}
     <div class="row">
         <div class="panel panel-default">
-        <div class="panel-heading" style="background-color: lightblue">
-            <a data-toggle="collapse" href="#medical_history">Medical History</a>
-        </div>
-        <div class="panel-body" id="medical_history" class="panel-collapse collapse in ">
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf)">
+                <a data-toggle="collapse" href="#medical_history" class="text-secondary">Medical History</a>
+            </div>
+        <div class="panel-body panel-collapse collapse in" id="medical_history" >
             {{--Personal History--}}
             <table class="table table-striped table-bordered table-hover">
                 <thead>
-                <tr class="bg-info">
+                <tr class="bg-warning">
                     <th colspan="2">Personal History</th>
                 </tr>
                 </thead>
@@ -201,7 +221,7 @@
             {{--Family History--}}
             <table class="table table-striped table-bordered table-hover">
                 <thead>
-                    <tr class="bg-info">
+                    <tr class="bg-warning">
                         <th colspan="6">Family History</th>
                     </tr>
                     <tr>
@@ -248,7 +268,7 @@
             {{--Surgical History --}}
             <table class="table table-striped table-bordered table-hover">
                 <thead>
-                <tr class="bg-info">
+                <tr class="bg-warning">
                     <th colspan="2">Surgical History</th>
                 </tr>
                 </thead>
@@ -272,7 +292,7 @@
             {{--Social History--}}
             <table class="table table-striped table-bordered table-hover">
                 <thead>
-                <tr class="bg-info">
+                <tr class="bg-warning">
                     <th colspan="8">Social History</th>
                 </tr>
                 </thead>
@@ -325,17 +345,21 @@
     {{--Medications--}}
     <div class="row">
         <div class="panel panel-default">
-                <div class="panel-heading" style="background-color: lightblue">
-                        <a data-toggle="collapse" href="#medications">Medications</a>
-                </div>
-                <div class="panel-body" id="medications" class="panel-collapse collapse in">
-                     <p>
-                        <strong>List of medications: </strong><br>
-                        @foreach ($medications as $medicine)
-                                * {{$medicine->value}}<br>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf)">
+                <a data-toggle="collapse" href="#medications" class="text-secondary">Medications</a>
+            </div>
+                <div class="panel-body panel-collapse collapse in" id="medications">
+                <p>
+                        <strong>List of Medicines (Medicine-Dosage): </strong><br>
+                        @foreach ($medications_main as $medicine)
+                        @if($medicine->dosage == null)
+                            * {{$medicine->value}}<br>
+                        @else
+                            * {{$medicine->value}}-{{$medicine->dosage}}<br>
+                        @endif
                         @endforeach
-                     </p>
-                    <p>
+                </p>
+                <p>
                         <strong>Comments:</strong>
                         @if(count($medication_comment)>0)
                             {{$medication_comment[0]->value}}
@@ -349,11 +373,11 @@
         <table class="table table-striped table-bordered table-hover" id="vital_signs_table">
         <thead>
         <tr>
-            <th style="background-color: lightblue" colspan="12">
+            <th style="background: linear-gradient(#af9999,#b3b8bf)" colspan="12">
                 <a data-toggle="collapse" href="#vital_signs">Vital Signs</a>
             </th>
         </tr>
-        <tr class="bg-info">
+        <tr class="bg-warning">
             <th>Timestamp</th>
             <th>BP Systolic</th>
             <th>BP Diastolic</th>
@@ -442,13 +466,13 @@
     {{--ROS--}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue">
-                <a data-toggle="collapse" href="#ros">ROS</a>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf)">
+                <a data-toggle="collapse" href="#ros" class="text-secondary">ROS</a>
             </div>
-            <div class="panel-body" id="ros" class="panel-collapse collapse in">
+            <div class="panel-body panel-collapse collapse in" id="ros">
                 {{--ros_constitutional--}}
                 <div class="panel panel-default" id="constitutional">
-                        <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                             <p style="margin-top: 0">ROS- Constitutional</p>
                         </div>
                         <div class="panel-body" style="padding-bottom: 0">
@@ -472,7 +496,7 @@
                 </div>
                 {{--ros_hent--}}
                 <div class="panel panel-default" id="hent">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- HENT</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -494,7 +518,7 @@
                 </div>
                 {{--ros_eyes--}}
                 <div class="panel panel-default" id="eyes">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Eyes</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -516,7 +540,7 @@
                 </div>
                 {{--ros_respiratory--}}
                 <div class="panel panel-default" id="respiratory">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Respiratory</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -538,7 +562,7 @@
                 </div>
                 {{--ros_cardiovascular--}}
                 <div class="panel panel-default" id="cardiovascular">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Cardiovascular</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -558,9 +582,31 @@
                         </p>
                     </div>
                 </div>
+                {{--ros_gastrointestinal--}}
+                <div class="panel panel-default" id="gastrointestinal">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
+                        <p style="margin-top: 0">ROS- Gastrointestinal</p>
+                    </div>
+                    <div class="panel-body" style="padding-bottom: 0">
+                        <p>
+                            <strong>Symptoms: </strong><br>
+                            @foreach ($ros_gastrointestinal_symptoms as $ros_gastrointestinal_symptom)
+                                @if($ros_gastrointestinal_symptom->is_saved)
+                                    * {{$ros_gastrointestinal_symptom->value}}<br>
+                                @endif
+                            @endforeach
+                        </p>
+                        <p>
+                            <strong> Comments:</strong>
+                            @if(count($ros_gastrointestinal_comment)>0)
+                                {{$ros_gastrointestinal_comment[0]}}
+                            @endif
+                        </p>
+                    </div>
+                </div>
                 {{--ros_musculosketal--}}
                 <div class="panel panel-default" id="musculoskeletal">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Musculoskeletal </p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -582,7 +628,7 @@
                 </div>
                 {{--ros_integumentary--}}
                 <div class="panel panel-default" id="integumentary">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Integumentary</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -604,7 +650,7 @@
                 </div>
                 {{--ros_neurological--}}
                 <div class="panel panel-default" id="eyes">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Neurological</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -626,7 +672,7 @@
                 </div>
                 {{--ros_psychological--}}
                 <div class="panel panel-default" id="psychological">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">ROS- Psychological</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -652,13 +698,13 @@
     {{--PE--}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue">
-                <a data-toggle="collapse" href="#pe">PE</a>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf)">
+                <a data-toggle="collapse" href="#pe" class="text-secondary">PE</a>
             </div>
-            <div class="panel-body" id="pe" class="panel-collapse collapse in">
+            <div class="panel-body panel-collapse collapse in" id="pe">
                 {{--PE_constitutional--}}
                 <div class="panel panel-default" id="pe_constitutional">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Constitutional</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -682,7 +728,7 @@
                 </div>
                 {{--pe_hent--}}
                 <div class="panel panel-default" id="pe_hent">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- HENT</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -704,7 +750,7 @@
                 </div>
                 {{--pe_eyes--}}
                 <div class="panel panel-default" id="pe_eyes">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Eyes</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -726,7 +772,7 @@
                 </div>
                 {{--pe_respiratory--}}
                 <div class="panel panel-default" id="pe_respiratory">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Respiratory</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -748,7 +794,7 @@
                 </div>
                 {{--cardiovascular--}}
                 <div class="panel panel-default" id="pe_cardiovascular">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Cardiovascular</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -768,9 +814,31 @@
                         </p>
                     </div>
                 </div>
+                {{--gastrointestinal--}}
+                <div class="panel panel-default" id="pe_gastrointestinal">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
+                        <p style="margin-top: 0">PE- Gastrointestinal</p>
+                    </div>
+                    <div class="panel-body" style="padding-bottom: 0">
+                        <p>
+                            <strong>Symptoms: </strong><br>
+                            @foreach ($gastrointestinal_symptoms as $gastrointestinal_symptom)
+                                @if($gastrointestinal_symptom->is_saved)
+                                    * {{$gastrointestinal_symptom->value}}<br>
+                                @endif
+                            @endforeach
+                        </p>
+                        <p>
+                            <strong> Comments:</strong>
+                            @if(count($gastrointestinal_comment)>0)
+                                {{$gastrointestinal_comment[0]}}
+                            @endif
+                        </p>
+                    </div>
+                </div>
                 {{--musculosketal--}}
                 <div class="panel panel-default" id="pe_musculoskeletal">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Musculoskeletal </p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -792,7 +860,7 @@
                 </div>
                 {{--integumentary--}}
                 <div class="panel panel-default" id="pe_integumentary">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Integumentary</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -814,7 +882,7 @@
                 </div>
                 {{--neurological--}}
                 <div class="panel panel-default" id="pe_eyes">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Neurological</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -836,7 +904,7 @@
                 </div>
                 {{--psychological--}}
                 <div class="panel panel-default" id="pe_psychological">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+                    <div class="panel-heading" style="background-color: #fffadd;padding-bottom: 0">
                         <p style="margin-top: 0">PE- Psychological</p>
                     </div>
                     <div class="panel-body" style="padding-bottom: 0">
@@ -862,14 +930,31 @@
     {{--Orders--}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue">
-                <a data-toggle="collapse" href="#orders">Orders</a>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf)">
+                <a data-toggle="collapse" href="#orders" class="text-secondary">Orders</a>
             </div>
-            <div class="panel-body" id="orders" class="panel-collapse collapse in">
+            <div class="panel-body panel-collapse collapse in" id="orders">
                 <p>
-                    <strong>List of labs: </strong><br>
+                    <strong>List of Medicines (Medicine-Dosage): </strong><br>
+                        @foreach ($medications as $medicine)
+                        @if($medicine->dosage == null)
+                            * {{$medicine->value}}<br>
+                        @else
+                            * {{$medicine->value}}-{{$medicine->dosage}}<br>
+                        @endif
+                        @endforeach
+                    
+                </p>
+                <p>
+                    <strong>List of Labs: </strong><br>
                     @foreach ($labs as $lab)
                         * {{$lab->value}}<br>
+                    @endforeach
+                </p>
+                <p>
+                    <strong>List of Procedures: </strong><br>
+                    @foreach ($procedures as $procedure)
+                        * {{$procedure->value}}<br>
                     @endforeach
                 </p>
                 <p>
@@ -889,23 +974,53 @@
     {{--Results--}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <a data-toggle="collapse" href="#results">Results</a>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <a data-toggle="collapse" href="#results" class="text-secondary">Results</a>
             </div>
-            <div class="panel-body " id="results" class="panel-collapse collapse in">
-                    @if(count($results)>0)
-                        {{$results[0]->value}}
+            <div class="panel-body panel-collapse collapse in" id="results">
+                <p>
+                    <strong>List of Medicines (Medicine-Dosage): </strong><br>
+                        @foreach ($medications as $medicine)
+                        @if($medicine->dosage == null)
+                            * {{$medicine->value}}<br>
+                        @else
+                            * {{$medicine->value}}-{{$medicine->dosage}}<br>
+                        @endif
+                        @endforeach
+                </p>
+                <p>
+                    <strong>List of Labs: </strong><br>
+                    @foreach ($labs as $lab)
+                        * {{$lab->value}}<br>
+                    @endforeach
+                </p>
+                <p>
+                    <strong>List of Procedures: </strong><br>
+                    @foreach ($procedures as $procedure)
+                        * {{$procedure->value}}<br>
+                    @endforeach
+                </p>
+                <p>
+                    <strong>List of Images: </strong><br>
+                    @foreach ($images as $image)
+                       * {{$image->value}}<br>
+                    @endforeach
+                </p>
+                <p><strong>Comments: </strong>
+                    @if(count($comment_order)>0)
+                        {{$comment_order[0]->value}}
                     @endif
+                </p>
             </div>
         </div>
     </div>
     {{--MDM/Plan--}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
                 <a data-toggle="collapse" href="#mdm">MDM/Plan</a>
             </div>
-            <div class="panel-body " id="mdm" class="panel-collapse collapse in">
+            <div class="panel-body panel-collapse collapse in" id="mdm">
                 @if(count($mdm)>0)
                     {{$mdm[0]->value}}
                 @endif
@@ -915,10 +1030,10 @@
     {{--Disposition--}}
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                <a data-toggle="collapse" href="#disposition">Disposition</a>
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <a data-toggle="collapse" href="#disposition" class="text-secondary">Disposition</a>
             </div>
-            <div class="panel-body " id="disposition" class="panel-collapse collapse in">
+            <div class="panel-body panel-collapse collapse in" id="disposition">
                 <p><strong>List of Diagnosis: </strong><br>
                     @foreach ($diagnosis_list_personal_history as $diagnosis)
                         <br>
@@ -938,7 +1053,64 @@
             </div>
         </div>
     </div>
+    {{--DDx--}}
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <a data-toggle="collapse" href="#ddx" class="text-secondary">DDx</a>
+            </div>
+            <div class="panel-body panel-collapse collapse in" id="ddx">
+            <table class="table table-striped table-bordered table-hover" id="ddx">
+                <thead>
+                <tr class="bg-warning">
+                    <th>List of Diagnosis</th>
+                    <th>Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($diagnosis_list_ddx as $diagnosis)
+                    <tr id="<?php echo $diagnosis->active_record_id; ?>">
+                        <td><p><?php echo ($diagnosis->value); ?></p></td>
+                        @if($diagnosis->comments==null)
+                            <td></td>
+                        @else
+                            <td>{{$diagnosis->comments}}</td>
+                        @endif
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+    {{--Feedback--}}
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                <a data-toggle="collapse" href="#feedback" class="text-secondary">Feedback</a>
+            </div>
+            <div class="panel-body panel-collapse collapse in" id="feedback" >
+                <div class="col-md-9">
+                    @if($feedback!="null")
+                        <textarea rows="4" id="feedback" name="feedback" style="width: 100%;display: block">{{$feedback[0]}}</textarea>
+                    @else
+                        <textarea rows="4" id="feedback" name="feedbacknew" style="width: 100%;display: block"></textarea>
+                        @endif
+                        <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
+                        <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" id="btn_save_feedback" class="btn btn-primary" style="float: right">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Feedback
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
 </div>
+
 
 <?php
 set_time_limit(0);
@@ -946,3 +1118,46 @@ set_time_limit(0);
 
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    $(document).ready(function(){
+        $("#btn_save_feedback").click(function(){
+            inputsChanged = false;
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "post",
+                url: '{{route('post_feedback')}}',
+                data: { feedback:$("textarea").val() ,patient_id:$('#patient_id').val(), user_id:$('#user_id').val()}
+            });
+            swal("Feedback saved successfully!", {
+                icon: "success",
+                buttons: false,
+                timer: 1500,
+            });
+            setTimeout(function(){
+                window.location.href = "{{URL::to('InstructorHome')}}";
+
+            }, 1000);
+
+        });
+
+    });
+</script>

@@ -4,10 +4,10 @@
     {{--@parent--}}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-14">
+            <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="background-color: lightblue;padding-bottom: 0">
-                        <h4 style="margin-top: 0" id="hpi_heading">Vital Signs</h4>
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);padding-bottom: 0">
+                        <h4 style="margin-top: 0;color:#000; font-weight:500" id="hpi_heading">Vital Signs</h4>
                     </div>
 
                     <div class="panel-body col-md-offset">
@@ -20,7 +20,7 @@
                         <div class="row" style="overflow-x: auto;width: 100%; display: block">
                             <table class="table table-striped table-bordered table-hover" style="margin-top:10px; margin-left:15px;" id="vital_signs_table">
                                 <thead>
-                                <tr style="background: lightblue">
+                                <tr class="bg-warning">
                                     <th>Timestamp</th>
                                     <th>BP Systolic</th>
                                     <th>BP Diastolic</th>
@@ -32,7 +32,7 @@
                                     <th>Pain (0/10)</th>
                                     <th>O<sub>2</sub> Sat</th>
                                     <th>Comment</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -105,7 +105,8 @@
                                                  {{ Form::open(array('method' => 'post', 'route' => array('delete_vital_signs', $vs->timestamp))) }}
                                                  <input id="patient_id" name="patient_id" type="hidden" value="{{ $patient->patient_id }}">
                                                  <input type=hidden id="user_id" name="user_id" value="{{ Auth::user()->id }}">
-                                                 <button name="delbutton" class="btn btn-danger btn-delete btn-sm" id="delete_vital_signs">Delete</button>
+                                                 <button name="delbutton" class="btn btn-danger btn-delete enable btn-sm" id="delete_vital_signs" onclick="return Delete()"><i class="fa fa-trash-o" aria-hidden="true"></i>
+</button>
                                                  {{ Form::close() }}                                               
                                              </td>
                                         </tr>
@@ -176,7 +177,9 @@
                                         </td>
                                         <td>
                                             <!-- Pain Scale 0-10  -->
-                                            <input type="number" name="Pain" id="Pain" style="width: 100px;" min="0" max="10"  oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                                            <!-- <input type="number" name="Pain" id="Pain" style="width: 100px;" min="0" max="10"  oninput="this.value=this.value.replace(/[^0-9]/g,''); "> -->
+                                            <input type="text" name="Pain" id="Pain" style="width: 100px" maxlength="2" pattern="(10|([0-9]))"  oninvalid="this.setCustomValidity('Enter value between 0 to 10')" oninput="setCustomValidity('')" >
+
                                         </td>
                                         <td>
                                             <input type="text" name="Oxygen_Saturation" id="Oxygen_Saturation" style="width: 100px;">
@@ -202,6 +205,17 @@
     </div>
 
     <script>
+        var pin = document.getElementById("Pain");
+
+            pin.addEventListener("input",function (event) {
+                if(pin.validity.typeMismatch){
+                    pin.setCustomValidity("Enter values from 0 to 10");
+                }
+                else{
+                    pin.setCustomValidity("");
+                }
+            });
+
         $(document).ready(function(){
 
             $('#table_child_vital_signs').hide();
@@ -216,7 +230,7 @@
                 inputsChanged = true;
             });
             function unloadPage(){
-                if(inputsChanged){
+                if(inputsChanged||inputsChangedddx||inputchangepicture||inputchangevideo||inputchangeaudio){
                     return "Do you want to leave this page?. Changes you made may not be saved.";
                 }
             }
@@ -242,6 +256,15 @@
             $('#Oxygen_Saturation').val('');
             $('#Comments').val('');
         });
+
+function Delete() {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+        
     </script>
 
 @endsection

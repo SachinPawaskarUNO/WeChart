@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="padding-bottom: 0;padding-top: 0">
+                    <div class="panel-heading" style="background: linear-gradient(#af9999,#b3b8bf);font-weight:600">
                         <h3 >Register</h3>
                     </div>
 
@@ -129,27 +129,21 @@
                                             </option>
                                         @endforeach
                                         <option value="other">Other</option>
-
-
                                     </select>
-
-
-
+                                    <input class="form-control" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none" />
                                     @if ($errors->has('departmentName'))
                                         <span class="help-block" >
                                         <strong id="departmentNamealert">{{ $errors->first('departmentName') }}</strong>
                                     </span>
                                     @endif
-                                    <div class="form-group{{ $errors->has('newDepartmentName') ? ' has-error' : '' }}">
-                                        <input class="form-control focused req" type="text" id="newDepartmentName" name="newDepartmentName" style="display: none"/>
                                     @if ($errors->has('newDepartmentName'))
                                         <span class="help-block" >
                                         <strong id="newDepartmentNamealert" style="color: brown;">{{ $errors->first('newDepartmentName') }}</strong>
                                     </span>
                                     @endif
-                                    </div>
                                 </div>
                             </div>
+                            <div class="form-group{{ $errors->has('newDepartmentName') ? ' has-error' : '' }}"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <p> <strong>Note:</strong> Department name is must for Instructor role only. Students can keep it blank.</p>
